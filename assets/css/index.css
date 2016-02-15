@@ -7,6 +7,7 @@
     width: 650px;
     /*text*/
     color: #FFFFFF;
+    font-weight: bold;
     text-align: center;
     display: table-cell;
     vertical-align: middle;
