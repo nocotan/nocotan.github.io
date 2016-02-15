@@ -1,0 +1,6 @@
+.quarter {
+    border: 1px solid black;
+    border-radius: 0 0 300px 0;
+    height: 300px;
+    width: 300px;
+}
