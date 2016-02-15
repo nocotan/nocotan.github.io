@@ -7,6 +7,8 @@
     width: 650px;
     /*text*/
     color: #FFFFFF;
+    font-size: xx-large;
+    text-shadow: 5px 5px 1px #999999;
     font-weight: bold;
     text-align: center;
     display: table-cell;
