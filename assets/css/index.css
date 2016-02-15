@@ -6,9 +6,12 @@
     height: 650px;
     width: 650px;
     /*text*/
-    color: #FFFFFF;
+    color: #B0C4DE;
     font-size: xx-large;
-    text-shadow: 5px 5px 1px #999999;
+    text-shadow: 1px 1px 0.5px #FFFFFF,
+                 -1px 1px 0.5px #FFFFFF,
+                 1px -1px 0.5px #FFFFFF,
+                 -1px -1px 0.5px #FFFFFF;
     font-weight: bold;
     text-align: center;
     display: table-cell;
