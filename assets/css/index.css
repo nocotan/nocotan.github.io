@@ -4,9 +4,9 @@
     /*background*/
     background-color: #B0C4DE;
     box-shadow: 0 0 4px 2px rgba(128, 128, 128, 0.5);
-    border-radius: 0 0 650px 0;
-    height: 650px;
-    width: 650px;
+    border-radius: 0 0 600px 0;
+    height: 600px;
+    width: 600px;
     /*text*/
     color: #B0C4DE;
     font-size: 45px;
@@ -43,12 +43,21 @@
 .even {
     font-size: 70px;
 }
-
+.twitter {
+    float: right;
+}
 .footer {
     float: left;
     margin-top: 100px;
-    background-color: #000000;
+    background-color: #333333;
     width: 100%;
     height: 100px;
     bottom: 0;
+}
+.link {
+    width: 50%;
+}
+.SNS {
+    width: 50%;
+    text-align: center;
 }
