@@ -43,3 +43,12 @@
 .even {
     font-size: 70px;
 }
+
+.footer {
+    float: left;
+    margin-top: 100px;
+    background-color: #000000;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+}
