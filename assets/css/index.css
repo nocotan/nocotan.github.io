@@ -48,6 +48,13 @@
     width: 50%;
     text-align: right;
 }
+.contents {
+    float:left;
+    width: 100%;
+}
+.about {
+    color: #66CDAA;
+}
 .footer {
     float: left;
     margin-top: 100px;
@@ -59,10 +66,14 @@
 .link {
     float:left;
     width: 50%;
-    text-align: center;
+    text-align: left;
     color: #DDDDDD;
     font-weight: bold;
     font-size: 20px;
+}
+.link_text {}
+.other {
+    color: cadetblue;
 }
 .SNS {
     float:right;
