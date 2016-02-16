@@ -51,8 +51,9 @@
 .contents {
     float:left;
     width: 100%;
+    color: #778899;
 }
-.about {
+.affiliation {
     color: #66CDAA;
 }
 .footer {
