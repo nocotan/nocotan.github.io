@@ -45,7 +45,7 @@
 }
 .twitter {
     float: right;
-    width: 100%;
+    width: 50%;
     text-align: right;
 }
 .contents {
@@ -57,17 +57,21 @@
     color: #66CDAA;
 }
 .footer {
+    /*position*/
     float: left;
     margin-top: 100px;
-    background-color: #333333;
-    box-shadow: 0 0 4px 2px rgba(128, 128, 128, 0.5);
     width: 100%;
     height: 200px;
     bottom: 0;
+    /*background*/
+    background-color: #333333;
+    box-shadow: 0 0 4px 2px rgba(128, 128, 128, 0.5);
 }
 .link {
+    /*position*/
     float:left;
     width: 50%;
+    /*text*/
     text-align: left;
     color: #DDDDDD;
     font-weight: bold;
