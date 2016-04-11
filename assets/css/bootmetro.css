@@ -8734,6 +8734,7 @@ Progress control. */
 }
 
 .listview-item-heading {
+  font-size: 20px;
   margin: 0 0 5px;
   margin: 0;
   overflow: hidden;
