@@ -22,6 +22,25 @@
     <main>
       <div class="container">
         <h1 class="light blue-text text-lighten-3 center-on-small-only">デザインパターン</h1>
+        <div>
+          <h3 class="header center-on-small-only">生成に関するデザインパターン</h3>
+          <div>
+            <h5 class="header">Factory Method</h5>
+            <p>インスタンスの作り方をスーパークラスで決め、具体的な処理をサブクラスで行うパターン.</p>
+            <p>アプリケーションに特化したオブジェクトの生成をサブクラスに追い出し、クラスの再利用性を高めることを目的とする.</p>
+            <p>このパターンを適用すると</p>
+            <ul>
+              <li>1.オブジェクト生成のための手順(フレームワーク)を決める役割</li>
+              <li>2.実際にオブジェクトを生成する役割</li>
+            </ul>
+            <p>の２つに明確に分けて定義することができる.</p>
+            <br>
+            <h5 class="header">Abstract Factory</h5>
+            <p>互いに関連する一連のオブジェクト群を、その具象クラスに依存しないで生成するためのインターフェースを提供する.</p>
+            <p>このパターンを適用すると、関連オブジェクトをグループ単位で入れ替えることが容易になる.</p>
+            <p>Factory Methodパターンはオブジェクト生成の抽象化に着目したパターンであるのに対し、Abstract Factoryパターンは関連するオブジェクト群をまとめて生成する手順の抽象化に着目したパターンである.</p>
+          </div>
+        </div>
       </div>
     </main>
   </body>
