@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nocohub</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    <description>機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 13 Jan 2017 19:35:15 +0900</pubDate>
-    <lastBuildDate>Fri, 13 Jan 2017 19:35:15 +0900</lastBuildDate>
+    <pubDate>Fri, 13 Jan 2017 22:12:22 +0900</pubDate>
+    <lastBuildDate>Fri, 13 Jan 2017 22:12:22 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -16,9 +16,116 @@
 当初、LSAは特異値分解(Singular value decomposition: SVD)によって定式化された.&lt;/p&gt;
 
 &lt;h2 id=&quot;特異値分解&quot;&gt;特異値分解&lt;/h2&gt;
+
+&lt;p&gt;行列Xを $ X = USV^T $ を満たす行列U, S, Vへと分解する.&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;行列Xを&lt;math&gt;X = USV^{T}&lt;/math&gt;を満たす行列U, S, Vへと分解する.&lt;/li&gt;
+  &lt;li&gt;Sは対角行列で、対角要素は特異値と呼ばれる&lt;/li&gt;
+  &lt;li&gt;U, S, Vの各列ベクトルを、特異値が大きい順にK個用いて、新たに行列 $ \tilde{U}, \tilde{S}, \tilde{V} $を作る&lt;/li&gt;
+  &lt;li&gt;$ \tilde{X} = \tilde{U}\tilde{S}\tilde{V}^T $ とすることで $ \tilde{X} $ を得る.&lt;/li&gt;
+  &lt;li&gt;ここで、$ \tilde{X} $ はXの低ランク近似行列(low rank approximation)である.&lt;/li&gt;
+  &lt;li&gt;この時、行列のランクはKとなる&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;例として、以下に示すXについて特異値分解を試行する.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;caption&gt;X&lt;/caption&gt;
+&lt;tr&gt;&lt;th&gt;.&lt;/th&gt;&lt;th&gt;drive&lt;/th&gt;&lt;th&gt;automobile&lt;/th&gt;&lt;th&gt;car&lt;/th&gt;&lt;th&gt;play&lt;/th&gt;&lt;th&gt;music&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;文書1&lt;/th&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;文書2&lt;/th&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;文書3&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;文書4&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;行列x&quot;&gt;行列X&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;例えば、行列Xにおいて、文書1のcarの出現頻度は0である.よって、この行列からcarを検索したとしても、文書1を得ることはできない.
+同様に、automobileで検索したとしても、文書2を見つけることはできない.
+そこで、特異値分解によって潜在的共起性を抽出する.&lt;/p&gt;
+
+&lt;h4 id=&quot;特異値分解-1&quot;&gt;特異値分解&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;U&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;V&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linalg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;full_matrices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;特異値分解を実行すると、以下の行列が得られます.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;caption&gt;U&lt;/caption&gt;
+&lt;tr&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.88&lt;/td&gt;&lt;td&gt;-0.48&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.48&lt;/td&gt;&lt;td&gt;0.88&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;0.66&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;-0.75&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&amp;gt;&lt;td&gt;0.75&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.66&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;caption&gt;S&lt;/caption&gt;
+&lt;tr&gt;&lt;td&gt;4.1&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;-0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;3.9&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;2.4&lt;/td&gt;&lt;td&gt;-0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&amp;gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.9&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;caption&gt;V&lt;/caption&gt;
+&lt;tr&gt;&lt;td&gt;7.1e-17&lt;/td&gt;&lt;td&gt;-4.7e-17&lt;/td&gt;&lt;td&gt;-7.1e-17&lt;/td&gt;&lt;td&gt;0.86&lt;/td&gt;&lt;td&gt;0.5&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;0.69&lt;/td&gt;&lt;td&gt;0.67&lt;/td&gt;&lt;td&gt;0.25&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;0.32&lt;/td&gt;&lt;td&gt;-0.6&lt;/td&gt;&lt;td&gt;0.73&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&amp;gt;&lt;td&gt;3.1e-16&lt;/td&gt;&lt;td&gt;-2.1e-16&lt;/td&gt;&lt;td&gt;-3.1e-16&lt;/td&gt;&lt;td&gt;0.5&lt;/td&gt;&lt;td&gt;-0.86&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&amp;gt;&lt;td&gt;0.63&lt;/td&gt;&lt;td&gt;-0.42&lt;/td&gt;&lt;td&gt;-0.63&lt;/td&gt;&lt;td&gt;-1.4e-16&lt;/td&gt;&lt;td&gt;4.1e-16&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;低ランク近似行列&quot;&gt;低ランク近似行列&lt;/h3&gt;
+&lt;p&gt;特異値が大きい順にK(=2)個抜き出す.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;U2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;U&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;S2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;diag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;V2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;X2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;U2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;S2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;V2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;こうして得られた $ \tilde{X} $ は以下のようになる.&lt;br /&gt;
+※ここでは簡単のため、負の値を0とする.&lt;/p&gt;
+&lt;table&gt;
+&lt;caption&gt; $ \tilde{X} $ &lt;/caption&gt;
+&lt;tr&gt;&lt;th&gt;.&lt;/th&gt;&lt;th&gt;drive&lt;/th&gt;&lt;th&gt;automobile&lt;/th&gt;&lt;th&gt;car&lt;/th&gt;&lt;th&gt;play&lt;/th&gt;&lt;th&gt;music&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;文書1&lt;/th&gt;&lt;td&gt;2.4&lt;/td&gt;&lt;td&gt;2.3&lt;/td&gt;&lt;td&gt;0.85&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;文書2&lt;/th&gt;&lt;td&gt;1.3&lt;/td&gt;&lt;td&gt;1.27&lt;/td&gt;&lt;td&gt;0.47&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;文書3&lt;/th&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;2.4&lt;/td&gt;&lt;td&gt;1.3&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;文書4&lt;/th&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;0.0&lt;/td&gt;&lt;td&gt;2.7&lt;/td&gt;&lt;td&gt;1.6&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;以上の表から、文書1,文書2共にautomobile,
+carの要素が正の値を取っていることがわかる。つまりdriveという単語の共起性からこの二つの単語の潜在的共起性が抽出されたことがわかる.&lt;/p&gt;
+
+&lt;h2 id=&quot;まとめ&quot;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;このように、元の行列の低ランク近似行列を用いることで、文章において、(一見すると)共起していない単語の共起性を抽出することができる.
+しかし、この手法では、特異値分解の特徴から、各トピックは互いに直行した概念となってしまう.したがって、この手法では多少似た性質を持つトピックを表現することができず、柔軟性に乏しい.&lt;br /&gt;
+ 以上の問題を解決するため、1998年以降、確率モデル、階層ベイズモデルによって再度定式化された.&lt;br /&gt;
+以下に、本記事で用いたコードをまとめる.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;U&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;V&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linalg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;U2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;U&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;S2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;diag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;V2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;X2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;U2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;S2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;V2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Fri, 13 Jan 2017 05:00:00 +0900</pubDate>
         <link>http://localhost:4000/post/update/2017/01/12/lsa_svd-copy.html</link>
