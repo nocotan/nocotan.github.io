@@ -46,7 +46,7 @@ X = np.array([[2,3,0,0,0],[2,0,2,0,0],[0,0,0,2,2],[0,0,0,3,1])
 U, S, V = np.linalg.svd(X, full_matrices=True)
 ```
 
-特異値分解を実行すると、以下の行列が得られます.  
+特異値分解を実行すると、以下の行列が得られる.  
 
 <table>
 <caption>U</caption>
