@@ -11,6 +11,7 @@ categories: 機械学習
 ## 特異値分解
 
 行列Xを $ X = USV^T $ を満たす行列U, S, Vへと分解する.
+
 - Sは対角行列で、対角要素は特異値と呼ばれる
 - U, S, Vの各列ベクトルを、特異値が大きい順にK個用いて、新たに行列 $ \tilde{U}, \tilde{S}, \tilde{V} $を作る
 - $ \tilde{X} = \tilde{U}\tilde{S}\tilde{V}^T $ とすることで $ \tilde{X} $ を得る.
