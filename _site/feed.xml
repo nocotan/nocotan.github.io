@@ -6,9 +6,30 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 13 Jan 2017 19:17:19 +0900</pubDate>
-    <lastBuildDate>Fri, 13 Jan 2017 19:17:19 +0900</lastBuildDate>
+    <pubDate>Fri, 13 Jan 2017 19:35:15 +0900</pubDate>
+    <lastBuildDate>Fri, 13 Jan 2017 19:35:15 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>潜在的意味解析における特異値分解</title>
+        <description>&lt;p&gt;潜在的意味解析(Latent semantic analysis: LSA)は1988年に自然言語処理及び情報検索分野の技術として開発された.
+当初、LSAは特異値分解(Singular value decomposition: SVD)によって定式化された.&lt;/p&gt;
+
+&lt;h2 id=&quot;特異値分解&quot;&gt;特異値分解&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;行列Xを&lt;math&gt;X = USV^{T}&lt;/math&gt;を満たす行列U, S, Vへと分解する.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 13 Jan 2017 05:00:00 +0900</pubDate>
+        <link>http://localhost:4000/post/update/2017/01/12/lsa_svd-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/post/update/2017/01/12/lsa_svd-copy.html</guid>
+        
+        
+        <category>post</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>新設しました</title>
