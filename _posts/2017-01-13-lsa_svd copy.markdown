@@ -12,11 +12,11 @@ categories: 機械学習
 
 行列Xを $ X = USV^T $ を満たす行列U, S, Vへと分解する.
 
-- Sは対角行列で、対角要素は特異値と呼ばれる
-- U, S, Vの各列ベクトルを、特異値が大きい順にK個用いて、新たに行列 $ \tilde{U}, \tilde{S}, \tilde{V} $を作る
-- $ \tilde{X} = \tilde{U}\tilde{S}\tilde{V}^T $ とすることで $ \tilde{X} $ を得る.
-- ここで、$ \tilde{X} $ はXの低ランク近似行列(low rank approximation)である.
-- この時、行列のランクはKとなる  
+* Sは対角行列で、対角要素は特異値と呼ばれる
+* U, S, Vの各列ベクトルを、特異値が大きい順にK個用いて、新たに行列 $ \tilde{U}, \tilde{S}, \tilde{V} $を作る
+* $ \tilde{X} = \tilde{U}\tilde{S}\tilde{V}^T $ とすることで $ \tilde{X} $ を得る.
+* ここで、$ \tilde{X} $ はXの低ランク近似行列(low rank approximation)である.
+* この時、行列のランクはKとなる  
   
   
 例として、以下に示すXについて特異値分解を試行する.
