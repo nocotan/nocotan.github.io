@@ -2,7 +2,7 @@
 layout: post
 title:  "潜在的意味解析における特異値分解"
 date:   2017-01-12 20:00:00
-categories: post update
+categories: 機械学習
 ---
 
 潜在的意味解析(Latent semantic analysis: LSA)は1988年に自然言語処理及び情報検索分野の技術として開発された.
