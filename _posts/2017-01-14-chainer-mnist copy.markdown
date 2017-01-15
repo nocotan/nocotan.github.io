@@ -72,4 +72,4 @@ class MLP(chainer.Chain):
 trainer.run()
 ```
 
-本記事で使用したコードは[こちら](https://github.com/nocotan/chainer-example/blob/master/examples/mnist.py)
+本記事で使用したコードは[こちら](https://github.com/nocotan/chainer-example/blob/master/examples/mnist-mlp.py)
