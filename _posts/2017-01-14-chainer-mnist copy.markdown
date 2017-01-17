@@ -5,7 +5,8 @@ date:   2017-01-14 20:07:00
 categories: Chainer 機械学習
 ---
 
-Chainer1.19.0版MNISTのコード
+Chainer1.19.0版MNISTのコード  
+多層パーセプトロンモデルを構築する.
 
 ### ネットワークの構築
 Chainerでは、Linearクラスで全結合層を構築していく.
@@ -73,3 +74,6 @@ trainer.run()
 ```
 
 本記事で使用したコードは[こちら](https://github.com/nocotan/chainer-example/blob/master/examples/mnist-mlp.py)
+
+※追記  
+同サンプルの畳み込みニューラルネットワーク(CNN)版は[こちら](https://github.com/nocotan/chainer-example/blob/master/examples/mnist-cnn.py)
