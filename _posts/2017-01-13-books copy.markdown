@@ -20,3 +20,7 @@ categories: 書籍
 ### その他
 
 #### [Pro Git](https://progit-ja.github.io/)
+
+### 論文
+
+#### [機械学習研究におけるプログラム開発と検証 - モンテカルロ法に基づく確率推論計算を例として](https://www.jstage.jst.go.jp/article/tjsai/27/4/27_253/_pdf)
