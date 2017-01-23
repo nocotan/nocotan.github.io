@@ -12,8 +12,8 @@
   <meta name="twitter:description" content="nocohub">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/01/13/lsa_svd-copy.html">
-  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://yourdomain.com/feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/01/12/lsa_svd-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/scripts/pithy.js"></script>
 </head>
@@ -77,14 +77,14 @@
   <br>
   <header class="post-header">
     <h1 class="post-title">潜在的意味解析における特異値分解</h1>
-    <p class="post-meta">Jan 13, 2017</p>
+    <p class="post-meta">Jan 12, 2017</p>
   </header>
 
   <article class="post-content">
     <p>潜在的意味解析(Latent semantic analysis: LSA)は1988年に自然言語処理及び情報検索分野の技術として開発された.
 当初、LSAは特異値分解(Singular value decomposition: SVD)によって定式化された.</p>
 
-<h2 id="section">特異値分解</h2>
+<h2 id="特異値分解">特異値分解</h2>
 
 <p>行列Xを $ X = USV^T $ を満たす行列U, S, Vへと分解する.</p>
 
@@ -107,21 +107,21 @@
 <tr><th>文書4</th><td>0</td><td>0</td><td>0</td><td>3</td><td>1</td></tr>
 </table>
 
-<h4 id="x">行列X</h4>
+<h4 id="行列x">行列X</h4>
 
-<p><code class="highlighter-rouge">python
-X = np.array([[2,3,0,0,0],[2,0,2,0,0],[0,0,0,2,2],[0,0,0,3,1])
-</code></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</code></pre>
+</div>
 
 <p>例えば、行列Xにおいて、文書1のcarの出現頻度は0である.よって、この行列からcarを検索したとしても、文書1を得ることはできない.
 同様に、automobileで検索したとしても、文書2を見つけることはできない.
 そこで、特異値分解によって潜在的共起性を抽出する.</p>
 
-<h4 id="section-1">特異値分解</h4>
+<h4 id="特異値分解-1">特異値分解</h4>
 
-<p><code class="highlighter-rouge">python
-U, S, V = np.linalg.svd(X, full_matrices=True)
-</code></p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre>
+</div>
 
 <p>特異値分解を実行すると、以下の行列が得られる.</p>
 
@@ -150,17 +150,17 @@ U, S, V = np.linalg.svd(X, full_matrices=True)
 <tr>&gt;<td>0.63</td><td>-0.42</td><td>-0.63</td><td>-1.4e-16</td><td>4.1e-16</td></tr>
 </table>
 
-<h3 id="section-2">低ランク近似行列</h3>
+<h3 id="低ランク近似行列">低ランク近似行列</h3>
 <p>特異値が大きい順にK(=2)個抜き出す.</p>
 
-<p>```python
-k = 2
-U2 = U[:, :k]
-S2 = np.diag(S)[:k, :k]
-V2 = V[:k, :]</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">U2</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="n">k</span><span class="p">]</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">S</span><span class="p">)[:</span><span class="n">k</span><span class="p">,</span> <span class="p">:</span><span class="n">k</span><span class="p">]</span>
+<span class="n">V2</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span>
 
-<p>X2 = (U2.dot(S2).dot(V2))
-```</p>
+<span class="n">X2</span> <span class="o">=</span> <span class="p">(</span><span class="n">U2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V2</span><span class="p">))</span>
+</code></pre>
+</div>
 
 <p>こうして得られた $ \tilde{X} $ は以下のようになる.<br />
 ※ここでは簡単のため、負の値を0とする.</p>
@@ -176,26 +176,26 @@ V2 = V[:k, :]</p>
 <p>以上の表から、文書1,文書2共にautomobile,
 carの要素が正の値を取っていることがわかる。つまりdriveという単語の共起性からこの二つの単語の潜在的共起性が抽出されたことがわかる.</p>
 
-<h2 id="section-3">まとめ</h2>
+<h2 id="まとめ">まとめ</h2>
 <p>このように、元の行列の低ランク近似行列を用いることで、文章において、(一見すると)共起していない単語の共起性を抽出することができる.
 しかし、この手法では、特異値分解の特徴から、各トピックは互いに直行した概念となってしまう.したがって、この手法では多少似た性質を持つトピックを表現することができず、柔軟性に乏しい.<br />
  以上の問題を解決するため、1998年以降、確率モデル、階層ベイズモデルによって再度定式化された.<br />
 以下に、本記事で用いたコードをまとめる.</p>
 
-<p>``` python
-# -<em>- coding: utf-8 -</em>-
-import numpy as np</p>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<p>X = np.array([[2,3,0,0,0],[2,0,2,0,0],[0,0,0,2,2],[0,0,0,3,1]])
-U, S, V = np.linalg.svd(X)</p>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<p>k = 2
-U2 = U[:, :k]
-S2 = np.diag(S)[:k, :k]
-V2 = V[:k, :]
-X2 = (U2.dot(S2).dot(V2))
-print(X2)
-```</p>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">U2</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="n">k</span><span class="p">]</span>
+<span class="n">S2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">S</span><span class="p">)[:</span><span class="n">k</span><span class="p">,</span> <span class="p">:</span><span class="n">k</span><span class="p">]</span>
+<span class="n">V2</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="p">(</span><span class="n">U2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+</code></pre>
+</div>
 
   </article>
 </div>
