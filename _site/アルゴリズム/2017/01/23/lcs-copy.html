@@ -5,14 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>最長増加部分列問題</title>
-  <meta name="description" content="最長増加部分列問題(LIS: Longest Increasing Subsequence)">
+  <title>最長共通部分列問題</title>
+  <meta name="description" content="最長共通部分列問題(LCS: Longest Common Subsequence)">
   <meta name=”twitter:card” content=”summary”>
-  <meta name="twitter:title" content="最長増加部分列問題">
+  <meta name="twitter:title" content="最長共通部分列問題">
   <meta name="twitter:description" content="nocohub">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/23/lis-copy.html">
+  <link rel="canonical" href="http://yourdomain.com/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/23/lcs-copy.html">
   <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://yourdomain.com/feed.xml" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/scripts/pithy.js"></script>
@@ -76,52 +76,66 @@
 <div class="post">
   <br>
   <header class="post-header">
-    <h1 class="post-title">最長増加部分列問題</h1>
+    <h1 class="post-title">最長共通部分列問題</h1>
     <p class="post-meta">Jan 23, 2017</p>
   </header>
 
   <article class="post-content">
-    <h2 id="lis-longest-increasing-subsequence">最長増加部分列問題(LIS: Longest Increasing Subsequence)</h2>
+    <h2 id="lcs-longest-common-subsequence">最長共通部分列問題(LCS: Longest Common Subsequence)</h2>
 
 <blockquote>
-  <p>長さnの数列a<sub>0</sub>,a<sub>1</sub>,…,a<sub>n-1</sub>がある。
-この数列の増加部分列うち、最長のものの長さを求めよ。
-ただし、増加部分列とは、全てのi&lt;jでa<sub>i</sub>&lt;a<sub>j</sub>を満たす部分列のことを言う。</p>
+  <p>２つの文字列s<sub>1</sub>s<sub>2</sub>…s<sub>n</sub>と
+t<sub>1</sub>t<sub>2</sub>…t<sub>m</sub>が与えられる。
+これら２つの共通部分列の長さを求めよ。</p>
 </blockquote>
 
-<p>漸化式を立ててみると、<br />
-<strong>dp[i] := 長さがi+1である増加部分列における最終要素の最小値(存在しない場合INF)</strong><br />
-となる。以下、C++のコード。</p>
+<p><strong>dp[i][j] := s<sub>1</sub>…s<sub>i</sub>とt<sub>1</sub>…t<sub>j</sub>に対するLCSの長さ</strong></p>
+
+<p>とすると、共通部分は、</p>
+
+<ol>
+  <li>s<sub>1</sub>…s<sub>i</sub>とt<sub>1</sub>…t<sub>j</sub>に対する共通部分列の後ろにs<sub>i+1</sub>をつなげたもの</li>
+  <li>s<sub>1</sub>…s<sub>i</sub>とt<sub>1</sub>…t<sub>j+1</sub>に対する共通部分列</li>
+  <li>s<sub>1</sub>…s<sub>i+1</sub>とt<sub>1</sub>…t<sub>j</sub>に対する共通部分列</li>
+</ol>
+
+<p>のどれかとなる。以下、C++のコード。</p>
 
 <p>```c++
 #include <iostream>
-#include <vector>
-using namespace std;</vector></iostream></p>
+#include <string>
+using namespace std;</string></iostream></p>
 
-<h1 id="define-inf-1e9">define INF 1e+9</h1>
-<p>#define MAX_N 1000</p>
+<h1 id="define-maxn-1000">define MAX_N 1000</h1>
+<p>#define MAX_M 1000</p>
 
-<p>int dp[MAX_N];
-int n;
-vector<int> a;</int></p>
+<p>int n, m;
+string s, t;</p>
+
+<p>int dp[MAX_N+1][MAX_M+1];</p>
 
 <p>void solve() {
-    fill(dp, dp+n, INF);
     for (int i=0; i&lt;n; ++i) {
-        *lower_bound(dp, dp+n, a[i]) = a[i];
+        for (int j=0; j&lt;m; ++j) {
+            if (s[i] == t[j]) {
+                dp[i+1][j+1] = dp[i][j] + 1;
+            }
+            else {
+                dp[i+1][j+1] = max(dp[i][j+1], dp[i+1][j]);
+            }
+        }
     }
-    cout « lower_bound(dp, dp+n, INF) - dp « endl;
 }</p>
 
 <p>int main() {
-    cin » n;
-    a.resize(n);
-    for(int i=0; i&lt;n; ++i) cin » a[i];
+    cin » n » m;
+    cin » s » t;
     solve();
+    cout « dp[n][m] « endl;
 }
 ```</p>
 
-<p>計算量はO(n log n).</p>
+<p>計算量はO(nm)</p>
 
   </article>
 </div>
