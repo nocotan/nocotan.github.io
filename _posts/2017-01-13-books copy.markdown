@@ -37,5 +37,4 @@ categories: 書籍
 
 #### [Recurrent Neural Networkによるマイクロブログの投稿位置推定](https://www.jstage.jst.go.jp/article/tjsai/32/1/32_WII-E/_pdf)
 
-####
-[球面クラスタリングにおけるクラス多数推定](http://ci.nii.ac.jp/els/110009947258.pdf?id=ART0010493577&type=pdf&lang=jp&host=cinii&order_no=&ppv_type=0&lang_sw=&no=1485239959&cp=)
+#### [球面クラスタリングにおけるクラス多数推定](http://ci.nii.ac.jp/els/110009947258.pdf?id=ART0010493577&type=pdf&lang=jp&host=cinii&order_no=&ppv_type=0&lang_sw=&no=1485239959&cp=)
