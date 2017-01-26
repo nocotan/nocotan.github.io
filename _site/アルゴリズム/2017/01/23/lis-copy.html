@@ -5,15 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>最長増加部分列問題</title>
-  <meta name="description" content="最長増加部分列問題(LIS: Longest Increasing Subsequence)">
+  <title>最長増加部分列問題(LIS: Longest Increasing Subsequence)</title>
+  <meta name="description" content="  長さnの数列a0,a1,…,an-1がある。この数列の増加部分列うち、最長のものの長さを求めよ。ただし、増加部分列とは、全てのi&lt;jでai&lt;ajを満たす部分列のことを言う。">
   <meta name=”twitter:card” content=”summary”>
-  <meta name="twitter:title" content="最長増加部分列問題">
+  <meta name="twitter:title" content="最長増加部分列問題(LIS: Longest Increasing Subsequence)">
   <meta name="twitter:description" content="nocohub">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/23/lis-copy.html">
-  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://yourdomain.com/feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/23/lis-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/scripts/pithy.js"></script>
 </head>
@@ -76,14 +76,12 @@
 <div class="post">
   <br>
   <header class="post-header">
-    <h1 class="post-title">最長増加部分列問題</h1>
+    <h1 class="post-title">最長増加部分列問題(LIS: Longest Increasing Subsequence)</h1>
     <p class="post-meta">Jan 23, 2017</p>
   </header>
 
   <article class="post-content">
-    <h2 id="lis-longest-increasing-subsequence">最長増加部分列問題(LIS: Longest Increasing Subsequence)</h2>
-
-<blockquote>
+    <blockquote>
   <p>長さnの数列a<sub>0</sub>,a<sub>1</sub>,…,a<sub>n-1</sub>がある。
 この数列の増加部分列うち、最長のものの長さを求めよ。
 ただし、増加部分列とは、全てのi&lt;jでa<sub>i</sub>&lt;a<sub>j</sub>を満たす部分列のことを言う。</p>
@@ -93,33 +91,33 @@
 <strong>dp[i] := 長さがi+1である増加部分列における最終要素の最小値(存在しない場合INF)</strong><br />
 となる。以下、C++のコード。</p>
 
-<p>```c++
-#include <iostream>
-#include <vector>
-using namespace std;</vector></iostream></p>
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-<h1 id="define-inf-1e9">define INF 1e+9</h1>
-<p>#define MAX_N 1000</p>
+<span class="cp">#define INF 1e+9
+#define MAX_N 1000
+</span>
+<span class="kt">int</span> <span class="n">dp</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">;</span>
 
-<p>int dp[MAX_N];
-int n;
-vector<int> a;</int></p>
+<span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fill</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">INF</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">lower_bound</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">INF</span><span class="p">)</span> <span class="o">-</span> <span class="n">dp</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
 
-<p>void solve() {
-    fill(dp, dp+n, INF);
-    for (int i=0; i&lt;n; ++i) {
-        *lower_bound(dp, dp+n, a[i]) = a[i];
-    }
-    cout « lower_bound(dp, dp+n, INF) - dp « endl;
-}</p>
-
-<p>int main() {
-    cin » n;
-    a.resize(n);
-    for(int i=0; i&lt;n; ++i) cin » a[i];
-    solve();
-}
-```</p>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">solve</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 <p>計算量はO(n log n).</p>
 
