@@ -37,7 +37,7 @@ edge es[MAX_E];
 int d[MAX_V];
 int  V, E;
 
-void solve(int s) {
+void bellmanford(int s) {
     for (int i=0; i<V; ++i) d[i] = INF;
     d[s] = 0;
     while(true) {
@@ -60,7 +60,7 @@ int main() {
         cin >> from >> to >> cost;
         es[i] = edge{from,to,cost};
     }
-    solve(0);
+    bellmanford(0);
     for(int i=0; i<V; ++i) {
         if (d[i] != INF)
             cout << "0から" << i << "までのコスト: " << d[i] << endl;
