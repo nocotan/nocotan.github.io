@@ -37,7 +37,7 @@ def pdf(x, k, myu):
     """
 
     d = x.ndim
-    return np.array(_C(d, k)) * np.exp(k*np.dot(myu,x))
+    return _C(d, k) * np.exp(k*np.dot(myu,x))
 
 def _C(d, k):
     """ 確率の公理を満たすための正規化項 """
