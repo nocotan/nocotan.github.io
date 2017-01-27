@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>図書館ソート(Library sort)</title>
+  <meta name="description" content="挿入ソートの亜種。配列の要素間に隙間を設けて、挿入操作の高速化をしている。">
+  <meta name=”twitter:card” content=”summary”>
+  <meta name="twitter:title" content="図書館ソート(Library sort)">
+  <meta name="twitter:description" content="nocohub">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/25/libsort-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> pass </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]}
+    });
+</script>
+<div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">図書館ソート(Library sort)</h1>
+    <p class="post-meta">Jan 25, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p>挿入ソートの亜種。配列の要素間に隙間を設けて、挿入操作の高速化をしている。</p>
+
+<blockquote>
+  <p>司書が長い本棚にアルファベット順に本を陳列しようとしているとする。本棚は左端がAで始まり、右端のZの終わりまで隙間なく本で埋まっている。司書が新しい本をBの区画に収めるには、Bの区画に適切な位置を見つけ、スペースを空けるために後ろのすべての本をずらす必要がある。これが挿入ソートである。しかし、各区画の間(BとCの境界など)に空白があったなら、新しい本のためにずらすべき本の数は少なくて済む。これが図書館ソートの基本的な原理である。
+<a href="https://ja.wikipedia.org/wiki/%E5%9B%B3%E6%9B%B8%E9%A4%A8%E3%82%BD%E3%83%BC%E3%83%88">Wikipedia</a></p>
+</blockquote>
+
+<p>元の論文は<a href="https://arxiv.org/abs/cs/0407003">こちら</a><br />
+挿入ソートでは挿入にO(n)かかるため、全体の計算量はO(n^2)である。現実世界で、物と物の間に隙間があると並びかえやすいように、このアルゴリズムでは隙間を設けて高速化をしている。
+論文では、高確率でクイックソートと同水準であるO(n log n)で実行可能なことが示されている。<br />
+以下C++の実装.</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="cp">#define MAX 10000
+#define MAX2 20000
+</span>
+<span class="cp">#define NONE -1
+</span>
+<span class="kt">bool</span> <span class="nf">isempty</span><span class="p">(</span><span class="kt">int</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">e</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">prepareLibrarySort</span><span class="p">(</span><span class="kt">int</span> <span class="n">epsilon</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">S</span><span class="p">[</span><span class="n">MAX2</span><span class="p">],</span> <span class="kt">int</span><span class="o">*</span> <span class="n">sLen</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">sLen</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;*</span><span class="n">sLen</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">NONE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">searchFree</span><span class="p">(</span><span class="kt">int</span> <span class="n">e</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sorted</span><span class="p">[</span><span class="n">MAX2</span><span class="p">],</span> <span class="kt">int</span> <span class="n">last</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">middle</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">last</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">isempty</span><span class="p">(</span><span class="n">sorted</span><span class="p">[</span><span class="n">last</span><span class="p">]))</span> <span class="n">last</span> <span class="o">--</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">first</span><span class="o">&lt;=</span><span class="n">last</span> <span class="o">&amp;&amp;</span> <span class="n">isempty</span><span class="p">(</span><span class="n">sorted</span><span class="p">[</span><span class="n">first</span><span class="p">]))</span> <span class="n">first</span> <span class="o">++</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">first</span><span class="o">&lt;=</span><span class="n">last</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">middle</span> <span class="o">=</span> <span class="p">(</span><span class="n">first</span><span class="o">+</span><span class="n">last</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">isempty</span><span class="p">(</span><span class="n">sorted</span><span class="p">[</span><span class="n">middle</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">tmp</span><span class="o">&lt;</span><span class="n">last</span> <span class="o">&amp;&amp;</span> <span class="n">isempty</span><span class="p">(</span><span class="n">sorted</span><span class="p">[</span><span class="n">tmp</span><span class="p">]))</span> <span class="n">tmp</span> <span class="o">++</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">sorted</span><span class="p">[</span><span class="n">tmp</span><span class="p">]</span><span class="o">&gt;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="k">while</span><span class="p">(</span><span class="n">middle</span><span class="o">&gt;</span><span class="n">first</span> <span class="o">&amp;&amp;</span> <span class="n">isempty</span><span class="p">(</span><span class="n">sorted</span><span class="p">[</span><span class="n">middle</span><span class="p">]))</span> <span class="n">middle</span> <span class="o">--</span><span class="p">;</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">sorted</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span><span class="o">&lt;</span><span class="n">e</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">middle</span><span class="p">;</span>
+                <span class="n">last</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="n">first</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">sorted</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span><span class="o">&lt;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">first</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="n">middle</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">last</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">isempty</span><span class="p">(</span><span class="n">sorted</span><span class="p">[</span><span class="n">last</span><span class="p">]))</span> <span class="n">last</span> <span class="o">--</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">last</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">libSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="n">MAX</span><span class="p">],</span> <span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="kt">int</span> <span class="n">S</span><span class="p">[</span><span class="n">MAX2</span><span class="p">],</span> <span class="kt">int</span> <span class="n">EPSILON</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">N</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">step</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">goal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+    <span class="kt">int</span> <span class="n">sLen</span> <span class="o">=</span> <span class="n">max</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">EPSILON</span><span class="p">),</span> <span class="n">goal</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">pos</span><span class="o">&lt;</span><span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">goal</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">insPos</span> <span class="o">=</span> <span class="n">searchFree</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">pos</span><span class="p">],</span> <span class="n">S</span><span class="p">,</span> <span class="n">sLen</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+            <span class="n">insPos</span> <span class="o">++</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">isempty</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">insPos</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">nextFree</span> <span class="o">=</span> <span class="n">insPos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">isempty</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">nextFree</span><span class="p">]))</span> <span class="n">nextFree</span> <span class="o">++</span><span class="p">;</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">nextFree</span><span class="o">&gt;=</span><span class="n">sLen</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">insPos</span> <span class="o">--</span><span class="p">;</span>
+                    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">isempty</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">insPos</span><span class="p">]))</span> <span class="p">{</span>
+                        <span class="n">nextFree</span> <span class="o">=</span> <span class="n">insPos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+                        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">isempty</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">nextFree</span><span class="p">]))</span> <span class="n">nextFree</span> <span class="o">--</span><span class="p">;</span>
+                        <span class="k">while</span><span class="p">(</span><span class="n">nextFree</span><span class="o">&lt;</span><span class="n">insPos</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="n">S</span><span class="p">[</span><span class="n">nextFree</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">nextFree</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+                            <span class="n">nextFree</span> <span class="o">++</span><span class="p">;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">while</span><span class="p">(</span><span class="n">nextFree</span><span class="o">&gt;</span><span class="n">insPos</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">S</span><span class="p">[</span><span class="n">nextFree</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">nextFree</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+                        <span class="n">nextFree</span> <span class="o">--</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">insPos</span><span class="o">&gt;=</span><span class="n">sLen</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">insPos</span> <span class="o">--</span><span class="p">;</span>
+                <span class="kt">int</span> <span class="n">nextFree</span> <span class="o">=</span> <span class="n">insPos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">isempty</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">nextFree</span><span class="p">]))</span> <span class="n">nextFree</span> <span class="o">--</span><span class="p">;</span>
+                <span class="k">while</span><span class="p">(</span><span class="n">nextFree</span><span class="o">&lt;</span><span class="n">insPos</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">S</span><span class="p">[</span><span class="n">nextFree</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">nextFree</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+                    <span class="n">nextFree</span> <span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="n">S</span><span class="p">[</span><span class="n">insPos</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">pos</span> <span class="o">++</span><span class="p">];</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">pos</span><span class="o">&gt;=</span><span class="n">N</span><span class="p">)</span>
+                <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">sLen</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">min</span><span class="p">(</span><span class="n">goal</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">EPSILON</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">EPSILON</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">step</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="n">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">--</span><span class="p">,</span> <span class="n">k</span><span class="o">-=</span><span class="n">step</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">S</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="n">S</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">NONE</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">sLen</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">goal</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">EPSILON</span><span class="p">),</span> <span class="n">N</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">EPSILON</span><span class="p">));</span>
+        <span class="n">goal</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">librarySort</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="n">MAX</span><span class="p">],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">epsilon</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">S</span><span class="p">[</span><span class="n">MAX2</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">sLen</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+
+    <span class="n">prepareLibrarySort</span><span class="p">(</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sLen</span><span class="p">);</span>
+    <span class="n">libSort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">sLen</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">isempty</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+    <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+    <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">A</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">librarySort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+  </article>
+</div>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>
