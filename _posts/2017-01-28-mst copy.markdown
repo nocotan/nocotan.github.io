@@ -1,0 +1,121 @@
+---
+layout: post
+title:  "最小全域木問題(プリム法とクラスカル法)"
+date:   2017-01-27 03:00:00
+categories: アルゴリズム
+---
+
+## 最小全域木(MST: Minimum Spanning Tree)
+
+無向グラフが与えられた時、その部分グラフで任意の2頂点を連結にするような木を全域木、
+辺にコストがある場合に使われる辺のコストを最小にする全域木を最小全域木という。
+
+## プリム法
+
+ある一つの頂点vのみからなる木Tを考える。ここから貪欲的にTとその他の頂点を結ぶ最小コストの辺を
+Tに付け加えることを繰り返して、全域木を構成していく。計算量はO(E long V)。
+
+```c++
+#include <iostream>
+#include <queue>
+using namespace std;
+
+#define MAX_V 20
+#define INF 1e+9
+
+int cost[MAX_V][MAX_V];
+int mincost[MAX_V];
+bool used[MAX_V];
+int V;
+
+int prim() {
+    for(int i=0; i<V; ++i) {
+        mincost[i] = INF;
+        used[i] = false;
+    }
+    mincost[0] = 0;
+    int res = 0;
+
+    while(true) {
+        int v = -1;
+        for(int u=0; u<V; ++u) {
+            if(!used[u] && (v==-1 || mincost[u] < mincost[v])) v = u;
+        }
+
+        if (v == -1) break;
+        used[v] = true;
+        res += mincost[v];
+
+        for(int u=0; u<V; ++u) {
+            mincost[u] = min(mincost[u], cost[v][u]);
+        }
+    }
+
+    return res;
+}
+
+```
+
+## クラスカル法
+
+辺をコストの小さい順にみていき、閉路ができなければ追加するという手順を取る。
+閉路ができるかどうかの判定は、頂点uと頂点vを結ぶeを追加しようとする時、
+uとvが同じ連結成分に属しているかで判断できる。
+同じ成分に属しているかどうかはUion-Find木を用いて判定できる。
+
+```c++
+#include <algorithm>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+#define MAX_E 20
+
+struct edge {
+    int u;
+    int v;
+    int cost;
+};
+
+vector<edge> es(MAX_E);
+int V, E;
+
+// Union Find
+struct UnionFind {
+    vector<int> data;
+    UnionFind(int size) : data(size, -1) { }
+    bool unionSet(int x, int y) {
+        x = root(x);
+        y = root(y);
+
+        if (x != y) {
+            if (data[y] < data[x]) swap(x, y);
+            data[x] += data[y];
+            data[y] = x;
+        }
+        return x != y;
+    }
+    bool findSet(int x, int y) { return root(x) == root(y); }
+    int root(int x) { return data[x] < 0 ? x : data[x] = root(data[x]); }
+    int size(int x) { return -data[root(x)]; }
+};
+
+bool comp(const edge& e1, const edge& e2) {
+    return e1.cost < e2.cost;
+}
+
+int kruskal() {
+    sort(es.begin(), es.end(), comp);
+    UnionFind uf = UnionFind(V);
+    int res = 0;
+
+    for (int i=0; i<E; ++i) {
+        edge e = es[i];
+        if (e.u =!  e.v) {
+            uf.unionSet(e.u, e.v);
+            res += e.cost;
+        }
+    }
+    return res;
+}
+```
