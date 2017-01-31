@@ -39,8 +39,6 @@ categories: 書籍
 
 #### [Recurrent Neural Networkによるマイクロブログの投稿位置推定](https://www.jstage.jst.go.jp/article/tjsai/32/1/32_WII-E/_pdf)
 
-<<<<<<< HEAD
 #### [メタ特徴の最適化処理による識別器構築アルゴリズム自動選択システム](https://www.jstage.jst.go.jp/article/sst/5/2/5_179/_pdf)
-=======
+
 #### [球面クラスタリングにおけるクラス多数推定](http://ci.nii.ac.jp/els/110009947258.pdf?id=ART0010493577&type=pdf&lang=jp&host=cinii&order_no=&ppv_type=0&lang_sw=&no=1485239959&cp=)
->>>>>>> 37a22fd00e46230b1049868756242f987ddee1b5
