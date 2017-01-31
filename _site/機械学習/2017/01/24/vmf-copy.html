@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>フォンミーゼスフィッシャー分布(von Mises-Fisher distribution)</title>
+  <meta name="description" content="  確率密度関数 $ f_p(x;μ,κ) = C_p(κ)exp(κμ^Tx) $  このモデルを使用したEMアルゴリズムはspherical k-meansよりも性能がいい  球面上に分布するデータにおいて、ガウス分布に相当する標準的な分布  二次元球面上に分布する標準的な分布であるvon Mises分布をd...">
+  <meta name=”twitter:card” content=”summary”>
+  <meta name="twitter:title" content="フォンミーゼスフィッシャー分布(von Mises-Fisher distribution)">
+  <meta name="twitter:description" content="nocohub">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/01/24/vmf-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> pass </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]}
+    });
+</script>
+<div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">フォンミーゼスフィッシャー分布(von Mises-Fisher distribution)</h1>
+    <p class="post-meta">Jan 24, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li>確率密度関数 $ f_p(x;μ,κ) = C_p(κ)exp(κμ^Tx) $</li>
+  <li>このモデルを使用したEMアルゴリズムはspherical k-meansよりも性能がいい</li>
+  <li>球面上に分布するデータにおいて、ガウス分布に相当する標準的な分布</li>
+  <li>二次元球面上に分布する標準的な分布であるvon Mises分布をd次元球面上に拡張したもの</li>
+</ul>
+
+<p>以下、python実装.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="s">""" von Mises-Fisher distribution.
+
+probability distribution on the (p-1) dimensional sphare in R^p.
+if p=2 the distribution reduces to the von Mises distribution on the circle.
+
+parameters
+myu: mean direction
+k: concentration parameter
+"""</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">iv</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">myu</span><span class="p">):</span>
+    <span class="s">""" 確率密度関数
+    @param x: d次元単位ベクトルであるデータ点
+    @param k: 集中度
+    @param myu: 平均方向ベクトル
+    """</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="k">return</span> <span class="n">_C</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">_C</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="s">""" 確率の公理を満たすための正規化項 """</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">k</span> <span class="o">**</span> <span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="mf">2.</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span> <span class="o">*</span> <span class="n">iv</span><span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="mf">2.</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<p><a href="https://github.com/nocotan/mllib/blob/master/python/vmf.py">使用したコード</a></p>
+
+  </article>
+</div>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>

@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "フォンミーゼスフィッシャー分布(von Mises-Fisher distribution)"
+date:   2017-01-24 03:00:00
+categories: 機械学習
+---
+
+* 確率密度関数 $ f_p(x;μ,κ) = C_p(κ)exp(κμ^Tx) $
+* このモデルを使用したEMアルゴリズムはspherical k-meansよりも性能がいい
+* 球面上に分布するデータにおいて、ガウス分布に相当する標準的な分布
+* 二次元球面上に分布する標準的な分布であるvon Mises分布をd次元球面上に拡張したもの
+
+以下、python実装.
+
+```python
+# -*- coding: utf-8 -*-
+
+""" von Mises-Fisher distribution.
+
+probability distribution on the (p-1) dimensional sphare in R^p.
+if p=2 the distribution reduces to the von Mises distribution on the circle.
+
+parameters
+myu: mean direction
+k: concentration parameter
+"""
+
+import numpy as np
+from scipy.special import iv
+from math import pi
+
+def pdf(x, k, myu):
+    """ 確率密度関数
+    @param x: d次元単位ベクトルであるデータ点
+    @param k: 集中度
+    @param myu: 平均方向ベクトル
+    """
+
+    d = x.ndim
+    return _C(d, k) * np.exp(k*np.dot(myu,x))
+
+def _C(d, k):
+    """ 確率の公理を満たすための正規化項 """
+
+    return (k ** (d/2.-1)) / ((2*pi) ** (d/2.) * iv(d/2.-1, k))
+```
+
+[使用したコード](https://github.com/nocotan/mllib/blob/master/python/vmf.py)

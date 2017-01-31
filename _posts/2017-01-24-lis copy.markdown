@@ -1,11 +1,9 @@
 ---
 layout: post
-title:  "最長増加部分列問題"
+title:  "最長増加部分列問題(LIS: Longest Increasing Subsequence)"
 date:   2017-01-23 01:00:00
 categories: アルゴリズム
 ---
-
-## 最長増加部分列問題(LIS: Longest Increasing Subsequence)
 
 > 長さnの数列a<sub>0</sub>,a<sub>1</sub>,...,a<sub>n-1</sub>がある。
 > この数列の増加部分列うち、最長のものの長さを求めよ。
