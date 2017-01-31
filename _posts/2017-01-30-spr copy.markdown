@@ -12,6 +12,12 @@ SPRとは、系統樹上の任意の部分木を切断し、
 参考論文(http://www.stat.wisc.edu/courses/st992-newton/smmb/homework/hw2/spr.pdf)  
 C++実装は[こちら](https://github.com/nocotan/mllib/blob/master/cpp/spr.hpp)
 
+##### 手順
+
+* 対象となる木からランダムに初めのノードを選択する(ルートノード及び葉は選ばない)
+* 選ばれたノード以下の部分木を切断する
+* 切断後の木からランダムにノードを一つ選び、再接続する
+
 ##### 実装一部抜粋
 
 ```c++
