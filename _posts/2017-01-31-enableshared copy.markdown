@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "enable_shared_from_this"
+title:  "std::enable_shared_from_this"
 date:   2017-01-31 03:00:00
-categories: アルゴリズム
+categories: C/C++
 ---
 
 クラスにおいて,thisへのshared_ptr<T>を扱うためのもの。
