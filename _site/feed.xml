@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 31 Jan 2017 14:11:43 +0900</pubDate>
-    <lastBuildDate>Tue, 31 Jan 2017 14:11:43 +0900</lastBuildDate>
+    <pubDate>Tue, 31 Jan 2017 14:14:07 +0900</pubDate>
+    <lastBuildDate>Tue, 31 Jan 2017 14:14:07 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -19,16 +19,16 @@
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;元のグラフ
-&lt;img src=&quot;https://nocotan.github.io/images/tree1&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://github.com/nocotan/nocotan.github.io/blob/master/images/tree1.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;切断後のグラフ
-&lt;img src=&quot;https://nocotan.github.io/images/tree2&quot; /&gt;
-&lt;img src=&quot;https://nocotan.github.io/images/tree3&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://github.com/nocotan/nocotan.github.io/blob/master/images/tree2.png&quot; /&gt;
+&lt;img src=&quot;https://github.com/nocotan/nocotan.github.io/blob/master/images/tree3.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;再接続後のグラフ
-&lt;img src=&quot;https://nocotan.github.io/images/tree4&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://github.com/nocotan/nocotan.github.io/blob/master/images/tree4.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 </description>
