@@ -10,11 +10,11 @@ SPRとは、系統樹上の任意の部分木を切断し、
 もっとも尤度の高いノードに接続をする。
 
 * 元のグラフ
-<img src="https://github.com/nocotan/nocotan.github.io/blob/master/images/tree1.png">
+![tree1]("https://github.com/nocotan/nocotan.github.io/images/tree1.png")
 
 * 切断後のグラフ
-<img src="https://github.com/nocotan/nocotan.github.io/blob/master/images/tree2.png">
-<img src="https://github.com/nocotan/nocotan.github.io/blob/master/images/tree3.png">
+![tree2]("https://github.com/nocotan/nocotan.github.io/images/tree2.png")
+![tree3]("https://github.com/nocotan/nocotan.github.io/images/tree3.png")
 
 * 再接続後のグラフ
-<img src="https://github.com/nocotan/nocotan.github.io/blob/master/images/tree4.png">
+![tree4]("https://github.com/nocotan/nocotan.github.io/images/tree4.png")
