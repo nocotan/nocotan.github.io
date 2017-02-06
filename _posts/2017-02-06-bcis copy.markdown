@@ -107,3 +107,6 @@ void bci_sort(T& t) {
 - 緑: BCIS
 
 ![画像](https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/plot.png)
+
+#### 結果
+そんなでもない...?
