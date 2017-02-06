@@ -106,4 +106,4 @@ void bci_sort(T& t) {
 - 赤: C++標準ライブラリのソート(クイックソートとヒープソートの複合)
 - 緑: BCIS
 
-![画像]({{site.url}}/images/plot.png)
+![画像](https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/plot.png)
