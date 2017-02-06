@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-木村正成
-
 ## 所属
 
 筑波大学 情報学群 知識情報・図書館学類
