@@ -16,3 +16,6 @@ permalink: /about/
 
 ### 趣味
 - 競技プログラミング
+
+### 受賞歴他
+- Discovery channel Code Contest 2016 本戦出場
