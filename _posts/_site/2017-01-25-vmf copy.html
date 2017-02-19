@@ -1,0 +1,43 @@
+<ul>
+  <li>確率密度関数 $ f_p(x;μ,κ) = C_p(κ)exp(κμ^Tx) $</li>
+  <li>このモデルを使用したEMアルゴリズムはspherical k-meansよりも性能がいい</li>
+  <li>球面上に分布するデータにおいて、ガウス分布に相当する標準的な分布</li>
+  <li>二次元球面上に分布する標準的な分布であるvon Mises分布をd次元球面上に拡張したもの</li>
+</ul>
+
+<p>以下、python実装.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="s">""" von Mises-Fisher distribution.
+
+probability distribution on the (p-1) dimensional sphare in R^p.
+if p=2 the distribution reduces to the von Mises distribution on the circle.
+
+parameters
+myu: mean direction
+k: concentration parameter
+"""</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">iv</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">myu</span><span class="p">):</span>
+    <span class="s">""" 確率密度関数
+    @param x: d次元単位ベクトルであるデータ点
+    @param k: 集中度
+    @param myu: 平均方向ベクトル
+    """</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="k">return</span> <span class="n">_C</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">myu</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">_C</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="s">""" 確率の公理を満たすための正規化項 """</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">k</span> <span class="o">**</span> <span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="mf">2.</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span> <span class="o">*</span> <span class="n">iv</span><span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="mf">2.</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<p><a href="https://github.com/nocotan/mllib/blob/master/python/vmf.py">使用したコード</a></p>

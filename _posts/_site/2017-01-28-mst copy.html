@@ -1,0 +1,114 @@
+<h2 id="最小全域木mst-minimum-spanning-tree">最小全域木(MST: Minimum Spanning Tree)</h2>
+
+<p>無向グラフが与えられた時、その部分グラフで任意の2頂点を連結にするような木を全域木、
+辺にコストがある場合に使われる辺のコストを最小にする全域木を最小全域木という。</p>
+
+<h2 id="プリム法">プリム法</h2>
+
+<p>ある一つの頂点vのみからなる木Tを考える。ここから貪欲的にTとその他の頂点を結ぶ最小コストの辺を
+Tに付け加えることを繰り返して、全域木を構成していく。計算量はO(E long V)。</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="cp">#define MAX_V 20
+#define INF 1e+9
+</span>
+<span class="kt">int</span> <span class="n">cost</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">][</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">mincost</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">used</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">V</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">prim</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">V</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">mincost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">INF</span><span class="p">;</span>
+        <span class="n">used</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">mincost</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">u</span><span class="o">&lt;</span><span class="n">V</span><span class="p">;</span> <span class="o">++</span><span class="n">u</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">used</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">v</span><span class="o">==-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">mincost</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">mincost</span><span class="p">[</span><span class="n">v</span><span class="p">]))</span> <span class="n">v</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        <span class="n">used</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">mincost</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">u</span><span class="o">&lt;</span><span class="n">V</span><span class="p">;</span> <span class="o">++</span><span class="n">u</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">mincost</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">mincost</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">cost</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h2 id="クラスカル法">クラスカル法</h2>
+
+<p>辺をコストの小さい順にみていき、閉路ができなければ追加するという手順を取る。
+閉路ができるかどうかの判定は、頂点uと頂点vを結ぶeを追加しようとする時、
+uとvが同じ連結成分に属しているかで判断できる。
+同じ成分に属しているかどうかはUion-Find木を用いて判定できる。</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="cp">#define MAX_E 20
+</span>
+<span class="k">struct</span> <span class="n">edge</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">u</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">v</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cost</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">edge</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">(</span><span class="n">MAX_E</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">V</span><span class="p">,</span> <span class="n">E</span><span class="p">;</span>
+
+<span class="c1">// Union Find
+</span><span class="k">struct</span> <span class="n">UnionFind</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">data</span><span class="p">;</span>
+    <span class="n">UnionFind</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="o">:</span> <span class="n">data</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">unionSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="p">];</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">findSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">root</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">root</span><span class="p">(</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">root</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">x</span> <span class="o">:</span> <span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="o">-</span><span class="n">data</span><span class="p">[</span><span class="n">root</span><span class="p">(</span><span class="n">x</span><span class="p">)];</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">bool</span> <span class="nf">comp</span><span class="p">(</span><span class="k">const</span> <span class="n">edge</span><span class="o">&amp;</span> <span class="n">e1</span><span class="p">,</span> <span class="k">const</span> <span class="n">edge</span><span class="o">&amp;</span> <span class="n">e2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">e1</span><span class="p">.</span><span class="n">cost</span> <span class="o">&lt;</span> <span class="n">e2</span><span class="p">.</span><span class="n">cost</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">kruskal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">es</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">es</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">comp</span><span class="p">);</span>
+    <span class="n">UnionFind</span> <span class="n">uf</span> <span class="o">=</span> <span class="n">UnionFind</span><span class="p">(</span><span class="n">V</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">E</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">edge</span> <span class="n">e</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">u</span> <span class="o">=!</span>  <span class="n">e</span><span class="p">.</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">uf</span><span class="p">.</span><span class="n">unionSet</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">u</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">v</span><span class="p">);</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">e</span><span class="p">.</span><span class="n">cost</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>

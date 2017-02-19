@@ -1,7 +1,39 @@
-<h2 id="最長増加部分列問題lis-longest-increasing-subsequence">最長増加部分列問題(LIS: Longest Increasing Subsequence)</h2>
-
 <blockquote>
   <p>長さnの数列a<sub>0</sub>,a<sub>1</sub>,…,a<sub>n-1</sub>がある。
 この数列の増加部分列うち、最長のものの長さを求めよ。
-ただし、増加部分列とは、全てのi&lt;jでa«sub&gt;i&lt;/sub&gt;&lt;a<sub>j</sub>を満たす部分列のことを言う。</p>
+ただし、増加部分列とは、全てのi&lt;jでa<sub>i</sub>&lt;a<sub>j</sub>を満たす部分列のことを言う。</p>
 </blockquote>
+
+<p>漸化式を立ててみると、<br />
+<strong>dp[i] := 長さがi+1である増加部分列における最終要素の最小値(存在しない場合INF)</strong><br />
+となる。以下、C++のコード。</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="cp">#define INF 1e+9
+#define MAX_N 1000
+</span>
+<span class="kt">int</span> <span class="n">dp</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fill</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">INF</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">lower_bound</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="o">+</span><span class="n">n</span><span class="p">,</span> <span class="n">INF</span><span class="p">)</span> <span class="o">-</span> <span class="n">dp</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">solve</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>計算量はO(n log n).</p>
