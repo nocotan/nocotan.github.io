@@ -1,0 +1,114 @@
+---
+layout: post
+title:  "楕円曲線ディフィー・ヘルマン鍵共有"
+date:   2017-02-19 01:00:00
+categories: 暗号
+---
+
+楕円曲線ディフィー・ヘルマン鍵共有(Elliptic Curve Diffie-Hellman:
+ECDH)は、従来の整数ではなく、楕円曲線を使用して実行される鍵共有プロトコルである。
+プロトコルにより、当事者は通信のための安全なチャンネルを作成できる。以下の二種類のECDHがある。
+
+* ephemeral-ephemeral
+* ephemeral-static
+
+特にephemeral-ephemeralは匿名で、中間者攻撃(Man in the Middle attacks: MitM)を受ける。
+ECDHを使用する場合は、通常、ECDSAやRSAのような署名アルゴリズムとペアにする。
+
+## 概要
+基本的な考えとしては、以下のようになる。
+
+1. 二者間で使用する楕円曲線を決定する（ベースポイントG)
+2. 両者は楕円曲線上で、秘密鍵d,公開鍵Qからなる鍵ペア決定する(この時、Q=dG)
+3. それぞれの鍵ペアを(d<sub>A</sub>, Q<sub>A</sub>)、(d<sub>B</sub>, Q<sub>B</sub>)とする
+4. 両者の公開鍵を交換する
+5. ここで、d<sub>A</sub>Q<sub>B</sub> =
+   d<sub>B</sub>Q<sub>A</sub>となるので、両者とも同じ楕円曲線上の座標を得ることができる
+
+## サンプルコード
+以下に載せるサンプルコードは、Fp及びF2mでのECDH検証を実行する。
+NISTのFp上の256bitカーブを使用して鍵認証を実行する。認証された値はIntegerとしてエンコードされる。
+実際は、共有秘密鍵は通常は使用前にハッシュされ、次にランダムセッションキーを転送する鍵暗号化鍵(Key Encryption Key: KEK)として使用される。または、コンテンツ暗号化鍵(Content Encryption Key: CEK)として使用される。
+
+```c++
+#include <iostream>
+using std::cout;
+using std::cerr;
+using std::endl;
+
+#include <string>
+using std::string;
+
+#include <stdexcept>
+using std::runtime_error;
+
+#include <cstdlib>
+using std::exit;
+
+#include "cryptopp/osrng.h"
+using CryptoPP::AutoSeededRandomPool;
+using CryptoPP::AutoSeededX917RNG;
+
+#include "cryptopp/aes.h"
+using CryptoPP::AES;
+
+#include "cryptopp/eccrypto.h"
+using CryptoPP::ECP;
+using CryptoPP::ECDH;
+
+#include "cryptopp/secblock.h"
+using CryptoPP::SecByteBlock;
+
+#include "cryptopp/oids.h"
+using CryptoPP::OID;
+
+#include "cryptopp/asn.h"
+using namespace CryptoPP::ASN1;
+
+#include "cryptopp/integer.h"
+using CryptoPP::Integer;
+
+int main( int, char** ) {
+
+    OID CURVE = secp256r1();
+    AutoSeededX917RNG<AES> rng;
+
+    ECDH < ECP >::Domain dhA( CURVE ), dhB( CURVE );
+
+    SecByteBlock privA(dhA.PrivateKeyLength()), pubA(dhA.PublicKeyLength());
+    SecByteBlock privB(dhB.PrivateKeyLength()), pubB(dhB.PublicKeyLength());
+
+    dhA.GenerateKeyPair(rng, privA, pubA);
+    dhB.GenerateKeyPair(rng, privB, pubB);
+
+    if(dhA.AgreedValueLength() != dhB.AgreedValueLength())
+    throw runtime_error("Shared secret size mismatch");
+
+    SecByteBlock sharedA(dhA.AgreedValueLength()), sharedB(dhB.AgreedValueLength());
+
+    const bool rtn1 = dhA.Agree(sharedA, privA, pubB);
+    const bool rtn2 = dhB.Agree(sharedB, privB, pubA);
+    if(!rtn1 || !rtn2)
+    throw runtime_error("Failed to reach shared secret (A)");
+
+    const bool rtn3 = sharedA.size() == sharedB.size();
+    if(!rtn3)
+    throw runtime_error("Failed to reach shared secret (B)");
+
+    Integer a, b;
+
+    a.Decode(sharedA.BytePtr(), sharedA.SizeInBytes());
+    cout << "(A): " << std::hex << a << endl;
+
+    b.Decode(sharedB.BytePtr(), sharedB.SizeInBytes());
+    cout << "(B): " << std::hex << b << endl;
+
+    const bool rtn4 = a == b;
+    if(!rtn4)
+    throw runtime_error("Failed to reach shared secret (C)");
+
+    cout << "Agreed to shared secret" << endl;
+
+    return 0;
+}
+```
