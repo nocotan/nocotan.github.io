@@ -21,6 +21,7 @@ shared_mutexには二つのアクセスレベルがある。
 #include <shared_mutex>
 using namespace std;
 
+
 class X {
     private:
         mutable shared_timed_mutex mut;
