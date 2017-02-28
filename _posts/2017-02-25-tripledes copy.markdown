@@ -23,6 +23,24 @@ Feistel構造を使い、各ラウンドでの処理の前に、ブロックは3
 5. 上記ラウンドを16回繰り返す
 6. 最終転置(FP)
 
+```c++
+void des_decrypt(char* input, char* key, char* output){
+	char subkeys[NUM_ROUNDS][SUBKEY_SIZE], temp[BLOCK_SIZE], temp2[BLOCK_SIZE];
+	char rev_subkeys[NUM_ROUNDS][SUBKEY_SIZE];
+	int i, j;
+
+	key_sched(key, subkeys);
+
+	for(i = 0, j = NUM_ROUNDS - 1; i < NUM_ROUNDS; i++, j--){
+		memcpy(rev_subkeys[j], subkeys[i], SUBKEY_SIZE);
+	}
+
+	initial_permutation(input, temp);
+	feistel_encrypt(temp, des_round, rev_subkeys, temp2);
+	final_permutation(temp2, output);
+}
+```
+
 ## Triple DES(Triple Data Encryption Algorithm)
 DESを三回施すアルゴリズムであるが、単に平文に暗号化を繰り返すのではなく、
 処理の流れは以下のようになる。
