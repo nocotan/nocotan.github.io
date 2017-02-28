@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Triple DES</title>
+  <meta name="description" content="トリプルDES(Triple DES)は暗号アルゴリズムのうちの一つ。正式名称はTriple Data Encryption Algorithm。共通鍵ブロック暗号であるDESを三回施すアルゴリズム。">
+  <meta name=”twitter:card” content=”summary”>
+  <meta name="twitter:title" content="Triple DES">
+  <meta name="twitter:description" content="nocohub">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/02/26/tripledes-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> pass </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]}
+    });
+</script>
+<div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">Triple DES</h1>
+    <p class="post-meta">Feb 26, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p>トリプルDES(Triple DES)は暗号アルゴリズムのうちの一つ。
+正式名称はTriple Data Encryption Algorithm。
+共通鍵ブロック暗号であるDESを三回施すアルゴリズム。</p>
+
+<h2 id="desdata-encryption-standard">DES(Data Encryption Standard)</h2>
+<p>平文を64ビット単位のブロックに分割して暗号化及び復号化を行う暗号アルゴリズム。
+(64ビットのうち8ビットをパリティチェックに使用するため鍵長は56ビット)。
+16ラウンドのうち、最初と最後に並び替え処理を置く。(IP/FP)。
+Feistel構造を使い、各ラウンドでの処理の前に、ブロックは32ビットずつに分割され、それらに対して異な
+る処理を施していく。
+処理の流れは以下のようになる。</p>
+
+<ol>
+  <li>初期転置(IP)</li>
+  <li>転置</li>
+  <li>シフト演算</li>
+  <li>ラウンド</li>
+  <li>上記ラウンドを16回繰り返す</li>
+  <li>最終転置(FP)</li>
+</ol>
+
+<h2 id="triple-destriple-data-encryption-algorithm">Triple DES(Triple Data Encryption Algorithm)</h2>
+<p>DESを三回施すアルゴリズムであるが、単に平文に暗号化を繰り返すのではなく、
+処理の流れは以下のようになる。</p>
+
+<h3 id="暗号化">暗号化</h3>
+<p>Triple DESは8バイトDES暗号鍵を三つ用いて8バイトデータを復号化する。</p>
+<ul>
+  <li>最初の鍵を使用して、データを暗号化する</li>
+  <li>2番目の鍵を使用して、上記で得られた結果を復号する</li>
+  <li>3番目の鍵を使用して、上記で得られた結果を暗号化する</li>
+</ul>
+
+<h3 id="復号化">復号化</h3>
+<p>復号化は、暗号化の手順の逆をたどる</p>
+<ul>
+  <li>3番目の鍵を使用してデータを復号化する</li>
+  <li>2番目の鍵を使用して、上記で得られた結果を暗号化する</li>
+  <li>最初の鍵を使用して、上記で得られた結果を復号化する</li>
+</ul>
+
+<h3 id="keying-options">Keying options</h3>
+<p>三つの鍵(k1, k2, k3)の組み合わせとして、以下の三種類が存在する</p>
+
+<h4 id="k1k2k3が全て異なる">k1,k2,k3が全て異なる</h4>
+<p>通称3TDEA, 3-Key。鍵長は168ビット。</p>
+
+<h4 id="k1k2が異なりk3とk1が同じ">k1,k2が異なり、k3とk1が同じ</h4>
+<p>中間一致攻撃(Meet-in-the-middle Attack)への耐性がある。鍵長は112ビット。</p>
+
+<h4 id="k1k2k3が全て同じ">k1,k2,k3が全て同じ</h4>
+<p>DESど同一の結果が得られる。鍵長は56ビット。</p>
+
+<h3 id="鍵強度">鍵強度</h3>
+<p>Triple DESは168ビットの鍵長を持っているが、実際の鍵強度は112ビットとなる。
+これは既知の攻撃手法である中間一致攻撃が存在するためである。
+中間一致攻撃とは、攻撃者が平文と暗号文を持っている場合、任意の暗号鍵x平文の暗号
+化結果と任意の暗号鍵x暗号文の復号結果を使い、鍵を特定するという攻撃手法である。
+ちなみに112ビットの鍵強度を持つ暗号の解読時間は約30兆年とされている。</p>
+
+  </article>
+</div>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>

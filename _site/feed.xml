@@ -6,9 +6,80 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 22 Feb 2017 23:56:28 +0900</pubDate>
-    <lastBuildDate>Wed, 22 Feb 2017 23:56:28 +0900</lastBuildDate>
+    <pubDate>Wed, 01 Mar 2017 00:59:38 +0900</pubDate>
+    <lastBuildDate>Wed, 01 Mar 2017 00:59:38 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Triple DES</title>
+        <description>&lt;p&gt;トリプルDES(Triple DES)は暗号アルゴリズムのうちの一つ。
+正式名称はTriple Data Encryption Algorithm。
+共通鍵ブロック暗号であるDESを三回施すアルゴリズム。&lt;/p&gt;
+
+&lt;h2 id=&quot;desdata-encryption-standard&quot;&gt;DES(Data Encryption Standard)&lt;/h2&gt;
+&lt;p&gt;平文を64ビット単位のブロックに分割して暗号化及び復号化を行う暗号アルゴリズム。
+(64ビットのうち8ビットをパリティチェックに使用するため鍵長は56ビット)。
+16ラウンドのうち、最初と最後に並び替え処理を置く。(IP/FP)。
+Feistel構造を使い、各ラウンドでの処理の前に、ブロックは32ビットずつに分割され、それらに対して異な
+る処理を施していく。
+処理の流れは以下のようになる。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;初期転置(IP)&lt;/li&gt;
+  &lt;li&gt;転置&lt;/li&gt;
+  &lt;li&gt;シフト演算&lt;/li&gt;
+  &lt;li&gt;ラウンド&lt;/li&gt;
+  &lt;li&gt;上記ラウンドを16回繰り返す&lt;/li&gt;
+  &lt;li&gt;最終転置(FP)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;triple-destriple-data-encryption-algorithm&quot;&gt;Triple DES(Triple Data Encryption Algorithm)&lt;/h2&gt;
+&lt;p&gt;DESを三回施すアルゴリズムであるが、単に平文に暗号化を繰り返すのではなく、
+処理の流れは以下のようになる。&lt;/p&gt;
+
+&lt;h3 id=&quot;暗号化&quot;&gt;暗号化&lt;/h3&gt;
+&lt;p&gt;Triple DESは8バイトDES暗号鍵を三つ用いて8バイトデータを復号化する。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;最初の鍵を使用して、データを暗号化する&lt;/li&gt;
+  &lt;li&gt;2番目の鍵を使用して、上記で得られた結果を復号する&lt;/li&gt;
+  &lt;li&gt;3番目の鍵を使用して、上記で得られた結果を暗号化する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;復号化&quot;&gt;復号化&lt;/h3&gt;
+&lt;p&gt;復号化は、暗号化の手順の逆をたどる&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;3番目の鍵を使用してデータを復号化する&lt;/li&gt;
+  &lt;li&gt;2番目の鍵を使用して、上記で得られた結果を暗号化する&lt;/li&gt;
+  &lt;li&gt;最初の鍵を使用して、上記で得られた結果を復号化する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;keying-options&quot;&gt;Keying options&lt;/h3&gt;
+&lt;p&gt;三つの鍵(k1, k2, k3)の組み合わせとして、以下の三種類が存在する&lt;/p&gt;
+
+&lt;h4 id=&quot;k1k2k3が全て異なる&quot;&gt;k1,k2,k3が全て異なる&lt;/h4&gt;
+&lt;p&gt;通称3TDEA, 3-Key。鍵長は168ビット。&lt;/p&gt;
+
+&lt;h4 id=&quot;k1k2が異なりk3とk1が同じ&quot;&gt;k1,k2が異なり、k3とk1が同じ&lt;/h4&gt;
+&lt;p&gt;中間一致攻撃(Meet-in-the-middle Attack)への耐性がある。鍵長は112ビット。&lt;/p&gt;
+
+&lt;h4 id=&quot;k1k2k3が全て同じ&quot;&gt;k1,k2,k3が全て同じ&lt;/h4&gt;
+&lt;p&gt;DESど同一の結果が得られる。鍵長は56ビット。&lt;/p&gt;
+
+&lt;h3 id=&quot;鍵強度&quot;&gt;鍵強度&lt;/h3&gt;
+&lt;p&gt;Triple DESは168ビットの鍵長を持っているが、実際の鍵強度は112ビットとなる。
+これは既知の攻撃手法である中間一致攻撃が存在するためである。
+中間一致攻撃とは、攻撃者が平文と暗号文を持っている場合、任意の暗号鍵x平文の暗号
+化結果と任意の暗号鍵x暗号文の復号結果を使い、鍵を特定するという攻撃手法である。
+ちなみに112ビットの鍵強度を持つ暗号の解読時間は約30兆年とされている。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 26 Feb 2017 10:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/02/26/tripledes-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/02/26/tripledes-copy.html</guid>
+        
+        
+        <category>暗号</category>
+        
+      </item>
     
       <item>
         <title>std::shared_mutex</title>
@@ -28,6 +99,7 @@ shared_mutexには二つのアクセスレベルがある。&lt;/p&gt;
 &lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
 #include &amp;lt;shared_mutex&amp;gt;
 &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
@@ -967,61 +1039,6 @@ uとvが同じ連結成分に属しているかで判断できる。
         
         
         <category>アルゴリズム</category>
-        
-      </item>
-    
-      <item>
-        <title>フォンミーゼスフィッシャー分布(von Mises-Fisher distribution)</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;確率密度関数 $ f_p(x;μ,κ) = C_p(κ)exp(κμ^Tx) $&lt;/li&gt;
-  &lt;li&gt;このモデルを使用したEMアルゴリズムはspherical k-meansよりも性能がいい&lt;/li&gt;
-  &lt;li&gt;球面上に分布するデータにおいて、ガウス分布に相当する標準的な分布&lt;/li&gt;
-  &lt;li&gt;二次元球面上に分布する標準的な分布であるvon Mises分布をd次元球面上に拡張したもの&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;以下、python実装.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
-
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot; von Mises-Fisher distribution.
-
-probability distribution on the (p-1) dimensional sphare in R^p.
-if p=2 the distribution reduces to the von Mises distribution on the circle.
-
-parameters
-myu: mean direction
-k: concentration parameter
-&quot;&quot;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.special&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iv&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot; 確率密度関数
-    @param x: d次元単位ベクトルであるデータ点
-    @param k: 集中度
-    @param myu: 平均方向ベクトル
-    &quot;&quot;&quot;&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ndim&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot; 確率の公理を満たすための正規化項 &quot;&quot;&quot;&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/nocotan/mllib/blob/master/python/vmf.py&quot;&gt;使用したコード&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 24 Jan 2017 12:00:00 +0900</pubDate>
-        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/01/24/vmf-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/01/24/vmf-copy.html</guid>
-        
-        
-        <category>機械学習</category>
         
       </item>
     
