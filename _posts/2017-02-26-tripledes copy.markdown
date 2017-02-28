@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Triple DES"
-date:   2017-02-26 01:00:00
+date:   2017-02-25 01:00:00
 categories: 暗号
 ---
 トリプルDES(Triple DES)は暗号アルゴリズムのうちの一つ。
