@@ -50,5 +50,5 @@ $ bash make-dist.sh
 spark-shellから使用するには、以下のようにする.
 
 ```
-$ spark-shell --jars bigdl-0.1.0-SNAPSHOT-jar-with-dependencies.jar
+$ spark-shell --jars BigDL/dist/lib/bigdl-0.1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
