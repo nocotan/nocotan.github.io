@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Apache Sparkでk-means</title>
+  <meta name="description" content="Apache SparkSparkのインストールは完了しているものとする.">
+  <meta name=”twitter:card” content=”summary”>
+  <meta name="twitter:title" content="Apache Sparkでk-means">
+  <meta name="twitter:description" content="nocohub">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/spark/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/03/07/sparkkmeans-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> pass </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]}
+    });
+</script>
+<div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">Apache Sparkでk-means</h1>
+    <p class="post-meta">Mar 7, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p><a href="http://spark.apache.org/">Apache Spark</a><br />
+<a href="http://nocotan.github.io/spark/2017/03/06/sparkinstall-copy.html">Sparkのインストール</a>は完了しているものとする.</p>
+
+<h3 id="k-means">k-means</h3>
+<p>k-meansは、データセットをあらかじめ決めておいたクラスタ数にクラスタリングする一
+般的なクラスタリングアルゴリズムのうちの一つ.
+MLlibの実装には、kmeans||と呼ばれる、k-means++の並列化変形が含まれる.</p>
+
+<h3 id="例">例</h3>
+
+<p>org.apache.spark.ml.clustering.KMeansをインポートすることでk-meansが使用できる.</p>
+<ul>
+  <li>2行目はデータセットの読み込みを行う.データセットのパスは適宜変更する.</li>
+  <li>3行目でクラスタ数、及びランダムシードを与えている.</li>
+  <li>4行目でデータセットに対して学習させる.</li>
+  <li>最後の行では各クラスタの重心を表示している.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scala&gt; import import org.apache.spark.ml.clustering.KMeans
+import org.apache.spark.ml.clustering.KMeans
+
+scala&gt; val dataset = spark.read.format("libsvm").load("/opt/spark/data/mllib/sample_kmeans_data.txt")
+dataset: org.apache.spark.sql.DataFrame = [label: double, features: vector]
+
+scala&gt; val kmeans = new KMeans().setK(2).setSeed(1L)
+kmeans: org.apache.spark.ml.clustering.KMeans = kmeans_480ce4224497
+
+scala&gt; val model = kmeans.fit(dataset)
+model: org.apache.spark.ml.clustering.KMeansModel = kmeans_480ce4224497
+
+scala&gt; val WSSSE = model.computeCost(dataset)
+WSSE: Double = 0.11999999999994547
+
+scala&gt; model.clusterCenters.foreach(println)
+[9.1,9.1,9.1]
+[0.1,0.1,0.1]
+</code></pre>
+</div>
+
+
+  </article>
+</div>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>

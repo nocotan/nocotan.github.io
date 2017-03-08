@@ -100,20 +100,25 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
 </code></pre>
 </div>
 
-<p>Apache Sparkのビルドはgitに依存するため、gitをインストールする.</p>
+<p>Scalaをインストールする</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install git
+<div class="highlighter-rouge"><pre class="highlight"><code>$ wget http://downloads.lightbend.com/scala/2.12.1/scala-2.12.1.deb
+$ dpkg -i scala-2.12.1.deb
 </code></pre>
 </div>
 
-<p>Apache Sparkをダウンロード及び解凍して、/usr/local/share/sparkに配置する.
-その後、Mavenを使用してビルドする.</p>
+<p>Apache Spark2.02をインストールする.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir /usr/local/share/spark
-$ sudo curl http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2.tgz | sudo tar xvz -C
-/usr/local/share/spark
-$ cd /usr/local/share/spark/spark-2.0.2
-$ ./build/mvn -DskipTests clean package
+<div class="highlighter-rouge"><pre class="highlight"><code>$ wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz
+$ tar xvf spark-2.0.2-bin-hadoop2.7.tgz
+$ cp -rv spark-2.0.2-bin-hadoop2.7 /opt/spark
+$ cd /opt/spark
+</code></pre>
+</div>
+
+<p>動作確認.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ ./bin/spark-shell --master local[2]
 </code></pre>
 </div>
 
