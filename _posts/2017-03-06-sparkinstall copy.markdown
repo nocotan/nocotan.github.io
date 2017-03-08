@@ -34,8 +34,7 @@ Apache Sparkをダウンロード及び解凍して、/usr/local/share/sparkに�
 
 ```
 $ mkdir /usr/local/share/spark
-$ sudo curl http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2.tgz | sudo tar xvz -C
-/usr/local/share/spark
+$ sudo curl http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2.tgz | sudo tar xvz -C /usr/local/share/spark
 $ cd /usr/local/share/spark/spark-2.0.2
 $ ./build/mvn -DskipTests clean package
 ```
