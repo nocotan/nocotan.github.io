@@ -41,3 +41,4 @@ scala> model.clusterCenters.foreach(println)
 [0.1,0.1,0.1]
 ```
 
+使用したコードは[こちら](https://github.com/nocotan/spark-examples/blob/master/examples/KMeansSample.scala)
