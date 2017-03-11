@@ -100,21 +100,22 @@ Caffe,Torch,TensorFlowよりも数桁拘束である.</li>
 
 <p>Mavenが必要なのでインストールしておく.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install maven
+<div class="highlighter-rouge"><pre class="highlight"><code>$ sudo apt-get install maven
 </code></pre>
 </div>
 
 <p>BigDLのダウンロード</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/intel-analytics/BigDL.git
-cd BigDL
-source scripts/bigdl.sh
+<div class="highlighter-rouge"><pre class="highlight"><code>$ git clone https://github.com/intel-analytics/BigDL.git
+$ cd BigDL
+$ source scripts/bigdl.sh
 </code></pre>
 </div>
 
-<p>ビルドする.</p>
+<p>ビルドする.この時、java.lang.OutOfMemoryError対策で、PermSizeを設定しておく.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>bash make-dist.sh
+<div class="highlighter-rouge"><pre class="highlight"><code>$ export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
+$ bash make-dist.sh
 </code></pre>
 </div>
 
@@ -127,7 +128,7 @@ source scripts/bigdl.sh
 
 <p>spark-shellから使用するには、以下のようにする.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>spark-shell --jars bigdl-0.1.0-SNAPSHOT-jar-with-dependencies.jar
+<div class="highlighter-rouge"><pre class="highlight"><code>$ spark-shell --jars BigDL/dist/lib/bigdl-0.1.0-SNAPSHOT-jar-with-dependencies.jar
 </code></pre>
 </div>
 
