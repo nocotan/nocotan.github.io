@@ -35,6 +35,8 @@ categories: 書籍
 
 ### 論文
 
+#### [Learning to Protect Communications with Adversarial Neural Cryptography](https://arxiv.org/pdf/1610.06918.pdf)
+
 #### [機械学習研究におけるプログラム開発と検証 - モンテカルロ法に基づく確率推論計算を例として](https://www.jstage.jst.go.jp/article/tjsai/27/4/27_253/_pdf)
 
 #### [Recurrent Neural Networkによるマイクロブログの投稿位置推定](https://www.jstage.jst.go.jp/article/tjsai/32/1/32_WII-E/_pdf)
