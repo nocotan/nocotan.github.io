@@ -74,7 +74,7 @@ AliceとBobの誤差関数L<sub>AB</sub>は、
 * 全結合層の後に畳み込み層のシーケンスが続き、最終的に平文または暗号文に適した
   サイズの出力を生成する
 
-Pythonによる実装(一部抜粋)
+Python(TensorFlow)による実装(一部抜粋)
 ```
 def build_model(self):
         # Weights for fully connected layers
