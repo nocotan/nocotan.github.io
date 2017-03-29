@@ -1,5 +1,6 @@
 # Site settings
 title: nocohub
+locale: "ja-JP" 
 motto:
 email: noconoco.lib@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
