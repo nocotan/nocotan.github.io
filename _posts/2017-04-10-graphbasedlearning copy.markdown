@@ -63,3 +63,11 @@ categories: 機械学習
 * eの値に敏感
 * 断片化されたグラフになる -> 接続されていないインスタンスが大量に出現する可能
   性がある
+
+## アルゴリズム
+* Label Propagation
+* Modified Adsorption
+* Measure Propagation
+* Sparse Label Propagation
+* Manifold Regularization
+* Spectral Graph Transduction

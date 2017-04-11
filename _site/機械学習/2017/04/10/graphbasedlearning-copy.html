@@ -86,7 +86,7 @@
 タを学習に用いることがきるという利点がある。</p>
 
 <h2 id="教師あり学習">教師あり学習</h2>
-<p><img src="" alt="画像" /></p>
+<p><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow1.png" alt="画像" /></p>
 
 <ul>
   <li>決定木,サポートベクターマシンなど</li>
@@ -94,7 +94,7 @@
 </ul>
 
 <h2 id="半教師あり学習ssl-semi-supervised-learning">半教師あり学習(SSL: Semi-Supervised Learning)</h2>
-<p><img src="" alt="画像" /></p>
+<p><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow2.png" alt="画像" /></p>
 
 <ul>
   <li>Self-Training, Co-Trainingなど</li>
@@ -117,9 +117,8 @@
 ているのではないかという仮定</li>
 </ul>
 
-<p><img src="" alt="画像" /></p>
-
-<p><img src="" alt="画像" /></p>
+<p><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow3.png" alt="画像" />
+<img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow4.png" alt="画像" /></p>
 
 <h3 id="neighborhood-methods">Neighborhood Methods</h3>
 <ul>
@@ -130,7 +129,7 @@
 <h4 id="k-nearest-neighbor-graph-k-nng">k-Nearest Neighbor Graph (k-NNG)</h4>
 <p>インスタンスとそのk最近傍点の間にエッジを追加する</p>
 
-<p><img src="" alt="画像" /></p>
+<p><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow5.png" alt="画像" /></p>
 
 <h5 id="欠点">欠点</h5>
 <ul>
@@ -142,7 +141,7 @@
 <h4 id="e-neighborhood">e-Neighborhood</h4>
 <p>半径eの球内の全てのインスタンスにエッジを追加する</p>
 
-<p><img src="" alt="画像" /></p>
+<p><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow6.png" alt="画像" /></p>
 
 <h5 id="欠点-1">欠点</h5>
 <ul>
@@ -151,6 +150,19 @@
   <li>断片化されたグラフになる -&gt; 接続されていないインスタンスが大量に出現する可能
 性がある</li>
 </ul>
+
+<h2 id="アルゴリズム">アルゴリズム</h2>
+<ul>
+  <li>Label Propagation</li>
+  <li>Modified Adsorption</li>
+  <li>Measure Propagation</li>
+  <li>Sparse Label Propagation</li>
+  <li>Manifold Regularization</li>
+  <li>Spectral Graph Transduction</li>
+</ul>
+
+<h3 id="graph-laplacian">Graph Laplacian</h3>
+<p><strong>L = D - W, where D<sub>ii</sub> = Σ<sub>j</sub>W<sub>ij</sub>, D<sub>ij</sub> = 0 (j≠i)</strong></p>
 
   </article>
 </div>

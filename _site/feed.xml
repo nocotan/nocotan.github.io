@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Apr 2017 17:17:07 +0900</pubDate>
-    <lastBuildDate>Tue, 11 Apr 2017 17:17:07 +0900</lastBuildDate>
+    <pubDate>Tue, 11 Apr 2017 17:31:35 +0900</pubDate>
+    <lastBuildDate>Tue, 11 Apr 2017 17:31:35 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -17,7 +17,7 @@
 タを学習に用いることがきるという利点がある。&lt;/p&gt;
 
 &lt;h2 id=&quot;教師あり学習&quot;&gt;教師あり学習&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow1.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;決定木,サポートベクターマシンなど&lt;/li&gt;
@@ -25,7 +25,7 @@
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;半教師あり学習ssl-semi-supervised-learning&quot;&gt;半教師あり学習(SSL: Semi-Supervised Learning)&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow2.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Self-Training, Co-Trainingなど&lt;/li&gt;
@@ -48,9 +48,8 @@
 ているのではないかという仮定&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow3.png&quot; alt=&quot;画像&quot; /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow4.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;neighborhood-methods&quot;&gt;Neighborhood Methods&lt;/h3&gt;
 &lt;ul&gt;
@@ -61,7 +60,7 @@
 &lt;h4 id=&quot;k-nearest-neighbor-graph-k-nng&quot;&gt;k-Nearest Neighbor Graph (k-NNG)&lt;/h4&gt;
 &lt;p&gt;インスタンスとそのk最近傍点の間にエッジを追加する&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow5.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;欠点&quot;&gt;欠点&lt;/h5&gt;
 &lt;ul&gt;
@@ -73,7 +72,7 @@
 &lt;h4 id=&quot;e-neighborhood&quot;&gt;e-Neighborhood&lt;/h4&gt;
 &lt;p&gt;半径eの球内の全てのインスタンスにエッジを追加する&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow6.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;欠点-1&quot;&gt;欠点&lt;/h5&gt;
 &lt;ul&gt;
@@ -82,6 +81,19 @@
   &lt;li&gt;断片化されたグラフになる -&amp;gt; 接続されていないインスタンスが大量に出現する可能
 性がある&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&quot;アルゴリズム&quot;&gt;アルゴリズム&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Label Propagation&lt;/li&gt;
+  &lt;li&gt;Modified Adsorption&lt;/li&gt;
+  &lt;li&gt;Measure Propagation&lt;/li&gt;
+  &lt;li&gt;Sparse Label Propagation&lt;/li&gt;
+  &lt;li&gt;Manifold Regularization&lt;/li&gt;
+  &lt;li&gt;Spectral Graph Transduction&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;graph-laplacian&quot;&gt;Graph Laplacian&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;L = D - W, where D&lt;sub&gt;ii&lt;/sub&gt; = Σ&lt;sub&gt;j&lt;/sub&gt;W&lt;sub&gt;ij&lt;/sub&gt;, D&lt;sub&gt;ij&lt;/sub&gt; = 0 (j≠i)&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 10 Apr 2017 10:00:00 +0900</pubDate>
         <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html</link>
