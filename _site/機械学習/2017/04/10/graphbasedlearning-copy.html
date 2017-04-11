@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Graph-based Semi-Supervised Learning</title>
+  <meta name="description" content="グラフベースの半教師あり学習の紹介。半教師あり学習は、普通の教師あり学習と比べて、ラベルのついていない(大量の)データを学習に用いることがきるという利点がある。">
+  <meta name=”twitter:card” content=”summary”>
+  <meta name="twitter:title" content="Graph-based Semi-Supervised Learning">
+  <meta name="twitter:description" content="nocohub">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]}
+    });
+</script>
+<div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">Graph-based Semi-Supervised Learning</h1>
+    <p class="post-meta">Apr 10, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p>グラフベースの半教師あり学習の紹介。<br />
+半教師あり学習は、普通の教師あり学習と比べて、ラベルのついていない(大量の)デー
+タを学習に用いることがきるという利点がある。</p>
+
+<h2 id="教師あり学習">教師あり学習</h2>
+<p><img src="" alt="画像" /></p>
+
+<ul>
+  <li>決定木,サポートベクターマシンなど</li>
+  <li>ラベル付きデータを使用して学習を行う</li>
+</ul>
+
+<h2 id="半教師あり学習ssl-semi-supervised-learning">半教師あり学習(SSL: Semi-Supervised Learning)</h2>
+<p><img src="" alt="画像" /></p>
+
+<ul>
+  <li>Self-Training, Co-Trainingなど</li>
+  <li>ラベル付きデータに加えて、大量のラベルなしデータを使用して学習を行う</li>
+</ul>
+
+<h3 id="半教師あり学習の利点">半教師あり学習の利点</h3>
+<p>一般に、分類器の性能をあげるために、データを大量に与えたい。しかし、ラベル付き
+データを集めるのはとてもコストがかかる。特に、現時点でラベルがついていないデー
+タに対して人力でラベルをつける作業は、非常に多くの時間やコストを要する。一方ラ
+ベルなしデータであれば、コストをかけることなく大量に手に入れることができる。普通の
+教師あり学習ではこれらのラベルなしデータはあくまで分類対象でしかなく、明らかな
+デッドリソースである。こういったデータを学習に上手に利用することで分類器の性能
+向上を目指すというのが、半教師あり学習の考え方である。</p>
+
+<h2 id="graph-based-semi-supervised-learning">Graph-based Semi-supervised Learning</h2>
+<ul>
+  <li>ノード間が重みの大きいエッジで繋がっているならば、それらのノードは同じラベル
+を持っているはずだという仮定をする -&gt; 類似度の大きいデータは同じラベルを持っ
+ているのではないかという仮定</li>
+</ul>
+
+<p><img src="" alt="画像" /></p>
+
+<p><img src="" alt="画像" /></p>
+
+<h3 id="neighborhood-methods">Neighborhood Methods</h3>
+<ul>
+  <li>k-Nearest Neighbor Graph (k-NNG)</li>
+  <li>e-Neighborhood Method</li>
+</ul>
+
+<h4 id="k-nearest-neighbor-graph-k-nng">k-Nearest Neighbor Graph (k-NNG)</h4>
+<p>インスタンスとそのk最近傍点の間にエッジを追加する</p>
+
+<p><img src="" alt="画像" /></p>
+
+<h5 id="欠点">欠点</h5>
+<ul>
+  <li>スケーラブルでない</li>
+  <li>非対称グラフになる</li>
+  <li>不規則なグラフになる</li>
+</ul>
+
+<h4 id="e-neighborhood">e-Neighborhood</h4>
+<p>半径eの球内の全てのインスタンスにエッジを追加する</p>
+
+<p><img src="" alt="画像" /></p>
+
+<h5 id="欠点-1">欠点</h5>
+<ul>
+  <li>スケーラブルでない</li>
+  <li>eの値に敏感</li>
+  <li>断片化されたグラフになる -&gt; 接続されていないインスタンスが大量に出現する可能
+性がある</li>
+</ul>
+
+  </article>
+</div>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <br><br>
+        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="vertical-normal" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="machinery81">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>
