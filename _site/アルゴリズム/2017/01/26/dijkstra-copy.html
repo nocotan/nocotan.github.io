@@ -7,9 +7,34 @@
 
   <title>最短経路問題(ダイクストラ法)</title>
   <meta name="description" content="  ベルマンフォード法よりも高速  負の経路がある場合はうまく計算されないため使えない  ベルマンフォード法">
-  <meta name=”twitter:card” content=”summary”>
-  <meta name="twitter:title" content="最短経路問題(ダイクストラ法)">
-  <meta name="twitter:description" content="nocohub">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  
+    <meta name="twitter:title" content="最短経路問題(ダイクストラ法)">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/26/dijkstra-copy.html">
+  
+  
+    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
+">
+  
+  <meta name="twitter:description" content="
+  ベルマンフォード法よりも高速
+  負の経路がある場合はうまく計算されないため使えない
+  ベルマンフォード法
+
+
+手順としては、
+
+
+  最短経路が確定した頂点と隣接している頂点を更新する
+  1で使った頂点はもう使わない
+
+
+初期状態では、始点のみの最短経路が確定している。
+ここで、負の経路がないことを想定すると、まだ使われていない頂点のうち、d[i]が最小の頂点も、最短経路が確定し...">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/26/dijkstra-copy.html">

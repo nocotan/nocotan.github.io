@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Label Propagation</title>
+  <meta name="description" content="半教師あり学習アルゴリズム『Label Propagation』の紹介。このアルゴリズムでは、ノードのラベルが近傍に応じて近くのノードに伝播する、グラフ上の伝播の形式として問題を定式化する。このプロセスでは、もともとラベルがついているデータに関してはラベルを固定する。したがって、ラベル付きデータはラベルのついてい...">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  
+    <meta name="twitter:title" content="Label Propagation">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html">
+  
+  
+    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
+">
+  
+  <meta name="twitter:description" content="半教師あり学習アルゴリズム『Label Propagation』の紹介。このアルゴリズムでは、ノ
+ードのラベルが近傍に応じて近くのノードに伝播する、グラフ上の伝播の形式として問
+題を定式化する。このプロセスでは、もともとラベルがついているデータに関してはラ
+ベルを固定する。したがって、ラベル付きデータはラベルのついていないデータに対し
+てラベルを「伝播」させるように振る舞う。
+グラフベース半...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]}
+    });
+</script>
+<div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">Label Propagation</h1>
+    <p class="post-meta">Apr 11, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p>半教師あり学習アルゴリズム『Label Propagation』の紹介。このアルゴリズムでは、ノ
+ードのラベルが近傍に応じて近くのノードに伝播する、グラフ上の伝播の形式として問
+題を定式化する。このプロセスでは、もともとラベルがついているデータに関してはラ
+ベルを固定する。したがって、ラベル付きデータはラベルのついていないデータに対し
+てラベルを「伝播」させるように振る舞う。
+<a href="http://nocotan.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html">グラフベース半教師あり学習について</a></p>
+
+<h2 id="問題設定">問題設定</h2>
+<p>{(x<sub>1</sub>, y<sub>1</sub>) … (x<sub>l</sub>, y<sub>l</sub>)}をラベル付き
+データとし、{x<sub>l+1</sub> … s<sub>l+u</sub>}をラベルなしデータとする。(一
+般に l « u)。また、全体のデータ数をnとし、全体のクラス数Cは既知のものとする。  <br />
+直感的に、同じラベルがついているデータは似ていると思われる。ラベルづけ
+されたものとラベルづけされていないものの両方をノードとするグラフを作成し、ノー
+ドi, j間のエッジはそれらのノードの類似性を表すものとする。グラフは以下の重みで
+完全に接続されているものとする。 <br />
+<br />
+ <strong>w<sub>ij</sub> = exp(- ||x<sub>i</sub> - x<sub>j</sub>||<sup>2</sup> / α<sup>2</sup>)</strong><br />
+<br /></p>
+<h2 id="アルゴリズム">アルゴリズム</h2>
+<p>まず、ラベルをエッジに伝播させていく。エッジの重みを大きくすると、ラベルが容易
+に移動するようになる。n x nの確率的遷移行列Pを定義すると、  <br />
+<br />
+ <strong>P<sub>ij</sub> = P(i → j) = w<sub>ij</sub> / Σw<sub>ik</sub></strong><br />
+<br />
+P<sub>ij</sub>はノードiからjへの遷移確率である。クラス数をCとし、i番目の行が
+y<sub>i</sub>を指すベクトルであるようなl x Cラベル行列Y<sub>L</sub>を定義する。
+ここで、各ノードに対するソフトラベルfを計算する。fはn x Cの行列であり、行はラベ
+ルの確率分布として解釈することができる。<br />
+以下がラベル伝播法のアルゴリズムである。</p>
+
+<ol>
+  <li>f ← Pf</li>
+  <li>Clamp the labeled data f<sub>L</sub> = Y<sub>L</sub></li>
+  <li>Repeat from step 1 until f converges</li>
+</ol>
+
+<p>ステップ1で、全てのノードから、それらの近傍へラベルを伝搬させる。<br />
+ステップ2で、ラベル付きデータのラベルで上書きし直す。</p>
+
+<h2 id="scikit-learnを使用した実装">scikit-learnを使用した実装</h2>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.semi_supervised</span> <span class="kn">import</span> <span class="n">LabelPropagation</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LabelPropagation</span><span class="p">()</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+
+<span class="n">random_unlabeled_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">)))</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">labels</span><span class="p">[</span><span class="n">random_unlabeled_points</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<h5 id="参考論文">参考論文</h5>
+<p><a href="http://www.aaai.org/Papers/ICML/2003/ICML03-118.pdf">Semi-Supervised Learning Using Gaussian Fields and Harmonic Functions</a></p>
+
+  </article>
+</div>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <br><br>
+        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="vertical-normal" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="machinery81">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>

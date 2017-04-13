@@ -7,9 +7,29 @@
 
   <title>ChainerでMNIST</title>
   <meta name="description" content="Chainer1.19.0版MNISTのコード多層パーセプトロンモデルを構築する.">
-  <meta name=”twitter:card” content=”summary”>
-  <meta name="twitter:title" content="ChainerでMNIST">
-  <meta name="twitter:description" content="nocohub">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  
+    <meta name="twitter:title" content="ChainerでMNIST">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/chainer/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/01/14/chainer-mnist-copy.html">
+  
+  
+    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
+">
+  
+  <meta name="twitter:description" content="Chainer1.19.0版MNISTのコード
+多層パーセプトロンモデルを構築する.
+
+ネットワークの構築
+Chainerでは、Linearクラスで全結合層を構築していく.
+
+class MLP(chainer.Chain):
+    def __init__(self, n_units, n_out):
+        super(MLP, self).__init__(
+        ...">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/chainer/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/01/14/chainer-mnist-copy.html">

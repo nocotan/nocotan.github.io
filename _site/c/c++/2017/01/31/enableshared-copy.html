@@ -7,9 +7,27 @@
 
   <title>std::enable_shared_from_this</title>
   <meta name="description" content="クラスにおいて,thisへのshared_ptrを扱うためのもの。thisポインタをshared_ptr(this)とすると、参照カウントが増えず、所有権管理が機能しなくなる。enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、shared_from_...">
-  <meta name=”twitter:card” content=”summary”>
-  <meta name="twitter:title" content="std::enable_shared_from_this">
-  <meta name="twitter:description" content="nocohub">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  
+    <meta name="twitter:title" content="std::enable_shared_from_this">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/c/c++/2017/01/31/enableshared-copy.html">
+  
+  
+    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
+">
+  
+  <meta name="twitter:description" content="クラスにおいて,thisへのshared_ptrを扱うためのもの。
+thisポインタをshared_ptr(this)とすると、参照カウントが増えず、所有権管理が機能しなくなる。
+enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、
+shared_from_this()が使用できるようになる。C++11以降で対応。
+
+コード例
+
+...">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/c/c++/2017/01/31/enableshared-copy.html">

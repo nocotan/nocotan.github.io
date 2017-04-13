@@ -7,9 +7,36 @@
 
   <title>最長共通部分列問題(LCS: Longest Common Subsequence)</title>
   <meta name="description" content="  ２つの文字列s1s2…snとt1t2…tmが与えられる。これら２つの共通部分列の長さを求めよ。">
-  <meta name=”twitter:card” content=”summary”>
-  <meta name="twitter:title" content="最長共通部分列問題(LCS: Longest Common Subsequence)">
-  <meta name="twitter:description" content="nocohub">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  
+    <meta name="twitter:title" content="最長共通部分列問題(LCS: Longest Common Subsequence)">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/23/lcs-copy.html">
+  
+  
+    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
+">
+  
+  <meta name="twitter:description" content="
+  ２つの文字列s1s2…snと
+t1t2…tmが与えられる。
+これら２つの共通部分列の長さを求めよ。
+
+
+dp[i][j] := s1…siとt1…tjに対するLCSの長さ
+
+とすると、共通部分は、
+
+
+  s1…siとt1…tjに対する共通部分列の後ろにsi+1をつなげたもの
+  s1…siとt1…tj+1に対する共通部分列
+  s1…si+1とt1…tjに対する共通部分列
+
+
+のどれ...">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/23/lcs-copy.html">

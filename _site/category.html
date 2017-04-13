@@ -8,9 +8,22 @@
   <title>nocohub</title>
   <meta name="description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
 ">
-  <meta name=”twitter:card” content=”summary”>
-  <meta name="twitter:title" content="">
-  <meta name="twitter:description" content="nocohub">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  
+    <meta name="twitter:title" content="nocohub">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/category.html">
+  
+  
+    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
+">
+  
+  <meta name="twitter:description" content="
+{% capture categories %}{% for category in site.categories %}{{ category | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{% assign category = categories | split:','...">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/category.html">
@@ -158,6 +171,8 @@
 
 <h2 class="category" id="機械学習">機械学習</h2>
 <ul>
+
+<li><span>Apr 11</span>» <a href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html">Label Propagation</a></li>
 
 <li><span>Apr 10</span>» <a href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html">Graph-based Semi-Supervised Learning</a></li>
 

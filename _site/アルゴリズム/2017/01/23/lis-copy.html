@@ -7,9 +7,30 @@
 
   <title>最長増加部分列問題(LIS: Longest Increasing Subsequence)</title>
   <meta name="description" content="  長さnの数列a0,a1,…,an-1がある。この数列の増加部分列うち、最長のものの長さを求めよ。ただし、増加部分列とは、全てのi&lt;jでai&lt;ajを満たす部分列のことを言う。">
-  <meta name=”twitter:card” content=”summary”>
-  <meta name="twitter:title" content="最長増加部分列問題(LIS: Longest Increasing Subsequence)">
-  <meta name="twitter:description" content="nocohub">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  
+    <meta name="twitter:title" content="最長増加部分列問題(LIS: Longest Increasing Subsequence)">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/23/lis-copy.html">
+  
+  
+    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
+">
+  
+  <meta name="twitter:description" content="
+  長さnの数列a0,a1,…,an-1がある。
+この数列の増加部分列うち、最長のものの長さを求めよ。
+ただし、増加部分列とは、全てのi&amp;lt;jでai&amp;lt;ajを満たす部分列のことを言う。
+
+
+漸化式を立ててみると、
+dp[i] := 長さがi+1である増加部分列における最終要素の最小値(存在しない場合INF)
+となる。以下、C++のコード。
+
+#include &am...">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/23/lis-copy.html">
