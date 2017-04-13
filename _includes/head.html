@@ -5,9 +5,23 @@
 
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <meta name=”twitter:card” content=”summary”>
-  <meta name="twitter:title" content="{{ page.title }}">
-  <meta name="twitter:description" content="{{ site.title }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  {% if page.title %}
+    <meta name="twitter:title" content="{{ page.title }}">
+  {% else %}
+    <meta name="twitter:title" content="{{ site.title }}">
+  {% endif %}
+  {% if page.url %}
+    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+  {% endif %}
+  {% if page.description %}
+    <meta name="twitter:description" content="{{ page.description }}">
+  {% else %}
+    <meta name="twitter:description" content="{{ site.description }}">
+  {% endif %}
+  <meta name="twitter:description" content="{{ page.content | strip_html | xml_escape | truncate: 200 }}">
 
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
