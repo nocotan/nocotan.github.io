@@ -65,7 +65,7 @@ categories: 機械学習
   性がある
 
 ## アルゴリズム
-* Label Propagation
+* [Label Propagation](http://nocotan.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html)
 * Modified Adsorption
 * Measure Propagation
 * Sparse Label Propagation
