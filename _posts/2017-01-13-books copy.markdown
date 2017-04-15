@@ -15,6 +15,8 @@ categories: 書籍
 
 #### [自然言語処理概論](http://www.saiensu.co.jp/?page=book_details&ISBN=978-4-7819-1388-9&YEAR=2016)
 
+#### [オンライン機械学習](http://www.kspub.co.jp/book/detail/1529038.html)
+
 ### アルゴリズム関連
 
 #### [プログラミングコンテストチャレンジブック](http://tatsu-zine.com/books/procon-challenge)
