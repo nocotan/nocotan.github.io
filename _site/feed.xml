@@ -6,9 +6,64 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 13 Apr 2017 21:20:38 +0900</pubDate>
-    <lastBuildDate>Thu, 13 Apr 2017 21:20:38 +0900</lastBuildDate>
+    <pubDate>Thu, 20 Apr 2017 15:13:02 +0900</pubDate>
+    <lastBuildDate>Thu, 20 Apr 2017 15:13:02 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>誤り訂正出力符号による多クラス分類</title>
+        <description>&lt;p&gt;&lt;strong&gt;誤り訂正符号(ECC: Error Correcting Code)&lt;/strong&gt;とは、データを記録・伝送する通信の際に生じるノイズを検出し、訂正することができるように付加される符号である。
+元のデータからあらかじめ算出しておいて、データとともに記録・伝送される。有名な誤り訂正符号には、ハミング符号や水平垂直パリティ符号、リードソロモン符号、BCH符号などがある。
+この仕組みに基づいて多クラス分類問題を考える&lt;strong&gt;誤り訂正出力符号(ECOC: Error Correcting Output Code)&lt;/strong&gt;という方式が存在する。&lt;/p&gt;
+
+&lt;h3 id=&quot;クラスラベルの符号化&quot;&gt;クラスラベルの符号化&lt;/h3&gt;
+
+&lt;p&gt;各クラスそれぞれに、異なる数値列が割り当てられているとする。この数値列を符号語と呼ぶ。
+ここでは、長さがmで、各値が1もしくは-1をとる符号語が割り当てられているとする。
+クラス数をcとし、各クラスに対してそれぞれ符号長mの符号語を割り当てるとすると、c x mの符号化行列Sが得られる。
+符号化行列の、ある一つの列に注目した時、各クラスに1か-1が割り当てられているため、2値分類として考えることができる。
+その結果、符号化行列の各列に対応するm個の2値分類学習器が得られる。ある入力xに対するm個の学習器の出力をf&lt;sup&gt;1&lt;/sup&gt;(x) … f&lt;sup&gt;m&lt;/sup&gt;(x)とし、
+これがどのクラスの符号語に近いかで割り当てるクラスを決定することができる。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;クラス&lt;/th&gt;
+      &lt;th&gt;a&lt;/th&gt;
+      &lt;th&gt;b&lt;/th&gt;
+      &lt;th&gt;c&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;-1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;-1&lt;/td&gt;
+      &lt;td&gt;-1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        <pubDate>Sun, 16 Apr 2017 10:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/16/ecoc-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/16/ecoc-copy.html</guid>
+        
+        
+        <category>機械学習</category>
+        
+      </item>
     
       <item>
         <title>Label Propagation</title>
@@ -16,7 +71,7 @@
 ードのラベルが近傍に応じて近くのノードに伝播する、グラフ上の伝播の形式として問
 題を定式化する。このプロセスでは、もともとラベルがついているデータに関してはラ
 ベルを固定する。したがって、ラベル付きデータはラベルのついていないデータに対し
-てラベルを「伝播」させるように振る舞う。
+てラベルを「伝播」させるように振る舞う。&lt;br /&gt;
 &lt;a href=&quot;http://nocotan.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html&quot;&gt;グラフベース半教師あり学習について&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;問題設定&quot;&gt;問題設定&lt;/h2&gt;
@@ -156,7 +211,7 @@ y&lt;sub&gt;i&lt;/sub&gt;を指すベクトルであるようなl x Cラベル�
 
 &lt;h2 id=&quot;アルゴリズム&quot;&gt;アルゴリズム&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Label Propagation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://nocotan.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html&quot;&gt;Label Propagation&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Modified Adsorption&lt;/li&gt;
   &lt;li&gt;Measure Propagation&lt;/li&gt;
   &lt;li&gt;Sparse Label Propagation&lt;/li&gt;
@@ -738,55 +793,6 @@ Feistel構造を使い、各ラウンドでの処理の前に、ブロックは3
         
         
         <category>暗号</category>
-        
-      </item>
-    
-      <item>
-        <title>std::shared_mutex</title>
-        <description>&lt;p&gt;C++14以降で使用可能。
-shared_mutexは、共有データが複数のスレッドによって同時にアクセスされるのを防ぐための
-ミューテックスクラスを提供する。排他アクセスを容易にする他のミューテクス型とは異なり、
-shared_mutexには二つのアクセスレベルがある。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;shared: 複数のスレッドが同じmutexの所有権を共有できる&lt;/li&gt;
-  &lt;li&gt;exclusive: 一つのスレッドだけがmutexを所有できる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;共有ミューテクスは、通常複数の読み取り手が同時にデータの競合を起こすことなく同じリソースに
-アクセスできる状況で使用されるが、単一の書き込み手のみアクセスを許される。&lt;/p&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;shared_mutex&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;mutable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shared_timed_mutex&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;shared_lock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shared_timed_mutex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Tue, 21 Feb 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/c/c++/2017/02/21/sharedmutex-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/c/c++/2017/02/21/sharedmutex-copy.html</guid>
-        
-        
-        <category>C/C++</category>
         
       </item>
     
