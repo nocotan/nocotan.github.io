@@ -17,6 +17,8 @@ categories: 書籍
 
 #### [オンライン機械学習](http://www.kspub.co.jp/book/detail/1529038.html)
 
+#### [サポートベクトルマシン](http://www.kspub.co.jp/book/detail/1529069.html)
+
 ### アルゴリズム関連
 
 #### [プログラミングコンテストチャレンジブック](http://tatsu-zine.com/books/procon-challenge)
