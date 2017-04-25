@@ -43,6 +43,8 @@ categories: 書籍
 
 ### 論文
 
+#### [Spectral concentration and greedy k-clustering](https://arxiv.org/abs/1404.1008)
+
 #### [Learning to Protect Communications with Adversarial Neural Cryptography](https://arxiv.org/pdf/1610.06918.pdf)
 
 #### [Semi-supervised Clustering for Short Text via Deep Representation Learning](https://arxiv.org/abs/1602.06797)
