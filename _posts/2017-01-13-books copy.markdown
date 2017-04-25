@@ -27,6 +27,8 @@ categories: 書籍
 
 #### [アルゴリズムの基本](http://ec.nikkeibp.co.jp/item/books/P85430.html)
 
+### [アルゴリズムとデータ構造(第3版)](ihttps://www.amazon.co.jp/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0-%E7%AC%AC3%E7%89%88-%E5%B9%B3%E7%94%B0-%E5%AF%8C%E5%A4%AB/dp/4627726538/ref=sr_1_1?s=books&ie=UTF8&qid=1493098680&sr=1-1&keywords=%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0%E3%80%80%E5%B9%B3%E7%94%B0)
+
 ### UNIX関連
 
 #### [LinuxサーバHacks―プロが使うテクニック&ツール100選](https://www.amazon.co.jp/Linux%E3%82%B5%E3%83%BC%E3%83%90Hacks%E2%80%95%E3%83%97%E3%83%AD%E3%81%8C%E4%BD%BF%E3%81%86%E3%83%86%E3%82%AF%E3%83%8B%E3%83%83%E3%82%AF-%E3%83%84%E3%83%BC%E3%83%AB100%E9%81%B8-%E3%83%AD%E3%83%96-%E3%83%95%E3%83%AA%E3%83%83%E3%82%B1%E3%83%B3%E3%82%AC%E3%83%BC/dp/487311151X)
