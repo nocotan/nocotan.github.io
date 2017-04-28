@@ -43,6 +43,8 @@ categories: 書籍
 
 #### [実践Vagrant](https://www.oreilly.co.jp/books/9784873116655/)
 
+#### [Web API: The Good Parts](https://www.oreilly.co.jp/books/9784873116860/)
+
 ### 論文
 
 #### [Spectral concentration and greedy k-clustering](https://arxiv.org/abs/1404.1008)
