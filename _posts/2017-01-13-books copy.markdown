@@ -31,6 +31,8 @@ categories: 書籍
 
 ### [情報工学 アルゴリズム (東京大学工学教程)](https://www.amazon.co.jp/%E6%83%85%E5%A0%B1%E5%B7%A5%E5%AD%A6-%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0-%E6%9D%B1%E4%BA%AC%E5%A4%A7%E5%AD%A6%E5%B7%A5%E5%AD%A6%E6%95%99%E7%A8%8B-%E6%B8%8B%E8%B0%B7-%E5%93%B2%E6%9C%97/dp/4621301136)
 
+### [世界で最も強力な9のアルゴリズム](https://www.amazon.co.jp/dp/B00FR78X64/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
+
 ### UNIX関連
 
 #### [LinuxサーバHacks―プロが使うテクニック&ツール100選](https://www.amazon.co.jp/Linux%E3%82%B5%E3%83%BC%E3%83%90Hacks%E2%80%95%E3%83%97%E3%83%AD%E3%81%8C%E4%BD%BF%E3%81%86%E3%83%86%E3%82%AF%E3%83%8B%E3%83%83%E3%82%AF-%E3%83%84%E3%83%BC%E3%83%AB100%E9%81%B8-%E3%83%AD%E3%83%96-%E3%83%95%E3%83%AA%E3%83%83%E3%82%B1%E3%83%B3%E3%82%AC%E3%83%BC/dp/487311151X)
