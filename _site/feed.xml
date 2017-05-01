@@ -6,9 +6,106 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 20 Apr 2017 15:13:02 +0900</pubDate>
-    <lastBuildDate>Thu, 20 Apr 2017 15:13:02 +0900</lastBuildDate>
+    <pubDate>Tue, 02 May 2017 00:35:40 +0900</pubDate>
+    <lastBuildDate>Tue, 02 May 2017 00:35:40 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>OpenSSL</title>
+        <description>&lt;p&gt;OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。
+SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
+クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。
+サーバは公開鍵の対となる秘密鍵で復号化する。SSLはWebで頻繁に使用されている。
+SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用した通信はhttps://(ポート番号443)となる。
+&lt;a href=&quot;https://www.openssl.org/&quot;&gt;OpenSSL&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;関連用語&quot;&gt;関連用語&lt;/h3&gt;
+
+&lt;h4 id=&quot;cacertification-authority&quot;&gt;CA(Certification Authority)&lt;/h4&gt;
+&lt;p&gt;SSLを使用するための証明書を発行する認証局。&lt;/p&gt;
+
+&lt;h4 id=&quot;crlcertificate-revocation-list&quot;&gt;CRL(Certificate Revocation List)&lt;/h4&gt;
+&lt;p&gt;証明書失効リスト。鍵の漏えいなどで鍵の信頼性が失われ、無効となった証明書のリストである。以下の二種類の失効理由がある。&lt;/p&gt;
+
+&lt;h4 id=&quot;csrcertificate-signing-request&quot;&gt;CSR(Certificate Signing Request)&lt;/h4&gt;
+&lt;p&gt;証明書を発行するために認証局(CA)に提出する証明書発行要求ファイル。&lt;/p&gt;
+
+&lt;h4 id=&quot;der&quot;&gt;DER&lt;/h4&gt;
+&lt;p&gt;証明書、秘密鍵、CSR、及びCRLファイルの形式。&lt;/p&gt;
+
+&lt;h4 id=&quot;desdata-encryption-standard&quot;&gt;DES(Data Encryption Standard)&lt;/h4&gt;
+&lt;p&gt;対称鍵暗号の一方式&lt;/p&gt;
+
+&lt;h4 id=&quot;pem&quot;&gt;PEM&lt;/h4&gt;
+&lt;p&gt;証明書、秘密鍵、CSR、及びCRLファイルの形式。DER形式のファイルをBase64にエンコー
+ド処理したテキスト形式のファイル。&lt;/p&gt;
+
+&lt;h4 id=&quot;rsarivest-shamir-adleman&quot;&gt;RSA(Rivest Shamir Adleman)&lt;/h4&gt;
+&lt;p&gt;桁数の大きい合成数の素因数分解問題が困難であることを安全性の根拠とした公開鍵暗
+号の一つ。&lt;/p&gt;
+
+&lt;h4 id=&quot;x509&quot;&gt;X.509&lt;/h4&gt;
+&lt;p&gt;電子証明書及び証明書執行リスト(CRL)の標準仕様。&lt;/p&gt;
+
+&lt;h3 id=&quot;インストール&quot;&gt;インストール&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ wget -P /usr/local/src https://www.openssl.org/source/openssl-1.1.0e.tar.gz
+$ cd /usr/local/src
+$ tar xzf openssl-1.1.0e.tar.gz
+$ cd openssl-1.1.0e.tar.gz
+$ ./config --prefix=/usr/local
+$ make
+$ make install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 01 May 2017 10:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/05/01/openssl-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/05/01/openssl-copy.html</guid>
+        
+        
+        <category>暗号</category>
+        
+      </item>
+    
+      <item>
+        <title>no matching function for call to transform</title>
+        <description>&lt;p&gt;以下のようなコードを書いた時に発生する。&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;そもそもtoupperはstd名前空間で定義されたものではなく、グローバル名前空間で定義されている。よって、以下のコードであれば正常に動作する。&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;toupper及びtolowerに関しては、名前空間を解決する際に、別のオーバーロードされた関数toupeer、tolowerが存在する。これによって、引数にstd::toupeerを渡すことによって参照しているオーバーロードを解決できなくなる。
+そのため、コンパイラはエラーメッセージに未解決のオーバーロードされた関数型を指定している。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 16 Apr 2017 10:00:00 +0900</pubDate>
+        <link>http://localhost:4000/c/c++/2017/04/16/cpptransform-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/c/c++/2017/04/16/cpptransform-copy.html</guid>
+        
+        
+        <category>C/C++</category>
+        
+      </item>
     
       <item>
         <title>誤り訂正出力符号による多クラス分類</title>
@@ -271,7 +368,7 @@ y&lt;sub&gt;i&lt;/sub&gt;を指すベクトルであるようなl x Cラベル�
 &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
             &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
         &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -653,146 +750,6 @@ scala&amp;gt; model.clusterCenters.foreach(println)
         <category>Spark</category>
         
         <category>機械学習</category>
-        
-      </item>
-    
-      <item>
-        <title>Apache Sparkのインストール</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://spark.apache.org/&quot;&gt;Apache Spark&lt;/a&gt;はAMPLabにて開発されたクラスターコンピューティングフレームワーク.&lt;br /&gt;
-今回はubuntu16.04にApache Spark-2.02をインストールする.&lt;br /&gt;
-Apache Sparkを動かすには、Javaをインストールする必要がある.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-add-repository ppa:webupd8team/java
-$ sudo apt-get update
-$ sudo apt-get install oracle-java7-installer
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;以下のコマンドで、Javaが正しくインストールされているかどうか確認する.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ java -version
-java version &quot;1.7.0_80&quot;
-Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
-Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Scalaをインストールする&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ wget http://downloads.lightbend.com/scala/2.12.1/scala-2.12.1.deb
-$ dpkg -i scala-2.12.1.deb
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Apache Spark2.02をインストールする.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz
-$ tar xvf spark-2.0.2-bin-hadoop2.7.tgz
-$ cp -rv spark-2.0.2-bin-hadoop2.7 /opt/spark
-$ cd /opt/spark
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;動作確認.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ./bin/spark-shell --master local[2]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Mon, 06 Mar 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spark/2017/03/06/sparkinstall-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/spark/2017/03/06/sparkinstall-copy.html</guid>
-        
-        
-        <category>Spark</category>
-        
-      </item>
-    
-      <item>
-        <title>Triple DES</title>
-        <description>&lt;p&gt;トリプルDES(Triple DES)は暗号アルゴリズムのうちの一つ。
-正式名称はTriple Data Encryption Algorithm。
-共通鍵ブロック暗号であるDESを三回施すアルゴリズム。&lt;/p&gt;
-
-&lt;h2 id=&quot;desdata-encryption-standard&quot;&gt;DES(Data Encryption Standard)&lt;/h2&gt;
-&lt;p&gt;平文を64ビット単位のブロックに分割して暗号化及び復号化を行う暗号アルゴリズム。
-(64ビットのうち8ビットをパリティチェックに使用するため鍵長は56ビット)。
-16ラウンドのうち、最初と最後に並び替え処理を置く。(IP/FP)。
-Feistel構造を使い、各ラウンドでの処理の前に、ブロックは32ビットずつに分割され、それらに対して異な
-る処理を施していく。
-処理の流れは以下のようになる。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;初期転置(IP)&lt;/li&gt;
-  &lt;li&gt;転置&lt;/li&gt;
-  &lt;li&gt;シフト演算&lt;/li&gt;
-  &lt;li&gt;ラウンド&lt;/li&gt;
-  &lt;li&gt;上記ラウンドを16回繰り返す&lt;/li&gt;
-  &lt;li&gt;最終転置(FP)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;des_decrypt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subkeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM_ROUNDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SUBKEY_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BLOCK_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BLOCK_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rev_subkeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM_ROUNDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SUBKEY_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;key_sched&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subkeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NUM_ROUNDS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NUM_ROUNDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;memcpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rev_subkeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subkeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBKEY_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;initial_permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;feistel_encrypt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;des_round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rev_subkeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;final_permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;triple-destriple-data-encryption-algorithm&quot;&gt;Triple DES(Triple Data Encryption Algorithm)&lt;/h2&gt;
-&lt;p&gt;DESを三回施すアルゴリズムであるが、単に平文に暗号化を繰り返すのではなく、
-処理の流れは以下のようになる。&lt;/p&gt;
-
-&lt;h3 id=&quot;暗号化&quot;&gt;暗号化&lt;/h3&gt;
-&lt;p&gt;Triple DESは8バイトDES暗号鍵を三つ用いて8バイトデータを復号化する。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;最初の鍵を使用して、データを暗号化する&lt;/li&gt;
-  &lt;li&gt;2番目の鍵を使用して、上記で得られた結果を復号する&lt;/li&gt;
-  &lt;li&gt;3番目の鍵を使用して、上記で得られた結果を暗号化する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;復号化&quot;&gt;復号化&lt;/h3&gt;
-&lt;p&gt;復号化は、暗号化の手順の逆をたどる&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;3番目の鍵を使用してデータを復号化する&lt;/li&gt;
-  &lt;li&gt;2番目の鍵を使用して、上記で得られた結果を暗号化する&lt;/li&gt;
-  &lt;li&gt;最初の鍵を使用して、上記で得られた結果を復号化する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;keying-options&quot;&gt;Keying options&lt;/h3&gt;
-&lt;p&gt;三つの鍵(k1, k2, k3)の組み合わせとして、以下の三種類が存在する&lt;/p&gt;
-
-&lt;h4 id=&quot;k1k2k3が全て異なる&quot;&gt;k1,k2,k3が全て異なる&lt;/h4&gt;
-&lt;p&gt;通称3TDEA, 3-Key。鍵長は168ビット。&lt;/p&gt;
-
-&lt;h4 id=&quot;k1k2が異なりk3とk1が同じ&quot;&gt;k1,k2が異なり、k3とk1が同じ&lt;/h4&gt;
-&lt;p&gt;中間一致攻撃(Meet-in-the-middle Attack)への耐性がある。鍵長は112ビット。&lt;/p&gt;
-
-&lt;h4 id=&quot;k1k2k3が全て同じ&quot;&gt;k1,k2,k3が全て同じ&lt;/h4&gt;
-&lt;p&gt;DESと同一の結果が得られる。鍵長は56ビット。&lt;/p&gt;
-
-&lt;h3 id=&quot;鍵強度&quot;&gt;鍵強度&lt;/h3&gt;
-&lt;p&gt;Triple DESは168ビットの鍵長を持っているが、実際の鍵強度は112ビットとなる。
-これは既知の攻撃手法である中間一致攻撃が存在するためである。
-中間一致攻撃とは、攻撃者が平文と暗号文を持っている場合、任意の暗号鍵x平文の暗号化結果と任意の暗号鍵x暗号文の復号結果を使い、鍵を特定するという攻撃手法である。
-ちなみに112ビットの鍵強度を持つ暗号の解読時間は約30兆年とされている。&lt;/p&gt;
-</description>
-        <pubDate>Sat, 25 Feb 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/02/25/tripledes-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/02/25/tripledes-copy.html</guid>
-        
-        
-        <category>暗号</category>
         
       </item>
     

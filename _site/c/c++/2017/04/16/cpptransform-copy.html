@@ -5,33 +5,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>std::shared_mutex</title>
-  <meta name="description" content="C++14以降で使用可能。shared_mutexは、共有データが複数のスレッドによって同時にアクセスされるのを防ぐためのミューテックスクラスを提供する。排他アクセスを容易にする他のミューテクス型とは異なり、shared_mutexには二つのアクセスレベルがある。">
+  <title>no matching function for call to transform</title>
+  <meta name="description" content="以下のようなコードを書いた時に発生する。">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@nocotan">
   <meta name="twitter:creator" content="@nocotan">
   
-    <meta name="twitter:title" content="std::shared_mutex">
+    <meta name="twitter:title" content="no matching function for call to transform">
   
   
-    <meta name="twitter:url" content="http://localhost:4000/c/c++/2017/02/21/sharedmutex-copy.html">
+    <meta name="twitter:url" content="http://localhost:4000/c/c++/2017/04/16/cpptransform-copy.html">
   
   
     <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
 ">
   
-  <meta name="twitter:description" content="C++14以降で使用可能。
-shared_mutexは、共有データが複数のスレッドによって同時にアクセスされるのを防ぐための
-ミューテックスクラスを提供する。排他アクセスを容易にする他のミューテクス型とは異なり、
-shared_mutexには二つのアクセスレベルがある。
+  <meta name="twitter:description" content="以下のようなコードを書いた時に発生する。
 
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;algorithm&amp;gt;
 
-  shared: 複数のスレッドが同じmutexの所有権を共有できる
-  exclusive: 一つのスレッドだけが...">
+int main() {
+    std::string s=&quot;Hello&quot;;
+    std::transform(s.begin(), s.end(), s.begin(), std::...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/c/c++/2017/02/21/sharedmutex-copy.html">
+  <link rel="canonical" href="http://localhost:4000/c/c++/2017/04/16/cpptransform-copy.html">
   <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/scripts/pithy.js"></script>
@@ -105,48 +105,37 @@ shared_mutexには二つのアクセスレベルがある。
 <div class="post">
   <br>
   <header class="post-header">
-    <h1 class="post-title">std::shared_mutex</h1>
-    <p class="post-meta">Feb 21, 2017</p>
+    <h1 class="post-title">no matching function for call to transform</h1>
+    <p class="post-meta">Apr 16, 2017</p>
   </header>
 
   <article class="post-content">
-    <p>C++14以降で使用可能。
-shared_mutexは、共有データが複数のスレッドによって同時にアクセスされるのを防ぐための
-ミューテックスクラスを提供する。排他アクセスを容易にする他のミューテクス型とは異なり、
-shared_mutexには二つのアクセスレベルがある。</p>
-
-<ul>
-  <li>shared: 複数のスレッドが同じmutexの所有権を共有できる</li>
-  <li>exclusive: 一つのスレッドだけがmutexを所有できる</li>
-</ul>
-
-<p>共有ミューテクスは、通常複数の読み取り手が同時にデータの競合を起こすことなく同じリソースに
-アクセスできる状況で使用されるが、単一の書き込み手のみアクセスを許される。</p>
+    <p>以下のようなコードを書いた時に発生する。</p>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
-#include &lt;shared_mutex&gt;
-</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-
-<span class="k">class</span> <span class="nc">X</span> <span class="p">{</span>
-    <span class="k">private</span><span class="o">:</span>
-        <span class="k">mutable</span> <span class="n">shared_timed_mutex</span> <span class="n">mut</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="k">public</span><span class="o">:</span>
-        <span class="kt">int</span> <span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
-            <span class="n">shared_lock</span><span class="o">&lt;</span><span class="n">shared_timed_mutex</span><span class="o">&gt;</span> <span class="n">lock</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">mut</span><span class="p">);</span>
-            <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
-        <span class="p">}</span>
-<span class="p">};</span>
-
+#include &lt;algorithm&gt;
+</span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">X</span> <span class="n">x</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="o">=</span><span class="s">"Hello"</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">toupper</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
 </div>
+
+<p>そもそもtoupperはstd名前空間で定義されたものではなく、グローバル名前空間で定義されている。よって、以下のコードであれば正常に動作する。</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="o">=</span><span class="s">"Hello"</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="o">::</span><span class="n">toupper</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>toupper及びtolowerに関しては、名前空間を解決する際に、別のオーバーロードされた関数toupeer、tolowerが存在する。これによって、引数にstd::toupeerを渡すことによって参照しているオーバーロードを解決できなくなる。
+そのため、コンパイラはエラーメッセージに未解決のオーバーロードされた関数型を指定している。</p>
 
   </article>
 </div>

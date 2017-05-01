@@ -5,33 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>std::enable_shared_from_this</title>
-  <meta name="description" content="クラスにおいて,thisへのshared_ptrを扱うためのもの。thisポインタをshared_ptr(this)とすると、参照カウントが増えず、所有権管理が機能しなくなる。enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、shared_from_...">
+  <title>OpenSSL</title>
+  <meta name="description" content="OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。サーバは公...">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@nocotan">
   <meta name="twitter:creator" content="@nocotan">
   
-    <meta name="twitter:title" content="std::enable_shared_from_this">
+    <meta name="twitter:title" content="OpenSSL">
   
   
-    <meta name="twitter:url" content="http://localhost:4000/c/c++/2017/01/31/enableshared-copy.html">
+    <meta name="twitter:url" content="http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/05/01/openssl-copy.html">
   
   
     <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
 ">
   
-  <meta name="twitter:description" content="クラスにおいて,thisへのshared_ptrを扱うためのもの。
-thisポインタをshared_ptr(this)とすると、参照カウントが増えず、所有権管理が機能しなくなる。
-enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、
-shared_from_this()が使用できるようになる。C++11以降で対応。
-
-コード例
-
+  <meta name="twitter:description" content="OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。
+SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
+クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。
+サーバは公開鍵の対となる秘密鍵で復号化する。SSLはWebで頻繁に使用されている。
 ...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/c/c++/2017/01/31/enableshared-copy.html">
+  <link rel="canonical" href="http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/05/01/openssl-copy.html">
   <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/scripts/pithy.js"></script>
@@ -105,25 +102,58 @@ shared_from_this()が使用できるようになる。C++11以降で対応。
 <div class="post">
   <br>
   <header class="post-header">
-    <h1 class="post-title">std::enable_shared_from_this</h1>
-    <p class="post-meta">Jan 31, 2017</p>
+    <h1 class="post-title">OpenSSL</h1>
+    <p class="post-meta">May 1, 2017</p>
   </header>
 
   <article class="post-content">
-    <p>クラスにおいて,thisへのshared_ptr<T>を扱うためのもの。
-thisポインタをshared_ptr<T>(this)とすると、参照カウントが増えず、所有権管理が機能しなくなる。
-enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、
-shared_from_this()が使用できるようになる。C++11以降で対応。</T></T></p>
+    <p>OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。
+SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
+クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。
+サーバは公開鍵の対となる秘密鍵で復号化する。SSLはWebで頻繁に使用されている。
+SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用した通信はhttps://(ポート番号443)となる。
+<a href="https://www.openssl.org/">OpenSSL</a></p>
 
-<h4 id="コード例">コード例</h4>
+<h3 id="関連用語">関連用語</h3>
 
-<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="k">struct</span> <span class="n">X</span> <span class="o">:</span> <span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">enabled_shared_from_this</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;</span> <span class="p">{</span>
-        <span class="kt">void</span> <span class="n">f</span><span class="p">()</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">shared_from_this</span><span class="p">();</span>
-        <span class="p">}</span>
-<span class="p">};</span>
+<h4 id="cacertification-authority">CA(Certification Authority)</h4>
+<p>SSLを使用するための証明書を発行する認証局。</p>
+
+<h4 id="crlcertificate-revocation-list">CRL(Certificate Revocation List)</h4>
+<p>証明書失効リスト。鍵の漏えいなどで鍵の信頼性が失われ、無効となった証明書のリストである。以下の二種類の失効理由がある。</p>
+
+<h4 id="csrcertificate-signing-request">CSR(Certificate Signing Request)</h4>
+<p>証明書を発行するために認証局(CA)に提出する証明書発行要求ファイル。</p>
+
+<h4 id="der">DER</h4>
+<p>証明書、秘密鍵、CSR、及びCRLファイルの形式。</p>
+
+<h4 id="desdata-encryption-standard">DES(Data Encryption Standard)</h4>
+<p>対称鍵暗号の一方式</p>
+
+<h4 id="pem">PEM</h4>
+<p>証明書、秘密鍵、CSR、及びCRLファイルの形式。DER形式のファイルをBase64にエンコー
+ド処理したテキスト形式のファイル。</p>
+
+<h4 id="rsarivest-shamir-adleman">RSA(Rivest Shamir Adleman)</h4>
+<p>桁数の大きい合成数の素因数分解問題が困難であることを安全性の根拠とした公開鍵暗
+号の一つ。</p>
+
+<h4 id="x509">X.509</h4>
+<p>電子証明書及び証明書執行リスト(CRL)の標準仕様。</p>
+
+<h3 id="インストール">インストール</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ wget -P /usr/local/src https://www.openssl.org/source/openssl-1.1.0e.tar.gz
+$ cd /usr/local/src
+$ tar xzf openssl-1.1.0e.tar.gz
+$ cd openssl-1.1.0e.tar.gz
+$ ./config --prefix=/usr/local
+$ make
+$ make install
 </code></pre>
 </div>
+
 
   </article>
 </div>
