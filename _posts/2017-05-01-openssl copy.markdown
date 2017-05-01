@@ -2,7 +2,7 @@
 layout: post
 title:  "OpenSSL"
 date:   2017-05-01 01:00:00
-categories: 暗号
+categories: 通信/ネットワーク
 ---
 OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。
 SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
