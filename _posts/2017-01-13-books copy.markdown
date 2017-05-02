@@ -7,7 +7,7 @@ categories: 書籍
 
 2017年に読んだ本を列挙.(随時更新)
 
-### 機械学習関連
+### 機械学習
 
 #### [ITエンジニアのための機械学習理論入門](https://www.amazon.co.jp/dp/B016Q22IX2/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
 
@@ -21,7 +21,7 @@ categories: 書籍
 
 #### [関係データ学習](http://www.kspub.co.jp/book/detail/1529212.html)
 
-### アルゴリズム関連
+### アルゴリズム
 
 #### [プログラミングコンテストチャレンジブック](http://tatsu-zine.com/books/procon-challenge)
 
@@ -35,11 +35,15 @@ categories: 書籍
 
 ### [アルゴリズムとデータ構造のエッセンス](https://www.amazon.co.jp/%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0%E3%81%A8%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%AE%E3%82%A8%E3%83%83%E3%82%BB%E3%83%B3%E3%82%B9-%E5%A4%A7%E6%B2%A2-%E8%A3%95/dp/4785631554)
 
-### UNIX関連
+### UNIX
 
 #### [LinuxサーバHacks―プロが使うテクニック&ツール100選](https://www.amazon.co.jp/Linux%E3%82%B5%E3%83%BC%E3%83%90Hacks%E2%80%95%E3%83%97%E3%83%AD%E3%81%8C%E4%BD%BF%E3%81%86%E3%83%86%E3%82%AF%E3%83%8B%E3%83%83%E3%82%AF-%E3%83%84%E3%83%BC%E3%83%AB100%E9%81%B8-%E3%83%AD%E3%83%96-%E3%83%95%E3%83%AA%E3%83%83%E3%82%B1%E3%83%B3%E3%82%AC%E3%83%BC/dp/487311151X)
 
-### テスト関連
+### 検索
+
+#### [検索エンジンはなぜ見つけるのか](https://www.amazon.co.jp/dp/B00IYE7ROQ/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
+
+### テスト
 
 #### [マインドマップから始めるソフトウェアテスト](https://www.amazon.co.jp/%E3%83%9E%E3%82%A4%E3%83%B3%E3%83%89%E3%83%9E%E3%83%83%E3%83%97%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%86%E3%82%B9%E3%83%88-%E6%B1%A0%E7%94%B0-%E6%9A%81/dp/4774131318)
 
