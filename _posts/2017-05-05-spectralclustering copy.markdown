@@ -22,25 +22,25 @@ categories: 機械学習
 #### Cut
 
 <br>
-　　　　cut(P) = 1/2ΣΣx<sub>ij</sub>  
+　cut(P) = 1/2ΣΣx<sub>ij</sub>  
 <br>
 
 #### RatioCut
 
 <br>
-　　　　RatioCut(P) = Σcut(P<sub>k</sub>)/|P<sub>k</sub>|  
+　RatioCut(P) = Σcut(P<sub>k</sub>)/|P<sub>k</sub>|  
 <br>
 
 #### RatioCut
 
 <br>
-　　　　RatioCut(P) = Σcut(P<sub>k</sub>)  
+　RatioCut(P) = Σcut(P<sub>k</sub>)  
 <br>
 
 #### NCut
 
 <br>
-　　　　NCut(P) = Σcut(P<sub>k</sub>)/vol(P<sub>k</sub>), vol(P) = Σx<sub>ij</sub>  
+　NCut(P) = Σcut(P<sub>k</sub>)/vol(P<sub>k</sub>), vol(P) = Σx<sub>ij</sub>  
 <br>
 
 ### アルゴリズム
@@ -53,17 +53,34 @@ categories: 機械学習
 ### グラフラプラシアン
 
 <br>
-　　　　L = D - W  
+　L = D - W  
 <br>
 
 #### 対称正規化グラフラプラシアン
 
 <br>
-　　　　L<sub>sym</sub> = D<sup>1/2</sup>LD<sup>1/2</sup>  
+　L<sub>sym</sub> = D<sup>1/2</sup>LD<sup>1/2</sup>  
 <br>
 
 #### 酔歩正規化グラフラプラシアン
 
 <br>
-　　　　L<sub>rw</sub> = D<sup>-1</sup>L  
+　L<sub>rw</sub> = D<sup>-1</sup>L  
 <br>
+
+### サンプル
+
+```python
+from sklearn import (manifold, datasets, decomposition)
+from sklearn import cluster
+
+X_spec = manifold.SpectralEmbedding(n_components=2,
+affinity='nearest_neighbors', gamma=None, random_state=None, eigen_solver=None,
+n_neighbors=5).fit_transform(X_train)
+
+spectral = cluster.SpectralClustering(n_clusters=10, eigen_solver='arpack',
+affinity="nearest_neighbors")
+
+X = spectral.fit(X_spec)
+y_pred = spectral.fit_predict(X_spec)
+```
