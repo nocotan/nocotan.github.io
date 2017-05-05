@@ -5,30 +5,54 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>OpenSSL</title>
-  <meta name="description" content="OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。サーバは公...">
+  <title>スペクトラルクラスタリング</title>
+  <meta name="description" content="クラスタリングをグラフの分割問題として扱う手法。入力データをグラフとして表現し、評価関数に基づいてグラフカットを行う。">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@nocotan">
   <meta name="twitter:creator" content="@nocotan">
   
-    <meta name="twitter:title" content="OpenSSL">
+    <meta name="twitter:title" content="スペクトラルクラスタリング">
   
   
-    <meta name="twitter:url" content="http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/05/01/openssl-copy.html">
+    <meta name="twitter:url" content="http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/05/05/spectralclustering-copy.html">
   
   
     <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
 ">
   
-  <meta name="twitter:description" content="OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。
-SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
-クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。
-サーバは公開鍵の対となる秘密鍵で復号化する。SSLはWebで頻繁に使用されている。
-...">
+  <meta name="twitter:description" content="クラスタリングをグラフの分割問題として扱う手法。
+入力データをグラフとして表現し、評価関数に基づいてグラフカットを行う。
+
+
+
+
+
+評価関数
+以下の関数を最小化することを目的とする。
+
+
+  RatioCut
+  MCut
+  NCut
+
+
+Cut
+
+
+　　　　cut(P) = 1/2ΣΣxij
+
+
+RatioCut
+
+
+　　　　RatioCut(P) = Σcut(Pk)/|Pk|
+
+
+R...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/05/01/openssl-copy.html">
+  <link rel="canonical" href="http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/05/05/spectralclustering-copy.html">
   <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/scripts/pithy.js"></script>
@@ -102,58 +126,77 @@ SSLは安全な通信を行うためにサーバとクライアント間で暗�
 <div class="post">
   <br>
   <header class="post-header">
-    <h1 class="post-title">OpenSSL</h1>
-    <p class="post-meta">May 1, 2017</p>
+    <h1 class="post-title">スペクトラルクラスタリング</h1>
+    <p class="post-meta">May 5, 2017</p>
   </header>
 
   <article class="post-content">
-    <p>OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。
-SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
-クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。
-サーバは公開鍵の対となる秘密鍵で復号化する。SSLはWebで頻繁に使用されている。
-SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用した通信はhttps://(ポート番号443)となる。
-<a href="https://www.openssl.org/">OpenSSL</a></p>
+    <p>クラスタリングをグラフの分割問題として扱う手法。
+入力データをグラフとして表現し、評価関数に基づいてグラフカットを行う。</p>
 
-<h3 id="関連用語">関連用語</h3>
+<p><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170505/graph1.png" alt="画像" /></p>
 
-<h4 id="cacertification-authority">CA(Certification Authority)</h4>
-<p>SSLを使用するための証明書を発行する認証局。</p>
+<p><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170505/graph2.png" alt="画像" /></p>
 
-<h4 id="crlcertificate-revocation-list">CRL(Certificate Revocation List)</h4>
-<p>証明書失効リスト。鍵の漏えいなどで鍵の信頼性が失われ、無効となった証明書のリストである。以下の二種類の失効理由がある。</p>
+<h3 id="評価関数">評価関数</h3>
+<p>以下の関数を最小化することを目的とする。</p>
 
-<h4 id="csrcertificate-signing-request">CSR(Certificate Signing Request)</h4>
-<p>証明書を発行するために認証局(CA)に提出する証明書発行要求ファイル。</p>
+<ul>
+  <li>RatioCut</li>
+  <li>MCut</li>
+  <li>NCut</li>
+</ul>
 
-<h4 id="der">DER</h4>
-<p>証明書、秘密鍵、CSR、及びCRLファイルの形式。</p>
+<h4 id="cut">Cut</h4>
 
-<h4 id="desdata-encryption-standard">DES(Data Encryption Standard)</h4>
-<p>対称鍵暗号の一方式</p>
+<p><br />
+　　　　cut(P) = 1/2ΣΣx<sub>ij</sub><br />
+<br /></p>
 
-<h4 id="pem">PEM</h4>
-<p>証明書、秘密鍵、CSR、及びCRLファイルの形式。DER形式のファイルをBase64にエンコー
-ド処理したテキスト形式のファイル。</p>
+<h4 id="ratiocut">RatioCut</h4>
 
-<h4 id="rsarivest-shamir-adleman">RSA(Rivest Shamir Adleman)</h4>
-<p>桁数の大きい合成数の素因数分解問題が困難であることを安全性の根拠とした公開鍵暗
-号の一つ。</p>
+<p><br />
+　　　　RatioCut(P) = Σcut(P<sub>k</sub>)/|P<sub>k</sub>|<br />
+<br /></p>
 
-<h4 id="x509">X.509</h4>
-<p>電子証明書及び証明書執行リスト(CRL)の標準仕様。</p>
+<h4 id="ratiocut-1">RatioCut</h4>
 
-<h3 id="インストール">インストール</h3>
+<p><br />
+　　　　RatioCut(P) = Σcut(P<sub>k</sub>)<br />
+<br /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ wget -P /usr/local/src https://www.openssl.org/source/openssl-1.1.0e.tar.gz
-$ cd /usr/local/src
-$ tar xzf openssl-1.1.0e.tar.gz
-$ cd openssl-1.1.0e.tar.gz
-$ ./config --prefix=/usr/local
-$ make
-$ make install
-</code></pre>
-</div>
+<h4 id="ncut">NCut</h4>
 
+<p><br />
+　　　　NCut(P) = Σcut(P<sub>k</sub>)/vol(P<sub>k</sub>), vol(P) = Σx<sub>ij</sub><br />
+<br /></p>
+
+<h3 id="アルゴリズム">アルゴリズム</h3>
+<ul>
+  <li>グラフラプラシアンL=D<sup>-1</sup>LD<sup>-1</sup>を求める</li>
+  <li>Lの固有値問題を解く</li>
+  <li>Fielderベクトルu<sub>2</sub>を求める</li>
+  <li>q = D<sup>-1/2</sup>u<sub>2</sub>を求める</li>
+  <li>qをソートしクラスタリングする</li>
+</ul>
+
+<h3 id="グラフラプラシアン">グラフラプラシアン</h3>
+
+<p><br />
+　　　　L = D - W<br />
+<br /></p>
+
+<h4 id="対称正規化グラフラプラシアン">対称正規化グラフラプラシアン</h4>
+
+<p><br />
+　　　　L<sub>sym</sub> = D<sup>1/2</sup>LD<sup>1/2</sup><br />
+<br /></p>
+
+<h4 id="酔歩正規化グラフラプラシアン">酔歩正規化グラフラプラシアン</h4>
+
+<p><br />
+　　　　L<sub>rw</sub> = D<sup>-1</sup>L<br />
+<br /></p>
 
   </article>
 </div>

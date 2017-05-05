@@ -6,9 +6,87 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 02 May 2017 00:35:40 +0900</pubDate>
-    <lastBuildDate>Tue, 02 May 2017 00:35:40 +0900</lastBuildDate>
+    <pubDate>Sat, 06 May 2017 05:47:42 +0900</pubDate>
+    <lastBuildDate>Sat, 06 May 2017 05:47:42 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>スペクトラルクラスタリング</title>
+        <description>&lt;p&gt;クラスタリングをグラフの分割問題として扱う手法。
+入力データをグラフとして表現し、評価関数に基づいてグラフカットを行う。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170505/graph1.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170505/graph2.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;評価関数&quot;&gt;評価関数&lt;/h3&gt;
+&lt;p&gt;以下の関数を最小化することを目的とする。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RatioCut&lt;/li&gt;
+  &lt;li&gt;MCut&lt;/li&gt;
+  &lt;li&gt;NCut&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;cut&quot;&gt;Cut&lt;/h4&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　　　cut(P) = 1/2ΣΣx&lt;sub&gt;ij&lt;/sub&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ratiocut&quot;&gt;RatioCut&lt;/h4&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　　　RatioCut(P) = Σcut(P&lt;sub&gt;k&lt;/sub&gt;)/|P&lt;sub&gt;k&lt;/sub&gt;|&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ratiocut-1&quot;&gt;RatioCut&lt;/h4&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　　　RatioCut(P) = Σcut(P&lt;sub&gt;k&lt;/sub&gt;)&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ncut&quot;&gt;NCut&lt;/h4&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　　　NCut(P) = Σcut(P&lt;sub&gt;k&lt;/sub&gt;)/vol(P&lt;sub&gt;k&lt;/sub&gt;), vol(P) = Σx&lt;sub&gt;ij&lt;/sub&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;アルゴリズム&quot;&gt;アルゴリズム&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;グラフラプラシアンL=D&lt;sup&gt;-1&lt;/sup&gt;LD&lt;sup&gt;-1&lt;/sup&gt;を求める&lt;/li&gt;
+  &lt;li&gt;Lの固有値問題を解く&lt;/li&gt;
+  &lt;li&gt;Fielderベクトルu&lt;sub&gt;2&lt;/sub&gt;を求める&lt;/li&gt;
+  &lt;li&gt;q = D&lt;sup&gt;-1/2&lt;/sup&gt;u&lt;sub&gt;2&lt;/sub&gt;を求める&lt;/li&gt;
+  &lt;li&gt;qをソートしクラスタリングする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;グラフラプラシアン&quot;&gt;グラフラプラシアン&lt;/h3&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　　　L = D - W&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;対称正規化グラフラプラシアン&quot;&gt;対称正規化グラフラプラシアン&lt;/h4&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　　　L&lt;sub&gt;sym&lt;/sub&gt; = D&lt;sup&gt;1/2&lt;/sup&gt;LD&lt;sup&gt;1/2&lt;/sup&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;酔歩正規化グラフラプラシアン&quot;&gt;酔歩正規化グラフラプラシアン&lt;/h4&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　　　L&lt;sub&gt;rw&lt;/sub&gt; = D&lt;sup&gt;-1&lt;/sup&gt;L&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 05 May 2017 10:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/05/05/spectralclustering-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/05/05/spectralclustering-copy.html</guid>
+        
+        
+        <category>機械学習</category>
+        
+      </item>
     
       <item>
         <title>OpenSSL</title>
@@ -16,7 +94,8 @@
 SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
 クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。
 サーバは公開鍵の対となる秘密鍵で復号化する。SSLはWebで頻繁に使用されている。
-SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用した通信はhttps://(ポート番号443)となる。
+SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用した通信はhttps://(ポート番号443)となる。&lt;br /&gt;
+2017/2/16時点で、バグやセキュリティの修正を含むOpenSSL 1.1.0eが利用可能となった。&lt;br /&gt;
 &lt;a href=&quot;https://www.openssl.org/&quot;&gt;OpenSSL&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;関連用語&quot;&gt;関連用語&lt;/h3&gt;
@@ -61,11 +140,11 @@ $ make install
 
 </description>
         <pubDate>Mon, 01 May 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/05/01/openssl-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%E6%9A%97%E5%8F%B7/2017/05/01/openssl-copy.html</guid>
+        <link>http://localhost:4000/%E9%80%9A%E4%BF%A1/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/2017/05/01/openssl-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E9%80%9A%E4%BF%A1/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/2017/05/01/openssl-copy.html</guid>
         
         
-        <category>暗号</category>
+        <category>通信/ネットワーク</category>
         
       </item>
     
@@ -696,60 +775,6 @@ $ bash make-dist.sh
         
         
         <category>Spark</category>
-        
-      </item>
-    
-      <item>
-        <title>Apache Sparkでk-means</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://spark.apache.org/&quot;&gt;Apache Spark&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://nocotan.github.io/spark/2017/03/06/sparkinstall-copy.html&quot;&gt;Sparkのインストール&lt;/a&gt;は完了しているものとする.&lt;/p&gt;
-
-&lt;h3 id=&quot;k-means&quot;&gt;k-means&lt;/h3&gt;
-&lt;p&gt;k-meansは、データセットをあらかじめ決めておいたクラスタ数にクラスタリングする一
-般的なクラスタリングアルゴリズムのうちの一つ.
-MLlibの実装には、kmeans||と呼ばれる、k-means++の並列化変形が含まれる.&lt;/p&gt;
-
-&lt;h3 id=&quot;例&quot;&gt;例&lt;/h3&gt;
-
-&lt;p&gt;org.apache.spark.ml.clustering.KMeansをインポートすることでk-meansが使用できる.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;2行目はデータセットの読み込みを行う.データセットのパスは適宜変更する.&lt;/li&gt;
-  &lt;li&gt;3行目でクラスタ数、及びランダムシードを与えている.&lt;/li&gt;
-  &lt;li&gt;4行目でデータセットに対して学習させる.&lt;/li&gt;
-  &lt;li&gt;最後の行では各クラスタの重心を表示している.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scala&amp;gt; import import org.apache.spark.ml.clustering.KMeans
-import org.apache.spark.ml.clustering.KMeans
-
-scala&amp;gt; val dataset = spark.read.format(&quot;libsvm&quot;).load(&quot;/opt/spark/data/mllib/sample_kmeans_data.txt&quot;)
-dataset: org.apache.spark.sql.DataFrame = [label: double, features: vector]
-
-scala&amp;gt; val kmeans = new KMeans().setK(2).setSeed(1L)
-kmeans: org.apache.spark.ml.clustering.KMeans = kmeans_480ce4224497
-
-scala&amp;gt; val model = kmeans.fit(dataset)
-model: org.apache.spark.ml.clustering.KMeansModel = kmeans_480ce4224497
-
-scala&amp;gt; val WSSSE = model.computeCost(dataset)
-WSSE: Double = 0.11999999999994547
-
-scala&amp;gt; model.clusterCenters.foreach(println)
-[9.1,9.1,9.1]
-[0.1,0.1,0.1]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;使用したコードは&lt;a href=&quot;https://github.com/nocotan/spark-examples/blob/master/examples/KMeansSample.scala&quot;&gt;こちら&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 07 Mar 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spark/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/03/07/sparkkmeans-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/spark/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/03/07/sparkkmeans-copy.html</guid>
-        
-        
-        <category>Spark</category>
-        
-        <category>機械学習</category>
         
       </item>
     
