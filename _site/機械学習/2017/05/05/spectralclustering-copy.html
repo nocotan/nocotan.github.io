@@ -39,16 +39,16 @@
 Cut
 
 
-　　　　cut(P) = 1/2ΣΣxij
+　cut(P) = 1/2ΣΣxij
 
 
 RatioCut
 
 
-　　　　RatioCut(P) = Σcut(Pk)/|Pk|
+　RatioCut(P) = Σcut(Pk)/|Pk|
 
 
-R...">
+RatioCu...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
@@ -150,30 +150,34 @@ R...">
 <h4 id="cut">Cut</h4>
 
 <p><br />
-　　　　cut(P) = 1/2ΣΣx<sub>ij</sub><br />
+　cut(P) = 1/2ΣΣx<sub>ij</sub><br />
 <br /></p>
 
 <h4 id="ratiocut">RatioCut</h4>
 
 <p><br />
-　　　　RatioCut(P) = Σcut(P<sub>k</sub>)/|P<sub>k</sub>|<br />
+　RatioCut(P) = Σcut(P<sub>k</sub>)/|P<sub>k</sub>|<br />
 <br /></p>
 
 <h4 id="ratiocut-1">RatioCut</h4>
 
 <p><br />
-　　　　RatioCut(P) = Σcut(P<sub>k</sub>)<br />
+　RatioCut(P) = Σcut(P<sub>k</sub>)<br />
 <br /></p>
 
 <h4 id="ncut">NCut</h4>
 
 <p><br />
-　　　　NCut(P) = Σcut(P<sub>k</sub>)/vol(P<sub>k</sub>), vol(P) = Σx<sub>ij</sub><br />
+　NCut(P) = Σcut(P<sub>k</sub>)/vol(P<sub>k</sub>), vol(P) = Σx<sub>ij</sub><br />
 <br /></p>
 
 <h3 id="アルゴリズム">アルゴリズム</h3>
+<p>各データをノードとみなし、それらの間をエッジで結ぶことでグラフとして表現できる
+。ここで、エッジの両端のノードの類似度をエッジの重みとすると、重みの小さいエッジでグラ
+フを切断する問題に帰着する。</p>
+
 <ul>
-  <li>グラフラプラシアンL=D<sup>-1</sup>LD<sup>-1</sup>を求める</li>
+  <li>グラフラプラシアンL=D<sup>-1</sup>WD<sup>-1</sup>を求める</li>
   <li>Lの固有値問題を解く</li>
   <li>Fielderベクトルu<sub>2</sub>を求める</li>
   <li>q = D<sup>-1/2</sup>u<sub>2</sub>を求める</li>
@@ -183,20 +187,37 @@ R...">
 <h3 id="グラフラプラシアン">グラフラプラシアン</h3>
 
 <p><br />
-　　　　L = D - W<br />
+　L = D - W<br />
 <br /></p>
 
 <h4 id="対称正規化グラフラプラシアン">対称正規化グラフラプラシアン</h4>
 
 <p><br />
-　　　　L<sub>sym</sub> = D<sup>1/2</sup>LD<sup>1/2</sup><br />
+　L<sub>sym</sub> = D<sup>1/2</sup>WD<sup>1/2</sup><br />
 <br /></p>
 
 <h4 id="酔歩正規化グラフラプラシアン">酔歩正規化グラフラプラシアン</h4>
 
 <p><br />
-　　　　L<sub>rw</sub> = D<sup>-1</sup>L<br />
+　L<sub>rw</sub> = D<sup>-1</sup>W<br />
 <br /></p>
+
+<h3 id="サンプル">サンプル</h3>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="p">(</span><span class="n">manifold</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">decomposition</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span>
+
+<span class="n">X_spec</span> <span class="o">=</span> <span class="n">manifold</span><span class="o">.</span><span class="n">SpectralEmbedding</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">affinity</span><span class="o">=</span><span class="s">'nearest_neighbors'</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">eigen_solver</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+<span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="n">spectral</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">SpectralClustering</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">eigen_solver</span><span class="o">=</span><span class="s">'arpack'</span><span class="p">,</span>
+<span class="n">affinity</span><span class="o">=</span><span class="s">"nearest_neighbors"</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">spectral</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_spec</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">spectral</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_spec</span><span class="p">)</span>
+</code></pre>
+</div>
 
   </article>
 </div>
