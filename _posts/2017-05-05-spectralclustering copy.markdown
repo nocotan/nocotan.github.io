@@ -44,7 +44,11 @@ categories: 機械学習
 <br>
 
 ### アルゴリズム
-* グラフラプラシアンL=D<sup>-1</sup>LD<sup>-1</sup>を求める
+各データをノードとみなし、それらの間をエッジで結ぶことでグラフとして表現できる
+。ここで、エッジの両端のノードの類似度をエッジの重みとすると、重みの小さいエッジでグラ
+フを切断する問題に帰着する。
+
+* グラフラプラシアンL=D<sup>-1</sup>WD<sup>-1</sup>を求める
 * Lの固有値問題を解く
 * Fielderベクトルu<sub>2</sub>を求める
 * q = D<sup>-1/2</sup>u<sub>2</sub>を求める
@@ -59,13 +63,13 @@ categories: 機械学習
 #### 対称正規化グラフラプラシアン
 
 <br>
-　L<sub>sym</sub> = D<sup>1/2</sup>LD<sup>1/2</sup>  
+　L<sub>sym</sub> = D<sup>1/2</sup>WD<sup>1/2</sup>  
 <br>
 
 #### 酔歩正規化グラフラプラシアン
 
 <br>
-　L<sub>rw</sub> = D<sup>-1</sup>L  
+　L<sub>rw</sub> = D<sup>-1</sup>W  
 <br>
 
 ### サンプル
