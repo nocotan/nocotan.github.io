@@ -6,9 +6,136 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 May 2017 04:10:33 +0900</pubDate>
-    <lastBuildDate>Sun, 07 May 2017 04:10:33 +0900</lastBuildDate>
+    <pubDate>Sun, 07 May 2017 06:30:50 +0900</pubDate>
+    <lastBuildDate>Sun, 07 May 2017 06:30:50 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>C++17</title>
+        <description>&lt;p&gt;C++17(またはC++1z)は、C++のISO/IEC規格の次期改訂版の非公式名である。C++17の仕様
+は、2017年3月にInternational Standard Draftの段階に達している。このバージョンは
+、策定中はC++1zと呼ばれていた。
+以下にC++17より追加される機能及びライブラリを紹介する。&lt;/p&gt;
+
+&lt;h3 id=&quot;畳み込み式&quot;&gt;畳み込み式&lt;/h3&gt;
+&lt;p&gt;畳み込み式は、二項演算子に対してテンプレートパラメータパックの畳み込みを行う。
+畳み込み式は括弧で囲まれる必要がある&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(...&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;便利。&lt;/p&gt;
+
+&lt;h3 id=&quot;コンパイル時ラムダ&quot;&gt;コンパイル時ラムダ&lt;/h3&gt;
+&lt;p&gt;constexprを使用してコンパイル時に評価されるラムダ式。&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;constexpr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;constexpr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;twice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;コンパイル時if&quot;&gt;コンパイル時if&lt;/h3&gt;
+&lt;p&gt;constexprを使用してコンパイル時に評価されるif式。if constexpr (cond)と記述する
+。&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typename&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;constexpr&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_is_integral&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;constexpr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_integral&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;クラステンプレートに対するテンプレート引数の自動推論&quot;&gt;クラステンプレートに対するテンプレート引数の自動推論&lt;/h3&gt;
+&lt;p&gt;クラステンプレートのテンプレート引数の推論を自動で行う。&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typename&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;thisのラムダキャプチャ&quot;&gt;*thisのラムダキャプチャ&lt;/h3&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;S&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](){&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](){&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;assert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;assert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;入れ子状の名前空間&quot;&gt;入れ子状の名前空間&lt;/h3&gt;
+&lt;p&gt;namespace A::B {}のように記述することで、入れ子の名前空間を表現することが可能に
+なる。&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// ...
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;stdoptional&quot;&gt;std::optional&lt;/h3&gt;
+&lt;p&gt;無効値を取ることができる型であり、変数の中身が存在しない可能性を明示することができる。
+Boost.Optionalの実装を元に設計された。&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optional&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Some&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;stdany&quot;&gt;std::any&lt;/h3&gt;
+&lt;p&gt;あらゆる型の単一値におけるタイプセーフコンテナ。&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;str&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;機能の削除&quot;&gt;機能の削除&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;トライグラフの削除&lt;/li&gt;
+  &lt;li&gt;registerキーワードを削除&lt;/li&gt;
+  &lt;li&gt;bool肩に対するインクリメント演算子を削除&lt;/li&gt;
+  &lt;li&gt;非推奨だった古い例外仕様を削除&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 06 May 2017 19:00:00 +0900</pubDate>
+        <link>http://localhost:4000/c/c++/2017/05/06/cpp1z-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/c/c++/2017/05/06/cpp1z-copy.html</guid>
+        
+        
+        <category>C/C++</category>
+        
+      </item>
     
       <item>
         <title>C++テンプレートメタプログラミング</title>
@@ -676,168 +803,6 @@ y&lt;sub&gt;i&lt;/sub&gt;を指すベクトルであるようなl x Cラベル�
         
         
         <category>競技プログラミング</category>
-        
-      </item>
-    
-      <item>
-        <title>ニューラルネットワークと暗号化及び機密性の確保</title>
-        <description>&lt;p&gt;アリスはボブにセキュアにメッセージを送りたいと考えている。
-また、第三の攻撃者であるイブはそのメッセージを盗聴したいと考えている。
-ここで、セキュリティ属性は機密性であり、攻撃者は通信を傍受できる受動的攻撃者で
-あるが、セッションを開始したり、メッセージを改ざんしたりといった能動的攻撃は制
-限されているものとする。&lt;/p&gt;
-
-&lt;h2 id=&quot;システム構成&quot;&gt;システム構成&lt;/h2&gt;
-&lt;p&gt;アリスはボブに平文Pを送信したいものとする。ここでアリスはPを暗号文Cに暗号化し、
-ボブに送る。ボブはCを正確に複合し、複合文P&lt;sub&gt;Bob&lt;/sub&gt;を得たい。同時に、イブ
-も暗号文Cを傍受し複合文P&lt;sub&gt;Eve&lt;/sub&gt;を得ようと試みる。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/neuralcrypto.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;登場人物をニューラルネットワークとして考える&quot;&gt;登場人物をニューラルネットワークとして考える&lt;/h2&gt;
-&lt;p&gt;ここで、アリス、ボブ、イブの各登場人物をニューラルネットワークAlice,Bob,Eveとす
-る。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Aliceは平文Pと秘密鍵Kを入力として受け取り暗号文Cを出力する&lt;/li&gt;
-  &lt;li&gt;Bobは暗号文Cと秘密鍵Kを入力として受け取り複合文P&lt;sub&gt;Bob&lt;/sub&gt;を出力する&lt;/li&gt;
-  &lt;li&gt;Eveは暗号文Cを入力として受け取り複合文P&lt;sub&gt;Eve&lt;/sub&gt;を出力する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;ここで注目するのが、暗号化の際に、特定の暗号アルゴリズムを指定して用いている訳
-ではないという点である。既知のアルゴリズムを用いていないため、攻撃者もニューラ
-ルネットワークを構築して複合化を試みる。また、攻撃者のニューラルネットワークEve
-は第三者的立場としての最善のモデルを使用することを仮定する。秘密鍵Kを平文Pごと
-に新しく作成するワンタイムパッド方式であり、KとPの長さが同じであることは強制さ
-れない。&lt;/p&gt;
-
-&lt;h2 id=&quot;定義&quot;&gt;定義&lt;/h2&gt;
-
-&lt;p&gt;それぞれの目的は以下のようになる。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;アリスはボブに、第三者に知られないようにメッセージを送りたい&lt;/li&gt;
-  &lt;li&gt;ボブとイブは平文との誤りがより少なくなるように複合文を生成したい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;それぞれのモデルのパラメータをθ&lt;sub&gt;A&lt;/sub&gt;,θ&lt;sub&gt;B&lt;/sub&gt;,θ&lt;sub&gt;E&lt;/sub&gt;とすると
-、&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Aliceの出力: A(θ&lt;sub&gt;A&lt;/sub&gt;,P,K) = C&lt;/li&gt;
-  &lt;li&gt;Bobの出力: B(θ&lt;sub&gt;B&lt;/sub&gt;,C,K)&lt;/li&gt;
-  &lt;li&gt;Eveの出力: E(θ&lt;sub&gt;E&lt;/sub&gt;,P)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;また、距離関数d(P,P’) = Σ&lt;sub&gt;i=1,N&lt;/sub&gt;|P&lt;sub&gt;i&lt;/sub&gt; - P’&amp;lt;/sub&amp;gt;i&amp;lt;/sub&amp;gt;|とす
-る。(Nは平文の長さ)。Eveについての誤差関数L&lt;sub&gt;E&lt;/sub&gt;は、&lt;br /&gt;
-&lt;strong&gt;L&lt;sub&gt;E&lt;/sub&gt;(θ&lt;sub&gt;A&lt;/sub&gt;,θ&lt;sub&gt;E&lt;/sub&gt;,P,K) = d(P,E(θ&lt;sub&gt;E&lt;/sub&gt;,A(θ
-&lt;sub&gt;A&lt;/sub&gt;,P,K)))&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Eveの目的関数O&lt;sub&gt;E&lt;/sub&gt;は、&lt;br /&gt;
-&lt;strong&gt;O&lt;sub&gt;E&lt;/sub&gt;(θ&lt;sub&gt;A&lt;/sub&gt;) = argmin&lt;sub&gt;θE&lt;/sub&gt;(L&lt;sub&gt;E&lt;/sub&gt;(θ
-&lt;sub&gt;A&lt;/sub&gt;,θ&lt;sub&gt;E&lt;/sub&gt;))&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;同様に、Bobには例ごとの複合化誤差を定義し、平文と秘密鍵の分布に拡張する。&lt;br /&gt;
-&lt;strong&gt;L&lt;sub&gt;B&lt;/sub&gt;(θ&lt;sub&gt;A&lt;/sub&gt;,θ&lt;sub&gt;B&lt;/sub&gt;,P,K) = d(P,B(θ&lt;sub&gt;B&lt;/sub&gt;,A(θ
-&lt;sub&gt;A&lt;/sub&gt;,P,K),K))&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;L&lt;sub&gt;B&lt;/sub&gt;(θ&lt;sub&gt;A&lt;/sub&gt;,θ&lt;sub&gt;B&lt;/sub&gt;) = iE&lt;sub&gt;P,K&lt;/sub&gt;(d(P,B(θ
-&lt;sub&gt;B&lt;/sub&gt;,A(θ&lt;sub&gt;A&lt;/sub&gt;,P,K),K)))&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;AliceとBobの誤差関数L&lt;sub&gt;AB&lt;/sub&gt;は、&lt;br /&gt;
-&lt;strong&gt;L&lt;sub&gt;AB&lt;/sub&gt;(θ&lt;sub&gt;A&lt;/sub&gt;,θ&lt;sub&gt;B&lt;/sub&gt;) = L&lt;sub&gt;B&lt;/sub&gt;(θ&lt;sub&gt;A&lt;/sub&gt;,θ&lt;sub&gt;B&lt;/sub&gt;) - L&lt;sub&gt;E&lt;/sub&gt;(θ&lt;sub&gt;A&lt;/sub&gt;,O&lt;sub&gt;E&lt;/sub&gt;(θ&lt;sub&gt;A&lt;/sub&gt;))&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;最後に、AliceとBobの目的関数O&lt;sub&gt;A&lt;/sub&gt;,O&lt;sub&gt;B&lt;/sub&gt;は、&lt;br /&gt;
-&lt;strong&gt;(O&lt;sub&gt;A&lt;/sub&gt;,O&lt;sub&gt;B&lt;/sub&gt;) = argmin&lt;sub&gt;(θA,θB)&lt;/sub&gt;(L&lt;sub&gt;AB&lt;/sub&gt;(θ&lt;sub&gt;A&lt;/sub&gt;,θ&lt;sub&gt;B&lt;/sub&gt;))&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;学習及びアーキテクチャ&quot;&gt;学習及びアーキテクチャ&lt;/h2&gt;
-&lt;p&gt;学習はSGDに基づく。また、それぞれのモデルは個別に学習を行う。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;全結合層を最初の層にもつ&lt;/li&gt;
-  &lt;li&gt;全結合層の後に畳み込み層のシーケンスが続き、最終的に平文または暗号文に適した
-サイズの出力を生成する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Python(TensorFlow)による実装(一部抜粋)&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def build_model(self):
-        # Weights for fully connected layers
-        self.w_alice = init_weights(&quot;alice_w&quot;, [2 * self.N, 2 * self.N])
-        self.w_bob = init_weights(&quot;bob_w&quot;, [2 * self.N, 2 * self.N])
-        self.w_eve1 = init_weights(&quot;eve_w1&quot;, [self.N, 2 * self.N])
-        self.w_eve2 = init_weights(&quot;eve_w2&quot;, [2 * self.N, 2 * self.N])
-
-        # Placeholder variables for Message and Key
-        self.msg = tf.placeholder(&quot;float&quot;, [None, self.msg_len])
-        self.key = tf.placeholder(&quot;float&quot;, [None, self.key_len])
-
-        # Alice's network
-        # FC layer -&amp;gt; Conv Layer (4 1-D convolutions)
-        self.alice_input = tf.concat(concat_dim=1, values=[self.msg, self.key])
-        self.alice_hidden = tf.nn.sigmoid(tf.matmul(self.alice_input, self.w_alice))
-        self.alice_hidden = tf.expand_dims(self.alice_hidden, 2)
-        self.alice_output = tf.squeeze(conv_layer(self.alice_hidden, &quot;alice&quot;))
-
-        # Bob's network
-        # FC layer -&amp;gt; Conv Layer (4 1-D convolutions)
-        self.bob_input = tf.concat(concat_dim=1, values=[self.alice_output, self.key])
-        self.bob_hidden = tf.nn.sigmoid(tf.matmul(self.bob_input, self.w_bob))
-        self.bob_hidden = tf.expand_dims(self.bob_hidden, 2)
-        self.bob_output = tf.squeeze(conv_layer(self.bob_hidden, &quot;bob&quot;))
-
-        # Eve's network
-        # FC layer -&amp;gt; FC layer -&amp;gt; Conv Layer (4 1-D convolutions)
-        self.eve_input = self.alice_output
-        self.eve_hidden1 = tf.nn.sigmoid(tf.matmul(self.eve_input, self.w_eve1))
-        self.eve_hidden2 = tf.nn.sigmoid(tf.matmul(self.eve_hidden1, self.w_eve2))
-        self.eve_hidden2 = tf.expand_dims(self.eve_hidden2, 2)
-        self.eve_output = tf.squeeze(conv_layer(self.eve_hidden2, &quot;eve&quot;))
-
- def train(self):
-        # Loss Functions
-        self.decrypt_err_eve = tf.reduce_mean(tf.abs(self.msg - self.eve_output))
-        self.decrypt_err_bob = tf.reduce_mean(tf.abs(self.msg - self.bob_output))
-        self.loss_bob = self.decrypt_err_bob + (1. - self.decrypt_err_eve) ** 2.
-
-        # Get training variables corresponding to each network
-        self.t_vars = tf.trainable_variables()
-        self.alice_or_bob_vars = [var for var in self.t_vars if 'alice_' in var.name or 'bob_' in var.name]
-        self.eve_vars = [var for var in self.t_vars if 'eve_' in var.name]
-
-        # Build the optimizers
-        self.bob_optimizer = tf.train.AdamOptimizer(self.learning_rate).minimize(
-            self.loss_bob, var_list=self.alice_or_bob_vars)
-        self.eve_optimizer = tf.train.AdamOptimizer(self.learning_rate).minimize(
-            self.decrypt_err_eve, var_list=self.eve_vars)
-
-        self.bob_errors, self.eve_errors = [], []
-
-        # Begin Training
-        tf.initialize_all_variables().run()
-        for i in range(self.epochs):
-            iterations = 2000
-
-            print 'Training Alice and Bob, Epoch:', i + 1
-            bob_loss, _ = self._train('bob', iterations)
-            self.bob_errors.append(bob_loss)
-
-            print 'Training Eve, Epoch:', i + 1
-            _, eve_loss = self._train('eve', iterations)
-            self.eve_errors.append(eve_loss)
-
-        self.plot_errors()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1610.06918.pdf&quot;&gt;Google Brainによる論文&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 10 Mar 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/%E6%9A%97%E5%8F%B7/2017/03/10/neuralcrypto-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/%E6%9A%97%E5%8F%B7/2017/03/10/neuralcrypto-copy.html</guid>
-        
-        
-        <category>機械学習</category>
-        
-        <category>暗号</category>
         
       </item>
     
