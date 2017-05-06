@@ -15,7 +15,7 @@
     <meta name="twitter:title" content="nocohub">
   
   
-    <meta name="twitter:url" content="http://localhost:4000/">
+    <meta name="twitter:url" content="http://localhost:4000/page2/">
   
   
     <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
@@ -37,7 +37,7 @@
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/page2/">
   <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/scripts/pithy.js"></script>
@@ -110,17 +110,17 @@
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/c/c++/2017/05/05/cppmpl-copy.html">C++テンプレートメタプログラミング</a>
+          <a class="post-link" href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html">Label Propagation</a>
         </h3>
-        <span class="post-meta">May 5, 2017 10:05</span>
+        <span class="post-meta">Apr 11, 2017 01:04</span>
         <hr id="line">
         <div class="content">
-        <p>メタプログラミングとは、他のプログラム(もしくは自身)を操作、出力するようなプロ
-グラムを記述するプログラミング手法。また、処理のうちの一部をコンパイル時に行う
-ようなコードを記述することである。このメタプログラミングの技法のうち、コンパイ
-ラがテンプレートを使用して一時コードを生成し、そうして生成されたコードを他のソ
-ースコードと共にコンパイルする方式をテンプレートメタプログラミングという。加え
-て、テンプレートメタプログラミングはチューリング完全である。</p>
+        <p>半教師あり学習アルゴリズム『Label Propagation』の紹介。このアルゴリズムでは、ノ
+ードのラベルが近傍に応じて近くのノードに伝播する、グラフ上の伝播の形式として問
+題を定式化する。このプロセスでは、もともとラベルがついているデータに関してはラ
+ベルを固定する。したがって、ラベル付きデータはラベルのついていないデータに対し
+てラベルを「伝播」させるように振る舞う。<br />
+<a href="http://nocotan.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html">グラフベース半教師あり学習について</a></p>
 
 
         </div>
@@ -130,13 +130,14 @@
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/05/05/spectralclustering-copy.html">スペクトラルクラスタリング</a>
+          <a class="post-link" href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html">Graph-based Semi-Supervised Learning</a>
         </h3>
-        <span class="post-meta">May 5, 2017 01:05</span>
+        <span class="post-meta">Apr 10, 2017 01:04</span>
         <hr id="line">
         <div class="content">
-        <p>クラスタリングをグラフの分割問題として扱う手法。
-入力データをグラフとして表現し、評価関数に基づいてグラフカットを行う。</p>
+        <p>グラフベースの半教師あり学習の紹介。<br />
+半教師あり学習は、普通の教師あり学習と比べて、ラベルのついていない(大量の)デー
+タを学習に用いることがきるという利点がある。</p>
 
 
         </div>
@@ -146,18 +147,18 @@
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/%E9%80%9A%E4%BF%A1/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/2017/05/01/openssl-copy.html">OpenSSL</a>
+          <a class="post-link" href="/%E7%AB%B6%E6%8A%80%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/2017/03/21/aojicpc1160-copy.html">ICPC Domestic 2009 - 島はいくつある？</a>
         </h3>
-        <span class="post-meta">May 1, 2017 01:05</span>
+        <span class="post-meta">Mar 21, 2017 01:03</span>
         <hr id="line">
         <div class="content">
-        <p>OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。
-SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
-クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。
-サーバは公開鍵の対となる秘密鍵で復号化する。SSLはWebで頻繁に使用されている。
-SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用した通信はhttps://(ポート番号443)となる。<br />
-2017/2/16時点で、バグやセキュリティの修正を含むOpenSSL 1.1.0eが利用可能となった。<br />
-<a href="https://www.openssl.org/">OpenSSL</a></p>
+        <blockquote>
+  <p>陸に対応する二つの正方形領域が、地図上で縦、横または斜め方向に隣接しているな
+ら、一方から他方へ歩いて行くことができる。陸に対応する二つの領域が同じ島に属
+するのは、一方から他方へ(一般には別の陸地を経由して)歩いて行ける時であり、ま
+たその時のみである。なお、この地図の海域は海で囲まれており、その外側へ歩いて
+出ることはできない。<a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1160&amp;lang=jp">How Many Islands?</a></p>
+</blockquote>
 
 
         </div>
@@ -167,12 +168,20 @@ SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/c/c++/2017/04/16/cpptransform-copy.html">no matching function for call to transform</a>
+          <a class="post-link" href="/%E7%AB%B6%E6%8A%80%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/2017/03/20/aojicpc1130-copy.html">ICPC Domestic 2004 - Red and Black</a>
         </h3>
-        <span class="post-meta">Apr 16, 2017 01:04</span>
+        <span class="post-meta">Mar 20, 2017 01:03</span>
         <hr id="line">
         <div class="content">
-        <p>以下のようなコードを書いた時に発生する。</p>
+        <blockquote>
+  <p>正方形のタイルが敷き詰められた長方形の部屋がある。タイルの色は赤か黒である。
+最初に一人の人が部屋の黒いタイルの上に立っている。あるタイルからは隣接する四
+つのタイルに移動することができる。ただし、赤いタイルの上に移動することはでき
+ない。移動できるのは黒いタイルの上だけである。
+上記の移動を繰り返すことによって到達できるタイルの数を答えるプログラムを書き
+なさい
+<a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1130&amp;lang=jp">Red and Black</a></p>
+</blockquote>
 
 
         </div>
@@ -182,14 +191,16 @@ SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/16/ecoc-copy.html">誤り訂正出力符号による多クラス分類</a>
+          <a class="post-link" href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/%E6%9A%97%E5%8F%B7/2017/03/10/neuralcrypto-copy.html">ニューラルネットワークと暗号化及び機密性の確保</a>
         </h3>
-        <span class="post-meta">Apr 16, 2017 01:04</span>
+        <span class="post-meta">Mar 10, 2017 01:03</span>
         <hr id="line">
         <div class="content">
-        <p><strong>誤り訂正符号(ECC: Error Correcting Code)</strong>とは、データを記録・伝送する通信の際に生じるノイズを検出し、訂正することができるように付加される符号である。
-元のデータからあらかじめ算出しておいて、データとともに記録・伝送される。有名な誤り訂正符号には、ハミング符号や水平垂直パリティ符号、リードソロモン符号、BCH符号などがある。
-この仕組みに基づいて多クラス分類問題を考える<strong>誤り訂正出力符号(ECOC: Error Correcting Output Code)</strong>という方式が存在する。</p>
+        <p>アリスはボブにセキュアにメッセージを送りたいと考えている。
+また、第三の攻撃者であるイブはそのメッセージを盗聴したいと考えている。
+ここで、セキュリティ属性は機密性であり、攻撃者は通信を傍受できる受動的攻撃者で
+あるが、セッションを開始したり、メッセージを改ざんしたりといった能動的攻撃は制
+限されているものとする。</p>
 
 
         </div>
@@ -202,11 +213,11 @@ SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用
 <!-- ページネーションリンク -->
 <div class="pagination">
   
-    <span class="previous">Previous</span>
+    <a href="/page1" class="previous">Previous</a>
   
-  <span class="page_number ">Page: 1 of 7</span>
+  <span class="page_number ">Page: 2 of 7</span>
   
-    <a href="/page2" class="next">Next</a>
+    <a href="/page3" class="next">Next</a>
   
 </div>
 

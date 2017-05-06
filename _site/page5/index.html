@@ -15,7 +15,7 @@
     <meta name="twitter:title" content="nocohub">
   
   
-    <meta name="twitter:url" content="http://localhost:4000/">
+    <meta name="twitter:url" content="http://localhost:4000/page5/">
   
   
     <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
@@ -37,7 +37,7 @@
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/page5/">
   <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/scripts/pithy.js"></script>
@@ -110,17 +110,13 @@
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/c/c++/2017/05/05/cppmpl-copy.html">C++テンプレートメタプログラミング</a>
+          <a class="post-link" href="/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/26/warshallfloyd-copy.html">最短経路問題(ワーシャルフロイド法)</a>
         </h3>
-        <span class="post-meta">May 5, 2017 10:05</span>
+        <span class="post-meta">Jan 26, 2017 03:01</span>
         <hr id="line">
         <div class="content">
-        <p>メタプログラミングとは、他のプログラム(もしくは自身)を操作、出力するようなプロ
-グラムを記述するプログラミング手法。また、処理のうちの一部をコンパイル時に行う
-ようなコードを記述することである。このメタプログラミングの技法のうち、コンパイ
-ラがテンプレートを使用して一時コードを生成し、そうして生成されたコードを他のソ
-ースコードと共にコンパイルする方式をテンプレートメタプログラミングという。加え
-て、テンプレートメタプログラミングはチューリング完全である。</p>
+        <p>最短経路問題のうち、すべての二頂点間の最短路を求める問題を全点間最短経路問題という。
+ワーシャルフロイドは、全ノードの最短経路をO(N^3)で計算できる。</p>
 
 
         </div>
@@ -130,13 +126,16 @@
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/05/05/spectralclustering-copy.html">スペクトラルクラスタリング</a>
+          <a class="post-link" href="/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/26/dijkstra-copy.html">最短経路問題(ダイクストラ法)</a>
         </h3>
-        <span class="post-meta">May 5, 2017 01:05</span>
+        <span class="post-meta">Jan 26, 2017 03:01</span>
         <hr id="line">
         <div class="content">
-        <p>クラスタリングをグラフの分割問題として扱う手法。
-入力データをグラフとして表現し、評価関数に基づいてグラフカットを行う。</p>
+        <ul>
+  <li>ベルマンフォード法よりも高速</li>
+  <li>負の経路がある場合はうまく計算されないため使えない</li>
+  <li><a href="http://nocotan.github.io/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/24/bellmanford-copy.html">ベルマンフォード法</a></li>
+</ul>
 
 
         </div>
@@ -146,18 +145,12 @@
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/%E9%80%9A%E4%BF%A1/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/2017/05/01/openssl-copy.html">OpenSSL</a>
+          <a class="post-link" href="/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/25/libsort-copy.html">図書館ソート(Library sort)</a>
         </h3>
-        <span class="post-meta">May 1, 2017 01:05</span>
+        <span class="post-meta">Jan 25, 2017 03:01</span>
         <hr id="line">
         <div class="content">
-        <p>OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。
-SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
-クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。
-サーバは公開鍵の対となる秘密鍵で復号化する。SSLはWebで頻繁に使用されている。
-SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用した通信はhttps://(ポート番号443)となる。<br />
-2017/2/16時点で、バグやセキュリティの修正を含むOpenSSL 1.1.0eが利用可能となった。<br />
-<a href="https://www.openssl.org/">OpenSSL</a></p>
+        <p>挿入ソートの亜種。配列の要素間に隙間を設けて、挿入操作の高速化をしている。</p>
 
 
         </div>
@@ -167,12 +160,17 @@ SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/c/c++/2017/04/16/cpptransform-copy.html">no matching function for call to transform</a>
+          <a class="post-link" href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/01/24/vmf-copy.html">フォンミーゼスフィッシャー分布(von Mises-Fisher distribution)</a>
         </h3>
-        <span class="post-meta">Apr 16, 2017 01:04</span>
+        <span class="post-meta">Jan 24, 2017 03:01</span>
         <hr id="line">
         <div class="content">
-        <p>以下のようなコードを書いた時に発生する。</p>
+        <ul>
+  <li>確率密度関数 $ f_p(x;μ,κ) = C_p(κ)exp(κμ^Tx) $</li>
+  <li>このモデルを使用したEMアルゴリズムはspherical k-meansよりも性能がいい</li>
+  <li>球面上に分布するデータにおいて、ガウス分布に相当する標準的な分布</li>
+  <li>二次元球面上に分布する標準的な分布であるvon Mises分布をd次元球面上に拡張したもの</li>
+</ul>
 
 
         </div>
@@ -182,14 +180,14 @@ SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用
       <li>
         <br>
         <h3>
-          <a class="post-link" href="/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/16/ecoc-copy.html">誤り訂正出力符号による多クラス分類</a>
+          <a class="post-link" href="/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/01/24/bellmanford-copy.html">最短経路問題(ベルマンフォード法)</a>
         </h3>
-        <span class="post-meta">Apr 16, 2017 01:04</span>
+        <span class="post-meta">Jan 24, 2017 01:01</span>
         <hr id="line">
         <div class="content">
-        <p><strong>誤り訂正符号(ECC: Error Correcting Code)</strong>とは、データを記録・伝送する通信の際に生じるノイズを検出し、訂正することができるように付加される符号である。
-元のデータからあらかじめ算出しておいて、データとともに記録・伝送される。有名な誤り訂正符号には、ハミング符号や水平垂直パリティ符号、リードソロモン符号、BCH符号などがある。
-この仕組みに基づいて多クラス分類問題を考える<strong>誤り訂正出力符号(ECOC: Error Correcting Output Code)</strong>という方式が存在する。</p>
+        <p>最短経路問題のうち始点を固定した時に、
+他のすべての頂点との間の最短路を求める問題を単一始点最短経路問題と言う。<br />
+頂点i, jについて、</p>
 
 
         </div>
@@ -202,11 +200,11 @@ SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用
 <!-- ページネーションリンク -->
 <div class="pagination">
   
-    <span class="previous">Previous</span>
+    <a href="/page4" class="previous">Previous</a>
   
-  <span class="page_number ">Page: 1 of 7</span>
+  <span class="page_number ">Page: 5 of 7</span>
   
-    <a href="/page2" class="next">Next</a>
+    <a href="/page6" class="next">Next</a>
   
 </div>
 
