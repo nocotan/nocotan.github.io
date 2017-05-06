@@ -31,7 +31,7 @@ categories: 機械学習
 　RatioCut(P) = Σcut(P<sub>k</sub>)/|P<sub>k</sub>|  
 <br>
 
-#### RatioCut
+#### MCut
 
 <br>
 　RatioCut(P) = Σcut(P<sub>k</sub>)  
