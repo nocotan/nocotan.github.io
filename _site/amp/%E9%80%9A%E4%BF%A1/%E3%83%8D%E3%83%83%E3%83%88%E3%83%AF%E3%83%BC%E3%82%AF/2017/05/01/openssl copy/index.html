@@ -1,0 +1,123 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>OpenSSL</title>
+    <link rel="canonical" href="http://localhost:4000/%E9%80%9A%E4%BF%A1/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/2017/05/01/openssl-copy.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+
+<h1 class="post-title">
+<header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<amp-img width="19px" height="19px" src="/images/github.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/github.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<amp-img width="19px" height="19px" src="/images/rss.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/rss.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<amp-img width="19px" height="19px" src="/images/twitter.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/twitter.png"></noscript></amp-img>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+</h1>
+<span>
+2017-05-01 01:00:00 +0000 - 
+</span>
+<p>OpenSSLは通信を暗号化するSecure Sockets Layero(SSL)をオープンソースで実装するライブラリ。
+SSLは安全な通信を行うためにサーバとクライアント間で暗号化して盗聴を防ぐことを目的としている。
+クライアントは、サーバの公開鍵を使用してサーバに接続し、暗号化したファイルを送信する。
+サーバは公開鍵の対となる秘密鍵で復号化する。SSLはWebで頻繁に使用されている。
+SSLを使用しない通信はhttp://(ポート番号80)となり、SSLを使用した通信はhttps://(ポート番号443)となる。<br>
+2017/2/16時点で、バグやセキュリティの修正を含むOpenSSL 1.1.0eが利用可能となった。<br>
+<a href="https://www.openssl.org/">OpenSSL</a></p>
+
+<h3 id="関連用語">関連用語</h3>
+
+<h4 id="cacertification-authority">CA(Certification Authority)</h4>
+<p>SSLを使用するための証明書を発行する認証局。</p>
+
+<h4 id="crlcertificate-revocation-list">CRL(Certificate Revocation List)</h4>
+<p>証明書失効リスト。鍵の漏えいなどで鍵の信頼性が失われ、無効となった証明書のリストである。以下の二種類の失効理由がある。</p>
+
+<h4 id="csrcertificate-signing-request">CSR(Certificate Signing Request)</h4>
+<p>証明書を発行するために認証局(CA)に提出する証明書発行要求ファイル。</p>
+
+<h4 id="der">DER</h4>
+<p>証明書、秘密鍵、CSR、及びCRLファイルの形式。</p>
+
+<h4 id="desdata-encryption-standard">DES(Data Encryption Standard)</h4>
+<p>対称鍵暗号の一方式</p>
+
+<h4 id="pem">PEM</h4>
+<p>証明書、秘密鍵、CSR、及びCRLファイルの形式。DER形式のファイルをBase64にエンコー
+ド処理したテキスト形式のファイル。</p>
+
+<h4 id="rsarivest-shamir-adleman">RSA(Rivest Shamir Adleman)</h4>
+<p>桁数の大きい合成数の素因数分解問題が困難であることを安全性の根拠とした公開鍵暗
+号の一つ。</p>
+
+<h4 id="x509">X.509</h4>
+<p>電子証明書及び証明書執行リスト(CRL)の標準仕様。</p>
+
+<h3 id="インストール">インストール</h3>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ wget -P /usr/local/src https://www.openssl.org/source/openssl-1.1.0e.tar.gz
+$ cd /usr/local/src
+$ tar xzf openssl-1.1.0e.tar.gz
+$ cd openssl-1.1.0e.tar.gz
+$ ./config --prefix=/usr/local
+$ make
+$ make install
+</code></pre>
+</div>
+
+
+
+<footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Apache SparkでDeep Learning: BigDLのインストール</title>
+    <link rel="canonical" href="http://localhost:4000/spark/2017/03/08/sparkbigdl-copy.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+
+<h1 class="post-title">
+<header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<amp-img width="19px" height="19px" src="/images/github.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/github.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<amp-img width="19px" height="19px" src="/images/rss.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/rss.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<amp-img width="19px" height="19px" src="/images/twitter.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/twitter.png"></noscript></amp-img>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+</h1>
+<span>
+2017-03-08 01:00:00 +0000 - 
+</span>
+<p><a href="http://spark.apache.org/">Apache Spark</a><br>
+<a href="http://nocotan.github.io/spark/2017/03/06/sparkinstall-copy.html">Sparkのインストール</a>は完了しているものとする.</p>
+
+<p><a href="https://github.com/intel-analytics/BigDL">BigDL</a><br>
+Apache Spark用の分散型ディープラーニングライブラリ.以下のような特徴がある.</p>
+<ul>
+  <li>豊富なディープラーニングのサポート.Torchをモデルにしており、数値計算や高レベ
+ルのニューラルネットワークを包括的にサポートする.
+BigDLを使用してSparkプログラムに事前に学習したCaffeまたはTorchモデルを読み込
+むことができる.</li>
+  <li>非常に高いパフォーマンス.高性能を実現するために、各Sparkタスクでintel MKLとマ
+ルチスレッドプログラミングを使用する.その結果、単一ノードXeon上の
+Caffe,Torch,TensorFlowよりも数桁拘束である.</li>
+  <li>高効率なスケールアウト.Apache Sparkを活用し、同期SGDを効率的に実装し、Sparkで
+全ての通信を削減することでデータ分析を効率的にスケールアウトすることができる.</li>
+</ul>
+
+<p>Mavenが必要なのでインストールしておく.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ sudo apt-get install maven
+</code></pre>
+</div>
+
+<p>BigDLのダウンロード</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ git clone https://github.com/intel-analytics/BigDL.git
+$ cd BigDL
+$ source scripts/bigdl.sh
+</code></pre>
+</div>
+
+<p>ビルドする.この時、java.lang.OutOfMemoryError対策で、PermSizeを設定しておく.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
+$ bash make-dist.sh
+</code></pre>
+</div>
+
+<p>もしここで以下のようなエラーが出たら、リブートする.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>[error] Required file not found: sbt-interface.jar
+[error] See zinc -help for information about locating necessary files
+</code></pre>
+</div>
+
+<p>spark-shellから使用するには、以下のようにする.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ spark-shell --jars BigDL/dist/lib/bigdl-0.1.0-SNAPSHOT-jar-with-dependencies.jar
+</code></pre>
+</div>
+
+
+<footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+</body>
+</html>

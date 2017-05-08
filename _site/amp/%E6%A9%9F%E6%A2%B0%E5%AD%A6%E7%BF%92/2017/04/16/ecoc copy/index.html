@@ -1,0 +1,117 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>誤り訂正出力符号による多クラス分類</title>
+    <link rel="canonical" href="http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/16/ecoc-copy.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+
+<h1 class="post-title">
+<header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<amp-img width="19px" height="19px" src="/images/github.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/github.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<amp-img width="19px" height="19px" src="/images/rss.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/rss.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<amp-img width="19px" height="19px" src="/images/twitter.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/twitter.png"></noscript></amp-img>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+</h1>
+<span>
+2017-04-16 01:00:00 +0000 - 
+</span>
+<p><strong>誤り訂正符号(ECC: Error Correcting Code)</strong>とは、データを記録・伝送する通信の際に生じるノイズを検出し、訂正することができるように付加される符号である。
+元のデータからあらかじめ算出しておいて、データとともに記録・伝送される。有名な誤り訂正符号には、ハミング符号や水平垂直パリティ符号、リードソロモン符号、BCH符号などがある。
+この仕組みに基づいて多クラス分類問題を考える<strong>誤り訂正出力符号(ECOC: Error Correcting Output Code)</strong>という方式が存在する。</p>
+
+<h3 id="クラスラベルの符号化">クラスラベルの符号化</h3>
+
+<p>各クラスそれぞれに、異なる数値列が割り当てられているとする。この数値列を符号語と呼ぶ。
+ここでは、長さがmで、各値が1もしくは-1をとる符号語が割り当てられているとする。
+クラス数をcとし、各クラスに対してそれぞれ符号長mの符号語を割り当てるとすると、c x mの符号化行列Sが得られる。
+符号化行列の、ある一つの列に注目した時、各クラスに1か-1が割り当てられているため、2値分類として考えることができる。
+その結果、符号化行列の各列に対応するm個の2値分類学習器が得られる。ある入力xに対するm個の学習器の出力をf<sup>1</sup>(x) … f<sup>m</sup>(x)とし、
+これがどのクラスの符号語に近いかで割り当てるクラスを決定することができる。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>クラス</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>-1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+</body>
+</html>

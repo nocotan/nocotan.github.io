@@ -1,0 +1,119 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Apache Sparkのインストール</title>
+    <link rel="canonical" href="http://localhost:4000/spark/2017/03/06/sparkinstall-copy.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+
+<h1 class="post-title">
+<header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<amp-img width="19px" height="19px" src="/images/github.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/github.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<amp-img width="19px" height="19px" src="/images/rss.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/rss.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<amp-img width="19px" height="19px" src="/images/twitter.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/twitter.png"></noscript></amp-img>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+</h1>
+<span>
+2017-03-06 01:00:00 +0000 - 
+</span>
+<p><a href="http://spark.apache.org/">Apache Spark</a>はAMPLabにて開発されたクラスターコンピューティングフレームワーク.<br>
+今回はubuntu16.04にApache Spark-2.02をインストールする.<br>
+Apache Sparkを動かすには、Javaをインストールする必要がある.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ sudo apt-add-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java7-installer
+</code></pre>
+</div>
+
+<p>以下のコマンドで、Javaが正しくインストールされているかどうか確認する.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ java -version
+java version "1.7.0_80"
+Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
+Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
+</code></pre>
+</div>
+
+<p>Scalaをインストールする</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ wget http://downloads.lightbend.com/scala/2.12.1/scala-2.12.1.deb
+$ dpkg -i scala-2.12.1.deb
+</code></pre>
+</div>
+
+<p>Apache Spark2.02をインストールする.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz
+$ tar xvf spark-2.0.2-bin-hadoop2.7.tgz
+$ cp -rv spark-2.0.2-bin-hadoop2.7 /opt/spark
+$ cd /opt/spark
+</code></pre>
+</div>
+
+<p>動作確認.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ ./bin/spark-shell --master local[2]
+</code></pre>
+</div>
+
+
+<footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+</body>
+</html>

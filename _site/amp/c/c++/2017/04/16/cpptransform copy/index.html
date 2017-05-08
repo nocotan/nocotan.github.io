@@ -1,0 +1,102 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>no matching function for call to transform</title>
+    <link rel="canonical" href="http://localhost:4000/c/c++/2017/04/16/cpptransform-copy.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+
+<h1 class="post-title">
+<header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<amp-img width="19px" height="19px" src="/images/github.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/github.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<amp-img width="19px" height="19px" src="/images/rss.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/rss.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<amp-img width="19px" height="19px" src="/images/twitter.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/twitter.png"></noscript></amp-img>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+</h1>
+<span>
+2017-04-16 01:00:00 +0000 - 
+</span>
+<p>以下のようなコードを書いた時に発生する。</p>
+
+<div class="language-c++ highlighter-rouge">
+<pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="o">=</span><span class="s">"Hello"</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">toupper</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>そもそもtoupperはstd名前空間で定義されたものではなく、グローバル名前空間で定義されている。よって、以下のコードであれば正常に動作する。</p>
+
+<div class="language-c++ highlighter-rouge">
+<pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="o">=</span><span class="s">"Hello"</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="o">::</span><span class="n">toupper</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>toupper及びtolowerに関しては、名前空間を解決する際に、別のオーバーロードされた関数toupeer、tolowerが存在する。これによって、引数にstd::toupeerを渡すことによって参照しているオーバーロードを解決できなくなる。
+そのため、コンパイラはエラーメッセージに未解決のオーバーロードされた関数型を指定している。</p>
+
+
+<footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+</body>
+</html>

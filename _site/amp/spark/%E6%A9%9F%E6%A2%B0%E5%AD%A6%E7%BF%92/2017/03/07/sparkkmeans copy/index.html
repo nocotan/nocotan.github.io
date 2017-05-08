@@ -1,0 +1,115 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Apache Sparkでk-means</title>
+    <link rel="canonical" href="http://localhost:4000/spark/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/03/07/sparkkmeans-copy.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+
+<h1 class="post-title">
+<header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<amp-img width="19px" height="19px" src="/images/github.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/github.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<amp-img width="19px" height="19px" src="/images/rss.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/rss.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<amp-img width="19px" height="19px" src="/images/twitter.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/twitter.png"></noscript></amp-img>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+</h1>
+<span>
+2017-03-07 01:00:00 +0000 - 
+</span>
+<p><a href="http://spark.apache.org/">Apache Spark</a><br>
+<a href="http://nocotan.github.io/spark/2017/03/06/sparkinstall-copy.html">Sparkのインストール</a>は完了しているものとする.</p>
+
+<h3 id="k-means">k-means</h3>
+<p>k-meansは、データセットをあらかじめ決めておいたクラスタ数にクラスタリングする一
+般的なクラスタリングアルゴリズムのうちの一つ.
+MLlibの実装には、kmeans||と呼ばれる、k-means++の並列化変形が含まれる.</p>
+
+<h3 id="例">例</h3>
+
+<p>org.apache.spark.ml.clustering.KMeansをインポートすることでk-meansが使用できる.</p>
+<ul>
+  <li>2行目はデータセットの読み込みを行う.データセットのパスは適宜変更する.</li>
+  <li>3行目でクラスタ数、及びランダムシードを与えている.</li>
+  <li>4行目でデータセットに対して学習させる.</li>
+  <li>最後の行では各クラスタの重心を表示している.</li>
+</ul>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>scala&gt; import import org.apache.spark.ml.clustering.KMeans
+import org.apache.spark.ml.clustering.KMeans
+
+scala&gt; val dataset = spark.read.format("libsvm").load("/opt/spark/data/mllib/sample_kmeans_data.txt")
+dataset: org.apache.spark.sql.DataFrame = [label: double, features: vector]
+
+scala&gt; val kmeans = new KMeans().setK(2).setSeed(1L)
+kmeans: org.apache.spark.ml.clustering.KMeans = kmeans_480ce4224497
+
+scala&gt; val model = kmeans.fit(dataset)
+model: org.apache.spark.ml.clustering.KMeansModel = kmeans_480ce4224497
+
+scala&gt; val WSSSE = model.computeCost(dataset)
+WSSE: Double = 0.11999999999994547
+
+scala&gt; model.clusterCenters.foreach(println)
+[9.1,9.1,9.1]
+[0.1,0.1,0.1]
+</code></pre>
+</div>
+
+<p>使用したコードは<a href="https://github.com/nocotan/spark-examples/blob/master/examples/KMeansSample.scala">こちら</a></p>
+
+
+<footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+</body>
+</html>

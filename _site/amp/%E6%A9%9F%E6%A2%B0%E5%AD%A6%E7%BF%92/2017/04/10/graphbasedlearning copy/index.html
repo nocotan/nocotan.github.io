@@ -1,0 +1,153 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Graph-based Semi-Supervised Learning</title>
+    <link rel="canonical" href="http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+
+<h1 class="post-title">
+<header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<amp-img width="19px" height="19px" src="/images/github.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/github.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<amp-img width="19px" height="19px" src="/images/rss.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/rss.png"></noscript></amp-img>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<amp-img width="19px" height="19px" src="/images/twitter.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/twitter.png"></noscript></amp-img>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+</h1>
+<span>
+2017-04-10 01:00:00 +0000 - 
+</span>
+<p>グラフベースの半教師あり学習の紹介。<br>
+半教師あり学習は、普通の教師あり学習と比べて、ラベルのついていない(大量の)デー
+タを学習に用いることがきるという利点がある。</p>
+
+<h2 id="教師あり学習">教師あり学習</h2>
+<p><amp-img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow1.png" alt="画像" width="591" height="191" layout="responsive"><noscript><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow1.png" alt="画像" width="591" height="191"></noscript></amp-img></p>
+
+<ul>
+  <li>決定木,サポートベクターマシンなど</li>
+  <li>ラベル付きデータを使用して学習を行う</li>
+</ul>
+
+<h2 id="半教師あり学習ssl-semi-supervised-learning">半教師あり学習(SSL: Semi-Supervised Learning)</h2>
+<p><amp-img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow2.png" alt="画像" width="641" height="301" layout="responsive"><noscript><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow2.png" alt="画像" width="641" height="301"></noscript></amp-img></p>
+
+<ul>
+  <li>Self-Training, Co-Trainingなど</li>
+  <li>ラベル付きデータに加えて、大量のラベルなしデータを使用して学習を行う</li>
+</ul>
+
+<h3 id="半教師あり学習の利点">半教師あり学習の利点</h3>
+<p>一般に、分類器の性能をあげるために、データを大量に与えたい。しかし、ラベル付き
+データを集めるのはとてもコストがかかる。特に、現時点でラベルがついていないデー
+タに対して人力でラベルをつける作業は、非常に多くの時間やコストを要する。一方ラ
+ベルなしデータであれば、コストをかけることなく大量に手に入れることができる。普通の
+教師あり学習ではこれらのラベルなしデータはあくまで分類対象でしかなく、明らかな
+デッドリソースである。こういったデータを学習に上手に利用することで分類器の性能
+向上を目指すというのが、半教師あり学習の考え方である。</p>
+
+<h2 id="graph-based-semi-supervised-learning">Graph-based Semi-supervised Learning</h2>
+<ul>
+  <li>ノード間が重みの大きいエッジで繋がっているならば、それらのノードは同じラベル
+を持っているはずだという仮定をする -&gt; 類似度の大きいデータは同じラベルを持っ
+ているのではないかという仮定</li>
+</ul>
+
+<p><amp-img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow3.png" alt="画像" width="631" height="301" layout="responsive"><noscript><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow3.png" alt="画像" width="631" height="301"></noscript></amp-img>
+<amp-img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow4.png" alt="画像" width="631" height="301" layout="responsive"><noscript><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow4.png" alt="画像" width="631" height="301"></noscript></amp-img></p>
+
+<h3 id="neighborhood-methods">Neighborhood Methods</h3>
+<ul>
+  <li>k-Nearest Neighbor Graph (k-NNG)</li>
+  <li>e-Neighborhood Method</li>
+</ul>
+
+<h4 id="k-nearest-neighbor-graph-k-nng">k-Nearest Neighbor Graph (k-NNG)</h4>
+<p>インスタンスとそのk最近傍点の間にエッジを追加する</p>
+
+<p><amp-img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow5.png" alt="画像" width="631" height="301" layout="responsive"><noscript><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow5.png" alt="画像" width="631" height="301"></noscript></amp-img></p>
+
+<h5 id="欠点">欠点</h5>
+<ul>
+  <li>スケーラブルでない</li>
+  <li>非対称グラフになる</li>
+  <li>不規則なグラフになる</li>
+</ul>
+
+<h4 id="e-neighborhood">e-Neighborhood</h4>
+<p>半径eの球内の全てのインスタンスにエッジを追加する</p>
+
+<p><amp-img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow6.png" alt="画像" width="631" height="301" layout="responsive"><noscript><img src="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow6.png" alt="画像" width="631" height="301"></noscript></amp-img></p>
+
+<h5 id="欠点-1">欠点</h5>
+<ul>
+  <li>スケーラブルでない</li>
+  <li>eの値に敏感</li>
+  <li>断片化されたグラフになる -&gt; 接続されていないインスタンスが大量に出現する可能
+性がある</li>
+</ul>
+
+<h2 id="アルゴリズム">アルゴリズム</h2>
+<ul>
+  <li><a href="http://nocotan.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html">Label Propagation</a></li>
+  <li>Modified Adsorption</li>
+  <li>Measure Propagation</li>
+  <li>Sparse Label Propagation</li>
+  <li>Manifold Regularization</li>
+  <li>Spectral Graph Transduction</li>
+</ul>
+
+
+<footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+</body>
+</html>

@@ -1,54 +1,19 @@
-<!DOCTYPE html>
-<html>    
+<!doctype html>
+<html amp lang="en">
   <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width initial-scale=1">
-
-  <title>C++17</title>
-  <meta name="description" content="C++17(またはC++1z)は、C++のISO/IEC規格の次期改訂版の非公式名である。C++17の仕様は、2017年3月にInternational Standard Draftの段階に達している。このバージョンは、策定中はC++1zと呼ばれていた。以下にC++17より追加される機能及びライブラリを紹介する。">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@nocotan">
-  <meta name="twitter:creator" content="@nocotan">
-  
-    <meta name="twitter:title" content="C++17">
-  
-  
-    <meta name="twitter:url" content="http://localhost:4000/c/c++/2017/05/06/cpp1z-copy.html">
-  
-  
-    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
-">
-  
-  <meta name="twitter:description" content="C++17(またはC++1z)は、C++のISO/IEC規格の次期改訂版の非公式名である。C++17の仕様
-は、2017年3月にInternational Standard Draftの段階に達している。このバージョンは
-、策定中はC++1zと呼ばれていた。
-以下にC++17より追加される機能及びライブラリを紹介する。
-
-畳み込み式
-畳み込み式は、二項演算子に対してテンプレートパラメータパッ...">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
-
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/c/c++/2017/05/06/cpp1z-copy.html">
-  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
-  <script src="/scripts/jquery-1.11.2.min.js"></script>
-  <script src="/scripts/pithy.js"></script>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-74313651-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
-</head>
-
-
+    <meta charset="utf-8">
+    <title>C++17</title>
+    <link rel="canonical" href="http://localhost:4000/c/c++/2017/05/06/cpp1z-copy.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
   <body>
-    <header class="header">
+
+<h1 class="post-title">
+<header class="header">
 	<div class="header-container">
 		<div class="nav">
 			
@@ -76,40 +41,28 @@
 		<ul class="social-links">
 			<li>
 				<a href="https://github.com/nocotan" title="Github">
-					<img width="19px" height="19px" src="/images/github.png"/>
+					<amp-img width="19px" height="19px" src="/images/github.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/github.png"></noscript></amp-img>
 				</a>
 			</li>
 			<li>
 				<a href="/feed.xml" title="RSS">
-					<img width="19px" height="19px" src="/images/rss.png"/>
+					<amp-img width="19px" height="19px" src="/images/rss.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/rss.png"></noscript></amp-img>
 				</a>
 			</li>
 			<li>
 				<a href="https://twitter.com/machinery81" title="Twitter">
-					<img width="19px" height="19px" src="/images/twitter.png"/>
+					<amp-img width="19px" height="19px" src="/images/twitter.png" layout="responsive"><noscript><img width="19px" height="19px" src="/images/twitter.png"></noscript></amp-img>
 				</a>
 			</li>
 		</ul>
 	</div>
 </header>
 
-    <br>
-    <div class="page-content">
-      <div class="wrapper">
-        <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$']]}
-    });
-</script>
-<div class="post">
-  <br>
-  <header class="post-header">
-    <h1 class="post-title">C++17</h1>
-    <p class="post-meta">May 6, 2017</p>
-  </header>
-
-  <article class="post-content">
-    <p>C++17(またはC++1z)は、C++のISO/IEC規格の次期改訂版の非公式名である。C++17の仕様
+</h1>
+<span>
+2017-05-06 10:00:00 +0000 - 
+</span>
+<p>C++17(またはC++1z)は、C++のISO/IEC規格の次期改訂版の非公式名である。C++17の仕様
 は、2017年3月にInternational Standard Draftの段階に達している。このバージョンは
 、策定中はC++1zと呼ばれていた。
 以下にC++17より追加される機能及びライブラリを紹介する。</p>
@@ -118,7 +71,8 @@
 <p>畳み込み式は、二項演算子に対してテンプレートパラメータパックの畳み込みを行う。
 畳み込み式は括弧で囲まれる必要がある</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Args</span><span class="o">&gt;</span>
+<div class="language-cpp highlighter-rouge">
+<pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Args</span><span class="o">&gt;</span>
 <span class="k">auto</span> <span class="n">sum</span><span class="p">(</span><span class="n">Args</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(...</span> <span class="o">+</span> <span class="n">args</span><span class="p">);</span>
 <span class="p">}</span>
@@ -134,7 +88,8 @@
 <h3 id="コンパイル時ラムダ">コンパイル時ラムダ</h3>
 <p>constexprを使用してコンパイル時に評価されるラムダ式。</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">constexpr</span> <span class="nf">add_one</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-cpp highlighter-rouge">
+<pre class="highlight"><code><span class="k">constexpr</span> <span class="nf">add_one</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">n</span><span class="p">]{</span> <span class="k">return</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="p">}();</span>
 <span class="p">}</span>
 
@@ -148,7 +103,8 @@
 <p>constexprを使用してコンパイル時に評価されるif式。if constexpr (cond)と記述する
 。</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<div class="language-cpp highlighter-rouge">
+<pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 <span class="k">constexpr</span> <span class="kt">bool</span> <span class="n">_is_integral</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="k">constexpr</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_integral</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
@@ -162,7 +118,8 @@
 <h3 id="クラステンプレートに対するテンプレート引数の自動推論">クラステンプレートに対するテンプレート引数の自動推論</h3>
 <p>クラステンプレートのテンプレート引数の推論を自動で行う。</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span> <span class="o">=</span> <span class="kt">float</span><span class="o">&gt;</span>
+<div class="language-cpp highlighter-rouge">
+<pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span> <span class="o">=</span> <span class="kt">float</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="n">Foo</span> <span class="p">{</span>
     <span class="n">T</span> <span class="n">value</span><span class="p">;</span>
     <span class="n">Foo</span><span class="p">()</span> <span class="o">:</span> <span class="n">value</span><span class="p">()</span> <span class="p">{}</span>
@@ -173,7 +130,8 @@
 
 <h3 id="thisのラムダキャプチャ">*thisのラムダキャプチャ</h3>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">struct</span> <span class="n">S</span> <span class="p">{</span>
+<div class="language-cpp highlighter-rouge">
+<pre class="highlight"><code><span class="k">struct</span> <span class="n">S</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
     <span class="kt">void</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">auto</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="p">](){</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="p">};</span>
@@ -191,7 +149,8 @@
 <p>namespace A::B {}のように記述することで、入れ子の名前空間を表現することが可能に
 なる。</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">namespace</span> <span class="n">A</span><span class="o">::</span><span class="n">B</span><span class="o">::</span><span class="n">C</span> <span class="p">{</span>
+<div class="language-cpp highlighter-rouge">
+<pre class="highlight"><code><span class="k">namespace</span> <span class="n">A</span><span class="o">::</span><span class="n">B</span><span class="o">::</span><span class="n">C</span> <span class="p">{</span>
     <span class="c1">// ...
 </span><span class="p">}</span>
 </code></pre>
@@ -201,7 +160,8 @@
 <p>無効値を取ることができる型であり、変数の中身が存在しない可能性を明示することができる。
 Boost.Optionalの実装を元に設計された。</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">some</span><span class="p">(</span><span class="kt">bool</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-cpp highlighter-rouge">
+<pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">some</span><span class="p">(</span><span class="kt">bool</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="s">"Some"</span><span class="p">;</span>
     <span class="k">else</span> <span class="k">return</span> <span class="p">{};</span>
 <span class="p">}</span>
@@ -211,7 +171,8 @@ Boost.Optionalの実装を元に設計された。</p>
 <h3 id="stdany">std::any</h3>
 <p>anyクラスは、任意の型の単一の値に対するタイプセーフなコンテナを記述する。</p>
 
-<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">any</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge">
+<pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">any</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">any</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">any</span> <span class="n">z</span> <span class="o">=</span> <span class="s">"str"</span><span class="p">;</span>
 </code></pre>
@@ -225,23 +186,12 @@ Boost.Optionalの実装を元に設計された。</p>
   <li>非推奨だった古い例外仕様を削除</li>
 </ul>
 
-  </article>
-</div>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-        <br><br>
-        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="vertical-normal" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-via="machinery81">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-      </div>
-    </div>
-    
-    <footer class="footer">
+<footer class="footer">
   <div id="gotop">^</div>
   <br>
 	@2015 Pithy Theme by Pawpaw.
 </footer>
 
-    
-  </body>
-
+</body>
 </html>

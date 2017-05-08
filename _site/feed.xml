@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 May 2017 06:30:50 +0900</pubDate>
-    <lastBuildDate>Sun, 07 May 2017 06:30:50 +0900</lastBuildDate>
+    <pubDate>Tue, 09 May 2017 00:08:08 +0900</pubDate>
+    <lastBuildDate>Tue, 09 May 2017 00:08:08 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -112,7 +112,7 @@ Boost.Optionalの実装を元に設計された。&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h3 id=&quot;stdany&quot;&gt;std::any&lt;/h3&gt;
-&lt;p&gt;あらゆる型の単一値におけるタイプセーフコンテナ。&lt;/p&gt;
+&lt;p&gt;anyクラスは、任意の型の単一の値に対するタイプセーフなコンテナを記述する。&lt;/p&gt;
 
 &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
