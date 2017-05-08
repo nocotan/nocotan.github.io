@@ -16,4 +16,3 @@ markdown: kramdown
 
 gems:
     - jekyll-paginate
-    - amp-jekyll
