@@ -55,18 +55,6 @@ categories: 書籍
 
 #### [Web API: The Good Parts](https://www.oreilly.co.jp/books/9784873116860/)
 
-### 論文
+#### [クラウドを支えるこれからの暗号技術](https://herumi.github.io/ango/)
 
-#### [Spectral concentration and greedy k-clustering](https://arxiv.org/abs/1404.1008)
-
-#### [Learning to Protect Communications with Adversarial Neural Cryptography](https://arxiv.org/pdf/1610.06918.pdf)
-
-#### [Semi-supervised Clustering for Short Text via Deep Representation Learning](https://arxiv.org/abs/1602.06797)
-
-#### [機械学習研究におけるプログラム開発と検証 - モンテカルロ法に基づく確率推論計算を例として](https://www.jstage.jst.go.jp/article/tjsai/27/4/27_253/_pdf)
-
-#### [Recurrent Neural Networkによるマイクロブログの投稿位置推定](https://www.jstage.jst.go.jp/article/tjsai/32/1/32_WII-E/_pdf)
-
-#### [メタ特徴の最適化処理による識別器構築アルゴリズム自動選択システム](https://www.jstage.jst.go.jp/article/sst/5/2/5_179/_pdf)
-
-#### [球面クラスタリングにおけるクラスタ数推定](http://ci.nii.ac.jp/els/110009947258.pdf?id=ART0010493577&type=pdf&lang=jp&host=cinii&order_no=&ppv_type=0&lang_sw=&no=1485239959&cp=)
+#### [オペレーティングシステムの基礎　ネットワークと融合する現代OS](http://shop.ohmsha.co.jp/shopdetail/000000004414/)
