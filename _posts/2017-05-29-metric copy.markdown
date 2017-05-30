@@ -6,7 +6,7 @@ categories: 機械学習
 ---
 
 分類器で得られた予測結果の評価関数はsklearnによって提供されている。  
-http://scikit-learn.org/stable/modules/classes.html
+(sklearn API Reference)[http://scikit-learn.org/stable/modules/classes.html]
 
 ### 精度(適合率)
 学習器が正であると予測したデータのうち、実際に正であるデータの割合
