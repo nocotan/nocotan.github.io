@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>All-distances Sketches</title>
+  <meta name="description" content="大規模なグラフから情報を抽出したり、処理したりするケースは多々あるが、グラフをそのまま扱うのは非常にコストがかかる。よってここでは、グラフの代わりに使うことができ、様々な情報を高速に求めることができるグラフスケッチの技法を紹介する。">
+  <meta name="google-site-verification" content="jhcQ391AbIJxLfLGHuUvmNEmr1luyROr-4GbAYF4mNE" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  
+    <meta name="twitter:title" content="All-distances Sketches">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/06/25/ads-copy.html">
+  
+  
+    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
+">
+  
+  <meta name="twitter:description" content="大規模なグラフから情報を抽出したり、処理したりするケースは多々あるが、
+グラフをそのまま扱うのは非常にコストがかかる。
+よってここでは、グラフの代わりに使うことができ、
+様々な情報を高速に求めることができるグラフスケッチの技法を紹介する。
+
+All-distances Sketches(ADS)
+グラフG上でのノードiについてのADSをADS(i)とする。
+また、ノードiとノードjとの距離を...">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/2017/06/25/ads-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74313651-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]}
+    });
+</script>
+<div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">All-distances Sketches</h1>
+    <p class="post-meta">Jun 25, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p>大規模なグラフから情報を抽出したり、処理したりするケースは多々あるが、
+グラフをそのまま扱うのは非常にコストがかかる。<br />
+よってここでは、グラフの代わりに使うことができ、
+様々な情報を高速に求めることができるグラフスケッチの技法を紹介する。</p>
+
+<h2 id="all-distances-sketchesads">All-distances Sketches(ADS)</h2>
+<p>グラフG上でのノードiについてのADSをADS(i)とする。<br />
+また、ノードiとノードjとの距離をd<sub>ij</sub>とする。<br />
+あらかじめハッシュ関数rに全てのノードを通しておき、ハッシュ値が昇順になるように
+ソートしておく。このハッシュ値が小さいノードから順に、以下のアルゴリズムを適用
+する。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for u by increasing r(u) do
+  ノードuからダイクストラをする
+  foreach 通過したノードv do
+    if |{(x,y)∈ADS(v) | yが距離v-&gt;uよりも小さい}| = k then
+      枝刈り
+    else
+      ADS(v) &lt;- ADS(v) ∪ {(r(u), 距離v-&gt;u)}
+</code></pre>
+</div>
+
+<h2 id="adsを利用したd近傍の基数類似度推定">ADSを利用したd近傍の基数/類似度推定</h2>
+<p>ノードvのd近傍のMin-Hash sketchをADS(v)から抽出したものをN<sub>d</sub>(v)とする。<br />
+<br />
+<strong>
+　N<sub>d</sub>(v) = bottom-k{i ∈ ADS(V) | d<sub>vi</sub> &lt; d }<br />
+</strong>
+<br /></p>
+
+<p>このN<sub>d</sub>(v)を利用して以下の推定ができる。</p>
+<ul>
+  <li>基数推定: <strong>|N<sub>d</sub>(v)|</strong></li>
+  <li>Jaccard係数: <strong>|N<sub>d</sub>(v) ∩ M<sub>d</sub>(u) |/ |N<sub>d</sub>(v) ∩ M<sub>d</sub>(u)|</strong></li>
+</ul>
+
+<p><br />
+このほかにも</p>
+<ul>
+  <li>近接中心性</li>
+  <li>近接類似度</li>
+  <li>2点間距離</li>
+  <li>有向直径</li>
+</ul>
+
+<p>などを効率的に推定することができる。</p>
+
+<h2 id="adsのサイズと計算量">ADSのサイズと計算量</h2>
+<ul>
+  <li>使用メモリ: <strong>O(kn log n)</strong></li>
+  <li>構築時間: <strong>O((m + n log k) k log n)</strong></li>
+</ul>
+
+<p>サイズは理論的にはノード数にほぼ線形。<br />
+しかし、現実ではスケーラビリティがあまり高くないらしく、それを改善する
+<a href="http://iwiwi.hatenablog.com/entry/2016/05/12/142450">Sketch Retrieval Shortcuts(SRS)</a>
+という研究がされている。<br />
+論文は<a href="http://www.kdd.org/kdd2016/papers/files/rfp0397-akibaA.pdf">こちら</a></p>
+
+<h2 id="実装">実装</h2>
+<p><a href="https://github.com/nocotan/mllib/blob/master/ads/all_distances_sketch.hpp">All-distances SketchesのC++実装</a></p>
+
+<h2 id="参考">参考</h2>
+<ul>
+  <li><a href="Leveraging Big Data">http://www.cohenwang.com/edith/bigdataclass2013/lectures/lecture12.pdf</a></li>
+  <li><a href="https://www.slideshare.net/iwiwi/ss-41752585">大規模グラフ解析のための乱択スケッチ技法</a></li>
+  <li><a href="https://arxiv.org/abs/1306.3284">All-Distances Sketches, Revisited: HIP Estimators for Massive Graphs Analysis</a></li>
+</ul>
+
+
+  </article>
+</div>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <br><br>
+        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="vertical-normal" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="machinery81">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>
