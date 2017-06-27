@@ -36,7 +36,7 @@ for u by increasing r(u) do
 
 このN<sub>d</sub>(v)を利用して以下の推定ができる。
 * 基数推定: <strong>\|N<sub>d</sub>(v)\|</strong>
-* Jaccard係数: <strong>\|N<sub>d</sub>(v) ∩ M<sub>d</sub>(u) \|/ \|N<sub>d</sub>(v) ∩ M<sub>d</sub>(u)\|</strong>
+* Jaccard係数: <strong>\|N<sub>d</sub>(v) ∩ M<sub>d</sub>(u) \|/ \|N<sub>d</sub>(v) ∪ M<sub>d</sub>(u)\|</strong>
 
 <br>
 このほかにも
