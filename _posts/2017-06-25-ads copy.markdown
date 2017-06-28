@@ -104,7 +104,7 @@ auto main() -> signed {
 ```
 
 ## 参考
-* [http://www.cohenwang.com/edith/bigdataclass2013/lectures/lecture12.pdf](Leveraging Big Data)
+* [Leveraging Big Data](http://www.cohenwang.com/edith/bigdataclass2013/lectures/lecture12.pdf)
 * [大規模グラフ解析のための乱択スケッチ技法](https://www.slideshare.net/iwiwi/ss-41752585)
 * [All-Distances Sketches, Revisited: HIP Estimators for Massive Graphs Analysis](https://arxiv.org/abs/1306.3284)
 
