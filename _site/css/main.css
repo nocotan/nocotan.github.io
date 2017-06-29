@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Reset some basic elements
  */
@@ -11,10 +12,11 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font-family: Arial, sans-serif;
+  font-family: Helvetica, "游ゴシック", "Yu Gothic", sans-serif;
   font-size: 20px;
   line-height: 1.5;
-  font-weight: 300;
+  font-weight: 240;
+  letter-spacing: 1.5px;
   color: #111;
   background-color: #fdfdfd;
   -webkit-text-size-adjust: 100%; }
