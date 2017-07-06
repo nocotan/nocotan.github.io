@@ -35,6 +35,8 @@ categories: 書籍
 
 ### [アルゴリズムとデータ構造のエッセンス](https://www.amazon.co.jp/%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0%E3%81%A8%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%AE%E3%82%A8%E3%83%83%E3%82%BB%E3%83%B3%E3%82%B9-%E5%A4%A7%E6%B2%A2-%E8%A3%95/dp/4785631554)
 
+### [グラフ理論入門 基本とアルゴリズム](https://www.morikita.co.jp/books/book/2843)
+
 ### 数学
 
 #### [数学ガールの秘密のノート 数列の広場](https://note4.hyuki.net/)
