@@ -12,6 +12,7 @@ permalink: /about/
 
 - C/C++, Python, Java
 - Vim
+- グラフ
 - 機械学習
 
 ### 趣味

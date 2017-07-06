@@ -6,9 +6,68 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 30 Jun 2017 02:01:13 +0900</pubDate>
-    <lastBuildDate>Fri, 30 Jun 2017 02:01:13 +0900</lastBuildDate>
+    <pubDate>Tue, 04 Jul 2017 15:13:13 +0900</pubDate>
+    <lastBuildDate>Tue, 04 Jul 2017 15:13:13 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>node2vec</title>
+        <description>&lt;p&gt;KDD2016に採択された論文, &lt;a href=&quot;https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf&quot;&gt;node2vec: Scalable Feature Learning for Networks&lt;/a&gt;について.
+目標は, オブジェクト集合の特徴を学習すること.&lt;br /&gt;
+提案手法はあるタスク特有のものではなく, 任意のタスクに適用可能なものである.&lt;br /&gt;
+また, 有向, 無向, 重み付き, 重み無しのグラフに適用可能.&lt;/p&gt;
+
+&lt;h2 id=&quot;グラフ上での特徴学習&quot;&gt;グラフ上での特徴学習&lt;/h2&gt;
+&lt;p&gt;グラフG = (V, E)が与えられる. ここで, Vはノード集合, Eはエッジ集合とする.
+また, マッピング関数fを以下のように定義する:&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;　　f: V → R&lt;sup&gt;d&lt;/sup&gt;&lt;/strong&gt; 　　(1)&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;直感的に, 何らかノードの類似性を保持したまま, ノードからd次元の特徴へのマッピングを見つけたいことがわかる.
+単純なアイディアとして, 近くのノードが近くに存在するようにノードの埋め込みを学習する.
+ノードu ∈ Vが与えられた時, 近傍サンプリングSから導かれるノードuの近傍をN&lt;sub&gt;S&lt;/sub&gt;(u)と定義する. 
+この近傍ノードN&lt;sub&gt;S&lt;/sub&gt;(u)を予測することによって最適な重みを見つけたい(尤度最大化問題).
+よって, 以下の目的関数を最適化することを目指す.
+これはfによって与えられた特徴表現を条件とするノードuのネットワーク近傍N&lt;sub&gt;S&lt;/sub&gt;を観測する対数確率を最大化する問題に帰結する.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　&lt;strong&gt;max Σ log Pr(N&lt;sub&gt;S&lt;/sub&gt;(u) | f(u))&lt;/strong&gt;　　(2)&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;ここで, 最適化問題を扱いやすくするために, 二つの仮定を導入する.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;条件付き独立である&lt;/li&gt;
+  &lt;li&gt;特徴空間において対称である&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これらの基本的な仮定に基づいて, Prは以下のように定義される.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　&lt;strong&gt;Pr(N&lt;sub&gt;S&lt;/sub&gt;(u) | f(u)) = ∏ Pr(n&lt;sub&gt;i&lt;/sub&gt; | f(u))&lt;/strong&gt;　　(3)&lt;br /&gt;
+　　&lt;strong&gt;Pr(n&lt;sub&gt;i&lt;/sub&gt; | f(u)) = exp(f(n&lt;sub&gt;i&lt;/sub&gt;)・f(u)) / Σ exp(f(v)・f(u))&lt;/strong&gt;　　(4)&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;以上より, 式2は以下のように単純化できる:&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+　　&lt;strong&gt;max Σ [ -logZ&lt;sub&gt;u&lt;/sub&gt; + Σ f(n&lt;sub&gt;i&lt;/sub&gt;)・f(u)]&lt;/strong&gt;　　(5)&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;ノード分割関数Z&lt;sub&gt;u&lt;/sub&gt; = Σ(f(u)・f(v))は大規模ネットワーク上で計算でき, ネガティブサンプリングを用いてこれを計算できる.
+式5により, 確率的勾配降下法(SGD: Stochastic Gradient Descent)を用いてf(u)を最適化する.&lt;/p&gt;
+
+&lt;h2 id=&quot;近傍ノードの決定&quot;&gt;近傍ノードの決定&lt;/h2&gt;
+</description>
+        <pubDate>Sat, 01 Jul 2017 10:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/07/01/node2vec-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/07/01/node2vec-copy.html</guid>
+        
+        
+        <category>機械学習</category>
+        
+      </item>
     
       <item>
         <title>All-distances Sketches</title>
@@ -734,97 +793,6 @@ y&lt;sub&gt;i&lt;/sub&gt;を指すベクトルであるようなl x Cラベル�
         <pubDate>Tue, 11 Apr 2017 10:00:00 +0900</pubDate>
         <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html</link>
         <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html</guid>
-        
-        
-        <category>機械学習</category>
-        
-      </item>
-    
-      <item>
-        <title>Graph-based Semi-Supervised Learning</title>
-        <description>&lt;p&gt;グラフベースの半教師あり学習の紹介。&lt;br /&gt;
-半教師あり学習は、普通の教師あり学習と比べて、ラベルのついていない(大量の)デー
-タを学習に用いることがきるという利点がある。&lt;/p&gt;
-
-&lt;h2 id=&quot;教師あり学習&quot;&gt;教師あり学習&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow1.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;決定木,サポートベクターマシンなど&lt;/li&gt;
-  &lt;li&gt;ラベル付きデータを使用して学習を行う&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;半教師あり学習ssl-semi-supervised-learning&quot;&gt;半教師あり学習(SSL: Semi-Supervised Learning)&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow2.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Self-Training, Co-Trainingなど&lt;/li&gt;
-  &lt;li&gt;ラベル付きデータに加えて、大量のラベルなしデータを使用して学習を行う&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;半教師あり学習の利点&quot;&gt;半教師あり学習の利点&lt;/h3&gt;
-&lt;p&gt;一般に、分類器の性能をあげるために、データを大量に与えたい。しかし、ラベル付き
-データを集めるのはとてもコストがかかる。特に、現時点でラベルがついていないデー
-タに対して人力でラベルをつける作業は、非常に多くの時間やコストを要する。一方ラ
-ベルなしデータであれば、コストをかけることなく大量に手に入れることができる。普通の
-教師あり学習ではこれらのラベルなしデータはあくまで分類対象でしかなく、明らかな
-デッドリソースである。こういったデータを学習に上手に利用することで分類器の性能
-向上を目指すというのが、半教師あり学習の考え方である。&lt;/p&gt;
-
-&lt;h2 id=&quot;graph-based-semi-supervised-learning&quot;&gt;Graph-based Semi-supervised Learning&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;ノード間が重みの大きいエッジで繋がっているならば、それらのノードは同じラベル
-を持っているはずだという仮定をする -&amp;gt; 類似度の大きいデータは同じラベルを持っ
-ているのではないかという仮定&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow3.png&quot; alt=&quot;画像&quot; /&gt;
-&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow4.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;neighborhood-methods&quot;&gt;Neighborhood Methods&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;k-Nearest Neighbor Graph (k-NNG)&lt;/li&gt;
-  &lt;li&gt;e-Neighborhood Method&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;k-nearest-neighbor-graph-k-nng&quot;&gt;k-Nearest Neighbor Graph (k-NNG)&lt;/h4&gt;
-&lt;p&gt;インスタンスとそのk最近傍点の間にエッジを追加する&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow5.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;欠点&quot;&gt;欠点&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;スケーラブルでない&lt;/li&gt;
-  &lt;li&gt;非対称グラフになる&lt;/li&gt;
-  &lt;li&gt;不規則なグラフになる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;e-neighborhood&quot;&gt;e-Neighborhood&lt;/h4&gt;
-&lt;p&gt;半径eの球内の全てのインスタンスにエッジを追加する&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170410/flow6.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;欠点-1&quot;&gt;欠点&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;スケーラブルでない&lt;/li&gt;
-  &lt;li&gt;eの値に敏感&lt;/li&gt;
-  &lt;li&gt;断片化されたグラフになる -&amp;gt; 接続されていないインスタンスが大量に出現する可能
-性がある&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;アルゴリズム&quot;&gt;アルゴリズム&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://nocotan.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html&quot;&gt;Label Propagation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Modified Adsorption&lt;/li&gt;
-  &lt;li&gt;Measure Propagation&lt;/li&gt;
-  &lt;li&gt;Sparse Label Propagation&lt;/li&gt;
-  &lt;li&gt;Manifold Regularization&lt;/li&gt;
-  &lt;li&gt;Spectral Graph Transduction&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 10 Apr 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html</guid>
         
         
         <category>機械学習</category>
