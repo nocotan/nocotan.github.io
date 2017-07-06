@@ -6,23 +6,22 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 04 Jul 2017 15:13:13 +0900</pubDate>
-    <lastBuildDate>Tue, 04 Jul 2017 15:13:13 +0900</lastBuildDate>
+    <pubDate>Thu, 06 Jul 2017 15:23:32 +0900</pubDate>
+    <lastBuildDate>Thu, 06 Jul 2017 15:23:32 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>node2vec</title>
-        <description>&lt;p&gt;KDD2016に採択された論文, &lt;a href=&quot;https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf&quot;&gt;node2vec: Scalable Feature Learning for Networks&lt;/a&gt;について.
+        <description>&lt;p&gt;KDD2016に採択された論文, &lt;a href=&quot;https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf&quot;&gt;node2vec: Scalable Feature Learning for Networks&lt;/a&gt;について.&lt;br /&gt;
 目標は, オブジェクト集合の特徴を学習すること.&lt;br /&gt;
 提案手法はあるタスク特有のものではなく, 任意のタスクに適用可能なものである.&lt;br /&gt;
 また, 有向, 無向, 重み付き, 重み無しのグラフに適用可能.&lt;/p&gt;
 
 &lt;h2 id=&quot;グラフ上での特徴学習&quot;&gt;グラフ上での特徴学習&lt;/h2&gt;
 &lt;p&gt;グラフG = (V, E)が与えられる. ここで, Vはノード集合, Eはエッジ集合とする.
-また, マッピング関数fを以下のように定義する:&lt;br /&gt;
-&lt;br /&gt;
-&lt;strong&gt;　　f: V → R&lt;sup&gt;d&lt;/sup&gt;&lt;/strong&gt; 　　(1)&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+また, マッピング関数fを以下のように定義する:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20170701/eq1.png&quot; alt=&quot;eq1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;直感的に, 何らかノードの類似性を保持したまま, ノードからd次元の特徴へのマッピングを見つけたいことがわかる.
 単純なアイディアとして, 近くのノードが近くに存在するようにノードの埋め込みを学習する.
@@ -31,9 +30,7 @@
 よって, 以下の目的関数を最適化することを目指す.
 これはfによって与えられた特徴表現を条件とするノードuのネットワーク近傍N&lt;sub&gt;S&lt;/sub&gt;を観測する対数確率を最大化する問題に帰結する.&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
-　　&lt;strong&gt;max Σ log Pr(N&lt;sub&gt;S&lt;/sub&gt;(u) | f(u))&lt;/strong&gt;　　(2)&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/20170701/eq2.png&quot; alt=&quot;eq2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ここで, 最適化問題を扱いやすくするために, 二つの仮定を導入する.&lt;/p&gt;
 
@@ -44,21 +41,73 @@
 
 &lt;p&gt;これらの基本的な仮定に基づいて, Prは以下のように定義される.&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
-　　&lt;strong&gt;Pr(N&lt;sub&gt;S&lt;/sub&gt;(u) | f(u)) = ∏ Pr(n&lt;sub&gt;i&lt;/sub&gt; | f(u))&lt;/strong&gt;　　(3)&lt;br /&gt;
-　　&lt;strong&gt;Pr(n&lt;sub&gt;i&lt;/sub&gt; | f(u)) = exp(f(n&lt;sub&gt;i&lt;/sub&gt;)・f(u)) / Σ exp(f(v)・f(u))&lt;/strong&gt;　　(4)&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/20170701/eq3.png&quot; alt=&quot;eq3&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;以上より, 式2は以下のように単純化できる:&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
-　　&lt;strong&gt;max Σ [ -logZ&lt;sub&gt;u&lt;/sub&gt; + Σ f(n&lt;sub&gt;i&lt;/sub&gt;)・f(u)]&lt;/strong&gt;　　(5)&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/20170701/eq4.png&quot; alt=&quot;eq4&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ノード分割関数Z&lt;sub&gt;u&lt;/sub&gt; = Σ(f(u)・f(v))は大規模ネットワーク上で計算でき, ネガティブサンプリングを用いてこれを計算できる.
 式5により, 確率的勾配降下法(SGD: Stochastic Gradient Descent)を用いてf(u)を最適化する.&lt;/p&gt;
 
 &lt;h2 id=&quot;近傍ノードの決定&quot;&gt;近傍ノードの決定&lt;/h2&gt;
+&lt;p&gt;与えられたノードの近傍ノードを決定するために, 幅優先探索(BFS)と深さ優先探索(DFS)という2つの古典的な探索手法がある.
+近傍3ノードを探索する際のDFSとBFSの動作を図1に示す.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20170701/fig1.png&quot; width=&quot;450px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;特に, グラフ上でのノード予測タスクは二種類の類似度に基づく(構造的等価性と共起表現的等価性).
+共起表現的等価性の下では, 相互に接続されており, 同様のクラスタまたはコミュニティに属するノードは密に埋め込まれるべきである.
+対照的に, 構造上の等価性仮説の下ではグラフにおいて類似の構造的役割を有するノードが密に埋め込まれるべきである.&lt;br /&gt;
+重要なことに, 共起表現とは異なり, 構造上の同等性は接続性を重要視していない.
+これは, ノードはグラフ上では遠く離れていても, 同じ構造的役割を持っていることがあるためである.
+実世界において, これらの等価概念は排他的ではない.
+グラフは, いくつかのノードが共起表現的等価性を示し, 他のノードが構造的等価性を示す.
+BFSとDFSのどちらを採用するかは構造的等価性と共起表現的等価性のどちらを優先するかで決まる.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20170701/fig2.png&quot; width=&quot;450px&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;node2vec&quot;&gt;node2vec&lt;/h2&gt;
+&lt;p&gt;上記を元にBFSとDFSを円滑に補間するための柔軟な近傍サンプリングを設計する.&lt;/p&gt;
+
+&lt;h3 id=&quot;ランダムムォーク&quot;&gt;ランダムムォーク&lt;/h3&gt;
+&lt;p&gt;ソースノードuが与えられると, 固定長lのランダムウォークを行う. c&lt;sub&gt;i&lt;/sub&gt;を歩行中のi番目のノードとし, c&lt;sub&gt;0&lt;/sub&gt; = uでランダムウォークを開始する.
+ノードc&lt;sub&gt;i&lt;/sub&gt;は以下の分布によって導かれる.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20170701/eq5.png&quot; alt=&quot;eq5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ここで, π&lt;sub&gt;vx&lt;/sub&gt;はノードvとノードxとの間の正規化されていない遷移確率であり, Zは正規化定数である.&lt;/p&gt;
+
+&lt;h3 id=&quot;探索バイアスα&quot;&gt;探索バイアスα&lt;/h3&gt;
+&lt;p&gt;パラメータpとqから導かれる二次ランダムウォークを定義する.
+エッジ(t, v)を通過してノードvに存在するランダムウォークを考える.
+ウォークは次のステップを決定する必要があるため, vから導かれるエッジ(v, x)上の遷移確率π&lt;sub&gt;vx&lt;/sub&gt; = α&lt;sub&gt;pq&lt;/sub&gt;(t, x)・w&lt;sub&gt;vx&lt;/sub&gt;とすると,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20170701/eq6.png&quot; alt=&quot;eq6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;d&lt;sub&gt;tx&lt;/sub&gt;はノードtとノードx間の最短経路距離を表す.
+d&lt;sub&gt;tx&lt;/sub&gt;は{0, 1, 2}のいずれかでなくてはならない.
+直感的にパラメータp及びqはランダムウォークがどのくらい早く探索し, 開始ノードuの近傍を離れるかを制御する.
+パラメータpは歩行中のノードを再訪する可能性を制御する.
+このパラメータを高い値に設定することで, 次の2ステップですでに訪れたノードをサンプリングする可能性が低くなる.
+この設定は適度な探索を促し, サンプリングに置ける2ホップ冗長性を回避する.
+一方pの値が低い場合, ウォークは開始ノードから離れにくくなる.
+パラメータpは探索が「内向き」及び「外向き」のノードを区別することを可能にする.
+q &amp;gt; 1の場合, ランダムウォークはノードtに近いノードに向かってバイアスされる.
+対照的に, q &amp;lt; 1の場合, 歩行はノードtから遠いノードをより多く訪問する傾向がある.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20170701/fig3.png&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ランダムウォークのメリット&quot;&gt;ランダムウォークのメリット&lt;/h3&gt;
+&lt;p&gt;純粋なBFS/DFSアプローチに比べてランダムウォークにはいくつかの利点がある.
+ランダムウォークは空間的及び時間的要件の両方において計算的に効率的である.
+グラフ内の各ノードの直近の近傍を格納する空間的計算量はO(|E|)である.
+二次ランダムウォークでは, 全てのノードの隣接ノード間に相互接続を格納すると, 空間的計算量はO(a&lt;sup&gt;2&lt;/sup&gt;|V|)となる.
+ここで, aはグラフの平均次数であり, 実世界のネットワークでは小さくなる.
+古典的探索手法よりもランダムウォークが優れているもう一つの点は, 時間的計算量についてである.
+特に, サンプル生成プロセスにグラフ接続性を課すことにより, ランダムウォークは異なるソース間でサンプルを再利用することができる.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20170701/code.png&quot; width=&quot;450px&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 01 Jul 2017 10:00:00 +0900</pubDate>
         <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/07/01/node2vec-copy.html</link>
