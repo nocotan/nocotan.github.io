@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width initial-scale=1">
 
   <title>node2vec</title>
-  <meta name="description" content="KDD2016に採択された論文, node2vec: Scalable Feature Learning for Networksについて.目標は, オブジェクト集合の特徴を学習すること.提案手法はあるタスク特有のものではなく, 任意のタスクに適用可能なものである.また, 有向, 無向, 重み付き, 重み無しのグ...">
+  <meta name="description" content="KDD2016に採択された論文, node2vec: Scalable Feature Learning for Networksについて.node2vecの目標は, オブジェクト集合の特徴を学習すること.提案手法はあるタスク特有のものではなく, 任意のタスクに適用可能なものである.また, 有向, 無向, 重み付...">
   <meta name="google-site-verification" content="jhcQ391AbIJxLfLGHuUvmNEmr1luyROr-4GbAYF4mNE" />
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@nocotan">
@@ -22,12 +22,12 @@
 ">
   
   <meta name="twitter:description" content="KDD2016に採択された論文, node2vec: Scalable Feature Learning for Networksについて.
-目標は, オブジェクト集合の特徴を学習すること.
+node2vecの目標は, オブジェクト集合の特徴を学習すること.
 提案手法はあるタスク特有のものではなく, 任意のタスクに適用可能なものである.
 また, 有向, 無向, 重み付き, 重み無しのグラフに適用可能.
 
 グラフ上での特徴学習
-グラフG = (V, E)が与え...">
+グラフG = ...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
@@ -111,7 +111,7 @@
 
   <article class="post-content">
     <p>KDD2016に採択された論文, <a href="https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf">node2vec: Scalable Feature Learning for Networks</a>について.<br />
-目標は, オブジェクト集合の特徴を学習すること.<br />
+node2vecの目標は, オブジェクト集合の特徴を学習すること.<br />
 提案手法はあるタスク特有のものではなく, 任意のタスクに適用可能なものである.<br />
 また, 有向, 無向, 重み付き, 重み無しのグラフに適用可能.</p>
 
@@ -168,7 +168,7 @@ BFSとDFSのどちらを採用するかは構造的等価性と共起表現的�
 <h2 id="node2vec">node2vec</h2>
 <p>上記を元にBFSとDFSを円滑に補間するための柔軟な近傍サンプリングを設計する.</p>
 
-<h3 id="ランダムムォーク">ランダムムォーク</h3>
+<h3 id="ランダムウォーク">ランダムウォーク</h3>
 <p>ソースノードuが与えられると, 固定長lのランダムウォークを行う. c<sub>i</sub>を歩行中のi番目のノードとし, c<sub>0</sub> = uでランダムウォークを開始する.
 ノードc<sub>i</sub>は以下の分布によって導かれる.</p>
 
@@ -206,6 +206,10 @@ q &gt; 1の場合, ランダムウォークはノードtに近いノードに向
 特に, サンプル生成プロセスにグラフ接続性を課すことにより, ランダムウォークは異なるソース間でサンプルを再利用することができる.</p>
 
 <p><img src="/images/20170701/code.png" width="450px" /></p>
+
+<h2 id="参考">参考</h2>
+<p><a href="https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf">node2vec: Scalable Feature Learning for Networks</a><br />
+<a href="http://snap.stanford.edu/node2vec/">node2vecの公式実装</a></p>
 
   </article>
 </div>

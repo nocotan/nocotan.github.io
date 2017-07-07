@@ -21,11 +21,7 @@
     <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
 ">
   
-  <meta name="twitter:description" content="メタプログラミングとは、他のプログラム(もしくは自身)を操作、出力するようなプロ
-グラムを記述するプログラミング手法。また、処理のうちの一部をコンパイル時に行う
-ようなコードを記述することである。このメタプログラミングの技法のうち、コンパイ
-ラがテンプレートを使用して一時コードを生成し、そうして生成されたコードを他のソ
-ースコードと共にコンパイルする方式をテンプレートメタプログラミングという...">
+  <meta name="twitter:description" content="メタプログラミングとは、他のプログラム(もしくは自身)を操作、出力するようなプログラムを記述するプログラミング手法。また、処理のうちの一部をコンパイル時に行うようなコードを記述することである。このメタプログラミングの技法のうち、コンパイラがテンプレートを使用して一時コードを生成し、そうして生成されたコードを他のソースコードと共にコンパイルする方式をテンプレートメタプログラミングという。加えて...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
@@ -108,12 +104,7 @@
   </header>
 
   <article class="post-content">
-    <p>メタプログラミングとは、他のプログラム(もしくは自身)を操作、出力するようなプロ
-グラムを記述するプログラミング手法。また、処理のうちの一部をコンパイル時に行う
-ようなコードを記述することである。このメタプログラミングの技法のうち、コンパイ
-ラがテンプレートを使用して一時コードを生成し、そうして生成されたコードを他のソ
-ースコードと共にコンパイルする方式をテンプレートメタプログラミングという。加え
-て、テンプレートメタプログラミングはチューリング完全である。</p>
+    <p>メタプログラミングとは、他のプログラム(もしくは自身)を操作、出力するようなプログラムを記述するプログラミング手法。また、処理のうちの一部をコンパイル時に行うようなコードを記述することである。このメタプログラミングの技法のうち、コンパイラがテンプレートを使用して一時コードを生成し、そうして生成されたコードを他のソースコードと共にコンパイルする方式をテンプレートメタプログラミングという。加えて、テンプレートメタプログラミングはチューリング完全である。</p>
 
 <h3 id="テンプレートメタプログラミングの利点と欠点">テンプレートメタプログラミングの利点と欠点</h3>
 
@@ -142,9 +133,7 @@
 </div>
 
 <h4 id="フィボナッチ数列">フィボナッチ数列</h4>
-<p>テンプレートの部分特殊化を利用したコード。テンプレートの部分特殊化(Partial
-template specialization)とは、特定の実引数が渡された時、元々のテンプレートの定
-義とは異なった動作をさせる機構である。</p>
+<p>テンプレートの部分特殊化を利用したコード。テンプレートの部分特殊化(Partial template specialization)とは、特定の実引数が渡された時、元々のテンプレートの定義とは異なった動作をさせる機構である。</p>
 
 <div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="kt">size_t</span> <span class="n">N</span><span class="o">&gt;</span>
 <span class="k">struct</span> <span class="n">fibonacci</span> <span class="o">:</span> <span class="n">integral_constant</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span> <span class="n">fibonacci</span><span class="o">&lt;</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">{}</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="o">&lt;</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">{}</span><span class="o">&gt;</span> <span class="p">{};</span>

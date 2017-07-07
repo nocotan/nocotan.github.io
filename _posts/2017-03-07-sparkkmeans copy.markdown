@@ -8,8 +8,7 @@ categories: Spark 機械学習
 [Sparkのインストール](http://nocotan.github.io/spark/2017/03/06/sparkinstall-copy.html)は完了しているものとする.  
 
 ### k-means
-k-meansは、データセットをあらかじめ決めておいたクラスタ数にクラスタリングする一
-般的なクラスタリングアルゴリズムのうちの一つ.
+k-meansは、データセットをあらかじめ決めておいたクラスタ数にクラスタリングする一般的なクラスタリングアルゴリズムのうちの一つ.
 MLlibの実装には、kmeans||と呼ばれる、k-means++の並列化変形が含まれる.
 
 ### 例

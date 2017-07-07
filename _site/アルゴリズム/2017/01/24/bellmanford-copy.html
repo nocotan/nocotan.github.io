@@ -21,14 +21,13 @@
     <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
 ">
   
-  <meta name="twitter:description" content="最短経路問題のうち始点を固定した時に、
-他のすべての頂点との間の最短路を求める問題を単一始点最短経路問題と言う。
+  <meta name="twitter:description" content="最短経路問題のうち始点を固定した時に、他のすべての頂点との間の最短路を求める問題を単一始点最短経路問題と言う。
 頂点i, jについて、
 
 d[i] = min(d[j]+(jからiへのコスト))
 
-と定義する。初期化はd[0]=0,d[i]=INFとする。グラフが有効グラフで閉路を持たないDAG(Directed
-Acyclic Graph)であるならば、頂点を順序付けることができるため、...">
+と定義する。初期化はd[0]=0,d[i]=INFとする。
+グラフが有効グラフで閉路を持たないDAG(Directed Acyclic Graph)であるならば、頂点を順序付けることができるため、...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
@@ -111,14 +110,13 @@ Acyclic Graph)であるならば、頂点を順序付けることができるた
   </header>
 
   <article class="post-content">
-    <p>最短経路問題のうち始点を固定した時に、
-他のすべての頂点との間の最短路を求める問題を単一始点最短経路問題と言う。<br />
+    <p>最短経路問題のうち始点を固定した時に、他のすべての頂点との間の最短路を求める問題を単一始点最短経路問題と言う。<br />
 頂点i, jについて、</p>
 
 <p><strong>d[i] = min(d[j]+(jからiへのコスト))</strong></p>
 
-<p>と定義する。初期化はd[0]=0,d[i]=INFとする。グラフが有効グラフで閉路を持たないDAG(Directed
-Acyclic Graph)であるならば、頂点を順序付けることができるため、dを更新していくことができる。<br />
+<p>と定義する。初期化はd[0]=0,d[i]=INFとする。
+グラフが有効グラフで閉路を持たないDAG(Directed Acyclic Graph)であるならば、頂点を順序付けることができるため、dを更新していくことができる。<br />
 辺e, 頂点i, jについて、<br />
 i —-e—-&gt; j<br />
 の時、それまでに計算してあるd[j]よりもd[i]+eのコストが小さければd[j]を更新できる。グラフに負のコストの閉路が存在しなければ最短路は同じ頂点を通らないので計算量はO(|V||E|)。

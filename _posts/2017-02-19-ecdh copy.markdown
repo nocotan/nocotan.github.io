@@ -5,8 +5,7 @@ date:   2017-02-19 01:00:00
 categories: 暗号
 ---
 
-楕円曲線ディフィー・ヘルマン鍵共有(Elliptic Curve Diffie-Hellman:
-ECDH)は、従来の整数ではなく、楕円曲線を使用して実行される鍵共有プロトコルである。
+楕円曲線ディフィー・ヘルマン鍵共有(Elliptic Curve Diffie-Hellman: ECDH)は、従来の整数ではなく、楕円曲線を使用して実行される鍵共有プロトコルである。
 プロトコルにより、当事者は通信のための安全なチャンネルを作成できる。以下の二種類のECDHがある。
 
 * ephemeral-ephemeral

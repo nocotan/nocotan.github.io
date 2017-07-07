@@ -23,12 +23,11 @@
   
   <meta name="twitter:description" content="クラスにおいて,thisへのshared_ptrを扱うためのもの。
 thisポインタをshared_ptr(this)とすると、参照カウントが増えず、所有権管理が機能しなくなる。
-enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、
-shared_from_this()が使用できるようになる。C++11以降で対応。
+enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、shared_from_this()が使用できるようになる。C++11以降で対応。
 
 コード例
 
-...">
+s...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
@@ -113,8 +112,7 @@ shared_from_this()が使用できるようになる。C++11以降で対応。
   <article class="post-content">
     <p>クラスにおいて,thisへのshared_ptr<T>を扱うためのもの。
 thisポインタをshared_ptr<T>(this)とすると、参照カウントが増えず、所有権管理が機能しなくなる。
-enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、
-shared_from_this()が使用できるようになる。C++11以降で対応。</T></T></p>
+enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、shared_from_this()が使用できるようになる。C++11以降で対応。</T></T></p>
 
 <h4 id="コード例">コード例</h4>
 
