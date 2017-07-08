@@ -5,9 +5,7 @@ date:   2017-01-30 01:00:00
 categories: アルゴリズム 機械学習
 ---
 
-SPRとは、系統樹上の任意の部分木を切断し、
-その切断部位を系統樹上の任意のノードにに再接続をするという試行である.最尤アルゴリズムであれば、
-もっとも尤度の高いノードに接続をする。
+SPRとは、系統樹上の任意の部分木を切断し、その切断部位を系統樹上の任意のノードにに再接続をするという試行である.最尤アルゴリズムであれば、もっとも尤度の高いノードに接続をする。
 
 参考論文(http://www.stat.wisc.edu/courses/st992-newton/smmb/homework/hw2/spr.pdf)  
 C++実装は[こちら](https://github.com/nocotan/mllib/blob/master/cpp/spr.hpp)

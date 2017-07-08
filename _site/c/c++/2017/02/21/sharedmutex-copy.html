@@ -22,13 +22,12 @@
 ">
   
   <meta name="twitter:description" content="C++14以降で使用可能。
-shared_mutexは、共有データが複数のスレッドによって同時にアクセスされるのを防ぐための
-ミューテックスクラスを提供する。排他アクセスを容易にする他のミューテクス型とは異なり、
+shared_mutexは、共有データが複数のスレッドによって同時にアクセスされるのを防ぐためのミューテックスクラスを提供する。排他アクセスを容易にする他のミューテクス型とは異なり、
 shared_mutexには二つのアクセスレベルがある。
 
 
   shared: 複数のスレッドが同じmutexの所有権を共有できる
-  exclusive: 一つのスレッドだけが...">
+  exclusive: 一つのスレッドだけがm...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
 
   <link rel="stylesheet" href="/css/main.css">
@@ -112,8 +111,7 @@ shared_mutexには二つのアクセスレベルがある。
 
   <article class="post-content">
     <p>C++14以降で使用可能。
-shared_mutexは、共有データが複数のスレッドによって同時にアクセスされるのを防ぐための
-ミューテックスクラスを提供する。排他アクセスを容易にする他のミューテクス型とは異なり、
+shared_mutexは、共有データが複数のスレッドによって同時にアクセスされるのを防ぐためのミューテックスクラスを提供する。排他アクセスを容易にする他のミューテクス型とは異なり、
 shared_mutexには二つのアクセスレベルがある。</p>
 
 <ul>
@@ -121,8 +119,7 @@ shared_mutexには二つのアクセスレベルがある。</p>
   <li>exclusive: 一つのスレッドだけがmutexを所有できる</li>
 </ul>
 
-<p>共有ミューテクスは、通常複数の読み取り手が同時にデータの競合を起こすことなく同じリソースに
-アクセスできる状況で使用されるが、単一の書き込み手のみアクセスを許される。</p>
+<p>共有ミューテクスは、通常複数の読み取り手が同時にデータの競合を起こすことなく同じリソースにアクセスできる状況で使用されるが、単一の書き込み手のみアクセスを許される。</p>
 
 <div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
 #include &lt;shared_mutex&gt;

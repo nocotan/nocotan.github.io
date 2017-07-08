@@ -6,7 +6,7 @@ categories: 機械学習
 ---
 
 KDD2016に採択された論文, [node2vec: Scalable Feature Learning for Networks](https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf)について.  
-目標は, オブジェクト集合の特徴を学習すること.  
+node2vecの目標は, オブジェクト集合の特徴を学習すること.  
 提案手法はあるタスク特有のものではなく, 任意のタスクに適用可能なものである.  
 また, 有向, 無向, 重み付き, 重み無しのグラフに適用可能.
 
@@ -61,7 +61,7 @@ BFSとDFSのどちらを採用するかは構造的等価性と共起表現的�
 ## node2vec
 上記を元にBFSとDFSを円滑に補間するための柔軟な近傍サンプリングを設計する.
 
-### ランダムムォーク
+### ランダムウォーク
 ソースノードuが与えられると, 固定長lのランダムウォークを行う. c<sub>i</sub>を歩行中のi番目のノードとし, c<sub>0</sub> = uでランダムウォークを開始する.
 ノードc<sub>i</sub>は以下の分布によって導かれる.
 
@@ -99,3 +99,7 @@ q &gt; 1の場合, ランダムウォークはノードtに近いノードに向
 特に, サンプル生成プロセスにグラフ接続性を課すことにより, ランダムウォークは異なるソース間でサンプルを再利用することができる.
 
 <img src="/images/20170701/code.png" width="450px">
+
+## 参考
+[node2vec: Scalable Feature Learning for Networks](https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf)  
+[node2vecの公式実装](http://snap.stanford.edu/node2vec/)

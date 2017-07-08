@@ -7,8 +7,7 @@ categories: C/C++
 
 クラスにおいて,thisへのshared_ptr<T>を扱うためのもの。
 thisポインタをshared_ptr<T>(this)とすると、参照カウントが増えず、所有権管理が機能しなくなる。
-enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、
-shared_from_this()が使用できるようになる。C++11以降で対応。
+enable_shared_from_thisを、テンプレート引数に扱いたいクラスを指定して継承することによって、shared_from_this()が使用できるようになる。C++11以降で対応。
 
 #### コード例
 
