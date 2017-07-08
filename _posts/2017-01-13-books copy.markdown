@@ -27,17 +27,21 @@ categories: 書籍
 
 #### [アルゴリズムの基本](http://ec.nikkeibp.co.jp/item/books/P85430.html)
 
-### [アルゴリズムとデータ構造(第3版)](ihttps://www.amazon.co.jp/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0-%E7%AC%AC3%E7%89%88-%E5%B9%B3%E7%94%B0-%E5%AF%8C%E5%A4%AB/dp/4627726538/ref=sr_1_1?s=books&ie=UTF8&qid=1493098680&sr=1-1&keywords=%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0%E3%80%80%E5%B9%B3%E7%94%B0)
+#### [アルゴリズムとデータ構造(第3版)](ihttps://www.amazon.co.jp/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0-%E7%AC%AC3%E7%89%88-%E5%B9%B3%E7%94%B0-%E5%AF%8C%E5%A4%AB/dp/4627726538/ref=sr_1_1?s=books&ie=UTF8&qid=1493098680&sr=1-1&keywords=%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%A8%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0%E3%80%80%E5%B9%B3%E7%94%B0)
 
-### [情報工学 アルゴリズム (東京大学工学教程)](https://www.amazon.co.jp/%E6%83%85%E5%A0%B1%E5%B7%A5%E5%AD%A6-%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0-%E6%9D%B1%E4%BA%AC%E5%A4%A7%E5%AD%A6%E5%B7%A5%E5%AD%A6%E6%95%99%E7%A8%8B-%E6%B8%8B%E8%B0%B7-%E5%93%B2%E6%9C%97/dp/4621301136)
+#### [情報工学 アルゴリズム (東京大学工学教程)](https://www.amazon.co.jp/%E6%83%85%E5%A0%B1%E5%B7%A5%E5%AD%A6-%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0-%E6%9D%B1%E4%BA%AC%E5%A4%A7%E5%AD%A6%E5%B7%A5%E5%AD%A6%E6%95%99%E7%A8%8B-%E6%B8%8B%E8%B0%B7-%E5%93%B2%E6%9C%97/dp/4621301136)
 
-### [世界で最も強力な9のアルゴリズム](https://www.amazon.co.jp/dp/B00FR78X64/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
+#### [世界で最も強力な9のアルゴリズム](https://www.amazon.co.jp/dp/B00FR78X64/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
 
-### [アルゴリズムとデータ構造のエッセンス](https://www.amazon.co.jp/%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0%E3%81%A8%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%AE%E3%82%A8%E3%83%83%E3%82%BB%E3%83%B3%E3%82%B9-%E5%A4%A7%E6%B2%A2-%E8%A3%95/dp/4785631554)
+#### [アルゴリズムとデータ構造のエッセンス](https://www.amazon.co.jp/%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0%E3%81%A8%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%AE%E3%82%A8%E3%83%83%E3%82%BB%E3%83%B3%E3%82%B9-%E5%A4%A7%E6%B2%A2-%E8%A3%95/dp/4785631554)
 
-### [グラフ理論入門 基本とアルゴリズム](https://www.morikita.co.jp/books/book/2843)
+#### [グラフ理論入門 基本とアルゴリズム](https://www.morikita.co.jp/books/book/2843)
+
+#### [グラフ理論入門 C言語によるプログラムと応用問題](https://www.amazon.co.jp/%E3%82%B0%E3%83%A9%E3%83%95%E7%90%86%E8%AB%96%E5%85%A5%E9%96%80%E2%80%95C%E8%A8%80%E8%AA%9E%E3%81%AB%E3%82%88%E3%82%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%A8%E5%BF%9C%E7%94%A8%E5%95%8F%E9%A1%8C-%E5%8E%9F%E7%90%86%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8B%E5%B7%A5%E5%AD%A6%E9%81%B8%E6%9B%B8-%E4%BD%90%E8%97%A4-%E5%85%AC%E7%94%B7/dp/4526043613)
 
 ### 数学
+
+#### [数学ガール 乱択アルゴリズム](http://www.hyuki.com/girl/random.html)
 
 #### [数学ガールの秘密のノート 数列の広場](https://note4.hyuki.net/)
 
