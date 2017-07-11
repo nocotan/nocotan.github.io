@@ -21,6 +21,8 @@ categories: 書籍
 
 #### [関係データ学習](http://www.kspub.co.jp/book/detail/1529212.html)
 
+#### [ゼロから作るDeep Learning ――Pythonで学ぶディープラーニングの理論と実装](https://www.oreilly.co.jp/books/9784873117584/)
+
 ### アルゴリズム
 
 #### [プログラミングコンテストチャレンジブック](http://tatsu-zine.com/books/procon-challenge)
