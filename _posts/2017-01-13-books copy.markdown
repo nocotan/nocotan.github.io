@@ -23,6 +23,8 @@ categories: 書籍
 
 #### [ゼロから作るDeep Learning ――Pythonで学ぶディープラーニングの理論と実装](https://www.oreilly.co.jp/books/9784873117584/)
 
+#### [やさしいMCMC入門 -有限マルコフ連鎖とアルゴリズム-](http://www.kyoritsu-pub.co.jp/bookdetail/9784320113145)
+
 ### アルゴリズム
 
 #### [プログラミングコンテストチャレンジブック](http://tatsu-zine.com/books/procon-challenge)
