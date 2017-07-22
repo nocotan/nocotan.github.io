@@ -21,6 +21,8 @@ categories: 書籍
 
 #### [関係データ学習](http://www.kspub.co.jp/book/detail/1529212.html)
 
+#### [劣モジュラ最適化と機械学習](http://www.kspub.co.jp/book/detail/1529090.html)
+
 #### [ゼロから作るDeep Learning ――Pythonで学ぶディープラーニングの理論と実装](https://www.oreilly.co.jp/books/9784873117584/)
 
 #### [やさしいMCMC入門 -有限マルコフ連鎖とアルゴリズム-](http://www.kyoritsu-pub.co.jp/bookdetail/9784320113145)
