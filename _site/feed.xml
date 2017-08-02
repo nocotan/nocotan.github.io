@@ -6,9 +6,32 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Jul 2017 18:54:13 +0900</pubDate>
-    <lastBuildDate>Fri, 07 Jul 2017 18:54:13 +0900</lastBuildDate>
+    <pubDate>Wed, 02 Aug 2017 13:40:30 +0900</pubDate>
+    <lastBuildDate>Wed, 02 Aug 2017 13:40:30 +0900</lastBuildDate>
     <generator>Jekyll v3.5.0</generator>
+    
+      <item>
+        <title>新しい同居人</title>
+        <description>&lt;p&gt;本日8/1に、アビシニアンモルモットの男の子が我が家にいらっしゃった．&lt;br /&gt;
+生後3ヶ月らしい．誕生日は推定で5月くらいだろか．&lt;br /&gt;
+迎え入れて2~3時間くらいは小屋から出てこなかったけど，夕方には少しだけ慣れたのか，ケージの中を探検したり飼い主がいる前でご飯を食べたりしていた．&lt;br /&gt;
+初日は緊張で一口も餌を食べない子もいるらしいので，食欲があるのはすごく嬉しい．
+干し草やペレットの他に，ブロッコリーとレタスをあげたら食べてた．ブロッコリーのが好きみたい．&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20170801/yuzutaro1.jpg&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;手を近づけると，まだまだ怖いのか隅っこに行ってしまうので遠くから撮影．&lt;br /&gt;
+とっても可愛い．おでこに白いマークがあるのがチャームポイント．&lt;br /&gt;
+ところでモルモットはトイレを覚えないらしいけれど，この子はケージの隅っこの決まったところによくしているように見える．うちの子は天才かもしれない．&lt;/p&gt;
+</description>
+        <pubDate>Wed, 02 Aug 2017 08:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E3%83%A2%E3%83%AB%E3%83%A2%E3%83%83%E3%83%88/2017/08/01/yuzutaro1-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E3%83%A2%E3%83%AB%E3%83%A2%E3%83%83%E3%83%88/2017/08/01/yuzutaro1-copy.html</guid>
+        
+        
+        <category>モルモット</category>
+        
+      </item>
     
       <item>
         <title>node2vec</title>
@@ -109,9 +132,12 @@ q &amp;gt; 1の場合, ランダムウォークはノードtに近いノード�
 
 &lt;p&gt;&lt;img src=&quot;/images/20170701/code.png&quot; width=&quot;450px&quot; /&gt;&lt;/p&gt;
 
+&lt;h2 id=&quot;実装&quot;&gt;実装&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://snap.stanford.edu/node2vec/&quot;&gt;node2vecの公式実装&lt;/a&gt;
+&lt;a href=&quot;https://github.com/nocotan/mllib/tree/master/cpplearn/cpplearn/embeddings&quot;&gt;node2vecのC++実装&lt;/a&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf&quot;&gt;node2vec: Scalable Feature Learning for Networks&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://snap.stanford.edu/node2vec/&quot;&gt;node2vecの公式実装&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf&quot;&gt;node2vec: Scalable Feature Learning for Networks&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 01 Jul 2017 10:00:00 +0900</pubDate>
         <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/07/01/node2vec-copy.html</link>
@@ -760,66 +786,6 @@ $ make install
         <pubDate>Sun, 16 Apr 2017 10:00:00 +0900</pubDate>
         <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/16/ecoc-copy.html</link>
         <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/16/ecoc-copy.html</guid>
-        
-        
-        <category>機械学習</category>
-        
-      </item>
-    
-      <item>
-        <title>Label Propagation</title>
-        <description>&lt;p&gt;半教師あり学習アルゴリズム『Label Propagation』の紹介。このアルゴリズムでは、ノードのラベルが近傍に応じて近くのノードに伝播する、グラフ上の伝播の形式として問題を定式化する。このプロセスでは、もともとラベルがついているデータに関してはラベルを固定する。したがって、ラベル付きデータはラベルのついていないデータに対してラベルを「伝播」させるように振る舞う。&lt;br /&gt;
-&lt;a href=&quot;http://nocotan.github.io/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/10/graphbasedlearning-copy.html&quot;&gt;グラフベース半教師あり学習について&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;問題設定&quot;&gt;問題設定&lt;/h2&gt;
-&lt;p&gt;{(x&lt;sub&gt;1&lt;/sub&gt;, y&lt;sub&gt;1&lt;/sub&gt;) … (x&lt;sub&gt;l&lt;/sub&gt;, y&lt;sub&gt;l&lt;/sub&gt;)}をラベル付きデータとし、{x&lt;sub&gt;l+1&lt;/sub&gt; … s&lt;sub&gt;l+u&lt;/sub&gt;}をラベルなしデータとする。(一般に l « u)。また、全体のデータ数をnとし、全体のクラス数Cは既知のものとする。  &lt;br /&gt;
-直感的に、同じラベルがついているデータは似ていると思われる。ラベルづけされたものとラベルづけされていないものの両方をノードとするグラフを作成し、ノードi, j間のエッジはそれらのノードの類似性を表すものとする。グラフは以下の重みで完全に接続されているものとする。 &lt;br /&gt;
-&lt;br /&gt;
- &lt;strong&gt;w&lt;sub&gt;ij&lt;/sub&gt; = exp(- ||x&lt;sub&gt;i&lt;/sub&gt; - x&lt;sub&gt;j&lt;/sub&gt;||&lt;sup&gt;2&lt;/sup&gt; / α&lt;sup&gt;2&lt;/sup&gt;)&lt;/strong&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-&lt;h2 id=&quot;アルゴリズム&quot;&gt;アルゴリズム&lt;/h2&gt;
-&lt;p&gt;まず、ラベルをエッジに伝播させていく。エッジの重みを大きくすると、ラベルが容易に移動するようになる。n x nの確率的遷移行列Pを定義すると、  &lt;br /&gt;
-&lt;br /&gt;
- &lt;strong&gt;P&lt;sub&gt;ij&lt;/sub&gt; = P(i → j) = w&lt;sub&gt;ij&lt;/sub&gt; / Σw&lt;sub&gt;ik&lt;/sub&gt;&lt;/strong&gt;&lt;br /&gt;
-&lt;br /&gt;
-P&lt;sub&gt;ij&lt;/sub&gt;はノードiからjへの遷移確率である。クラス数をCとし、i番目の行がy&lt;sub&gt;i&lt;/sub&gt;を指すベクトルであるようなl x Cラベル行列Y&lt;sub&gt;L&lt;/sub&gt;を定義する。
-ここで、各ノードに対するソフトラベルfを計算する。fはn x Cの行列であり、行はラベルの確率分布として解釈することができる。&lt;br /&gt;
-以下がラベル伝播法のアルゴリズムである。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;f ← Pf&lt;/li&gt;
-  &lt;li&gt;Clamp the labeled data f&lt;sub&gt;L&lt;/sub&gt; = Y&lt;sub&gt;L&lt;/sub&gt;&lt;/li&gt;
-  &lt;li&gt;Repeat from step 1 until f converges&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;ステップ1で、全てのノードから、それらの近傍へラベルを伝搬させる。&lt;br /&gt;
-ステップ2で、ラベル付きデータのラベルで上書きし直す。&lt;/p&gt;
-
-&lt;h2 id=&quot;scikit-learnを使用した実装&quot;&gt;scikit-learnを使用した実装&lt;/h2&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.semi_supervised&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LabelPropagation&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LabelPropagation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load_iris&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;random_unlabeled_points&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random_unlabeled_points&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;参考論文&quot;&gt;参考論文&lt;/h5&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.aaai.org/Papers/ICML/2003/ICML03-118.pdf&quot;&gt;Semi-Supervised Learning Using Gaussian Fields and Harmonic Functions&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 11 Apr 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/04/11/labelpropagation-copy.html</guid>
         
         
         <category>機械学習</category>
