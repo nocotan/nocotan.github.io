@@ -15,11 +15,8 @@ permalink: /about/
 - グラフ
 - 機械学習
 
-### 趣味
+## 趣味
 - 競技プログラミング
 
-### 受賞歴他
+## 受賞歴他
 - Discovery channel Code Contest 2016 本戦出場
-
-### 貢献
-- Mozilla Developer Network(MDN)
