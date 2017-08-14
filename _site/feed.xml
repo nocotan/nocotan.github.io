@@ -6,9 +6,28 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Aug 2017 00:24:32 +0900</pubDate>
-    <lastBuildDate>Sat, 05 Aug 2017 00:24:32 +0900</lastBuildDate>
+    <pubDate>Mon, 14 Aug 2017 23:57:03 +0900</pubDate>
+    <lastBuildDate>Mon, 14 Aug 2017 23:57:03 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>モルモットとトウモロコシ</title>
+        <description>&lt;p&gt;モルモットはとうもろこしのヒゲと皮が好きとの情報を得たので，スーパーからトウモロコシを買ってきてみた．
+せっかくなのでヒゲは不要な物をいただいてきた．&lt;br /&gt;
+初見では「なんだこれは」みたいな顔をしてたけど，とっても美味しそうに食べてた．&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20170814/yuzutaro1.jpg&quot; style=&quot;display:block;margin:auto;width:50%&quot; /&gt;
+&lt;img src=&quot;/images/20170814/yuzutaro2.jpg&quot; style=&quot;display:block;margin:auto;width:50%&quot; /&gt;
+&lt;img src=&quot;/images/20170814/yuzutaro3.jpg&quot; style=&quot;display:block;margin:auto;width:50%&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 14 Aug 2017 08:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E3%83%A2%E3%83%AB%E3%83%A2%E3%83%83%E3%83%88/2017/08/13/yuzutaro2-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E3%83%A2%E3%83%AB%E3%83%A2%E3%83%83%E3%83%88/2017/08/13/yuzutaro2-copy.html</guid>
+        
+        
+        <category>モルモット</category>
+        
+      </item>
     
       <item>
         <title>Chainerで各種CNNの実装</title>
@@ -946,44 +965,6 @@ $ make install
         
         
         <category>通信/ネットワーク</category>
-        
-      </item>
-    
-      <item>
-        <title>no matching function for call to transform</title>
-        <description>&lt;p&gt;以下のようなコードを書いた時に発生する。&lt;/p&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;algorithm&amp;gt;
-&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;そもそもtoupperはstd名前空間で定義されたものではなく、グローバル名前空間で定義されている。よって、以下のコードであれば正常に動作する。&lt;/p&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;algorithm&amp;gt;
-&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toupper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;toupper及びtolowerに関しては、名前空間を解決する際に、別のオーバーロードされた関数toupeer、tolowerが存在する。これによって、引数にstd::toupeerを渡すことによって参照しているオーバーロードを解決できなくなる。
-そのため、コンパイラはエラーメッセージに未解決のオーバーロードされた関数型を指定している。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 16 Apr 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/c/c++/2017/04/16/cpptransform-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/c/c++/2017/04/16/cpptransform-copy.html</guid>
-        
-        
-        <category>C/C++</category>
         
       </item>
     
