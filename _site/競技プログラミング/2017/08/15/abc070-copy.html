@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Atcoder Beginner Contest 070</title>
+  <meta name="description" content="Atcoder Beginner Contest 070">
+  <meta name="google-site-verification" content="jhcQ391AbIJxLfLGHuUvmNEmr1luyROr-4GbAYF4mNE" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nocotan">
+  <meta name="twitter:creator" content="@nocotan">
+  
+    <meta name="twitter:title" content="Atcoder Beginner Contest 070">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/%E7%AB%B6%E6%8A%80%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/2017/08/15/abc070-copy.html">
+  
+  
+    <meta name="twitter:description" content="機械学習,データ解析,ディープラーニング,C/C++,Pyhton,Java,プログラミング
+">
+  
+  <meta name="twitter:description" content="Atcoder Beginner Contest 070
+
+A - Palindromic Number
+
+http://abc070.contest.atcoder.jp/tasks/abc070_a
+
+3桁の整数Nが入力として与えられるので，それが回分数かどうかを判定する問題．
+問題文では入力が整数となっているけど，別に文字列で考えても問題ない．
+
+#include &amp;lt;bi...">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/%E7%AB%B6%E6%8A%80%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/2017/08/15/abc070-copy.html">
+  <link rel="alternate" type="application/atom+xml" title="nocohub" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74313651-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about">about</a>
+				</li>			
+			
+		</div>
+		<div class="description">  </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/nocotan" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/machinery81" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]}
+    });
+</script>
+<div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">Atcoder Beginner Contest 070</h1>
+    <p class="post-meta">Aug 15, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p><a href="http://abc070.contest.atcoder.jp/">Atcoder Beginner Contest 070</a></p>
+
+<h3 id="a---palindromic-number">A - Palindromic Number</h3>
+
+<p><a href="http://abc070.contest.atcoder.jp/tasks/abc070_a">http://abc070.contest.atcoder.jp/tasks/abc070_a</a></p>
+
+<p>3桁の整数Nが入力として与えられるので，それが回分数かどうかを判定する問題．<br />
+問題文では入力が整数となっているけど，別に文字列で考えても問題ない．</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">string</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">t</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">reverse</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">t</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="n">t</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Yes"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">else</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"No"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="b---two-switches">B - Two Switches</h3>
+<p><a href="http://abc070.contest.atcoder.jp/tasks/abc070_b">http://abc070.contest.atcoder.jp/tasks/abc070_b</a></p>
+
+<p>スイッチが二つと，それぞれを押す時刻と離す時刻が与えられるので，両方のスイッチが押されている秒数を求める問題．<br />
+求める秒数は(二つのスイッチのうち先に離された方の時刻) - (二つのスイッチのうち後に押された時刻)となる．</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="n">c</span> <span class="o">&gt;&gt;</span> <span class="n">d</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">-</span> <span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">ans</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="c---multiple-clocks">C - Multiple Clocks</h3>
+
+<p><a href="http://abc070.contest.atcoder.jp/tasks/abc070_c">http://abc070.contest.atcoder.jp/tasks/abc070_c</a></p>
+
+<p>現時点では全ての針がまっすぐ上を向いているN台の時計があって，それらを同時に動かし始めた時，次に全ての時計がまっすぐ上を向くのは何秒後かを求める問題．それぞれの時計の針の進む速度は異なっている．<br />
+それぞれの時計の針が一周するのにかかる秒数全ての最小公倍数を取ればいい．</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(;;)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">%=</span> <span class="n">a</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+        <span class="n">a</span> <span class="o">%=</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">lcm</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">temp</span> <span class="o">?</span> <span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">t</span><span class="p">;</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">;</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">lcm</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="d---transit-tree-path">D - Transit Tree Path</h3>
+
+<p><a href="http://abc070.contest.atcoder.jp/tasks/abc070_d">http://abc070.contest.atcoder.jp/tasks/abc070_d</a></p>
+
+<p>N頂点の木と整数Kが入力として与えられる．その後，『頂点x<sub>i</sub>から頂点Kを経由しつつ，頂点y<sub>i</sub>まで移動する場合の最短経路を求める』というQ個の質問クエリが与えられるという問題．<br />
+ダイクストラ法などで，ソースノードをKとした時の単一始点最短経路をあらかじめ求めておき，各クエリで(Kからx<sub>i</sub>までの最短距離) + (Kからy<sub>i</sub>までの最短距離)を出力すればいい．</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="cp">#define int long long
+</span>
+<span class="kt">int</span> <span class="n">V</span><span class="p">;</span>
+
+<span class="cp">#define INF LONG_MAX
+#define MAX_V 100000
+</span>
+<span class="k">using</span> <span class="n">P</span> <span class="o">=</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="n">edge</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">to</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cost</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">edge</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">P</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">que</span><span class="p">;</span>
+    <span class="n">fill</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="o">+</span><span class="n">V</span><span class="p">,</span> <span class="n">INF</span><span class="p">);</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="p">));</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">que</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">P</span> <span class="n">p</span> <span class="o">=</span> <span class="n">que</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">que</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">edge</span> <span class="n">e</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">d</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="n">e</span><span class="p">.</span><span class="n">cost</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="n">e</span><span class="p">.</span><span class="n">cost</span><span class="p">;</span>
+                <span class="n">que</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">],</span> <span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">signed</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">V</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">V</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">signed</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">a</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">b</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">edge</span> <span class="n">e</span> <span class="o">=</span> <span class="p">{</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">};</span>
+        <span class="n">G</span><span class="p">[</span><span class="n">a</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="p">{</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">};</span>
+        <span class="n">G</span><span class="p">[</span><span class="n">b</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">q</span> <span class="o">&gt;&gt;</span> <span class="n">k</span><span class="p">;</span>
+    <span class="n">k</span><span class="o">--</span><span class="p">;</span>
+    <span class="n">dijkstra</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">q</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">x</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">y</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+</span><span class="n">d</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+  </article>
+</div>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <br><br>
+        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="vertical-normal" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="machinery81">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by Pawpaw.
+</footer>
+
+    
+  </body>
+
+</html>
