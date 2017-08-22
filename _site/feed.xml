@@ -6,9 +6,69 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Aug 2017 14:38:28 +0900</pubDate>
-    <lastBuildDate>Tue, 15 Aug 2017 14:38:28 +0900</lastBuildDate>
+    <pubDate>Tue, 15 Aug 2017 18:05:18 +0900</pubDate>
+    <lastBuildDate>Tue, 15 Aug 2017 18:05:18 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Active Semi-Supervised Learning Using Sampling Theory for Graph Signals</title>
+        <description>&lt;p&gt;グラフ信号処理の半教師あり能動学習についての論文の紹介．&lt;br /&gt;
+元論文は&lt;a href=&quot;https://arxiv.org/pdf/1405.4324.pdf&quot;&gt;こちら&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;概要&quot;&gt;概要&lt;/h2&gt;
+&lt;p&gt;　本研究では，グラフ上でのプールベースの半教師あり能動学習問題を考慮する．
+この問題はラベル付きデータが貧弱で高価である一方で，ラベル無しデータは容易に入手できる場合に非常に重要である．
+各データはデータ間の類似度を重みにもつ無向グラフ上のノードとして表現される．
+ノードにつけるラベルの目標の数が与えられ，それらのノードの中からもっとも情報量が多く，不明なラベルを予測するのに有用なノードを選択することが目標である．
+本論文では，このような問題に対する，近年のグラフ信号のサンプリング理論に基づいた新しいフレームワークを提案する．
+グラフ信号はグラフ上のそれぞれのノードについて定義される実数値関数である．
+このような信号の周波数の概念は，グラフラプラシアン行列のスペクトルを使用して定義することができる．
+グラフ信号のサンプリング理論は，部分集合上の値からグラフを再構成できるグラフ信号のクラスを識別することで，従来の標本化定理の拡張を目的としている．
+この手法によって，信号の頻度最大化を目的とした標本集合の選択に基づく能動学習の基準を定義できる．
+実験では，本手法の有用性を示している．&lt;/p&gt;
+
+&lt;h2 id=&quot;キーワード&quot;&gt;キーワード&lt;/h2&gt;
+&lt;p&gt;半教師あり能動学習，グラフ信号処理，標本化定理，グラフ信号フィルタリング&lt;/p&gt;
+
+&lt;h2 id=&quot;1導入&quot;&gt;1.導入&lt;/h2&gt;
+&lt;p&gt;　多くの現実世界の機械学習タスクでは，ラベル付きデータは希少である一方で，ラベル無しデータは容易に入手できる．
+半教師あり能動学習はそのようなケースで有効な手法である．
+半教師あり学習の研究はラベル付きデータだけではなく，未ラベルデータに存在する固有のクラスタリングからも学習を行う．
+さらに，アノテーション作業が高価な場合，学習器がもっとも情報量・表現力の高いラベル付けすべきデータを選択する方が良い．
+したがって，能動学習の文脈では，より少ないデータを問い合わせることで，与えられる学習能力の最大化を達成することが目標である．
+本論文では，グラフ信号の標本化定理に基づく半教師あり能動学習の新しい手法を提案する．&lt;br /&gt;
+　能動学習は，オンラインストリームベースの標本化や、適応サンプリングなど様々な問題設定の中で研究されている．
+論文では，大量の静的な未ラベルデータ集合の中から，ごく少数のデータを選択してラベルを付与するプールベースのバッチ型半教師あり能動学習問題に焦点を当てる．
+ラベル付けのためのデータ集合を選択するバッチ操作は，一度に一つのデータにラベルを付与するのは効率的でないクラウドソーシングのような現実の問題により即している．
+さらに，論文では，一番最初のバッチを選択するようなケースで，ラベル情報を使わずに様々なサイズのバッチ最適化問題に焦点を当てる．&lt;br /&gt;
+　グラフ理論を半教師あり学習に適用することは目新しくはない．
+グラフベースの形式では，各データ点はグラフ上のノードとして表現され，エッジはノード間の類似度を反映する．
+例えば，分類タスクにおいては，エッジの重みは特徴空間上の距離関数となる．
+所与のクラスのメンバシップ関数はグラフ信号と考えることができ，それぞれのノードのスカラ値をとる．
+分類タスクにおいて選択された特徴は大きな意味を持つが，特徴空間において同じラベルを持つノードは近傍に位置すると予測できる．
+逆に，特徴空間において遠くに位置するノード同士は同じラベルを持つ可能性が低いと予想できる．
+したがって，グラフ上でのメンバシップ関数には滑らかさが期待される(例えば，注目ノードを近傍に動かしても関数の導く値は変わりづらいことが求められる)．
+つまり，半教師あり学習問題は滑らかなグラフ信号の補間問題と捉えることができる．
+この視点は，MinCut，Gaussian random fields，harmonic functions，manifold regularizationやスペクトラルグラフカーネルなど多くの効果的な技術によって導かれる．&lt;br /&gt;
+　能動学習はグラフベースの考えから多くの利益を得る．多くの能動学習手法はサンプリング集合の質の担保にグラフを用いる．
+一つの手法としては，グラフ上での代表的な低次元manifoldを捕捉するノードの部分集合を選択する手法がある．
+その他の手法には，未ラベルデータが強く結びついているデータを選択するものがある．
+いくつかの方法では、サンプルを選択して、一般化エラー境界の最小化を目指す。
+論文では，それらのうちのいくつかの手法について言及する．&lt;/p&gt;
+
+&lt;h2 id=&quot;2グラフ信号のための標本化定理&quot;&gt;2.グラフ信号のための標本化定理&lt;/h2&gt;
+&lt;h3 id=&quot;21-notation&quot;&gt;2.1 Notation&lt;/h3&gt;
+&lt;p&gt;　論文を通して，単純で連結な重み付き無向グラフ&lt;i&gt;G = (V, E)&lt;/i&gt;を考慮する．
+ここでノード集合は&lt;i&gt;V = {1,2,…,N}&lt;/i&gt;，エッジ集合は&lt;i&gt;E = {(i,j,w&lt;sub&gt;ij&lt;/sub&gt;)}, i,j ∈ V&lt;/i&gt;であり，&lt;i&gt;(i,k,)w&lt;sub&gt;ij&lt;/sub&gt;&lt;/i&gt;はノード&lt;i&gt;i, j&lt;/i&gt;間の重み&lt;i&gt;w&lt;sub&gt;ij&lt;/sub&gt;&lt;/i&gt;の重みを表す．&lt;/p&gt;
+</description>
+        <pubDate>Tue, 15 Aug 2017 12:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/08/15/arxiv14054324-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/08/15/arxiv14054324-copy.html</guid>
+        
+        
+        <category>機械学習</category>
+        
+      </item>
     
       <item>
         <title>Atcoder Beginner Contest 070</title>
@@ -982,105 +1042,6 @@ Boost.MPLはコンパイル時の汎用メタプログラミング・フレー�
         
         
         <category>C/C++</category>
-        
-      </item>
-    
-      <item>
-        <title>スペクトラルクラスタリング</title>
-        <description>&lt;p&gt;クラスタリングをグラフの分割問題として扱う手法。
-入力データをグラフとして表現し、評価関数に基づいてグラフカットを行う。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170505/graph1.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/20170505/graph2.png&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;評価関数&quot;&gt;評価関数&lt;/h3&gt;
-&lt;p&gt;以下の関数を最小化することを目的とする。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;RatioCut&lt;/li&gt;
-  &lt;li&gt;MCut&lt;/li&gt;
-  &lt;li&gt;NCut&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;cut&quot;&gt;Cut&lt;/h4&gt;
-
-&lt;p&gt;&lt;br /&gt;
-　cut(P) = 1/2ΣΣx&lt;sub&gt;ij&lt;/sub&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;ratiocut&quot;&gt;RatioCut&lt;/h4&gt;
-
-&lt;p&gt;&lt;br /&gt;
-　RatioCut(P) = Σcut(P&lt;sub&gt;k&lt;/sub&gt;)/|P&lt;sub&gt;k&lt;/sub&gt;|&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;mcut&quot;&gt;MCut&lt;/h4&gt;
-
-&lt;p&gt;&lt;br /&gt;
-　RatioCut(P) = Σcut(P&lt;sub&gt;k&lt;/sub&gt;)&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;ncut&quot;&gt;NCut&lt;/h4&gt;
-
-&lt;p&gt;&lt;br /&gt;
-　NCut(P) = Σcut(P&lt;sub&gt;k&lt;/sub&gt;)/vol(P&lt;sub&gt;k&lt;/sub&gt;), vol(P) = Σx&lt;sub&gt;ij&lt;/sub&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;アルゴリズム&quot;&gt;アルゴリズム&lt;/h3&gt;
-&lt;p&gt;各データをノードとみなし、それらの間をエッジで結ぶことでグラフとして表現できる
-。ここで、エッジの両端のノードの類似度をエッジの重みとすると、重みの小さいエッジでグラ
-フを切断する問題に帰着する。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;グラフラプラシアンL=D&lt;sup&gt;-1&lt;/sup&gt;WD&lt;sup&gt;-1&lt;/sup&gt;を求める&lt;/li&gt;
-  &lt;li&gt;Lの固有値問題を解く&lt;/li&gt;
-  &lt;li&gt;Fielderベクトルu&lt;sub&gt;2&lt;/sub&gt;を求める&lt;/li&gt;
-  &lt;li&gt;q = D&lt;sup&gt;-1/2&lt;/sup&gt;u&lt;sub&gt;2&lt;/sub&gt;を求める&lt;/li&gt;
-  &lt;li&gt;qをソートしクラスタリングする&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;グラフラプラシアン&quot;&gt;グラフラプラシアン&lt;/h3&gt;
-
-&lt;p&gt;&lt;br /&gt;
-　L = D - W&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;対称正規化グラフラプラシアン&quot;&gt;対称正規化グラフラプラシアン&lt;/h4&gt;
-
-&lt;p&gt;&lt;br /&gt;
-　L&lt;sub&gt;sym&lt;/sub&gt; = D&lt;sup&gt;1/2&lt;/sup&gt;WD&lt;sup&gt;1/2&lt;/sup&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;酔歩正規化グラフラプラシアン&quot;&gt;酔歩正規化グラフラプラシアン&lt;/h4&gt;
-
-&lt;p&gt;&lt;br /&gt;
-　L&lt;sub&gt;rw&lt;/sub&gt; = D&lt;sup&gt;-1&lt;/sup&gt;W&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;サンプル&quot;&gt;サンプル&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;manifold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decomposition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;X_spec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manifold&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpectralEmbedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_components&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;affinity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'nearest_neighbors'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gamma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random_state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eigen_solver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;n_neighbors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit_transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;spectral&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpectralClustering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_clusters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eigen_solver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'arpack'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;affinity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nearest_neighbors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spectral&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_spec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spectral&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit_predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_spec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Fri, 05 May 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/05/05/spectralclustering-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/05/05/spectralclustering-copy.html</guid>
-        
-        
-        <category>機械学習</category>
         
       </item>
     
