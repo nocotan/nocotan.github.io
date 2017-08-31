@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "Torch7のインストール"
+date:   2017-08-31 01:00:00
+categories: Torch
+---
+
+- Mac OS Sierra
+- Torch 7(http://torch.ch/)
+
+公式の通りにインストール
+
+```
+git clone https://github.com/torch/distro.git ~/torch --recursive
+cd ~/torch; bash install-deps;
+./install.sh
+# 他のバージョンのluaを使いたい場合は以下のようにする
+# TORCH_LUA_VERSION=LUA51 ./install.sh
+# TORCH_LUA_VERSION=LUA52 ./install.sh
+
+source ~/.bashrc
+```
