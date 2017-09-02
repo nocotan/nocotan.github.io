@@ -1,0 +1,77 @@
+---
+layout: post
+title:  "Atcoder Beginner Contest 071"
+date:   2017-08-21 01:00:00
+categories: 競技プログラミング
+---
+
+[Atcoder Regular Contest 082](http://arc082.contest.atcoder.jp/)
+
+## C - Together
+長さNの数列 a1, a2, ..., aNが与えられるので，各要素に+1するか-1するか何もしないかを選んで，できるだけ多くの同じ値を作る問題．  
+各要素について，それぞれの操作を行なった結果をメモしていって，最後に出現回数が最大のものを出力すれば良い．
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+
+int memo[100001];
+
+signed main() {
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for(int i=0; i<n; ++i) cin >> v[i];
+
+    sort(v.begin(), v.end());
+    for(int i=0; i<n; ++i) {
+        int x = v[i];
+        memo[x]++;
+        memo[x+1]++;
+        memo[x-1]++;
+    }
+    int ans = -1;
+    for(int i=0; i<100001; ++i) ans = max(ans, memo[i]);
+    cout << ans << endl;
+    return 0;
+}
+```
+
+## D - Derangement
+1, 2, ..., Nからなる順列が与えられるので，順列内で隣り合う二つの数をスワップする操作をできるだけ少ない回数行なってp<sub>i</sub> != iとする問題．  
+問題文から各要素はユニークなので，左から順番に見ていって，条件を満たしていなかった場合i+1番目(i==N-1の場合はi-1番目)とスワップすることを繰り返せばいい．
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+
+signed main() {
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for(int i=0; i<n; ++i) cin >> v[i];
+
+    int ans = 0;
+    for(int i=0; i<n; ++i) {
+        if(v[i]==i+1) {
+            if(i!=n-1) {
+                int tmp = v[i];
+                v[i] = v[i+1];
+                v[i+1] = tmp;
+            }
+            else {
+                int tmp = v[i];
+                v[i] = v[i-1];
+                v[i-1] = tmp;
+            }
+            ans++;
+        }
+    }
+    cout << ans << endl;
+    return 0;
+}
+```
+
+E, Fはわからず．
