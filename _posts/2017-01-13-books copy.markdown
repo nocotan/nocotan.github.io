@@ -27,6 +27,8 @@ categories: 書籍
 
 #### [やさしいMCMC入門 -有限マルコフ連鎖とアルゴリズム-](http://www.kyoritsu-pub.co.jp/bookdetail/9784320113145)
 
+#### [データサイエンティスト養成読本　機械学習入門編](http://gihyo.jp/book/2015/978-4-7741-7631-4)
+
 ### アルゴリズム
 
 #### [プログラミングコンテストチャレンジブック](http://tatsu-zine.com/books/procon-challenge)
