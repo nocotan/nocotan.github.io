@@ -73,6 +73,4 @@ class MLP(chainer.Chain):
 trainer.run()
 ```
 
-本記事で使用したコードは[こちら](https://github.com/nocotan/chainer-examples/blob/master/mnist_mlp.py)
-
-同サンプルの畳み込みニューラルネットワーク(CNN)版は[こちら](https://github.com/nocotan/chainer-examples/blob/master/mnist_cnn.py)
+本記事で使用したコードは[こちら](https://github.com/nocotan/chainer-examples)
