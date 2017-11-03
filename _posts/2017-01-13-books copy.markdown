@@ -15,6 +15,8 @@ categories: 書籍
 
 #### [自然言語処理概論](http://www.saiensu.co.jp/?page=book_details&ISBN=978-4-7819-1388-9&YEAR=2016)
 
+#### [自然言語処理 (放送大学教材)](https://www.amazon.co.jp/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86-%E6%94%BE%E9%80%81%E5%A4%A7%E5%AD%A6%E6%95%99%E6%9D%90-%E9%BB%92%E6%A9%8B-%E7%A6%8E%E5%A4%AB/dp/4595315732)
+
 #### [オンライン機械学習](http://www.kspub.co.jp/book/detail/1529038.html)
 
 #### [サポートベクトルマシン](http://www.kspub.co.jp/book/detail/1529069.html)
