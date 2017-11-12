@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {0.1}Introduction}{2}
+\contentsline {section}{\numberline {0.2}能動学習の適用シナリオ}{2}
+\contentsline {subsection}{\numberline {0.2.1}Membership Query Synthesis}{2}
+\contentsline {subsection}{\numberline {0.2.2}Stream-based Selective Sampling}{2}
+\contentsline {subsection}{\numberline {0.2.3}Pool-based Sampling}{3}
+\contentsline {section}{\numberline {0.3}クエリ戦略}{3}
+\contentsline {subsection}{\numberline {0.3.1}Uncertainty Sampling}{4}
+\contentsline {subsection}{\numberline {0.3.2}Query-By-Committee}{5}
+\contentsline {subsection}{\numberline {0.3.3}Expected Model Change}{5}
+\contentsline {subsection}{\numberline {0.3.4}Expected Error Reduction}{5}
+\contentsline {subsection}{\numberline {0.3.5}Variance Reduction}{5}
+\contentsline {subsection}{\numberline {0.3.6}Density-Weighted Methods}{5}

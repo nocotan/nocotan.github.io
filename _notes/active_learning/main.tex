@@ -1,0 +1,192 @@
+\documentclass[11pt]{report}
+\setlength{\topmargin}{-0.3in}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\textheight}{46\baselineskip}
+\setlength{\textwidth}{47zw}
+\setlength\intextsep{0pt}
+\setlength\textfloatsep{0pt}
+\usepackage[]{graphicx}
+
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+\begin{document}
+
+\begin{titlepage}
+\title{能動学習: Active Learning}
+\date{2017/11/12}
+\author{木村 正成}
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+
+能動学習は，「もし学習アルゴリズムが学習データ全体の中から任意のデータを選択することができる場合，適切な選択によって得られる学習器の性能は向上する」という仮説に基づいている．
+例えば一般的な教師あり学習手法では，何百・何千，もしくはそれ以上の大量のラベル付きインスタンスによって学習を行う．
+しかし，現実世界の多くの教師あり学習タスクにおいては，ラベル付きインスタンスの入手は非常に困難であったり時間的・費用的コストが必要であったりする場合が多い．
+
+能動学習では，ラベル無しデータの中から次にラベル付けを行うべきデータを選択してオラクル (例えばアノテータやドメインの専門家など)に問い合わせることで，ラベル付与のボトルネックを解消することを目指している．
+この手法では，学習者は出来るだけラベル付与のコストを抑えた上で分類性能を向上させることを目指す．
+こうした能動学習の研究は，近年のデータ自体は豊富にあるもののラベル付きデータが不足している，もしくはラベル付与のコストが高価であるような機械学習の問題から幅広く研究されている．
+
+\section{能動学習の適用シナリオ}
+能動学習者がクエリを問い合わせるシナリオ及びクエリの問い合わせ戦略は複数存在する\cite{settles2010active}．
+多くの研究で考慮されている問題設定は以下の3種類に大別される．
+
+\begin{itemize}
+    \item Membership Query Synthesis
+    \item Stream-based Selective Sampling
+    \item Pool-based Sampling
+\end{itemize}
+
+\subsection{Membership Query Synthesis}
+最初の能動学習のシナリオは，membership queries\cite{angluin1988queries}に基づく学習である．
+この設定では，学習者は入力空間内のあらゆるラベル無しインスタンスのラベルを問い合わせることができる．
+ここで生成されるクエリは，自然な分布からサンプリングされるものだけではなく，学習者が仮定する任意のインスタンスに対しても問い合わせることができる．
+
+こうしたクエリ合成のアプローチは多くの場合で有効である一方で，
+オラクルが人手によるアノテータである場合には注意が必要となる\cite{baum1992query}．
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[bb=0 0 500 850, scale=0.4, angle=270]{./images/fig3.pdf}
+\vspace{5mm}
+\caption{クエリ合成能動学習の例}
+\label{fig3}
+\end{center}
+\end{figure}
+
+\subsection{Stream-based Selective Sampling}
+クエリ合成に変わる手法として，selective sampling\cite{atlas1990training}が研究されている．
+ここでの主要な仮定として，ラベル無しインスタンスの入手にはコストがかからず，学習者は実際の分布からサンプリングを行なった後にそのインスタンスのラベルを問い合わせるかどうかを決定できる．
+こうしたアプローチはストリームベースと呼ばれ，一度に一つのラベル無しデータに対して評価を行う．
+入力が一様分布であれば，selective samplingはmembership query学習の様に振る舞う．
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[bb=100 0 350 850, scale=0.4, angle=270]{./images/fig2.pdf}
+\vspace{2mm}
+\caption{ストリームベース能動学習の例}
+\label{fig2}
+\end{center}
+\end{figure}
+
+あるインスタンスに対してラベルを問い合わせるかどうかの決定は，いくつかの手法によって形式づけられる．
+一つの方法として，もっとも情報を持っているようなインスタンスに対してラベルを問い合わせるというものがある\cite{dagan1995committee}．
+これを実現するナイーブな方法としては，各インスタンスの情報量の指標に閾値を設けて，それを上回ったインスタンスを選択するなどが考えられる．
+また別の手法として，その時点で学習者にとってもっとも曖昧な領域のインスタンスを積極的に選択するというものがある\cite{cohn1994improving}．
+これを達成するためには，モデルの出力するクラスの予測確率などを用いるなどが挙げられる．
+
+\subsection{Pool-based Sampling}
+多くの現実世界の問題では，巨大なラベル無しデータ集合はあるタイミングで一度に生成される．
+このような設定に対応するため，プールベースの能動学習手法が研究されている．Figure\ref{fig1}にプールベース手法の例を示す．
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[bb=0 0 500 850, scale=0.4, angle=270]{./images/fig1.pdf}
+\vspace{5mm}
+\caption{プールベース能動学習の例}
+\label{fig1}
+\end{center}
+\end{figure}
+
+少量のラベル付きデータ集合$L$と大量のラベル無しデータプール$U$が得られると仮定する．
+クエリは，この静的なデータプールについて生成する．
+典型的には，各インスタンスの情報量尺度の合計がもっとも大きいような部分集合をサンプリングする．
+
+\section{クエリ戦略}
+全ての能動学習のシナリオには，各インスタンスの情報量尺度の評価が含まれる．
+そのようなクエリ戦略の手法は数多く提案されている．
+ここで，$x_A^*$はアルゴリズム$A$によって選択された最も最適なインスタンスとする．
+
+\subsection{Uncertainty Sampling}
+最もシンプルなクエリ戦略として，uncertainty samplingが用いられる．
+この手法では，学習者はラベル付けの際に最も曖昧であるようなインスタンスについて問い合わせを行う．
+例えば，二項分類の確率モデルを用いる場合，事後確率が正である確率が最も0.5に近いようなインスタンスをサンプリングする．
+3クラス以上の分類問題においても，以下のように一般化できる．
+
+\begin{equation}
+\label{eq1}
+    x_{LG}^* = \argmax_{x} \;\; 1 - P_{\theta}(\hat{y}|x)
+\end{equation}
+
+ここで$\hat{y}$はモデル$\theta$の下で最も事後確率が高いクラスラベルとなる．
+この戦略はシンプルで有効なため，よく用いられている．
+しかし，式\ref{eq1}では，最も事後確率の高いクラスに対する曖昧性のみを考慮しており，言い換えると，その他の情報を捨てていることとなる．
+これを考慮するため，一部の研究ではmargin samplingと呼ばれる手法を用いる．
+
+\begin{equation}
+\label{eq2}
+    x_M^* = \argmin_{x} \;\; P_{\theta}(\hat{y_1}|x) - P_{\theta}(\hat{y_2}|x)
+\end{equation}
+
+ここで$\hat{y_1}$と$\hat{y_2}$は所与のモデルの元で最も事後確率が高い2つのクラスラベルとなる．
+このようにmargin samplingでは2番目に事後確率の高いラベルの情報を組み込んでいる．
+直感的に，大きなマージンを持つインスタンスはモデルがラベルの割り当ての際に迷うことが少ないため，自信を持った分類を行うことができると考えられる．
+一方で小さなマージンを持つインスタンスは曖昧であることがわかる．
+しかし，ラベル集合が大規模である場合には，margin samplingは多くのラベル情報を無視することになる．
+
+より一般的なuncertainty sampling戦略では，不確実性尺度としてエントロピーを用いる．
+
+\begin{equation}
+    x_H^* = \argmax_{x} - \sum_{i} P_{\theta}(y_i|x) \log P_{\theta}(y_i|x)
+\end{equation}
+
+ここで$y_i$は全ての可能なラベリングの範囲となる．
+エントロピーは情報理論的尺度であり，機械学習の文脈において不確実性や不純度などを測る指標として用いられる．
+
+\subsection{Query-By-Committee}
+より理論的に動機付けられたクエリ戦略として，query-by-committee (QBC)アルゴリズム\cite{seung1992query}がある．
+QBCアルゴリズムは，現在のラベル付きデータ集合から学習されたモデルのcommittee $C = \{\theta^{(1)},\ldots,\theta^{(C)} \}$を維持することを目的とする．
+それぞれのcommitteeのメンバはクエリ候補のラベリングに投票できる．
+ここで選択すべきインスタンスは，最も投票の割れるようなインスタンスとなる．
+
+不一致度を評価するため，2種類の主要な手法が提案されている．
+最初の手法は，エントロピー投票によるものである\cite{dagan1995committee}．
+
+\begin{equation}
+    x_{VE}^* = \argmax_{x} - \sum_{i} \frac{V(y_i)}{C} \log \frac{V(y_i)}{C}
+\end{equation}
+
+ここで，$y_i$は全てのラベリング可能な範囲にまたがり，$V(y_i)$はcommitteeのメンバの予測による投票数，$C$はcommitteeのサイズとなる．
+別の不一致度評価の手法として，Kullback-Leibler (KL) divergenceに基づくものがある\cite{mccallumzy1998employing}．
+
+\begin{equation}
+    x_{KL}^* = \argmax_{x} \frac{1}{C} \sum^{C}_{c=1} D(P_{\theta^{(c)}}||P_{C})
+\end{equation}
+
+ここで，
+
+\begin{equation}
+    D(P_{\theta^{(c)}}||P_{C}) = \sum_{i} P_{\theta^{(c)}}(y_i|x) \log \frac{P_{\theta^{(c)}}(y_i|x)}{P_C(y_i|x)}
+\end{equation}
+
+$\theta^{(c)}$はcommittee内の特定のモデルを表現し，$C$はcommittee全体を表す．
+
+\subsection{Expected Model Change}
+\subsection{Expected Error Reduction}
+\subsection{Variance Reduction}
+\subsection{Density-Weighted Methods}
+
+\section{問題設定}
+\subsection{Active Learning for Structured Outputs}
+\subsection{Active Feature Acquisition and Classification}
+\subsection{Active Class Selection}
+\subsection{Active Clustering}
+
+\section{実用的な考察}
+\subsection{Batch-Mode Active Learning}
+\subsection{Noisy Oracles}
+\subsection{Variable Labeling Costs}
+\subsection{Alternative Query Types}
+\subsection{Multi-Task Active Learning}
+\subsection{Unknown Model Class}
+\subsection{Stopping Criteria}
+
+\bibliographystyle{plain}
+\bibliography{reference}
+\end{document}
