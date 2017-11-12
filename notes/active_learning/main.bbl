@@ -40,6 +40,12 @@ Burr Settles.
 \newblock Active learning literature survey.
 \newblock {\em University of Wisconsin, Madison}, 52(55-66):11, 2010.
 
+\bibitem{settles2008multiple}
+Burr Settles, Mark Craven, and Soumya Ray.
+\newblock Multiple-instance active learning.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1289--1296, 2008.
+
 \bibitem{seung1992query}
 H~Sebastian Seung, Manfred Opper, and Haim Sompolinsky.
 \newblock Query by committee.

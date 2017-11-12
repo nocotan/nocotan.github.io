@@ -48,17 +48,17 @@
 この設定では，学習者は入力空間内のあらゆるラベル無しインスタンスのラベルを問い合わせることができる．
 ここで生成されるクエリは，自然な分布からサンプリングされるものだけではなく，学習者が仮定する任意のインスタンスに対しても問い合わせることができる．
 
-こうしたクエリ合成のアプローチは多くの場合で有効である一方で，
-オラクルが人手によるアノテータである場合には注意が必要となる\cite{baum1992query}．
-
 \begin{figure}[h]
 \begin{center}
-\includegraphics[bb=0 0 500 850, scale=0.4, angle=270]{./images/fig3.pdf}
+\includegraphics[bb=100 0 500 850, scale=0.4, angle=270]{./images/fig3.pdf}
 \vspace{5mm}
 \caption{クエリ合成能動学習の例}
 \label{fig3}
 \end{center}
 \end{figure}
+
+こうしたクエリ合成のアプローチは多くの場合で有効である一方で，
+オラクルが人手によるアノテータである場合には注意が必要となる\cite{baum1992query}．
 
 \subsection{Stream-based Selective Sampling}
 クエリ合成に変わる手法として，selective sampling\cite{atlas1990training}が研究されている．
@@ -168,7 +168,37 @@ QBCアルゴリズムは，現在のラベル付きデータ集合から学習�
 $\theta^{(c)}$はcommittee内の特定のモデルを表現し，$C$はcommittee全体を表す．
 
 \subsection{Expected Model Change}
+別の一般的な能動学習フレームワークでは決定論的アプローチを採用しており，ラベルが得られた際に最も現在のモデルに変更を与えるようなインスタンスを選択する．
+このようなフレームワークのクエリ戦略の例として，
+確率的識別モデルのための''expective gradient length'' (EGL)というアプローチが存在する\cite{settles2008multiple}．
+
+理論的には，EGLは勾配に基づくいかなる学習問題に対しても適用可能である．
+確率的識別モデルは通常，勾配に基づいて学習を行うため，モデルに与えられた変化は学習勾配の大きさによって評価できる．
+$\nabla l_{\theta}(L)$を目的関数$l$の勾配とする．
+ここで，$\nabla l_{\theta}(L \cup \langle x, y\rangle)$は追加でタプル$\langle x, y \rangle$が得られた時の新しい勾配を意味する．
+クエリアルゴリズムは事前に真のラベル$y$を知ることはできないので，代わりに可能なラベリングについての勾配の期待値を求める必要がある．
+
+\begin{equation}
+    x_{EGL}^* = \argmax_{x} \sum_{i} P_{\theta}(y_i|x) || \nabla l_{\theta}(L \cup \langle x, y_i \rangle)||
+\end{equation}
+
+ここで，$||\cdot||$はユークリッドノルムを意味する．
+このフレームワークでは，結果のラベルが何であるにせよ，得られるモデルに最も変化をもたらすインスタンスを好むはずであるという仮説に基づく．
+このアプローチは経験的実験からうまくいくことが示されている一方で，特徴空間とラベル空間が巨大であるケースでは計算コストが大きくなってしまう．
+
 \subsection{Expected Error Reduction}
+その他の決定論的アプローチでは，モデルの変化量ではなく，その汎化誤差の減少量を評価することを目的としている．
+そのようなアプローチのうちの一つとして，期待される$0/1$誤差を最小化するものがある．
+
+\begin{equation}
+    x_{0/1}^* = \argmin_{x} \sum_{i} P_{\theta}(y_i|x) \left(\sum^U_{u=1} 1 - P_{\theta^{+\langle x, y_i \rangle}}(\hat{y}|x^{(u)})\right)
+\end{equation}
+
+ここで$\theta^{+\langle x, y_i \rangle}$はタプル$\langle x, y_i \rangle$がラベル付きデータ集合$L$に追加され，
+再学習を行った際の新しいモデルを表す．
+
+多くのケースにおいては，expected error reductionは計算コストの高い手法である．
+
 \subsection{Variance Reduction}
 \subsection{Density-Weighted Methods}
 
