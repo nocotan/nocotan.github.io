@@ -8,18 +8,13 @@
 \contentsline {subsection}{\numberline {0.3.2}Query-By-Committee}{4}
 \contentsline {subsection}{\numberline {0.3.3}Expected Model Change}{5}
 \contentsline {subsection}{\numberline {0.3.4}Expected Error Reduction}{5}
-\contentsline {subsection}{\numberline {0.3.5}Variance Reduction}{6}
-\contentsline {subsection}{\numberline {0.3.6}Density-Weighted Methods}{6}
-\contentsline {section}{\numberline {0.4}問題設定}{6}
-\contentsline {subsection}{\numberline {0.4.1}Active Learning for Structured Outputs}{6}
-\contentsline {subsection}{\numberline {0.4.2}Active Feature Acquisition and Classification}{6}
-\contentsline {subsection}{\numberline {0.4.3}Active Class Selection}{6}
-\contentsline {subsection}{\numberline {0.4.4}Active Clustering}{6}
-\contentsline {section}{\numberline {0.5}実用的な考察}{6}
-\contentsline {subsection}{\numberline {0.5.1}Batch-Mode Active Learning}{6}
-\contentsline {subsection}{\numberline {0.5.2}Noisy Oracles}{6}
-\contentsline {subsection}{\numberline {0.5.3}Variable Labeling Costs}{6}
-\contentsline {subsection}{\numberline {0.5.4}Alternative Query Types}{6}
-\contentsline {subsection}{\numberline {0.5.5}Multi-Task Active Learning}{6}
-\contentsline {subsection}{\numberline {0.5.6}Unknown Model Class}{6}
-\contentsline {subsection}{\numberline {0.5.7}Stopping Criteria}{6}
+\contentsline {section}{\numberline {0.4}実用的な考察}{6}
+\contentsline {subsection}{\numberline {0.4.1}Batch-Mode Active Learning}{6}
+\contentsline {subsection}{\numberline {0.4.2}Noisy Oracles}{6}
+\contentsline {subsection}{\numberline {0.4.3}Variable Labeling Costs}{6}
+\contentsline {subsection}{\numberline {0.4.4}Multi-Task Active Learning}{6}
+\contentsline {subsection}{\numberline {0.4.5}Stopping Criteria}{7}
+\contentsline {section}{\numberline {0.5}Related Research Areas}{7}
+\contentsline {subsection}{\numberline {0.5.1}Semi-Supervised Learning}{7}
+\contentsline {subsection}{\numberline {0.5.2}Submodular Optimization}{7}
+\contentsline {subsection}{\numberline {0.5.3}Graph Structure}{7}
