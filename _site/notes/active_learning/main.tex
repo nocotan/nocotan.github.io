@@ -48,17 +48,17 @@
 この設定では，学習者は入力空間内のあらゆるラベル無しインスタンスのラベルを問い合わせることができる．
 ここで生成されるクエリは，自然な分布からサンプリングされるものだけではなく，学習者が仮定する任意のインスタンスに対しても問い合わせることができる．
 
-こうしたクエリ合成のアプローチは多くの場合で有効である一方で，
-オラクルが人手によるアノテータである場合には注意が必要となる\cite{baum1992query}．
-
 \begin{figure}[h]
 \begin{center}
-\includegraphics[bb=0 0 500 850, scale=0.4, angle=270]{./images/fig3.pdf}
+\includegraphics[bb=100 0 500 850, scale=0.4, angle=270]{./images/fig3.pdf}
 \vspace{5mm}
 \caption{クエリ合成能動学習の例}
 \label{fig3}
 \end{center}
 \end{figure}
+
+こうしたクエリ合成のアプローチは多くの場合で有効である一方で，
+オラクルが人手によるアノテータである場合には注意が必要となる\cite{baum1992query}．
 
 \subsection{Stream-based Selective Sampling}
 クエリ合成に変わる手法として，selective sampling\cite{atlas1990training}が研究されている．
@@ -168,24 +168,95 @@ QBCアルゴリズムは，現在のラベル付きデータ集合から学習�
 $\theta^{(c)}$はcommittee内の特定のモデルを表現し，$C$はcommittee全体を表す．
 
 \subsection{Expected Model Change}
-\subsection{Expected Error Reduction}
-\subsection{Variance Reduction}
-\subsection{Density-Weighted Methods}
+別の一般的な能動学習フレームワークでは決定論的アプローチを採用しており，ラベルが得られた際に最も現在のモデルに変更を与えるようなインスタンスを選択する．
+このようなフレームワークのクエリ戦略の例として，
+確率的識別モデルのための''expective gradient length'' (EGL)というアプローチが存在する\cite{settles2008multiple}．
 
-\section{問題設定}
-\subsection{Active Learning for Structured Outputs}
-\subsection{Active Feature Acquisition and Classification}
-\subsection{Active Class Selection}
-\subsection{Active Clustering}
+理論的には，EGLは勾配に基づくいかなる学習問題に対しても適用可能である．
+確率的識別モデルは通常，勾配に基づいて学習を行うため，モデルに与えられた変化は学習勾配の大きさによって評価できる．
+$\nabla l_{\theta}(L)$を目的関数$l$の勾配とする．
+ここで，$\nabla l_{\theta}(L \cup \langle x, y\rangle)$は追加でタプル$\langle x, y \rangle$が得られた時の新しい勾配を意味する．
+クエリアルゴリズムは事前に真のラベル$y$を知ることはできないので，代わりに可能なラベリングについての勾配の期待値を求める必要がある．
+
+\begin{equation}
+    x_{EGL}^* = \argmax_{x} \sum_{i} P_{\theta}(y_i|x) || \nabla l_{\theta}(L \cup \langle x, y_i \rangle)||
+\end{equation}
+
+ここで，$||\cdot||$はユークリッドノルムを意味する．
+このフレームワークでは，結果のラベルが何であるにせよ，得られるモデルに最も変化をもたらすインスタンスを好むはずであるという仮説に基づく．
+このアプローチは経験的実験からうまくいくことが示されている一方で，特徴空間とラベル空間が巨大であるケースでは計算コストが大きくなってしまう．
+
+\subsection{Expected Error Reduction}
+その他の決定論的アプローチでは，モデルの変化量ではなく，その汎化誤差の減少量を評価することを目的としている．
+そのようなアプローチのうちの一つとして，期待される$0/1$誤差を最小化するものがある．
+
+\begin{equation}
+    x_{0/1}^* = \argmin_{x} \sum_{i} P_{\theta}(y_i|x) \left(\sum^U_{u=1} 1 - P_{\theta^{+\langle x, y_i \rangle}}(\hat{y}|x^{(u)})\right)
+\end{equation}
+
+ここで$\theta^{+\langle x, y_i \rangle}$はタプル$\langle x, y_i \rangle$がラベル付きデータ集合$L$に追加され，
+再学習を行った際の新しいモデルを表す．
+
+多くのケースにおいては，expected error reductionは計算コストの高い手法である．
 
 \section{実用的な考察}
+例えば，能動学習の研究においては，その多くがオラクルが単一であり常に正しい結果を返すことを仮定している．
+しかし多くの現実の問題において，こうした仮定は成り立たない．
+そうした実用問題で考えられる設定に対する研究も近年増えてきている．
+
 \subsection{Batch-Mode Active Learning}
+多くの能動学習の研究では，ラベルの問い合わせは連続して，つまり一度に一つのデータのみに対して行われる．
+しかしそれでは，全体としての問い合わせ回数が増えてしまうため，モデルの構築には時間がかかってしまう場合がある．
+また，アノテーションを行うオラクルが複数人いて，並列にラベル付けを行うことができる場合を考慮すると，シーケンシャルな問い合わせではこれを活かすことができない．
+これらの両方のケースを考量すると，連続的な問い合わせは非効率である．
+対照的にバッチ型能動学習の手法では，複数のデータをまとめて問い合わせることで，これらの利点を活かすことができる．
+
+バッチ型能動学習は，最適なクエリ集合$Q$を発見することにある．
+単純にインスタンスレベルの戦略から$Q-best$クエリを採用することは，情報の重複を考慮しないためうまく動作しないことが多い．
+これに対処するために，いくつかのバッチ型能動学習の手法が提案されている\cite{brinker2003incorporating}\cite{guo2008discriminative}\cite{hoi2006batch}．
+
 \subsection{Noisy Oracles}
+能動学習のもう一つの強力な仮定のうちの一つに，オラクルによるアノテーションが高品質であるというものがある．
+ラベルが経験的実験によるものの場合，その多くは実験環境や計器などの設定によってノイズが含まれる場合が多いはずである．
+また，ラベルが人間の専門家によるものだったとしても，それが常に信頼できるものであるとは限らない．
+これに対処するような研究も必要となってくる．
+
 \subsection{Variable Labeling Costs}
-\subsection{Alternative Query Types}
+もし，各インスタンスに対するラベル付与のコストが異なっている場合，能動学習の目的からすれば問い合わせるインスタンス数よりもこのコストを最小化するべきである．
+実際のデータセットに対するアノテーションコストについての調査も存在する\cite{settles2008active}．
+
+\begin{itemize}
+\item 特定のドメインにおいては，インスタンスごとのアノテーションコストは一定ではなく，大きく異なる場合がある
+\item コストを無視した能動学習の手法は，乱択にも劣る場合がある
+\item アノテーションのコストは，アノテータによって異なる場合がある
+\item アノテーションコストの評価指標には確率的要素が含まれる場合がある
+\end{itemize}
+
 \subsection{Multi-Task Active Learning}
-\subsection{Unknown Model Class}
+典型的な能動学習の設定では，単一のモデルが単一のタスクを解くことを前提としている．
+しかし現実の多くの問題では，同じデータは異なる複数の部分タスクのために異なるラベル付けがされる．
+Reichartら\cite{reichart2008multi}は2種類のタスクに対する能動学習の手法を提案している．
+
 \subsection{Stopping Criteria}
+インタラクティブな学習手法の潜在的な問題の一つに，学習を停止するタイミングについてのものがある．
+まず，新しくラベル付けを行うコストが現在のモデルの出力するエラーのコストを上回った時が考えられる．
+もう一つの視点として，データの追加による学習精度の向上が頭打ちになったタイミングを観察することが挙げられる．
+能動学習は，データ取得のリソースまでを含んだ最適化を目指すため，学習停止の基準を設けることは自然な発想であると言える．
+
+\section{Related Research Areas}
+
+\subsection{Semi-Supervised Learning}
+能動学習と同様，半教師あり学習もラベル無しデータを活用することで得られるモデルの性能を向上させることを目的としている．
+そのため，これらを組み合わせた研究もいくつか存在する\cite{zhu2003combining}\cite{muslea2002active+}．
+
+\subsection{Submodular Optimization}
+劣モジュラ性を持つ関数はいくつかの便利な性質を持つため，これを機械学習分野に適用した研究も多く存在する．
+能動学習は部分集合を選択するという問題に一般化でき，応用によっては劣モジュラ最適化問題に落ちる場合もあるため，
+これについての研究も存在する\cite{golovin2011adaptive}\cite{golovin2010adaptive}．
+
+\subsection{Graph Structure}
+例えばベクトルデータ集合からであれば類似度グラフ，文書集合からであれば共起語グラフの構築などが考えられる．
+こうしたラベルの有無によらないデータ集合全体の構造的特性を利用する研究も存在する\cite{jun2016graph}\cite{dasarathy2015s2}．
 
 \bibliographystyle{plain}
 \bibliography{reference}

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.5.23)  12 NOV 2017 18:23
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.5.23)  12 NOV 2017 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -107,24 +107,17 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 46.
 File: ./images/fig3.pdf Graphic file (type eps)
 
-<./images/fig3.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: ./images/fig2.pdf Graphic file (type eps)
-<./images/fig2.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2
+<./images/fig3.pdf> [2
 
 ]
+File: ./images/fig2.pdf Graphic file (type eps)
+ <./images/fig2.pdf>
 File: ./images/fig1.pdf Graphic file (type eps)
  <./images/fig1.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3] [4] (./main.bbl [5]
+[3] [4] [5] [6] (./main.bbl [7]
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 (Font)              using `JT1/gt/m/n' instead on input line 6.
@@ -133,20 +126,20 @@ LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 (Font)              using `JY1/gt/m/n' instead on input line 6.
 
-) [6
+[8
 
-] (./main.aux)
+]) [9] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 653 strings out of 493683
- 8054 string characters out of 6149653
- 67183 words of memory out of 5000000
- 4261 multiletter control sequences out of 15000+600000
+ 665 strings out of 493683
+ 8286 string characters out of 6149653
+ 68183 words of memory out of 5000000
+ 4273 multiletter control sequences out of 15000+600000
  16567 words of font info for 64 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  25i,6n,19p,214b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (7 pages, 21592 bytes).
+Output written on main.dvi (10 pages, 38104 bytes).

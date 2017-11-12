@@ -3,8 +3,8 @@
 \contentsline {subsection}{\numberline {0.2.1}Membership Query Synthesis}{2}
 \contentsline {subsection}{\numberline {0.2.2}Stream-based Selective Sampling}{3}
 \contentsline {subsection}{\numberline {0.2.3}Pool-based Sampling}{3}
-\contentsline {section}{\numberline {0.3}クエリ戦略}{3}
-\contentsline {subsection}{\numberline {0.3.1}Uncertainty Sampling}{3}
+\contentsline {section}{\numberline {0.3}クエリ戦略}{4}
+\contentsline {subsection}{\numberline {0.3.1}Uncertainty Sampling}{4}
 \contentsline {subsection}{\numberline {0.3.2}Query-By-Committee}{4}
 \contentsline {subsection}{\numberline {0.3.3}Expected Model Change}{5}
 \contentsline {subsection}{\numberline {0.3.4}Expected Error Reduction}{5}
@@ -14,7 +14,7 @@
 \contentsline {subsection}{\numberline {0.4.3}Variable Labeling Costs}{6}
 \contentsline {subsection}{\numberline {0.4.4}Multi-Task Active Learning}{6}
 \contentsline {subsection}{\numberline {0.4.5}Stopping Criteria}{7}
-\contentsline {section}{\numberline {0.5}Related Research Areas}{7}
+\contentsline {section}{\numberline {0.5}関連分野}{7}
 \contentsline {subsection}{\numberline {0.5.1}Semi-Supervised Learning}{7}
 \contentsline {subsection}{\numberline {0.5.2}Submodular Optimization}{7}
 \contentsline {subsection}{\numberline {0.5.3}Graph Structure}{7}

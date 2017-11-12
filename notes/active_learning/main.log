@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.5.23)  12 NOV 2017 20:52
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.5.23)  12 NOV 2017 21:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -113,11 +113,8 @@ File: ./images/fig3.pdf Graphic file (type eps)
 File: ./images/fig2.pdf Graphic file (type eps)
  <./images/fig2.pdf>
 File: ./images/fig1.pdf Graphic file (type eps)
- <./images/fig1.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3] [4] [5] [6] (./main.bbl [7]
+ <./images/fig1.pdf> [3] [4]
+[5] [6] (./main.bbl [7]
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 (Font)              using `JT1/gt/m/n' instead on input line 6.
@@ -142,4 +139,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  25i,6n,19p,214b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (10 pages, 38104 bytes).
+Output written on main.dvi (10 pages, 38172 bytes).
