@@ -6,9 +6,22 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Nov 2017 20:58:45 +0900</pubDate>
-    <lastBuildDate>Sun, 12 Nov 2017 20:58:45 +0900</lastBuildDate>
+    <pubDate>Fri, 17 Nov 2017 15:37:02 +0900</pubDate>
+    <lastBuildDate>Fri, 17 Nov 2017 15:37:02 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>色々ノート</title>
+        <description>&lt;p&gt;能動学習[&lt;a href=&quot;/notes/active_learning/main.pdf&quot;&gt;pdf&lt;/a&gt;]&lt;/p&gt;
+</description>
+        <pubDate>Fri, 17 Nov 2017 09:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/11/17/notelist-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2017/11/17/notelist-copy.html</guid>
+        
+        
+        <category>機械学習</category>
+        
+      </item>
     
       <item>
         <title>能動学習についてまとめた</title>
@@ -911,30 +924,6 @@ Chainerで各種CNNの実装を紹介．&lt;br /&gt;
         
         
         <category>Chainer</category>
-        
-      </item>
-    
-      <item>
-        <title>新しい同居人</title>
-        <description>&lt;p&gt;本日8/1に、アビシニアンモルモットの男の子が我が家にいらっしゃった．&lt;br /&gt;
-名前は柚太郎に決定．&lt;br /&gt;
-生後3ヶ月らしい．誕生日は推定で5月くらいだろか．&lt;br /&gt;
-迎え入れて2~3時間くらいは小屋から出てこなかったけど，夕方には少しだけ慣れたのか，ケージの中を探検したり飼い主がいる前でご飯を食べたりしていた．&lt;br /&gt;
-初日は緊張で一口も餌を食べない子もいるらしいので，食欲があるのはすごく嬉しい．
-干し草やペレットの他に，ブロッコリーとレタスをあげたら食べてた．ブロッコリーのが好きみたい．&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/20170801/yuzutaro1.jpg&quot; alt=&quot;画像&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;手を近づけると，まだまだ怖いのか隅っこに行ってしまうので遠くから撮影．&lt;br /&gt;
-とっても可愛い．おでこに白いマークがあるのがチャームポイント．&lt;br /&gt;
-ところでモルモットはトイレを覚えないらしいけれど，この子はケージの隅っこの決まったところによくしているように見える．うちの子は天才かもしれない．&lt;/p&gt;
-</description>
-        <pubDate>Wed, 02 Aug 2017 08:00:00 +0900</pubDate>
-        <link>http://localhost:4000/%E3%83%A2%E3%83%AB%E3%83%A2%E3%83%83%E3%83%88/2017/08/01/yuzutaro1-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%E3%83%A2%E3%83%AB%E3%83%A2%E3%83%83%E3%83%88/2017/08/01/yuzutaro1-copy.html</guid>
-        
-        
-        <category>モルモット</category>
         
       </item>
     
