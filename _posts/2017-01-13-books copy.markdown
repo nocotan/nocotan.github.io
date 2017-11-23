@@ -85,4 +85,8 @@ categories: 書籍
 
 #### [冷たい密室と博士たち](https://www.amazon.co.jp/%E5%86%B7%E3%81%9F%E3%81%84%E5%AF%86%E5%AE%A4%E3%81%A8%E5%8D%9A%E5%A3%AB%E3%81%9F%E3%81%A1-%E8%AC%9B%E8%AB%87%E7%A4%BE%E6%96%87%E5%BA%AB-%E6%A3%AE-%E5%8D%9A%E5%97%A3/dp/4062645602)
 
+#### [詩的私的ジャック](https://www.amazon.co.jp/%E8%A9%A9%E7%9A%84%E7%A7%81%E7%9A%84%E3%82%B8%E3%83%A3%E3%83%83%E3%82%AF-%E8%AC%9B%E8%AB%87%E7%A4%BE%E6%96%87%E5%BA%AB-%E6%A3%AE-%E5%8D%9A%E5%97%A3/dp/4062647060)
+
 #### [四季 春](https://www.amazon.co.jp/%E5%9B%9B%E5%AD%A3-%E6%98%A5-%E8%AC%9B%E8%AB%87%E7%A4%BE%E6%96%87%E5%BA%AB-%E6%A3%AE-%E5%8D%9A%E5%97%A3/dp/4062755688)
+
+#### [四季 夏](https://www.amazon.co.jp/%E5%9B%9B%E5%AD%A3-%E5%A4%8F-%E8%AC%9B%E8%AB%87%E7%A4%BE%E6%96%87%E5%BA%AB-%E6%A3%AE-%E5%8D%9A%E5%97%A3/dp/4062755696)
