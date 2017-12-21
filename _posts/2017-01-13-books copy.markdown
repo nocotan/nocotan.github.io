@@ -89,6 +89,8 @@ categories: 書籍
 
 #### [有限と微小のパン](https://www.amazon.co.jp/%E6%9C%89%E9%99%90%E3%81%A8%E5%BE%AE%E5%B0%8F%E3%81%AE%E3%83%91%E3%83%B3-%E8%AC%9B%E8%AB%87%E7%A4%BE%E6%96%87%E5%BA%AB-%E6%A3%AE-%E5%8D%9A%E5%97%A3/dp/4062732947)
 
+#### [捩れ屋敷の利鈍](https://www.amazon.co.jp/%E6%8D%A9%E3%82%8C%E5%B1%8B%E6%95%B7%E3%81%AE%E5%88%A9%E9%88%8D-%E8%AC%9B%E8%AB%87%E7%A4%BE%E6%96%87%E5%BA%AB-%E6%A3%AE-%E5%8D%9A%E5%97%A3/dp/4062750333)
+
 #### [四季 春](https://www.amazon.co.jp/%E5%9B%9B%E5%AD%A3-%E6%98%A5-%E8%AC%9B%E8%AB%87%E7%A4%BE%E6%96%87%E5%BA%AB-%E6%A3%AE-%E5%8D%9A%E5%97%A3/dp/4062755688)
 
 #### [四季 夏](https://www.amazon.co.jp/%E5%9B%9B%E5%AD%A3-%E5%A4%8F-%E8%AC%9B%E8%AB%87%E7%A4%BE%E6%96%87%E5%BA%AB-%E6%A3%AE-%E5%8D%9A%E5%97%A3/dp/4062755696)
