@@ -20,7 +20,7 @@ permalink: /about/
 
 ## 会議・論文等
 ### 国内会議(査読付き)
-- 木村 正成, 若林 啓 : 制限付き識別ランダムウォークによるグラフベースのラベル拡張. 情報処理学会論文誌データベース(TOD), Vol.10, No.4, 2017.12
+- 木村 正成, 若林 啓 : 制限付き識別ランダムウォークによるグラフベースのラベル拡張. 情報処理学会論文誌データベース(TOD), Vol.10, No.4, 2017.12 [(pdf)](https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=184929&item_no=1&page_id=13&block_id=8)
 
 ### 国内会議
 - 木村 正成, 若林 啓 : ラベル拡張を考慮した劣モジュラ性に基づく能動学習. 第20回情報論的学習理論ワークショップ予稿集 (IBIS), 6 pages, 2017.11
