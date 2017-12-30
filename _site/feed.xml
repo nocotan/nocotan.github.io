@@ -6,13 +6,13 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 24 Dec 2017 23:24:56 +0900</pubDate>
-    <lastBuildDate>Sun, 24 Dec 2017 23:24:56 +0900</lastBuildDate>
+    <pubDate>Sat, 30 Dec 2017 16:07:45 +0900</pubDate>
+    <lastBuildDate>Sat, 30 Dec 2017 16:07:45 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>2017年振り返り</title>
-        <description>&lt;p&gt;せっかくなので2017年を振り返ってみます&lt;/p&gt;
+        <description>&lt;p&gt;せっかくなので学部4年として過ごした2017年を振り返ってみます&lt;/p&gt;
 
 &lt;h2 id=&quot;1月--3月&quot;&gt;1月 ~ 3月&lt;/h2&gt;
 &lt;p&gt;某R社のエンジニアインターンに参加してました．&lt;br /&gt;
@@ -23,7 +23,7 @@
 &lt;h2 id=&quot;4月&quot;&gt;4月&lt;/h2&gt;
 &lt;p&gt;指導教員に渡された論文をいくつか読んだり，研究に必要そうな基礎的な本を読んで勉強したりしてました．&lt;br /&gt;
 この頃から自分で興味ありそうな論文を探しはじめました．
-個人的にはグラフやデータ構造が好きだったのでこの辺りのクエリで探してました．
+個人的にはグラフやデータ構造が好きだったのでこの辺りのクエリ(Graph-based hogehogeとか)で探してました．
 たまに再現実装とかもしてました．&lt;/p&gt;
 
 &lt;h2 id=&quot;5月&quot;&gt;5月&lt;/h2&gt;
@@ -33,17 +33,17 @@
 結果もそれなりに出たので，このテーマで一旦，直近の査読付き会議に投稿してみることになりました．&lt;/p&gt;
 
 &lt;p&gt;あとは，多分この頃から，ICPCの勉強会をしたりしてました．研究室のM1の先輩と別の研究室のもう一人のM1の先輩
-にチームを組んでいただけて，楽しくやってました．
+にチームを組んでいただけて，楽しくやってました．またこんな風に集まって勉強会したいです．
 この二人はヒト語と猫語のバイリンガルらしく，時々何言ってるかわかりませんでした．&lt;/p&gt;
 
 &lt;h2 id=&quot;6月&quot;&gt;6月&lt;/h2&gt;
 &lt;p&gt;5月に思いついたアイディアについて，実験を済ませて論文にまとめました．
-この時，研究室の先輩方がたくさん校正してくださったおかげで，体裁すら怪しかった私の初稿がきちんとしたもの
+この時，研究室の先輩方がたくさん校正してくださったおかげで，体裁すら怪しかった稚拙な私の初稿がきちんとしたもの
 になりました．めっちゃ感謝してます…&lt;br /&gt;
 あと多分中間発表とかありました．&lt;/p&gt;
 
-&lt;p&gt;おそらくこの頃から，精読した論文について1,2ページ程度にまとめたり，面白いと思ったアイディアを書いたりするノートを作り始めました．
-12/29時点で6冊目らしいです．私は真賀田四季博士とは違い，これくらい書き出さないと身にならないのです．&lt;/p&gt;
+&lt;p&gt;おそらくこの頃から，精読した論文について1,2ページ程度にまとめたり，面白いと思ったアイディアを書いたりする研究ノートを作り始めました．
+12/28時点で6冊目らしいです．私は真賀田四季博士とは違い，これくらい書き出さないと身にならないのです．&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/20171229/img1.jpg&quot; /&gt;&lt;/p&gt;
 
@@ -68,7 +68,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/images/20171229/img4.jpg&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;あとおそらくこの頃から，研究室のM2の先輩とグラフ分散表現についてSlackで議論?してました．
+&lt;p&gt;あとおそらくこの頃から，私が密かにリスペクトしている研究室のM2の先輩とグラフ分散表現についてSlackで議論?してました．
 これ系の面白そうな論文を読むたびにSlackに感想を書くと，先輩から一言コメントがもらえたりしてました．&lt;br /&gt;
 こういうカジュアルに興味のある分野について思ったことを垂れ流すチャンネルが個人的にはとっても良くて，
 モチベーションも上がるし理解もサーベイ数も圧倒的に増えたと思います．
@@ -78,10 +78,19 @@
 &lt;h2 id=&quot;10月&quot;&gt;10月&lt;/h2&gt;
 &lt;p&gt;前に通った論文の拡張案について実装と実験をしてみて，書けそうだねとなったので&lt;a href=&quot;http://ibisml.org/ibis2017/&quot;&gt;来月の学会&lt;/a&gt;に発表申し込みしました．&lt;/p&gt;
 
+&lt;p&gt;先月いただいた企業賞の副賞をご馳走になりに行きました．
+一人当たり¥35,000~￥40,000というバグのような値段のディナーを頂きました．やばい．&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/20171229/1.jpg&quot; width=&quot;500px&quot; /&gt;
+&lt;img src=&quot;/images/20171229/2.jpg&quot; width=&quot;500px&quot; /&gt;
+&lt;img src=&quot;/images/20171229/3.jpg&quot; width=&quot;500px&quot; /&gt;
+&lt;img src=&quot;/images/20171229/4.jpg&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;11月&quot;&gt;11月&lt;/h2&gt;
 &lt;p&gt;2回目の&lt;a href=&quot;http://nocotan.github.io/%E5%8F%82%E5%8A%A0%E8%A8%98/2017/11/11/ibis2017-copy.html&quot;&gt;学会発表&lt;/a&gt;をして来ました．
 2回目ですが相変わらず緊張しました．&lt;br /&gt;
-ポスター発表は観客との距離が近くて，研究内容について伝えやすかった気がします．&lt;/p&gt;
+ポスター発表は聴講との距離が近くて，研究内容について伝えやすかった気がします．&lt;br /&gt;
+聴講者の方の中にグラフに詳しい方がいて，ディスカッションできたのも良かったです．&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/20171111/55732.jpg&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
 
@@ -99,28 +108,20 @@
     &lt;ul&gt;
       &lt;li&gt;グラフ・単語分散表現: 97&lt;/li&gt;
       &lt;li&gt;グラフ理論: 21&lt;/li&gt;
-      &lt;li&gt;半教師あり学習: 33&lt;/li&gt;
+      &lt;li&gt;半教師あり学習: 43&lt;/li&gt;
       &lt;li&gt;能動学習: 20&lt;/li&gt;
-      &lt;li&gt;その他: 62&lt;/li&gt;
+      &lt;li&gt;その他: 52&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;一年間で読んだ本: 39冊&lt;/li&gt;
   &lt;li&gt;競プロAC数(Atcoder, AOJ, yukicoder, Codeforces, Topcoder): 638&lt;/li&gt;
-  &lt;li&gt;レーティング推移(Atcoder, Codeforces)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/20171229/img2.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/20171229/img3.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;主に競プロの精進が足りなすぎる．パフォーマンス見ると1400~1600出てることも多くなってきてるのに安定しない…&lt;br /&gt;
-2018年は青色目指します．&lt;/p&gt;
-
-&lt;p&gt;研究量の方も，人と比べたことが少ないので分からないけど足りてない気がする…(研究室の先輩は半月ほどで私の年間で読んだ論文の半数近く読んでた)&lt;/p&gt;
+&lt;p&gt;2018年もぼちぼちやっていきます．よろしくお願いします．&lt;/p&gt;
 </description>
-        <pubDate>Wed, 20 Dec 2017 09:00:00 +0900</pubDate>
-        <link>http://localhost:4000/update/2017/12/20/summary-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2017/12/20/summary-copy.html</guid>
+        <pubDate>Thu, 28 Dec 2017 09:00:00 +0900</pubDate>
+        <link>http://localhost:4000/update/2017/12/28/summary-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/update/2017/12/28/summary-copy.html</guid>
         
         
         <category>update</category>
