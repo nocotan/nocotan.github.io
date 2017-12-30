@@ -96,6 +96,5 @@ ICPC地区予選に出場しました．残念ながら突破できなかった�
   * その他: 52
 * 一年間で読んだ本: 39冊
 * 競プロAC数(Atcoder, AOJ, yukicoder, Codeforces, Topcoder): 638
-* レーティング推移(Atcoder, Codeforces)
 
 2018年もぼちぼちやっていきます．よろしくお願いします．
