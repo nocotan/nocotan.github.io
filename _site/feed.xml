@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 11 Jan 2018 17:22:34 +0900</pubDate>
-    <lastBuildDate>Thu, 11 Jan 2018 17:22:34 +0900</lastBuildDate>
+    <pubDate>Thu, 11 Jan 2018 17:31:09 +0900</pubDate>
+    <lastBuildDate>Thu, 11 Jan 2018 17:31:09 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -49,7 +49,7 @@ LSHSは，最初にkd木に類似した方法で出力確率の階層的分解�
 &lt;p&gt;ここで，&lt;script type=&quot;math/tex&quot;&gt;b_i&lt;/script&gt;はノードの中心となる．&lt;/p&gt;
 
 &lt;p&gt;このような構造を利用することで，計算量の効率化ができる．
-これを用いることで，与えられた学習例に対する確率の推論において，ルートから&lt;script type=&quot;math/tex&quot;&gt;O(\log{2} n)&lt;/script&gt;のパスのみの計算ですむ．&lt;/p&gt;
+これを用いることで，与えられた学習例に対する確率の推論において，ルートから&lt;script type=&quot;math/tex&quot;&gt;O(\log_{2} n)&lt;/script&gt;のパスのみの計算ですむ．&lt;/p&gt;
 
 &lt;h3 id=&quot;multiple-dimensions&quot;&gt;Multiple dimensions&lt;/h3&gt;
 &lt;p&gt;提案手法では，hierarchical softmaxの手法を，平衡kd木に類似した方法を用いて多次元分布へ拡張する．
