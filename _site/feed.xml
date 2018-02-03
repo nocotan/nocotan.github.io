@@ -6,9 +6,81 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 02 Feb 2018 17:09:45 +0900</pubDate>
-    <lastBuildDate>Fri, 02 Feb 2018 17:09:45 +0900</lastBuildDate>
+    <pubDate>Sat, 03 Feb 2018 22:16:44 +0900</pubDate>
+    <lastBuildDate>Sat, 03 Feb 2018 22:16:44 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>On the Convergence of Adam and Beyond</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;元論文: &lt;a href=&quot;https://openreview.net/pdf?id=ryQu7f-RZ&quot;&gt;On the Convergence of Adam and Beyond&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;概要&quot;&gt;概要&lt;/h2&gt;
+&lt;p&gt;深層学習で用いられる勾配更新に基づく既存の最適化手法は，しばしば最適解への収束に失敗するケースがある．
+本論文では，そうした失敗の一つの原因がアルゴリズムで用いられる指数移動平均によるものであることを示す．
+また，Adamが最適解に収束しない単純な凸最適化設定の例を紹介する．
+これについての分析から，過去の勾配の長期的な記憶を保持するアルゴリズムによって収束問題を修正することができることが考察できる．
+本論文では，収束問題を解決するだけでなく，経験的な性能向上をもたらすAdamの変形アルゴリズムを示す．&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;深層学習モデルの学習において，モデルのパラメータをロス関数を減少させる方向に反復的に更新するSGDの改良である，学習率を自動で適合させるAdamやAdagrad，RMSPropといったアルゴリズムが成功を収めている．
+これらのアルゴリズムは多くの場合うまくいくが，いくつかの問題設定においては収束しないことが観測されている．
+そうした問題設定はごく稀にのみ大きな勾配をもたらすという特徴があり，それらの影響は指数移動平均のために急速に減少し，収束性に乏しくなってしまう．&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;貢献:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RMSPROPとAdamが収束しない単純な凸最適化問題を例に，それらのアルゴリズムにおける指数移動平均がもたらす非収束問題を解消する．&lt;/li&gt;
+  &lt;li&gt;上記の結果から，収束の保証された最適化アルゴリズムは，以前の勾配についての長期記憶が必要であることを示す．これに基づいて，オリジナルのAdamと同じ時間的/空間的計算量を有するAdamの改良アルゴリズムを提案する．&lt;/li&gt;
+  &lt;li&gt;実験結果から提案アルゴリズムの有用性を示す．&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-non-convergence-of-adam&quot;&gt;The Non-Convergence of Adam&lt;/h2&gt;
+&lt;p&gt;本章では，Adamが単純な一次元凸最適化問題であっても最適解への収束が失敗する例を示す．
+これらの例は(Kingma &amp;amp; Ba, 2015)の収束性の主張と矛盾する．&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+f_t (x) = \begin{cases}
+C_x &amp; for t mod 3 = 1 \\
+- x &amp; otherwise
+\end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;上式で，&lt;script type=&quot;math/tex&quot;&gt;C &gt; 2&lt;/script&gt;とするとき．最適解は&lt;script type=&quot;math/tex&quot;&gt;x = -1&lt;/script&gt;である．
+しかしAdamにおいて，&lt;script type=&quot;math/tex&quot;&gt;\beta_{1} = 0&lt;/script&gt;かつ&lt;script type=&quot;math/tex&quot;&gt;\beta_{2} = 1 / (1 + C^2)&lt;/script&gt;の時，最適解とは異なる&lt;script type=&quot;math/tex&quot;&gt;x = +1&lt;/script&gt;に収束してしまう．
+これは，上記の式は3回に1回のみ大きな勾配を，残りの2回は間違った方向へ-1の勾配をもたらすため，稀に訪れる大きな勾配&lt;script type=&quot;math/tex&quot;&gt;C&lt;/script&gt;だけではこれを相殺できないためである．&lt;/p&gt;
+
+&lt;h2 id=&quot;a-new-exponential-moving-average-variant-amsgrad&quot;&gt;A New Exponential Moving Average Variant: AMSGrad&lt;/h2&gt;
+&lt;p&gt;本章では，新しい指数移動平均の変形を提案し，収束性の分析を行う．
+Algorithm2にAMSGradのアルゴリズムを示す．&lt;/p&gt;
+
+&lt;image src=&quot;/images/20180202/fig1.png&quot;&gt;&lt;/image&gt;
+
+&lt;p&gt;AMSGradはAdamと比べてより小さい学習率を使用し，学習率に過去の勾配の勾配の影響をゆっくりと減衰させる仕組みを導入する．
+Figure1とFigure2に論文の実験結果を示す(詳しくは元論文を参照)．&lt;/p&gt;
+
+&lt;image src=&quot;/images/20180202/fig2.png&quot;&gt;&lt;/image&gt;
+
+&lt;image src=&quot;/images/20180202/fig3.png&quot;&gt;&lt;/image&gt;
+
+&lt;h2 id=&quot;kerasでのamsgradの使用&quot;&gt;KerasでのAMSGradの使用&lt;/h2&gt;
+&lt;p&gt;Kerasでは，Adamの引数にamsgrad=Trueを渡すことで有効化できる．&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://keras.io/ja/optimizers/&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;keras&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimizers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Adam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amsgrad&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sat, 03 Feb 2018 05:00:00 +0900</pubDate>
+        <link>http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2018/02/02/amsgrad-copy.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/2018/02/02/amsgrad-copy.html</guid>
+        
+        
+        <category>機械学習</category>
+        
+      </item>
     
       <item>
         <title>2018年に読んだ本</title>
@@ -624,35 +696,6 @@ N組全てに関して，ans += (r-l+1)をしていくと良い．&lt;/p&gt;
         
         
         <category>競技プログラミング</category>
-        
-      </item>
-    
-      <item>
-        <title>Torch7のインストール</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;Mac OS Sierra&lt;/li&gt;
-  &lt;li&gt;Torch 7(http://torch.ch/)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;公式の通りにインストール&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/torch/distro.git ~/torch --recursive
-&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/torch; bash install-deps;
-./install.sh
-&lt;span class=&quot;c&quot;&gt;# 他のバージョンのluaを使いたい場合は以下のようにする&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# TORCH_LUA_VERSION=LUA51 ./install.sh&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# TORCH_LUA_VERSION=LUA52 ./install.sh&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Thu, 31 Aug 2017 10:00:00 +0900</pubDate>
-        <link>http://localhost:4000/torch/2017/08/31/torch7-copy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/torch/2017/08/31/torch7-copy.html</guid>
-        
-        
-        <category>Torch</category>
         
       </item>
     
