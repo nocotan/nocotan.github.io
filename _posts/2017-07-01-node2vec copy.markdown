@@ -101,8 +101,9 @@ q &gt; 1の場合, ランダムウォークはノードtに近いノードに向
 <img src="/images/20170701/code.png" width="450px">
 
 ## 実装
-[node2vecの公式実装](http://snap.stanford.edu/node2vec/)
-[node2vecのC++実装](https://github.com/nocotan/mllib/tree/master/cpplearn/cpplearn/embeddings)
+
+* [node2vecの公式実装](http://snap.stanford.edu/node2vec/)
+* [node2vecのC++実装](https://github.com/nocotan/mllib/tree/master/cpplearn/cpplearn/embeddings)
 
 ## 参考
 [node2vec: Scalable Feature Learning for Networks](https://cs.stanford.edu/people/jure/pubs/node2vec-kdd16.pdf)  
