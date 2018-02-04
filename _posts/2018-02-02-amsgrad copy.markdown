@@ -57,7 +57,8 @@ Figure1とFigure2に論文の実験結果を示す(詳しくは元論文を参�
 Kerasでは，Adamの引数にamsgrad=Trueを渡すことで有効化できる．
 * https://keras.io/ja/optimizers/
 
-```python
+```py
 from keras import optimizers
 optimizer = optimizers.Adam(amsgrad=True)
 ```
+
