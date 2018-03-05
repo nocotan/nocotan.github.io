@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Masanari Kimura
+# Masanari Kimura
 
 ## 所属
 
