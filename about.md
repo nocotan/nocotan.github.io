@@ -6,10 +6,6 @@ permalink: /about/
 
 # Masanari Kimura
 
-## 所属
-
-筑波大学 情報学群 知識情報・図書館学類
-
 ## 技術領域
 
 - C/C++, Python, Java
