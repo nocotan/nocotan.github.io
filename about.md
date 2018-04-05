@@ -6,6 +6,10 @@ permalink: /about/
 
 # Masanari Kimura
 
+## SNS
+* Instagram: https://www.instagram.com/yu_chanyyy/?hl=ja
+* Twitter: https://twitter.com/machinery81
+
 ## 技術領域
 
 - C/C++, Python, Java
