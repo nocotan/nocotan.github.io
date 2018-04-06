@@ -11,6 +11,8 @@ categories: 書籍
 
 #### [やさしいMCMC入門 -有限マルコフ連鎖とアルゴリズム-](http://www.kyoritsu-pub.co.jp/bookdetail/9784320113145)
 
+#### [仕事ではじめる機械学習](https://www.oreilly.co.jp/books/9784873118215/)
+
 ### 数学
 
 #### [微分積分 (理工系の数学入門コース 1)](https://www.iwanami.co.jp/book/b260881.html)
