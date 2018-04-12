@@ -20,3 +20,5 @@ categories: 書籍
 #### [今はもうない](https://www.amazon.co.jp/今はもうない-講談社文庫-森-博嗣/dp/4062730979)
 
 #### [虚空の逆マトリクス　INVERSE OF VOID MATRIX](https://www.amazon.co.jp/dp/B009GXM6ZO/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
+
+#### [彼女は一人で歩くのか？　Ｄｏｅｓ　Ｓｈｅ　Ｗａｌｋ　Ａｌｏｎｅ？](http://bookclub.kodansha.co.jp/buy?isbn=9784062940030)
