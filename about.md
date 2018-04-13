@@ -11,7 +11,6 @@ permalink: /about/
 * Twitter: https://twitter.com/machinery81
 
 ## 技術領域
-
 - C/C++, Python, Java
 - Vim
 - グラフ
