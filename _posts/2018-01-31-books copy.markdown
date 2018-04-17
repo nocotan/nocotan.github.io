@@ -13,6 +13,8 @@ categories: 書籍
 
 #### [仕事ではじめる機械学習](https://www.oreilly.co.jp/books/9784873118215/)
 
+#### [東京大学工学教程 情報工学 機械学習](https://www.maruzen-publishing.co.jp/item/b294966.html)
+
 ### 数学
 
 #### [微分積分 (理工系の数学入門コース 1)](https://www.iwanami.co.jp/book/b260881.html)
