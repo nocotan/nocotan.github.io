@@ -26,3 +26,5 @@ categories: 書籍
 #### [虚空の逆マトリクス　INVERSE OF VOID MATRIX](https://www.amazon.co.jp/dp/B009GXM6ZO/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
 
 #### [彼女は一人で歩くのか？　Ｄｏｅｓ　Ｓｈｅ　Ｗａｌｋ　Ａｌｏｎｅ？](http://bookclub.kodansha.co.jp/buy?isbn=9784062940030)
+
+#### [魔法の色を知っているか？―Ｗｈａｔ　Ｃｏｌｏｒ　ｉｓ　ｔｈｅ　Ｍａｇｉｃ？](https://www.kinokuniya.co.jp/f/dsg-01-9784062940139)
