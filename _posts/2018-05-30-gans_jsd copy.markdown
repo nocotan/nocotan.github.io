@@ -84,7 +84,7 @@ a - (a+b)\tilde{x} &=& 0 \\
 \end{eqnarray}
 $$
 
-式(5)と式(7)から，$D(x)$が最適解$\hat{D}(x)$であるときの$L(G, d)$は，
+式(5)と式(7)から，$D(x)$が最適解$\hat{D}(x)$であるときの$L(G, \hat{D})$は，
 
 $$
 \begin{eqnarray}
