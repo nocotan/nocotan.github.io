@@ -34,7 +34,7 @@ $$
 \begin{eqnarray}
 \tag{3}
 D_{JS}(p||q) &=& \frac{1}{2} D_{KL}(p||p_{A}) + \frac{1}{2} D_{KL}(q||p_{A}) \\
-&=& \frac{1}{2} \int_x p(x) \log{\frac{p(x)}{p_A(x)}} dx + \frac{1}{2} q(x) \log{\frac{q(x)}{p_A(x)}} dx
+&=& \frac{1}{2} \int_x p(x) \log{\frac{p(x)}{p_A(x)}} dx + \frac{1}{2} \int_x q(x) \log{\frac{q(x)}{p_A(x)}} dx
 \end{eqnarray}
 $$
 
