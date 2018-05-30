@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "GANsの目的関数とJS divergence"
-date:   2018-05-30 00:00:00
+date:   2018-05-30 01:00:00
 categories: 機械学習
 ---
 
