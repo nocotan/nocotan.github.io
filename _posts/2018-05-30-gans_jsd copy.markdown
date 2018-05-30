@@ -8,7 +8,6 @@ categories: 機械学習
 Generative Adversarial Networksの目的関数がJensen-Shannon divergenceを用いて表現できることの証明．
 
 ## 証明
-
 ### Jensen-Shannon Divergence
 Jensen-Shannon Divergenceは以下の式で表現される．
 
