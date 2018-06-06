@@ -10,28 +10,25 @@ permalink: /about/
 * Instagram: https://www.instagram.com/yu_chanyyy/?hl=ja
 * Twitter: https://twitter.com/machinery81
 
-## 技術領域
+## Technical field
 - C/C++, Python, Java
 - Vim
 - グラフ
 - 機械学習
 
-## 趣味
+## Hobby
 - 競技プログラミング
 
-## 会議・論文等
+## Publications
 ### Preprint
-- Nozawa, Kento, Masanari Kimura, and Atsunori Kanemura. "Node Centralities and Classification Performance for Characterizing Node Embedding Algorithms." (2018).
+- Nozawa, Kento, Masanari Kimura, and Atsunori Kanemura. "Node Centralities and Classification Performance for Characterizing Node Embedding Algorithms". (2018).
 
-### 国内会議(査読付き)
-- 木村 正成, 若林 啓 : 制限付き識別ランダムウォークによるグラフベースのラベル拡張. 情報処理学会論文誌データベース(TOD), Vol.10, No.4, 2017.12 [(pdf)](https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=184929&item_no=1&page_id=13&block_id=8)
+### Domestic Conferences
+- Masanari Kimura, Kei Wakabayashi, "Graph-based Label Extension Using Restricted Discriminative-random Walk". Information Processing Society of Japan. Transactions on databases, Vol.10, No.4, 2017.12 [(pdf)](https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=184929&item_no=1&page_id=13&block_id=8)
 
-### 国内会議
-- 木村 正成, 若林 啓 : ラベル拡張を考慮した劣モジュラ性に基づく能動学習. 第20回情報論的学習理論ワークショップ予稿集 (IBIS), 6 pages, 2017.11
+### Domestic Conferences (non-refereed)
+- Masanari Kimura, Kei Wakabayashi, "Active Learning based on Submodular Optimization Considering Label Expansion". Information-Based Induction Sciences; IBIS, 6 pages, 2017.11
 
-## 学会
-- 情報処理学会データベースシステム研究会 (IPSJ DBS) 学生会員
-
-## 受賞歴他
+## Awards
 - 株式会社チームラボ賞: 木村 正成, 若林 啓. 制限付き識別ランダムウォークによるグラフベースのラベル拡張. 第10回 Webとデータベースに関するフォーラム (WebDB Forum 2017), 2017.
 - Discovery channel Code Contest 2016 本戦出場
