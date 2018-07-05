@@ -21,7 +21,7 @@ permalink: /about/
 
 ## Publications
 ### Preprint
-- Nozawa, Kento, Masanari Kimura, and Atsunori Kanemura. "Node Centralities and Classification Performance for Characterizing Node Embedding Algorithms". (2018).
+- Nozawa, Kento, Masanari Kimura, and Atsunori Kanemura. "Node Centralities and Classification Performance for Characterizing Node Embedding Algorithms." arXiv preprint arXiv:1802.06368 (2018).
 
 ### Domestic Conferences
 - Masanari Kimura, Kei Wakabayashi, "Graph-based Label Extension Using Restricted Discriminative-random Walk". Information Processing Society of Japan. Transactions on databases, Vol.10, No.4, 2017.12 [(pdf)](https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=184929&item_no=1&page_id=13&block_id=8)
