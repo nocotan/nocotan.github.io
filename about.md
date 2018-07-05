@@ -10,14 +10,14 @@ permalink: /about/
 * Instagram: https://www.instagram.com/yu_chanyyy/?hl=ja
 * Twitter: https://twitter.com/machinery81
 
-## Technical field
+## Technical fields
 - C/C++, Python, Java
-- Vim
-- グラフ
-- 機械学習
+- vim
+- graph theory
+- machine learning
 
-## Hobby
-- 競技プログラミング
+## Hobbies
+- competitive programming
 
 ## Publications
 ### Preprint
