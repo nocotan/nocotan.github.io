@@ -21,6 +21,7 @@ permalink: /about/
 
 ## Publications
 ### Preprint
+- Masanari Kimura and Takashi Yanagihara. "Semi-supervised Anomaly Detection Using GANs for Visual Inspection in Noisy Training Data." arXiv preprint arXiv:1807.01136 (2018).
 - Kento Nozawa, Masanari Kimura, and Atsunori Kanemura. "Node Centralities and Classification Performance for Characterizing Node Embedding Algorithms." arXiv preprint arXiv:1802.06368 (2018).
 
 ### Domestic Conferences
