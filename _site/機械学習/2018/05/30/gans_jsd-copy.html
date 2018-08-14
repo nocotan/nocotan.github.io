@@ -24,7 +24,6 @@
   <meta name="twitter:description" content="Generative Adversarial Networksの目的関数がJensen-Shannon divergenceを用いて表現できることの証明．
 
 証明
-
 Jensen-Shannon Divergence
 Jensen-Shannon Divergenceは以下の式で表現される．
 
@@ -34,7 +33,7 @@ Jensen-Shannon Divergenceは以下の式で表現される．
 
 
 
-となる．$p_{A} = \...">
+となる．$p_{A} = \f...">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/nocotan/nocotan.github.io/master/images/icon.jpg">
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
   <link rel="stylesheet" href="/css/main.css">
@@ -120,7 +119,6 @@ Jensen-Shannon Divergenceは以下の式で表現される．
     <p>Generative Adversarial Networksの目的関数がJensen-Shannon divergenceを用いて表現できることの証明．</p>
 
 <h2 id="証明">証明</h2>
-
 <h3 id="jensen-shannon-divergence">Jensen-Shannon Divergence</h3>
 <p>Jensen-Shannon Divergenceは以下の式で表現される．</p>
 
@@ -142,7 +140,7 @@ D_{KL}(p||q) = \int_x p(x) \log{\frac{p(x)}{q(x)}} dx
 \begin{eqnarray}
 \tag{3}
 D_{JS}(p||q) &=& \frac{1}{2} D_{KL}(p||p_{A}) + \frac{1}{2} D_{KL}(q||p_{A}) \\
-&=& \frac{1}{2} \int_x p(x) \log{\frac{p(x)}{p_A(x)}} dx + \frac{1}{2} q(x) \log{\frac{q(x)}{p_A(x)}} dx
+&=& \frac{1}{2} \int_x p(x) \log{\frac{p(x)}{p_A(x)}} dx + \frac{1}{2} \int_x q(x) \log{\frac{q(x)}{p_A(x)}} dx
 \end{eqnarray} %]]></script>
 
 <h3 id="generative-adversarial-networks">Generative Adversarial Networks</h3>
@@ -187,7 +185,7 @@ a - (a+b)\tilde{x} &=& 0 \\
 &=& \frac{p_r(x)}{p_r(x) + p_g(x)}
 \end{eqnarray} %]]></script>
 
-<p>式(5)と式(7)から，$D(x)$が最適解$\hat{D}(x)$であるときの$L(G, d)$は，</p>
+<p>式(5)と式(7)から，$D(x)$が最適解$\hat{D}(x)$であるときの$L(G, \hat{D})$は，</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{eqnarray}

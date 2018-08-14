@@ -1,0 +1,156 @@
+---
+layout: post
+title:  "Large-scale Metric Learning with Uncertainty"
+date:   2018-08-14 20:00:00
+categories: 機械学習
+---
+[paper link](http://openaccess.thecvf.com/content_cvpr_2018/papers/Qian_Large-Scale_Distance_Metric_CVPR_2018_paper.pdf)
+
+<img width="480" alt="スクリーンショット 2018-08-13 15.05.06.png (165.4 kB)" src="https://img.esa.io/uploads/production/attachments/9763/2018/08/13/40745/a4d95984-92d6-4fb1-9e65-22bdd7b78ab5.png">
+# Abstract
+既存のmetric learningの多くはpairwise制約もしくはtriplet制約に基づいているが，それらの制約は，ナイーブにはサンプル数に対して$O(N^2)$もしくは$O(N^3)$であるため，大規模データセットへの適用は現実的ではない．加えて，現実世界の画像のようなデータには様々な不確実性が含まれる可能性があり，それらは学習の失敗と性能の低下を誘発する．本研究では，latent examplesとdistance metricを同時に学習するmargin preserving metric learningのフレームワークを提案する．Latent examplesの理想的な特性を活用することで，学習効率の大幅な改善と，学習後に得られるmetricの不確実性に対する頑健性を達成する．
+
+# 貢献
+* 大規模データに適用可能なmetric learningの手法を提案
+* image dataに対する観察から，オリジナルデータではなく潜在的な代表サンプルに対するmetric learningが有効であることを示す
+
+# 手法の説明
+## Margin Preserving Metric Learning
+* 学習データ集合: { $(x_i, y_i), i=1,\dots, n$ },　$x_i \in \mathbb{R}^d$
+
+DMLは以下のような距離指標を学習したい:
+$$
+\forall{x_i, x_j, x_k} \ \ \ D^2(x_i, x_k) - D^2(x_i, x_j) \geq 1
+$$
+ここで$x_i$と$x_j$は同じクラス，$x_k$は違うクラスとする．
+距離指標$M\in S^{d\times{d}}_+$が与えられた時，二乗距離は次のように定義される:
+$$
+D^2_M(x_i, x_j) = (x_i - x_j)^T M(x_i - x_j)
+$$
+
+大規模画像データ集合について，観測されたサンプルが潜在的な代表サンプルから0を平均とする歪みに基づいて得られていると仮定する．
+$$
+\forall{i} \ \ \ E[x_i] = z_{o: f(i) = o}
+$$
+$f(\cdot)$は元のデータを対応するlatent exampleに射影する．
+
+目的関数は，
+$$
+\forall{x_i, x_j, x_k} \ \ \ E[D^2_M(x_i, x_k)] - E[D^2_M(x_i, x_j)] \geq 1
+$$
+となる．
+
+$z_o$,$z_p$，$z_q$を$x_i$，$x_j$，$x_k$に対応するlatent examplesとすると，同じクラスのペアについての距離函数は，
+$$
+E[D^2_M(x_i, x_j)] = D^2_M(z_o, z_p) + 2E[D^2_M(x_i, z_o)]
+$$
+同様に，異なるクラスのペアについての距離函数は，
+$$
+E[D^2_M(x_i, x_k)] = D^2_M(z_o, z_q) + E[D^2_M(x_i, z_o)] + E[D^2_M(x_k, z_q)] \geq D^2_M(z_o, z_q) + E[D^2_M(x_i, z_o)]
+$$
+となる．
+以上から，triplet constraints下で学習する距離指標は次のように定義できる．
+$$
+\forall{z_o, z_p, z_q} \ \ \ D^2_M(z_o, z_q) - D^2_M(z_o, z_p) \geq 1 + E[D^2_M(x_i, z_o)]
+$$
+上式の制約で得られる距離函数は，右辺から同じローカルクラスタの中の距離はタイトであり，左辺から，異なるクラス間は異なる距離マージンを獲得できることがわかる．
+
+triplet集合{$z^t_o, z^t_p, z^t_q$}について，最適化問題は以下のように定式化できる．
+$$
+\min_{M\in{S^{d\times{d}}_+}, ||M||_F\leq{\delta, z\in{\mathbb{R}^{d\times{m}}}}} L(M, z) = \sum_t l(z^t_o, z^t_p, z^t_q; M)
+$$
+$m\ll n$はlatent examplesの数．過学習を抑制するためFrobeniusノルムを追加し，損失関数にはヒンジロスを採用する．
+$$
+l(z^t_o, z^t_p, z^t_q; M) = [1 + E[D^2_M(x^t_i, z^t_o)] - (D^2_M(z^t_o, z^t_q) - D^2_M(z^t_o, z^t_p))] _+
+$$
+この問題は，距離指標とlatent examplesの両方が変数であるため最適化が難しいので，この論文ではこれを解く新しい手法を提案する．
+
+## Update $z$ with Upper Bound
+$M_{k-1}$を固定した時，k番目のイテレーションについての部分問題は次のようになる．
+$$
+\min_z L(M_{k-1}, z) = \sum_t [1 + \underbrace{E[D^2_{M_{k-1}} (x^t_i, z^t_o)]}_ {a} - \underbrace{(D^2_{M_{k-1}} (z^t_o, z^t_q) - D^2_{M_{k-1}} (z^t_o, z^t_p))}_ {b}]_+
+$$
+
+* $a$: マージン項
+* $b$: triplet差分項
+
+二つの項の両方に$z$が存在するため直接最適化するのは難しいので，元の問題のupper-boundを見つけて，代わりとなる単純な問題に落とす．
+
+定数$c_1$，$c_2$および$c_3$について，以下の関数$F_r(z)$を考える．
+$$
+F_r(z) = c_1 E[D^2_{M_{k-1}} (x_i, z_o)] + c_2 + c_3 \sum_o D^2_{M_{k-1}}(z_o, z^{k-1}_o)
+$$
+ここで$\sum_r F_r(z^{k-1}) = L(M _{k-1}, z^{k-1})$．
+定数項を消して並び替えると，関数$F_r(z)$の最適化は以下の関数$\tilde{F}_r(z)$の最適化に等しい．
+
+$$
+\min_{z\in{\mathbb{R}^{d\times{m_r}}}, \mu_i, o \in {0, 1}, \sum_o{\mu_{i, o}} = 1} \tilde{F}_r(z) = \sum_i \sum_o \mu _{i, o} D _{M _{k-1}}^2 (x_i, z_o) + \gamma \sum_o D _{M _{k-1}}^2(z_o, z^{k-1}_o)
+$$
+
+元の目的関数$L(M_{k-1}, z)$の上界は$\sum_r F_r(z)$で与えられる．ここから，一般的なEMアルゴリズムを用いて上界の最小化ができる．
+$\mu$を固定すると，latent examplesの近似解は以下で与えられる:
+
+$$
+\forall{o} z_o = \frac{1}{\sum_i \mu_{i, o} + \gamma}(\sum_i \mu_{i, o} x_i + \gamma z^{k-1}_o)
+$$
+
+逆に$z$を固定すると，$\mu$は距離函数に基づいて，オリジナルデータを最も近傍のlatent exampleに割り当てる．
+
+$$
+\forall{i} \mu_{i, o} = \begin{cases}
+1 & o = argmin_o D_{M_{k-1}}^2 (x_i, z_o) \newline
+0 & otherwise \newline
+\end{cases}
+$$
+
+まとめるとAlg. 1にしめすアルゴリズムによって$z$の更新ができる．
+<img width="440" alt="スクリーンショット 2018-08-13 15.07.02.png (66.9 kB)" src="https://img.esa.io/uploads/production/attachments/9763/2018/08/13/40745/8b574235-7d85-4699-9018-8964770bd15f.png">
+
+## Update $M$ with Upper Bound
+$z^k$を固定すると，k番目のイテレーションにおける部分問題は以下のようになる．
+
+$$
+\min_{M\in{S^{d\times{d}}_+}} = \sum_t [1 + E[D_M^2 (x^t_i, z^t_o)] - (D^2_M(z^t_o, z^t_q) - D^2_M(z^t_o, z^t_p))] _+
+$$
+
+目的関数$L(M, z^k)$は以下に示す関数$H(M)$によって上界が求まる．
+$$
+H(M) = \frac{\lambda}{2} ||M - M_{k-1}||^2_F + \sum_t [1 + E[D^2_{M_{k-1}}(x^t_i, z^t_o)] - (D^2_M(z^t_o, z^t_q) - D^2_M(z^t_o, z^t_p))]_+
+$$
+
+$\lambda$は定数で，$H(M_{k-1}) = L(M _{k-1}, z^k)$．
+$H(M)$の最小化は一般的なDMLの問題．
+潜在変数$z$の数はオリジナルデータに比べて少ないため，既存の最適化手法が良好に動作する(論文ではSGDを使用)．
+Alg. 2に示すアルゴリズムで最適化を行う．
+
+<img width="440" alt="スクリーンショット 2018-08-13 15.19.06.png (103.6 kB)" src="https://img.esa.io/uploads/production/attachments/9763/2018/08/13/40745/f606da90-4bcf-4e80-8bd2-122edb6a3700.png">
+
+上記の二つのアルゴリズムを組み合わせて，全体を通した提案手法のアルゴリズムはAlg. 3に示される．
+
+<img width="440" alt="スクリーンショット 2018-08-13 15.20.26.png (65.2 kB)" src="https://img.esa.io/uploads/production/attachments/9763/2018/08/13/40745/6c11a6c5-b954-44ac-b4b6-5fd4e0c83ca6.png">
+
+# 実験結果
+
+比較手法は以下:
+* $Euclid$: 3近傍のユークリッド距離
+* $LMNN$
+* $OASIS$
+* $HR-SGD$
+* $MaPML_\tau$: 提案手法．潜在変数同士で3近傍をとる
+* $MaPML_\tau-O$: 提案手法によって学習した距離函数を用いて，元のデータ空間で3近傍をとる
+
+データセットはMNIST, CIFAR-10, CIFAR-100およびImageNet
+
+### MNIST
+* latent examplesの数を変えながら性能比較．
+
+<img width="400" alt="スクリーンショット 2018-08-13 15.27.59.png (74.9 kB)" src="https://img.esa.io/uploads/production/attachments/9763/2018/08/13/40745/889b7bc5-50ed-4f53-9df8-d4550d021a1b.png">
+
+* 学習時間の比較
+
+<img width="400" alt="スクリーンショット 2018-08-13 15.28.04.png (63.2 kB)" src="https://img.esa.io/uploads/production/attachments/9763/2018/08/13/40745/ea1c620c-7253-42a8-9770-32a231462d40.png">
+
+# 考察
+ MNISTのようなトイデータよりも，CIFARやImageNetのようなnatural objectsのデータセットの方が良好な結果が得られている．
+画像データについてナイーブな距離指標を当てても基本的にうまくいかないのでmetric learningは重要になってきそう．
+
