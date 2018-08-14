@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 15 Aug 2018 08:03:24 +0900</pubDate>
-    <lastBuildDate>Wed, 15 Aug 2018 08:03:24 +0900</lastBuildDate>
+    <pubDate>Wed, 15 Aug 2018 08:10:09 +0900</pubDate>
+    <lastBuildDate>Wed, 15 Aug 2018 08:10:09 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -30,38 +30,56 @@
   &lt;li&gt;学習データ集合: { $(x_i, y_i), i=1,\dots, n$ },　$x_i \in \mathbb{R}^d$&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;DMLは以下のような距離指標を学習したい:
-&lt;script type=&quot;math/tex&quot;&gt;\forall{x_i, x_j, x_k} \ \ \ D^2(x_i, x_k) - D^2(x_i, x_j) \geq 1&lt;/script&gt;
-ここで$x_i$と$x_j$は同じクラス，$x_k$は違うクラスとする．
-距離指標$M\in S^{d\times{d}}_+$が与えられた時，二乗距離は次のように定義される:
-&lt;script type=&quot;math/tex&quot;&gt;D^2_M(x_i, x_j) = (x_i - x_j)^T M(x_i - x_j)&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;DMLは以下のような距離指標を学習したい:&lt;/p&gt;
 
-&lt;p&gt;大規模画像データ集合について，観測されたサンプルが潜在的な代表サンプルから0を平均とする歪みに基づいて得られていると仮定する．
-&lt;script type=&quot;math/tex&quot;&gt;\forall{i} \ \ \ E[x_i] = z_{o: f(i) = o}&lt;/script&gt;
-$f(\cdot)$は元のデータを対応するlatent exampleに射影する．&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\forall{x_i, x_j, x_k} \ \ \ D^2(x_i, x_k) - D^2(x_i, x_j) \geq 1&lt;/script&gt;
 
-&lt;p&gt;目的関数は，
-&lt;script type=&quot;math/tex&quot;&gt;\forall{x_i, x_j, x_k} \ \ \ E[D^2_M(x_i, x_k)] - E[D^2_M(x_i, x_j)] \geq 1&lt;/script&gt;
-となる．&lt;/p&gt;
+&lt;p&gt;ここで$x_i$と$x_j$は同じクラス，$x_k$は違うクラスとする．
+距離指標$M\in S^{d\times{d}}_+$が与えられた時，二乗距離は次のように定義される:&lt;/p&gt;
 
-&lt;p&gt;$z_o$,$z_p$，$z_q$を$x_i$，$x_j$，$x_k$に対応するlatent examplesとすると，同じクラスのペアについての距離函数は，
-&lt;script type=&quot;math/tex&quot;&gt;E[D^2_M(x_i, x_j)] = D^2_M(z_o, z_p) + 2E[D^2_M(x_i, z_o)]&lt;/script&gt;
-同様に，異なるクラスのペアについての距離函数は，
-&lt;script type=&quot;math/tex&quot;&gt;E[D^2_M(x_i, x_k)] = D^2_M(z_o, z_q) + E[D^2_M(x_i, z_o)] + E[D^2_M(x_k, z_q)] \geq D^2_M(z_o, z_q) + E[D^2_M(x_i, z_o)]&lt;/script&gt;
-となる．
-以上から，triplet constraints下で学習する距離指標は次のように定義できる．
-&lt;script type=&quot;math/tex&quot;&gt;\forall{z_o, z_p, z_q} \ \ \ D^2_M(z_o, z_q) - D^2_M(z_o, z_p) \geq 1 + E[D^2_M(x_i, z_o)]&lt;/script&gt;
-上式の制約で得られる距離函数は，右辺から同じローカルクラスタの中の距離はタイトであり，左辺から，異なるクラス間は異なる距離マージンを獲得できることがわかる．&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;D^2_M(x_i, x_j) = (x_i - x_j)^T M(x_i - x_j)&lt;/script&gt;
 
-&lt;p&gt;triplet集合{$z^t_o, z^t_p, z^t_q$}について，最適化問題は以下のように定式化できる．
-&lt;script type=&quot;math/tex&quot;&gt;\min_{M\in{S^{d\times{d}}_+}, ||M||_F\leq{\delta, z\in{\mathbb{R}^{d\times{m}}}}} L(M, z) = \sum_t l(z^t_o, z^t_p, z^t_q; M)&lt;/script&gt;
-$m\ll n$はlatent examplesの数．過学習を抑制するためFrobeniusノルムを追加し，損失関数にはヒンジロスを採用する．
-&lt;script type=&quot;math/tex&quot;&gt;l(z^t_o, z^t_p, z^t_q; M) = [1 + E[D^2_M(x^t_i, z^t_o)] - (D^2_M(z^t_o, z^t_q) - D^2_M(z^t_o, z^t_p))] _+&lt;/script&gt;
-この問題は，距離指標とlatent examplesの両方が変数であるため最適化が難しいので，この論文ではこれを解く新しい手法を提案する．&lt;/p&gt;
+&lt;p&gt;大規模画像データ集合について，観測されたサンプルが潜在的な代表サンプルから0を平均とする歪みに基づいて得られていると仮定する．&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\forall{i} \ \ \ E[x_i] = z_{o: f(i) = o}&lt;/script&gt;
+
+&lt;p&gt;$f(\cdot)$は元のデータを対応するlatent exampleに射影する．&lt;/p&gt;
+
+&lt;p&gt;目的関数は，&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\forall{x_i, x_j, x_k} \ \ \ E[D^2_M(x_i, x_k)] - E[D^2_M(x_i, x_j)] \geq 1&lt;/script&gt;
+
+&lt;p&gt;となる．&lt;/p&gt;
+
+&lt;p&gt;$z_o$,$z_p$，$z_q$を$x_i$，$x_j$，$x_k$に対応するlatent examplesとすると，同じクラスのペアについての距離函数は，&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E[D^2_M(x_i, x_j)] = D^2_M(z_o, z_p) + 2E[D^2_M(x_i, z_o)]&lt;/script&gt;
+
+&lt;p&gt;同様に，異なるクラスのペアについての距離函数は，&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E[D^2_M(x_i, x_k)] = D^2_M(z_o, z_q) + E[D^2_M(x_i, z_o)] + E[D^2_M(x_k, z_q)] \geq D^2_M(z_o, z_q) + E[D^2_M(x_i, z_o)]&lt;/script&gt;
+
+&lt;p&gt;となる．
+以上から，triplet constraints下で学習する距離指標は次のように定義できる．&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\forall{z_o, z_p, z_q} \ \ \ D^2_M(z_o, z_q) - D^2_M(z_o, z_p) \geq 1 + E[D^2_M(x_i, z_o)]&lt;/script&gt;
+
+&lt;p&gt;上式の制約で得られる距離函数は，右辺から同じローカルクラスタの中の距離はタイトであり，左辺から，異なるクラス間は異なる距離マージンを獲得できることがわかる．&lt;/p&gt;
+
+&lt;p&gt;triplet集合{$z^t_o, z^t_p, z^t_q$}について，最適化問題は以下のように定式化できる．&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\min_{M\in{S^{d\times{d}}_+}, ||M||_F\leq{\delta, z\in{\mathbb{R}^{d\times{m}}}}} L(M, z) = \sum_t l(z^t_o, z^t_p, z^t_q; M)&lt;/script&gt;
+
+&lt;p&gt;$m\ll n$はlatent examplesの数．過学習を抑制するためFrobeniusノルムを追加し，損失関数にはヒンジロスを採用する．&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;l(z^t_o, z^t_p, z^t_q; M) = [1 + E[D^2_M(x^t_i, z^t_o)] - (D^2_M(z^t_o, z^t_q) - D^2_M(z^t_o, z^t_p))] _+&lt;/script&gt;
+
+&lt;p&gt;この問題は，距離指標とlatent examplesの両方が変数であるため最適化が難しいので，この論文ではこれを解く新しい手法を提案する．&lt;/p&gt;
 
 &lt;h2 id=&quot;update-z-with-upper-bound&quot;&gt;Update $z$ with Upper Bound&lt;/h2&gt;
-&lt;p&gt;$M_{k-1}$を固定した時，k番目のイテレーションについての部分問題は次のようになる．
-&lt;script type=&quot;math/tex&quot;&gt;\min_z L(M_{k-1}, z) = \sum_t [1 + \underbrace{E[D^2_{M_{k-1}} (x^t_i, z^t_o)]}_ {a} - \underbrace{(D^2_{M_{k-1}} (z^t_o, z^t_q) - D^2_{M_{k-1}} (z^t_o, z^t_p))}_ {b}]_+&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;$M_{k-1}$を固定した時，k番目のイテレーションについての部分問題は次のようになる．&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\min_z L(M_{k-1}, z) = \sum_t [1 + \underbrace{E[D^2_{M_{k-1}} (x^t_i, z^t_o)]}_ {a} - \underbrace{(D^2_{M_{k-1}} (z^t_o, z^t_q) - D^2_{M_{k-1}} (z^t_o, z^t_p))}_ {b}]_+&lt;/script&gt;
 
 &lt;ul&gt;
   &lt;li&gt;$a$: マージン項&lt;/li&gt;
@@ -70,9 +88,11 @@ $m\ll n$はlatent examplesの数．過学習を抑制するためFrobeniusノル
 
 &lt;p&gt;二つの項の両方に$z$が存在するため直接最適化するのは難しいので，元の問題のupper-boundを見つけて，代わりとなる単純な問題に落とす．&lt;/p&gt;
 
-&lt;p&gt;定数$c_1$，$c_2$および$c_3$について，以下の関数$F_r(z)$を考える．
-&lt;script type=&quot;math/tex&quot;&gt;F_r(z) = c_1 E[D^2_{M_{k-1}} (x_i, z_o)] + c_2 + c_3 \sum_o D^2_{M_{k-1}}(z_o, z^{k-1}_o)&lt;/script&gt;
-ここで$\sum_r F_r(z^{k-1}) = L(M _{k-1}, z^{k-1})$．
+&lt;p&gt;定数$c_1$，$c_2$および$c_3$について，以下の関数$F_r(z)$を考える．&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_r(z) = c_1 E[D^2_{M_{k-1}} (x_i, z_o)] + c_2 + c_3 \sum_o D^2_{M_{k-1}}(z_o, z^{k-1}_o)&lt;/script&gt;
+
+&lt;p&gt;ここで$\sum_r F_r(z^{k-1}) = L(M _{k-1}, z^{k-1})$．
 定数項を消して並び替えると，関数$F_r(z)$の最適化は以下の関数$\tilde{F}_r(z)$の最適化に等しい．&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\min_{z\in{\mathbb{R}^{d\times{m_r}}}, \mu_i, o \in {0, 1}, \sum_o{\mu_{i, o}} = 1} \tilde{F}_r(z) = \sum_i \sum_o \mu _{i, o} D _{M _{k-1}}^2 (x_i, z_o) + \gamma \sum_o D _{M _{k-1}}^2(z_o, z^{k-1}_o)&lt;/script&gt;
@@ -98,8 +118,9 @@ $\mu$を固定すると，latent examplesの近似解は以下で与えられる
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\min_{M\in{S^{d\times{d}}_+}} = \sum_t [1 + E[D_M^2 (x^t_i, z^t_o)] - (D^2_M(z^t_o, z^t_q) - D^2_M(z^t_o, z^t_p))] _+&lt;/script&gt;
 
-&lt;p&gt;目的関数$L(M, z^k)$は以下に示す関数$H(M)$によって上界が求まる．
-&lt;script type=&quot;math/tex&quot;&gt;H(M) = \frac{\lambda}{2} ||M - M_{k-1}||^2_F + \sum_t [1 + E[D^2_{M_{k-1}}(x^t_i, z^t_o)] - (D^2_M(z^t_o, z^t_q) - D^2_M(z^t_o, z^t_p))]_+&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;目的関数$L(M, z^k)$は以下に示す関数$H(M)$によって上界が求まる．&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H(M) = \frac{\lambda}{2} ||M - M_{k-1}||^2_F + \sum_t [1 + E[D^2_{M_{k-1}}(x^t_i, z^t_o)] - (D^2_M(z^t_o, z^t_q) - D^2_M(z^t_o, z^t_p))]_+&lt;/script&gt;
 
 &lt;p&gt;$\lambda$は定数で，$H(M_{k-1}) = L(M _{k-1}, z^k)$．
 $H(M)$の最小化は一般的なDMLの問題．
