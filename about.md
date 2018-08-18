@@ -33,3 +33,6 @@ permalink: /about/
 ## Awards
 - 株式会社チームラボ賞: 木村 正成, 若林 啓. 制限付き識別ランダムウォークによるグラフベースのラベル拡張. 第10回 Webとデータベースに関するフォーラム (WebDB Forum 2017), 2017.
 - Discovery channel Code Contest 2016 本戦出場
+
+## Academic Society
+* 人工知能学会 正会員
