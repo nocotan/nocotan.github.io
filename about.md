@@ -35,6 +35,9 @@ permalink: /about/
 * Active Learning based on Submodular Optimization Considering Label Expansion (IBIS2017)
 * Graph-based Label Extension Using Restricted Discriminative-random Walk (WebDBForum2017)
 
+## Services (Peer review experiences)
+- IEEE Access: 1
+
 ## Awards
 - 株式会社チームラボ賞: 木村 正成, 若林 啓. 制限付き識別ランダムウォークによるグラフベースのラベル拡張. 第10回 Webとデータベースに関するフォーラム (WebDB Forum 2017), 2017.
 - Discovery channel Code Contest 2016 本戦出場
