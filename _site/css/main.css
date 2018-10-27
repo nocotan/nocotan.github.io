@@ -13,8 +13,8 @@ dl, dd, ol, ul, figure {
  */
 body {
   font-family: Helvetica, "游ゴシック", "Yu Gothic", sans-serif;
-  font-size: 20px;
-  line-height: 10;
+  font-size: 16px;
+  line-height: 25;
   font-weight: 240;
   letter-spacing: 1.1px;
   color: #111;
@@ -162,13 +162,6 @@ blockquote {
 
 h1 {
   line-height: 30px; }
-
-body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 25px;
-  color: #737373;
-  background-color: white; }
 
 table {
   margin: 10px 0 15px 0;
