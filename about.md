@@ -21,6 +21,7 @@ permalink: /about/
 
 ## Publications
 ### Workshop (refereed)
+- Masanari Kimura and Masayuki Tanaka. Interpretation of Feature Space using Multi-Channel Attentional Sub-Networks, CVPR Workshop on Explainable AI, 2019.
 - Masanari Kimura and Takashi Yanagihara. Semi-supervised Anomaly Detection Using GANs for Visual Inspection in Noisy Training Data, InProc. ACCV Workshop on Advanced Machine Vision for Real-life and Industrially Relevant Applications, 2018.
 - Kento Nozawa, Masanari Kimura, and Atsunori Kanemura. Analyzing Centralities of Embedded Nodes, In Proc. ICDM Workshop on Large Scale Graph Representation Learning and Applications, 2018.
 
