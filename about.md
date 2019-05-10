@@ -26,6 +26,7 @@ permalink: /about/
 - Kento Nozawa, Masanari Kimura, and Atsunori Kanemura. Analyzing Centralities of Embedded Nodes, In Proc. ICDM Workshop on Large Scale Graph Representation Learning and Applications, 2018.
 
 ### Domestic Conferences
+- Ryosuke Sato, Masanari Kimura, "Progressive Data Increasing as the Neural Network Initializer". JSAI, 2019.
 - Masanari Kimura, Kei Wakabayashi, "Graph-based Label Extension Using Restricted Discriminative-random Walk". Information Processing Society of Japan. Transactions on databases, Vol.10, No.4, 2017.12 [(pdf)](https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=184929&item_no=1&page_id=13&block_id=8)
 
 ### Domestic Conferences (non-refereed)
