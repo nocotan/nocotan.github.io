@@ -17,3 +17,13 @@ title: about
 # Publication list
 
 [Google Scholar](https://scholar.google.co.jp/citations?view_op=list_works&hl=en&hl=en&user=bPRGC8gAAAAJ)
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0XCJJ5R42B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0XCJJ5R42B');
+</script>
