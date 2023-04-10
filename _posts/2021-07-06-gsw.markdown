@@ -1,0 +1,294 @@
+---
+layout: post
+title:  Generalized sliced Wasserstein distance
+date:   2021-07-06 12:00:00 +0900
+categories: statistics
+---
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<!-- Automatically render math in text elements -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false},
+    ]
+  });
+});
+</script>
+
+## Wasserstein distances
+
+$P_p(\Omega)$を距離空間$(\Omega, d)$の上で定義される$p$次モーメントが有限であるBorel確率測度の集合とする．
+また，$\mu\in P_p(X)$および$\nu\in P_p(Y)$をそれぞれ$X,Y\in\Omega$の上で定義される確率測度とし，対応する確率密度関数を$I_\mu, I_\nu$とする：$d\mu(x)=I_\mu(x)dx, d\nu(y)=I_\nu(x)dy$.
+
+**定義 1**. (Wasserstein distance)
+ある$p\in[1, \infty]$について，$\mu$と$\nu$の間の$p$-Wasserstein
+distanceは最適輸送問題の解として定義される [10]：
+
+$$W_p(\mu, \nu) := \Big(\inf_{\gamma\in\Gamma(\mu, \nu)}\int_{X\times Y}d^p(x,y)d\gamma(x,y) \Big)^{\frac{1}{p}}.$$
+
+ここで$d^p(\cdot,\cdot)$はコスト関数，$\Gamma(\mu,\nu)$は全ての輸送計画の集合であり$\gamma\in\Gamma(\mu, \nu)$は
+
+$$\begin{aligned}
+    \gamma(A\times Y) &= \mu(A)\quad \text{for any Borel $A\subset X$}, \\
+    \gamma(X\times B) &= \nu(B)\quad \text{for any Borel $B\subset Y$}
+\end{aligned}$$
+
+として与えられる．
+
+**命題 2**. $p$-Wasserstein
+distanceは，$p\geq 2$で以下の同値な表現を持つ．
+
+$$W_p(\mu, \nu) = \Big(\inf_{\varphi\in\Phi(\mu,\nu)}\int_X d^p(x, \varphi(x))d\nu(x)\Big)^{\frac{1}{p}}.$$
+
+ここで
+
+$$\Phi(\mu, \nu) = \{\varphi: X\to Y ;  \varphi_\sharp\mu = \nu\}$$
+
+であり，$\varphi_\sharp\mu$は測度$\mu$の押し出しであって，
+
+$$\begin{aligned}
+    \int_{A} d\varphi_\sharp\mu (y) = \int_{\varphi^{-1}(A)}d\mu(x) \quad  \text{for any Borel subset $A\subset Y$}.
+\end{aligned}$$
+
+*Proof.*
+Brenierの定理 [3]から直ちに従う．
+
+**命題 3**. (Closed form of Wasserstein distances)
+一次元連続確率測度を考える．
+$I_\mu$と$I_\nu$の累積分布関数をそれぞれ$F_\mu(x) = \mu((-\infty, x])$，$F_\nu(x) = \nu((-\infty, x])$とする．
+このとき$p$-Wasserstein distanceは以下の解析解を持つ：
+
+$$W_p(\mu, \nu) = \Big(\int_X d^p(x, F^{-1}_\nu(F_\mu(x)))d\mu(x)\Big)^{\frac{1}{p}} = \Big(\int^1_0 d^p(F_\mu^{-1}(z), F_\nu^{-1}(z)) dz\Big)^{\frac{1}{p}}.$$
+
+*Proof.*
+最適輸送写像$\varphi(x) = F^{-1}_\nu F_\mu(x)$として一意に定まることから証明が得られる．
+
+一次元確率分布においてWasserstein
+distancesが解析解を持つという性質は非常に嬉しい．
+もし多次元確率分布を一次元表現にうまく変換できれば，Wasserstein
+distancesを解析的に計算できるだろう，というのがsliced Wasserstein
+distancesの基本的なアイディアである． 以下ではまず初めにRadon
+transformを導入し，それを用いてsliced Wasserstein distancesを導出する．
+
+## Radon transform, sliced Wasserstein distances
+
+以下の関数集合を考える：
+$$L^1(\mathbb{R}^d) = \Big\{I:\mathbb{R}^d\to\mathbb{R}\ |\  \int_{\mathbb{R}^d}|I(x)|dx < \infty \Big\}.$$
+このときRadon transform
+$\mathcal{R}:L^1(\mathbb{R}^d)\to L^1(\mathbb{R}^d\times\mathbb{S}^{d-1})$は以下で定義される：
+$$\mathcal{R}I(t,\theta) = \int_{\mathbb{R}^d}I(x)\delta(t- \langle x, \theta \rangle)dx.$$
+ここで$(t,\theta)\in\mathbb{S}^{d-1}$であり，$\mathbb{S}^{d-1}\subset\mathbb{R}^{d}$は$d$次元単位球を表す．
+
+Radon
+transformは線形全単射であり [6, 9]，その逆写像$\mathcal{R}^{-1}$はFourier変換$\mathcal{F}\eta(\omega)=c|\omega|^{d-1}$に対応するハイパスフィルタ$\eta(\cdot)$を用いて
+
+$$I(x) = \mathcal{R}^{-1}(\mathcal{R}I(t,\theta)) = \int_{\mathbb{S}^{d-1}}(\mathcal{R}I(\langle x, \theta \rangle, \theta) * \eta(\langle x, \theta \rangle))d\theta$$
+
+と書ける． このような逆写像はfiltered back-projectionとも呼ばる．
+
+前述の通り，sliced Wasserstein distancesのアイディアは以下の通りである：
+
+1.  高次元確率分布の一次元表現をRadon transformによって獲得；
+
+2.  $p$-Wasserstein
+    distanceによって一次元表現を介して確率分布同士の距離を計算する．
+
+これに基づいて，sliced $p$-Wasserstein
+distancesは以下のように定義される．
+
+**定義 4**. (Sliced Wasserstein distances)
+
+ある$p\in[1, \infty]$について，$\mu$と$\nu$の間のsliced $p$-Wasserstein
+distanceはRadon transform $\mathcal{R}$を用いて
+
+$$SW_p(I_\mu, I_\nu) := \Biggl(\int_{\mathbb{S}^{d-1}}W^p_p(\mathcal{R}I_\mu(\cdot,\theta), \mathcal{R}I_\nu(\cdot,\theta))d\theta \Biggr)^{\frac{1}{p}}.$$
+
+Wasserstein distancesと同様に，sliced $p$-Wasserstein
+distancesは正定値性，対称性および三角不等式を満たすため距離関数となる [2, 8]．
+
+実用上は，MCMCなどによって積分を有限和で近似することで計算される：
+
+$$SW_p(I_\mu, I_\nu) \approx \Biggl(\frac{1}{L}\sum^L_{l=1} W^p_p(\mathcal{R}I_\mu(\cdot,\theta_l), \mathcal{R}I_\nu(\cdot,\theta_l)) \Biggr)^{\frac{1}{p}}.$$
+
+高次元の場合，sliced Wasserstein
+distancesは二つの確率測度の間の距離を小さく見積もってしまうことが知られている．
+この問題に対するヒューリスティクスな対処法として，以下の亜種が提案されている [5]．
+
+$$\text{max-} SW_p(I_\mu,I_\nu) := \max_{\theta\in\mathbb{S}^{d-1}} W_p(\mathcal{R}I_\mu(\cdot,\theta), \mathcal{R}I_\nu(\cdot, \theta)).$$
+
+## Generalized Sliced Wasserstein Distance
+
+上述の通り，sliced Wasserstein
+distancesは高次元確率分布の一次元表現を線型写像によって獲得したのち，Wasserstein
+distancesの解析解を用いて距離を計算していた．
+そこで，確率分布の一次元表現を非線形変換によって計算するようなsliced
+Wasserstein distancesの一般化を考える．
+
+# Generalized Radon Transform
+
+まず，$(X\subset\mathbb{R}^d)\times\mathbb{R}^n\setminus\{0\}$の上のある関数$g$を以下のように定義する．
+
+1.  $g$は$C^\infty$級の実数値関数;
+
+2.  $\forall\lambda\in\mathbb{R}, g(x,\lambda\theta) = \lambda g(x,\theta)$;
+
+3.  $\forall (x\times\theta)\in X\times\mathbb{R}^n\setminus\{0\}, \frac{\partial g}{\partial x}(x,\theta)\neq 0$;
+
+4.  $det\Big((\frac{\partial^2 g}{\partial x_i\partial\theta_j})_{ij}\Big)>0$.
+
+このとき，generalized Radon transform (GRT)
+$\mathcal{G}$は関数$g$を用いて以下のように定義される [1, 4]：
+
+$$\mathcal{G}I(t,\theta) = \int_{\mathbb{R}^d}I(x)\delta(t - g(x,\theta))dx.$$
+
+このときRadon
+transformはGRTにおいて$g(x,\theta)=\langle x, \theta \rangle$とした特殊形になる．
+
+# Generalized Sliced-Wasserstein, Max-Generalized Sliced-Wasserstein Distances
+
+元のsliced Wasserstein distancesのRadon
+transformをGRTに差し替えることで，以下のようにgeneralized sliced
+Wasserstein distances（GSW）が定義できる [7]：
+
+$$GSW_p(I_\mu, I_\nu) := \Biggl(\int_{\Omega_\theta}W^p_p(\mathcal{G}I_\mu(\cdot,\theta), \mathcal{G}I_\nu(\cdot,\theta))d\theta \Biggr)^{\frac{1}{p}}.$$
+
+ここで$\Omega_\theta$は$g(\cdot,\theta)$の実行可能パラメータのコンパクト集合．
+GSWもまた高次元空間において距離が低く見積もられる問題があるため，以下のように$\text{max}-GSW$を定義できる．
+
+$$\text{max-}GSW_p := \max_{\theta\in\Omega_\theta}W_p(\mathcal{G}I_\mu(\cdot,\theta), \mathcal{G}I_\nu(\cdot,\theta)d\theta).$$
+
+**命題 5**.
+GSWおよびmax-GSWはどちらも$P_p(\Omega)$の上の距離関数になる．
+
+## References
+- [1] Beylkin, G. (1984). The inversion problem and applications of the generalized radon transform. Communications on pure and applied mathematics, 37(5):579–599.
+- [2] Bonnotte, N. (2013). Unidimensional and evolution methods for optimal transportation. PhD thesis, Paris 11.
+- [3] Brenier, Y. (1991). Polar factorization and monotone rearrangement of vector-valued functions. Communications on pure and applied mathematics, 44(4):375–417.
+- [4] Denisyuk, A. (1994). Inversion of the generalized radon transform. Translations of the American Mathematical Society-Series 2,162:19–32.
+- [5] Deshpande, I., Hu, Y.-T., Sun, R., Pyrros, A., Siddiqui, N., Koyejo, S., Zhao, Z., Forsyth, D., and Schwing, A. G. (2019). Max-sliced wasserstein distance and its use for gans. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 10648–10656.
+- [6] Helgason, S. (2011). Integral Geometry and Radon Transform. Springer.
+- [7] Kolouri, S., Nadjahi, K., Simsekli, U., Badeau, R., and Rohde, G. (2019). Generalized sliced wasserstein distances. Advances in Neural Information Processing Systems, 32:261–272.
+- [8] Kolouri, S., Zou, Y., and Rohde, G. K. (2016). Sliced wasserstein kernels for probability distributions. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 5258–5267.
+- [9] Natterer, F. (2001). The mathematics of computerized tomography. SIAM.
+- [10] Villani, C. (2008). Optimal transport, old and new. notes for the 2005 saint-flour summer school. Grundlehren der mathematischen Wis- senschaften [Fundamental Principles of Mathematical Sciences]. Springer.
+
+## Appendix
+
+# Properties of Wasserstein distances {#apd:wasserstein_distances}
+
+**命題 6**. (Wasserstein distance)
+
+$W_p:P_p(X) \times P_p(X)\to [0, \infty)$は$P_p$の計量である．
+
+*Proof.*
+
+$W_p(\mu, \nu)\geq 0\ (\forall \mu,\nu \in P_p(X))$は明らかである．
+コスト関数$c(x, y) = |x-y|^p$および$\gamma\in\Gamma(\mu, \nu)\Leftrightarrow S_{\sharp}\gamma\in\Gamma(\mu, \nu)\ \text{where}\ (S(x,y) = (y,x))$より，$W_p$の対称性も得られる．
+もし$\mu=\nu$のとき，$x=y$で$\gamma(x,y)=\delta_x(y)\mu(x)$をほとんど至る所
+$$W_p(\mu, \nu) \leq \int_{X\times X} |x-y|^p d\gamma(x,y) = 0$$
+ととることができる．
+つぎに，もし$W_p(\mu, \nu)=0$のとき，ほとんど至る所$x=y$となる$\gamma\in\Gamma(\mu,\nu)$が存在する．
+従って，任意の関数$f:X\to\mathbb{R}$について，
+
+$$\int_X f(x)d\mu(x) = \int_{X\times X} f(x)d\gamma(x, y) = \int_{X\times Y}f(y)d\gamma(x,y) = \int_Y f(y)d\nu(y)$$
+
+が成り立つので，$\mu=\nu$である．
+
+**命題 7**.
+すべての$p\in[1,+\infty)$と任意の$\mu,\nu\in P_p(X)$について，$W_p(\mu, \nu)\geq W_1(\mu, \nu)$が成り立つ．
+さらに$X\subset\mathbb{R}^n$が有界であるとき，$W_p(\mu,\nu)\leq \text{diam}(X)^{p-1}W_1(\mu, \nu)$が成り立つ．
+
+*Proof.* Jensenの不等式より，ある$\gamma\in\Gamma(\mu, \nu)$について
+
+$$\Big(\int_{X\times X}|x-y|^pd\gamma(x,y)\Big)^{\frac{1}{p}} \geq \int_{X\times X} |x-y|d\gamma(x,y)$$
+
+が成り立つので，$W_p(\mu,\nu)\geq W_1(\mu,\nu)$が証明される．
+
+次に$X$が有界であるとすると，$\forall x, y\in X$について
+
+$$|x-y|^p \leq \Big(\max_{w,z\in X} |w-z|^{p-1}\Big)|x-y| = \Big(\text{diam}(X)\Big)^{p-1}|x-y|.$$
+
+従って，
+
+$$\int_{X\times X}|x-y|^p d\gamma(x,y) \leq \Big(\text{diam}(X)\Big)^{p-1}\int_{X\times X}|x-y|d\gamma(x,y)$$
+
+であることから，$W_p(\mu,\nu)\leq \text{diam}(X)^{p-1}W_1(\mu, \nu)$が証明される．
+
+# Brenier's theorem {#apd:brenier_theorem}
+
+**定理 8**. (Brenier's theorem)
+ある$p\geq 2$について$\mu\in P_p(X)$，$\nu\in P_p(Y)$とする．
+このとき，コスト関数$c(x, y) = \frac{1}{2}|x - y|^2$に対して最適な輸送計画$\gamma^\dagger\in\Gamma(\mu, \nu)$は一意に定まり，以下で与えられる：
+
+$$\gamma^\dagger = \varphi_\sharp\mu,$$
+
+ここで$\varphi$は$\mu$-a.e.で定義される凸関数．
+
+*Proof.* まず，解の存在を示す．
+$\gamma^\dagger$をKantorovichの最適輸送問題の最小化解とする．
+
+$$\gamma^\dagger(A\times B) = \int_A\gamma^\dagger(B|x)d\mu(x)$$
+
+と書くと，$\partial\varphi(x) = \{\nabla\varphi(X)\}\ \text{for $L$-a.e. $x\in X$}$であるので，
+
+$$\mathop{\mathrm{supp}}(\gamma^\dagger(\cdot|x))\subset \{\nabla\varphi(x)\}\quad \text{for $\mu$-a.e. $x\in X$}$$
+
+となる．
+このことから，$\gamma^\dagger(\cdot|x) = \partial{\nabla\varphi(x)}$ for
+$µ$-a.e. $x\in X$もわかる． 以上より，
+
+$$\gamma^\dagger = \varphi_\sharp\mu$$
+
+と書ける最適輸送解が存在し，
+
+$$\begin{aligned}
+    \nu(B) &= \gamma^\dagger(\mathbb{R}^n\times B) \\
+    &= \varphi_\sharp\mu(\mathbb{R}^n\times B) \\
+    &= \mu((\text{Id}\times\nabla\varphi)^{-1}(\mathbb{R}^n\times B)) \\
+    &= \mu(\{x\ |\  (\text{Id}\times\nabla\varphi)(x) \in \mathbb{R}^n\times B\}) \\
+    &= \mu(\{x\ |\ \nabla\varphi(x)\in B\}) \\
+    &= (\nabla\varphi)_\sharp\mu(B)
+\end{aligned}$$
+
+となることが示される．
+次に，このような最適輸送解の一意性を示す．
+
+$\bar{\varphi}$を別の凸関数とし，
+
+$$\bar{\varphi}_\sharp\mu = \nu$$
+
+となると仮定する．
+$\bar{\varphi}_\sharp\mu$もまた最適輸送解となることから，
+
+$$\begin{aligned}
+    \int_X\bar{\varphi}d\mu + \int_Y\bar{\varphi}^*d\nu = \int_X\varphi d\mu + \int_Y\varphi d\nu
+\end{aligned}$$
+
+である．これを変形すると，
+
+$$\begin{aligned}
+    \int_{X\times Y}\bar{\varphi}(x) + \bar{\varphi}^*(y)d\gamma^\dagger(x,y) &= \int_{X\times Y}\varphi(x) + \varphi^*(y)d\gamma^\dagger(x,y) \\
+    &= \int_{X\times Y}x\cdot y\  d\gamma^\dagger(x, y) \\
+    &= \int_{X\times Y} x\cdot y\ d\varphi_\sharp\mu(x,y) \\
+    &= \int_X x\cdot\nabla\varphi(x)d\mu(x)
+\end{aligned}$$
+
+が得られる．同様に，
+
+$$\begin{aligned}
+    \int_{X\times Y}\bar{\varphi}(x) + \bar{\varphi}^*(y)\ d\gamma^\dagger(x, y) = \int_X \bar{\varphi}(x) + \bar{\varphi}^*(\nabla\varphi(x))d\mu(x).
+\end{aligned}$$
+
+したがって，
+
+$$\int_{X}\Big\{\bar{\varphi}(x) + \bar{\varphi}(\nabla\varphi(x)) - x\cdot \nabla\varphi(x)\Big\}d\mu(x) = 0.$$
+
+特に，$\bar{\varphi}(x) + \bar{\varphi}^∗
+(\nabla\varphi(x)) − x\cdot\nabla\varphi(x) = 0$ for $\mu$-a.e.
+$x$であり，$\nabla\varphi(x)\in\partial\bar{\varphi}(x)$ for $\mu$-a.e.
+$x$であるので，$\nabla\varphi(x) = \nabla\bar{\varphi}(x)$が示された．
