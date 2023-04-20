@@ -34,11 +34,11 @@ $$W_p(\mu, \nu) := \Big(\inf_{\gamma\in\Gamma(\mu, \nu)}\int_{X\times Y}d^p(x,y)
 ここで$d^p(\cdot,\cdot)$はコスト関数，$\Gamma(\mu,\nu)$は全ての輸送計画の集合であり$\gamma\in\Gamma(\mu, \nu)$は
 
 $$\begin{aligned}
-    \gamma(A\times Y) &= \mu(A)\quad \text{for any Borel $A\subset X$}, \\
-    \gamma(X\times B) &= \nu(B)\quad \text{for any Borel $B\subset Y$}
+    \gamma(A\times Y) &= \mu(A), \\
+    \gamma(X\times B) &= \nu(B)
 \end{aligned}$$
 
-として与えられる．
+として与えられる．ここで$A$と$B$は任意のボレル集合．
 
 **命題 2**. $p$-Wasserstein
 distanceは，$p\geq 2$で以下の同値な表現を持つ．
@@ -66,7 +66,7 @@ $I_\mu$と$I_\nu$の累積分布関数をそれぞれ$F_\mu(x) = \mu((-\infty, x
 $$W_p(\mu, \nu) = \Big(\int_X d^p(x, F^{-1}_\nu(F_\mu(x)))d\mu(x)\Big)^{\frac{1}{p}} = \Big(\int^1_0 d^p(F_\mu^{-1}(z), F_\nu^{-1}(z)) dz\Big)^{\frac{1}{p}}.$$
 
 *Proof.*
-最適輸送写像$\varphi(x) = F^{-1}_\nu F_\mu(x)$として一意に定まることから証明が得られる．
+最適輸送写像$$\varphi(x) = F^{-1}_{\nu} F_{\mu(x)}$$として一意に定まることから証明が得られる．
 
 一次元確率分布においてWasserstein
 distancesが解析解を持つという性質は非常に嬉しい．
@@ -83,9 +83,7 @@ $$L^1(\mathbb{R}^d) = \Big\{I:\mathbb{R}^d\to\mathbb{R}\ |\  \int_{\mathbb{R}^d}
 $\mathcal{R}:L^1(\mathbb{R}^d)\to L^1(\mathbb{R}^d\times\mathbb{S}^{d-1})$は以下で定義される：
 $$\mathcal{R}I(t,\theta) = \int_{\mathbb{R}^d}I(x)\delta(t- \langle x, \theta \rangle)dx.$$
 ここで$(t,\theta)\in\mathbb{S}^{d-1}$であり，$\mathbb{S}^{d-1}\subset\mathbb{R}^{d}$は$d$次元単位球を表す．
-
-Radon
-transformは線形全単射であり [6, 9]，その逆写像$\mathcal{R}^{-1}$はFourier変換$\mathcal{F}\eta(\omega)=c|\omega|^{d-1}$に対応するハイパスフィルタ$\eta(\cdot)$を用いて
+Radon transformは線形全単射であり [6, 9]，その逆写像$$\mathcal{R}^{-1}$$はFourier変換$$\mathcal{F}\eta(\omega)=c|\omega|^{d-1}$$に対応するハイパスフィルタ$$\eta(\cdot)$$を用いて
 
 $$I(x) = \mathcal{R}^{-1}(\mathcal{R}I(t,\theta)) = \int_{\mathbb{S}^{d-1}}(\mathcal{R}I(\langle x, \theta \rangle, \theta) * \eta(\langle x, \theta \rangle))d\theta$$
 
@@ -234,9 +232,9 @@ $\gamma^\dagger$をKantorovichの最適輸送問題の最小化解とする．
 
 $$\gamma^\dagger(A\times B) = \int_A\gamma^\dagger(B|x)d\mu(x)$$
 
-と書くと，$\partial\varphi(x) = \{\nabla\varphi(X)\}\ \text{for $L$-a.e. $x\in X$}$であるので，
+と書くと，$\partial\varphi(x) = \{\nabla\varphi(X)\}$ $L$-a.e. $x\in X$であるので，
 
-$$\mathop{\mathrm{supp}}(\gamma^\dagger(\cdot|x))\subset \{\nabla\varphi(x)\}\quad \text{for $\mu$-a.e. $x\in X$}$$
+$$supp(\gamma^\dagger(\cdot|x))\subset \{\nabla\varphi(x)\}\quad \text{for $\mu$-a.e. $x\in X$}$$
 
 となる．
 このことから，$\gamma^\dagger(\cdot|x) = \partial{\nabla\varphi(x)}$ for
