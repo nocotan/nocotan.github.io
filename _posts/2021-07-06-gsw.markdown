@@ -52,8 +52,9 @@ $$\Phi(\mu, \nu) = \{\varphi: X\to Y ;  \varphi_\sharp\mu = \nu\}$$
 であり，$\varphi_\sharp\mu$は測度$\mu$の押し出しであって，
 
 $$\begin{aligned}
-    \int_{A} d\varphi_\sharp\mu (y) = \int_{\varphi^{-1}(A)}d\mu(x) \quad  \text{for any Borel subset $A\subset Y$}.
+    \int_{A} d\varphi_\sharp\mu (y) = \int_{\varphi^{-1}(A)}d\mu(x).
 \end{aligned}$$
+for any Borel subset $A\subset Y$.
 
 *Proof.*
 Brenierの定理 [3]から直ちに従う．
