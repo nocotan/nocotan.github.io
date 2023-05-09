@@ -102,7 +102,7 @@ $$
 Finally, we have
 
 $$
-V_{\theta}(\hat{g}) \geq \frac{\lbrace g(\xi) - g(\theta) \rbrace^2}{V_{\theta}(p(\boldsymbol{x};\xi) / p((\boldsymbol{X}); \theta))},
+V_{\theta}(\hat{g}) \geq \frac{\lbrace g(\xi) - g(\theta) \rbrace^2}{V_{\theta}(p(\boldsymbol{x};\xi) / p((\boldsymbol{x}); \theta))},
 $$
 
 and from $\text{supp}\ p(\boldsymbol{x}; \xi)\subset \text{supp}\ p(\boldsymbol{x}; \theta)$, the Chapman-Robbins bound is obtained.
