@@ -75,7 +75,7 @@ The following theorem is a relaxation for the non-regular case of the Cramér-Ra
 For some $\theta \in \Theta$, we assume that there exists $\xi \in \Theta$ satisfying $\text{supp}\ p(\boldsymbol{x}; \xi)\subset \text{supp}\ p(\boldsymbol{x}; \theta)$ and $\xi \neq \theta$. Here, for the unbiased estimator $\hat{g}$ of some $g(\theta)$, we have the following bound.
 
 $$
-V_{\theta}(\hat{g}) \geq \sup_{\xi} \frac{\lbrace g(\xi) - g(\theta) \rbrace^2}{V_{\theta}(p(\boldsymbol{x};\xi) / p((\boldsymbol{x}); \theta))}.
+V_{\theta}(\hat{g}) \geq \sup_{\xi} \frac{\lbrace g(\xi) - g(\theta) \rbrace^2}{V_{\theta}(p(\boldsymbol{x};\xi) / p(\boldsymbol{x}; \theta))}.
 $$
 
 **Proof.**
@@ -102,7 +102,7 @@ $$
 Finally, we have
 
 $$
-V_{\theta}(\hat{g}) \geq \frac{\lbrace g(\xi) - g(\theta) \rbrace^2}{V_{\theta}(p(\boldsymbol{x};\xi) / p((\boldsymbol{x}); \theta))},
+V_{\theta}(\hat{g}) \geq \frac{\lbrace g(\xi) - g(\theta) \rbrace^2}{V_{\theta}(p(\boldsymbol{x};\xi) / p(\boldsymbol{x}; \theta))},
 $$
 
 and from $\text{supp}\ p(\boldsymbol{x}; \xi)\subset \text{supp}\ p(\boldsymbol{x}; \theta)$, the Chapman-Robbins bound is obtained.
