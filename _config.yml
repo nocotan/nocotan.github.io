@@ -27,12 +27,14 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: machinery81
 github_username:  nocotan
 google_analytics: G-0XCJJ5R42B
+google_site_verification: SQIUk-IBUPaWNBejQQknah41XO5UC5rdwb9CE7zRDuw
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
