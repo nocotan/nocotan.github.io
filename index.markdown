@@ -3,12 +3,12 @@ layout: page
 title: about
 ---
 
-## Bio
+## <span style="color: #5153C4">Bio</span>
 
 - PhD student in statistics at [The Institute of Statistical Mathematics](https://www.ism.ac.jp/index_e.html) ([SOKENDAI](https://www.soken.ac.jp/en/prog/stat/)).
 - Research scientist at [ZOZO Research](https://research.zozo.com/).
 
-## Selected publications
+## <span style="color: #5153C4">Selected publications</span>
 
 # Information geometry and machine learning
 
@@ -24,7 +24,7 @@ title: about
 1. **Masanari Kimura**, Takuma Nakamura and Yuki Saito. "SHIFT15M: Fashion-specific dataset for set-to-set matching with several distribution shifts." IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshop (CVPRW 2023). [paper](https://openaccess.thecvf.com/content/CVPR2023W/CVFAD/papers/Kimura_SHIFT15M_Fashion-Specific_Dataset_for_Set-to-Set_Matching_With_Several_Distribution_Shifts_CVPRW_2023_paper.pdf)
 2. **Masanari Kimura**, Kei Wakabayashi, and Atsuyuki Morishima. "Batch prioritization of data labeling tasks for training classifiers." AAAI Conference on Human Computation and Crowdsourcing (AAAI HCOMP 2020). [paper](https://ojs.aaai.org/index.php/HCOMP/article/view/7476)
 
-## Publication list
+## <span style="color: #5153C4">Publication list</span>
 
 [Google Scholar](https://scholar.google.co.jp/citations?view_op=list_works&hl=en&hl=en&user=bPRGC8gAAAAJ)
 
