@@ -17,8 +17,9 @@ title: about
 3. **Masanari Kimura**. "Generalized t-SNE Through the Lens of Information Geometry." IEEE Access 9 (2021): 129619-129625. [paper](https://ieeexplore.ieee.org/abstract/document/9540693/)
 
 # Theoretical analysis of data augmentation
-1. **Masanari Kimura**. "Understanding test-time augmentation." International Conference on Neural Information Processing (ICONIP 2021). [paper](https://link.springer.com/chapter/10.1007/978-3-030-92185-9_46)
-2. **Masanari Kimura**. "Why mixup improves the model performance." International Conference on Artificial Neural Networks (ICANN 2021). [paper](https://link.springer.com/chapter/10.1007/978-3-030-86340-1_22)
+1. **Masanari Kimura**. "Generalization Bounds for Set-to-Set Matching with Negative Sampling." International Conference on Neural Information Processing (ICONIP 2022). [paper](https://link.springer.com/chapter/10.1007/978-981-99-1639-9_39)
+2. **Masanari Kimura**. "Understanding test-time augmentation." International Conference on Neural Information Processing (ICONIP 2021). [paper](https://link.springer.com/chapter/10.1007/978-3-030-92185-9_46)
+3. **Masanari Kimura**. "Why mixup improves the model performance." International Conference on Artificial Neural Networks (ICANN 2021). [paper](https://link.springer.com/chapter/10.1007/978-3-030-86340-1_22)
 
 # Distribution shift and active learning
 1. **Masanari Kimura**, Takuma Nakamura and Yuki Saito. "SHIFT15M: Fashion-specific dataset for set-to-set matching with several distribution shifts." IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshop (CVPRW 2023). [paper](https://openaccess.thecvf.com/content/CVPR2023W/CVFAD/papers/Kimura_SHIFT15M_Fashion-Specific_Dataset_for_Set-to-Set_Matching_With_Several_Distribution_Shifts_CVPRW_2023_paper.pdf)
