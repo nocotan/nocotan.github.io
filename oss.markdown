@@ -5,7 +5,7 @@ title: OSS
 
 # SHIFT15M: Fashion-specific dataset for set-to-set matching with several distribution shifts
 
-[![st-tech/zozo-shift15m - GitHub](https://gh-card.dev/repos/st-tech/zozo-shift15m.svg)](https://github.com/st-tech/zozo-shift15m)
+<a href="https://github.com/st-tech/zozo-shift15m"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/st-tech/zozo-shift15m.png" width="460px"></a>
 
 - [arXiv](https://arxiv.org/abs/2108.12992)
 - accepted at CVPR2023 workshop on CVAFD
