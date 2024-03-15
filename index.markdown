@@ -5,8 +5,7 @@ title: about
 
 ## <span style="color: #5153C4">Bio</span>
 
-- PhD student in statistics at [The Institute of Statistical Mathematics](https://www.ism.ac.jp/index_e.html) ([SOKENDAI](https://www.soken.ac.jp/en/prog/stat/)).
-- Research scientist at [ZOZO Research](https://research.zozo.com/).
+- Research Fellow in statistics at [The University of Melbourne](https://ms.unimelb.edu.au/)
 
 ## <span style="color: #5153C4">Selected publications</span>
 
