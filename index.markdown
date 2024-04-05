@@ -6,6 +6,7 @@ title: about
 ## <span style="color: #5153C4">Bio</span>
 
 - Research Fellow in statistics at [The University of Melbourne](https://ms.unimelb.edu.au/)
+- Email: m.kimura[at]unimelb.edu.au
 
 ## <span style="color: #5153C4">Selected publications</span>
 
