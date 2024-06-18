@@ -4,6 +4,7 @@ title: about
 ---
 
 ## <span style="color: #5153C4">Bio</span>
+PhD (Statistical Sciences) from the Institute of Statistical Mathematics with a doctoral thesis entitled "Identification of Importance-Weighting and Geodesics on Statistical Manifolds".
 
 - Research Fellow in statistics at [The University of Melbourne](https://ms.unimelb.edu.au/)
 - Email: m.kimura[at]unimelb.edu.au
