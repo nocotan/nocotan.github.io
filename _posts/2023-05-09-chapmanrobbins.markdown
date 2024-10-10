@@ -3,6 +3,7 @@ layout: post
 title:  Generalization of Cramér-Rao inequality; Chapman–Robbins bound
 date:   2023-05-09 12:00:00 +0900
 categories: statistics
+image: /images/fc73dd36-343f-4c8f-8878-450b7e4f1974.png
 ---
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
