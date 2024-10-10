@@ -101,6 +101,6 @@ The posterior variance is reduced according to the power parameter. That is, the
 
 
 ## References
-- Ibrahim, J. G., & Chen, M.-H. (2000). "Power prior distributions for regression models." Statistical Science, 15(1), 46–60.
+- Ibrahim, Joseph G., and Ming-Hui Chen. "Power prior distributions for regression models." Statistical Science (2000): 46-60.
 - Ibrahim, Joseph G., et al. "The power prior: theory and applications." Statistics in medicine 34.28 (2015): 3724-3749.
 - Neuenschwander, Beat, Michael Branson, and David J. Spiegelhalter. "A note on the power prior." Statistics in medicine 28.28 (2009): 3562-3566.
