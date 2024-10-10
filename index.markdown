@@ -3,6 +3,12 @@ layout: page
 title: about
 ---
 
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:type" content="{% if page.type != null %}{{ page.type }}{% elsif page.layout == "post" %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:image" content="{% if page.image != null %}{{ page.image }}{% else %}/images/me.jpg{% endif %}">
+
 ## <span style="color: #5153C4">Bio</span>
 PhD (Statistical Sciences) from the Institute of Statistical Mathematics with a doctoral thesis entitled "Identification of Importance-Weighting and Geodesics on Statistical Manifolds".
 
