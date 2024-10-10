@@ -78,9 +78,6 @@ $$
 \theta \mid D, D_0, \alpha_0 \sim \mathcal{N}\left((X^\top X + \alpha_0X_0^\top X_0)^{-1}(X^\top y + \alpha_0 X_0^\top y_0), \sigma^2 (X^\top X + \alpha_0 X_0^\top X_0)^{-1}\right).
 $$
 
-### Remarks
-- The posterior mean deviates according to $\alpha_0$. If the underlying distributions of $D$ and $D_0$ are different, it leads the biased estimator.
-- The posterior variance is reduced according to $\alpha_0$. That is, the power prior leads the variance-reduced estimator.
 
 <div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
 <span>
@@ -88,8 +85,12 @@ $$
 <b>Remarks</b></p>
 <p style='margin-left:1em;'>
 <ul>
-<li> The posterior mean deviates according to the power parameter. If the underlying distributions of two data are different, it leads the biased estimator.
-<li> The posterior variance is reduced according to the power parameter. That is, the power prior leads the variance-reduced estimator.
+<li>
+The posterior mean deviates according to the power parameter. If the underlying distributions of two data are different, it leads the biased estimator.
+</li>
+<li>
+The posterior variance is reduced according to the power parameter. That is, the power prior leads the variance-reduced estimator.
+</li>
 </ul>
 </p>
 </span>
