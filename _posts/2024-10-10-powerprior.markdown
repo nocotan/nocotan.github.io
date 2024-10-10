@@ -56,5 +56,45 @@ We can see that the power parameter $\alpha_0$ adjusts the influence of the hist
 
 By adjusting $\alpha_0$, we can control how much the historical data impacts the prior, allowing for uncertainty about its relevance.
 
+## Power Prior in GLMs
+Consider the following normal linear regression model.
+
+$$
+\begin{align*}
+f(y_i \mid X_i, \theta) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(y_i - X_i^\top\theta)^2\right\}, \\
+f(y_{0i} \mid X_{0i}, \theta) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{1}{2\sigma^2}(y_{0i} - X_{0i}^\top\theta)^2\right\}.
+\end{align*}
+$$
+
+Assume that we take an improper uniform initial prior for $\theta$ as $\pi_0(\theta) \propto 1$, we have
+
+$$
+\theta \mid D_0, \alpha_0 \sim \mathcal{N}\left((X_0^\top X_0)^{-1}X_0^\top y_0, \frac{\sigma^2}{\alpha_0}(X_0^\top X)^{-1}\right).
+$$
+
+Then, the posterior distribution of $\theta$ is given as
+
+$$
+\theta \mid D, D_0, \alpha_0 \sim \mathcal{N}\left((X^\top X + \alpha_0X_0^\top X_0)^{-1}(X^\top y + \alpha_0 X_0^\top y_0), \sigma^2 (X^\top X + \alpha_0 X_0^\top X_0)^{-1}\right).
+$$
+
+### Remarks
+- The posterior mean deviates according to $\alpha_0$. If the underlying distributions of $D$ and $D_0$ are different, it leads the biased estimator.
+- The posterior variance is reduced according to $\alpha_0$. That is, the power prior leads the variance-reduced estimator.
+
+<div class="warning" style='padding:0.1em; background-color:#E9D8FD; color:#69337A'>
+<span>
+<p style='margin-top:1em; text-align:center'>
+<b>Remarks</b></p>
+<p style='margin-left:1em;'>
+<ul>
+<li> The posterior mean deviates according to the power parameter. If the underlying distributions of two data are different, it leads the biased estimator.
+<li> The posterior variance is reduced according to the power parameter. That is, the power prior leads the variance-reduced estimator.
+</ul>
+</p>
+</span>
+</div>
+
+
 ## References
 - Ibrahim, J. G., & Chen, M.-H. (2000). "Power prior distributions for regression models." Statistical Science, 15(1), 46–60.
