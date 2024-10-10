@@ -35,13 +35,16 @@ Suppose that
 - power parameter: $\alpha_0 \in [0, 1]$
 
 The power prior for $\theta$ is defined as
+
 $$
 \pi(\theta \mid D_0, \alpha_0) \propto L(\theta \mid D_0)^{\alpha_0}\pi_0(\theta),
 $$
+
 where $L(\theta \mid D_0)$ is the likelihood function based on the historical data $D_0$.
 
 ## Resulting Posterior
 The posterior distribution of $\theta$ given both the current and historical data is
+
 $$
 \begin{align*}
 \pi(\theta \mid D, D_0, \alpha_0) &\propto L(\theta \mid D) \times \pi(\theta \mid D_0, \alpha_0) \\
