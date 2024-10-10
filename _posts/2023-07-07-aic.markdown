@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:type" content="{% if page.type != null %}{{ page.type }}{% elsif page.layout == "post" %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:image" content="{% if page.image != null %}{{ page.image }}{% else %}/images/me.jpg{% endif %}">
 
 We assume that data $\bm{x}_n = \\{x_1,x_2,\dots,x_n\\}$ is generated from the true model $g(x)$, and consider the $p$-dimensional parametric model $\mathcal{F} = \\{f(x; \theta)\ :\ \theta\in\Theta\subset\mathbb{R}^p \\}$.
 Our goal is to evaluate the maximum likelihood estimator $\hat{\theta} \in \Theta$.
