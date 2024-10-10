@@ -3,7 +3,7 @@ layout: post
 title:  Edgeworth expansion and CLT
 date:   2020-11-07 12:00:00 +0900
 categories: statistics
-image: /images/40115163-1564-45fc-8b64-8cb10c2a7217.png
+image: /images/49e328db-efaa-4ddd-8b31-fb3775912bb5.png
 ---
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
