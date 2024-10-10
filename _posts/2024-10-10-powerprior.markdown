@@ -3,6 +3,7 @@ layout: post
 title:  Power Prior in Bayesian Statistics
 date:   2024-10-10 12:00:00 +0900
 categories: statistics
+image: /images/3897ca26-7023-440b-bca1-50d2010b311a.png
 ---
 
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script>
