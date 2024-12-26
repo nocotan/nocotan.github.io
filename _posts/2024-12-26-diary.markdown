@@ -3,7 +3,7 @@ layout: post
 title:  2024年雑記，メルボルンに引っ越した
 date:   2024-12-26 12:00:00 +0900
 categories: diary
-image: 
+image: /images/98b92ebd-829c-40d4-ba27-8f7d71831ed9.png
 ---
 
 博士課程修了と就活，引っ越しの備忘録です．
