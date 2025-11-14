@@ -17,7 +17,7 @@ PhD (Statistical Sciences) from the Institute of Statistical Mathematics with a 
 
 ## <span style="color: #5153C4">Selected publications</span>
 
-- **Masanari Kimura**. "Graph–Smoothed Bayesian Black-Box Shift Estimator and Its Information Geometry". NeurIPS 2025. [paper](https://arxiv.org/abs/2505.16251).
+- **Masanari Kimura**. "Graph–Smoothed Bayesian Black-Box Shift Estimator and Its Information Geometry". NeurIPS 2025 (<span style="color: red">spotlight</span>). [paper](https://arxiv.org/abs/2505.16251).
 - **Masanari Kimura** and Howard Bondell. "Density Ratio Estimation via Sampling along Generalized Geodesics on Statistical Manifolds". AISTATS 2025. [paper](https://openreview.net/forum?id=v13muX4Q3i)
 - **Masanari Kimura**<sup>†</sup>, Takahiro Kawashima<sup>†</sup>, Tasuku Soma, Hideitsu Hino. "Discrete Bregman Divergence". ICLR 2025. [paper](https://openreview.net/forum?id=vr1QdCNJmN)
 - **Masanari Kimura** and Hideitsu Hino. "A Short Survey on Importance Weighting for Machine Learning". TMLR 2024. [paper](https://openreview.net/forum?id=IhXM3g2gxg)
